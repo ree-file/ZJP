@@ -13,7 +13,14 @@ define(function(require) {
 				},
 				"mailLogin" : {
 					url : require.toUrl('./mailLogin.w')
+				},
+				"selectNation" : {
+					url : require.toUrl('./selectNation.w')
+				},
+				"resetPassword" : {
+					url : require.toUrl('./resetPassword.w')
 				}
+				
 				
 				
 			}

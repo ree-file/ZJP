@@ -22,6 +22,6 @@ var __result = __parent1._extend(__parent0).extend({
 	this._wCfg_={};
 	this._appCfg_={};
 	this.callParent(contextUrl);
- var __Data__ = require("$UI/system/components/justep/data/data");new __Data__(this,{"autoLoad":true,"confirmDelete":true,"confirmRefresh":true,"defCols":{"nation":{"define":"nation","name":"nation","relation":"nation","type":"String"},"number":{"define":"number","name":"number","relation":"number","type":"String"},"picture":{"define":"picture","name":"picture","relation":"picture","type":"String"}},"directDelete":false,"events":{},"idColumn":"number","initData":"[{\"number\":\"+86\",\"nation\":\"中国\",\"picture\":\"$UI/ZJP/res/img/china.gif\"}]","isMain":false,"limit":20,"xid":"data1"});
+ var __Data__ = require("$UI/system/components/justep/data/data");new __Data__(this,{"autoLoad":true,"confirmDelete":true,"confirmRefresh":true,"defCols":{"nation":{"define":"nation","name":"nation","relation":"nation","type":"String"},"number":{"define":"number","name":"number","relation":"number","type":"String"},"picture":{"define":"picture","name":"picture","relation":"picture","type":"String"}},"directDelete":false,"events":{},"idColumn":"number","initData":"[{\"number\":\"+86\",\"nation\":\"中国\",\"picture\":\"$UI/ZJP/res/img/china.gif\"},{\"number\":\"+44\",\"nation\":\"英国\",\"picture\":\"$UI/ZJP/res/img/TheUnitedKingdom.jpg\"}]","isMain":false,"limit":20,"xid":"data1"});
 }}); 
 return __result;});

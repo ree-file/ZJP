@@ -40,13 +40,11 @@
           <span xid="span2" __cid="cuyI7Fz" class="cuyI7Fz">登录</span> 
         </a>  
         <div component="$model/UI2/system/components/justep/row/row" class="x-row cuyI7Fz" xid="row2" data-bind="component:{name:'$model/UI2/system/components/justep/row/row'}" __cid="cuyI7Fz"> 
-          <div class="x-col cuyI7Fz" xid="col1" __cid="cuyI7Fz"> 
+          <div class="x-col cuyI7Fz" xid="col1" __cid="cuyI7Fz"/>  
+          <div class="x-col center-block text-center cuyI7Fz" xid="col2" __cid="cuyI7Fz"> 
             <h5 xid="h55" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;" __cid="cuyI7Fz" class="cuyI7Fz">忘记密码？</h5> 
           </div>  
-          <div class="x-col center-block text-center cuyI7Fz" xid="col2" __cid="cuyI7Fz"/>  
-          <div class="x-col cuyI7Fz" xid="col3" __cid="cuyI7Fz"> 
-            <h5 xid="h56" style="text-align:right;font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;" __cid="cuyI7Fz" class="cuyI7Fz">注册新用户</h5> 
-          </div> 
+          <div class="x-col cuyI7Fz" xid="col3" __cid="cuyI7Fz"/> 
         </div>  
         <a component="$model/UI2/system/components/justep/button/button" class="btn btn-default btn-block cuyI7Fz" xid="button3" style="background-color:#454C5E;border-width:0px 0px 0px 0px;" data-bind="component:{name:'$model/UI2/system/components/justep/button/button'}" data-events="onClick:button3Click" data-config="{&quot;label&quot;:&quot;手机登录&quot;}" __cid="cuyI7Fz"> 
           <i xid="i3" __cid="cuyI7Fz" class="cuyI7Fz"/>  
