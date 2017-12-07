@@ -36,6 +36,17 @@ define(function(require){
 
 
 
+	Model.prototype.input1Change = function(event){
+		var keyInput = this.comp("input1").val();
+		var data = this.comp("data1");
+		var filter = "$row.val('englishName')!= null && $row.val('chineseName')!= null && $row.val('englishName').indexOf('"+keyInput+"')!= -1||$row.val('chineseName').indexOf('"+keyInput+"')!= -1";
+		var list = this.comp('list1');
+		list.set('filter',filter);
+		list.refresh();
+
+
+	};
+
 
 
 	return Model;
