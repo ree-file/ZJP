@@ -10,7 +10,19 @@ define(function(require) {
 			"pageMappings" : {
 				"main" : {
 					url : require.toUrl('./main.w')
+				},
+				"mailLogin" : {
+					url : require.toUrl('./mailLogin.w')
+				},
+				"selectNation" : {
+					url : require.toUrl('./selectNation.w')
+				},
+				"resetPassword" : {
+					url : require.toUrl('./resetPassword.w')
 				}
+				
+				
+				
 			}
 		})
 
