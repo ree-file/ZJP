@@ -4,7 +4,14 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:360px;left:359px;"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="number"><column name="number" type="String" xid="xid1"></column>
   <column name="nation" type="String" xid="xid2"></column>
   <column name="picture" type="String" xid="xid3"></column>
-  <data xid="default1">[{&quot;number&quot;:&quot;+86&quot;,&quot;nation&quot;:&quot;中国&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/china.gif&quot;},{&quot;number&quot;:&quot;+44&quot;,&quot;nation&quot;:&quot;英国&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/TheUnitedKingdom.jpg&quot;}]</data></div></div> 
+  <column name="englishName" type="String" xid="xid4"></column>
+  <column name="chineseName" type="String" xid="xid5"></column>
+  <data xid="default1">[{&quot;number&quot;:&quot;+86&quot;,&quot;nation&quot;:&quot;中国&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/china.gif&quot;,&quot;englishName&quot;:&quot;China&quot;,&quot;chineseName&quot;:&quot;中华人民共和国&quot;},{&quot;number&quot;:&quot;+33&quot;,&quot;nation&quot;:&quot;法国&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/French.png&quot;,&quot;englishName&quot;:&quot;French&quot;,&quot;chineseName&quot;:&quot;法兰西共和国&quot;},{&quot;number&quot;:&quot;+44&quot;,&quot;nation&quot;:&quot;英国&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/TheUnitedKingdom.jpg&quot;,&quot;englishName&quot;:&quot;TheUnitedKingdom&quot;,&quot;chineseName&quot;:&quot;大不列颠及北爱尔兰联合王国&quot;}]</data></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="searchResult" idColumn="number"><column label="区号" name="number" type="String" xid="xid6"></column>
+  <column label="国家" name="nation" type="String" xid="xid7"></column>
+  <column label="图片" name="picture" type="String" xid="xid8"></column>
+  <column label="国家英文名" name="englishName" type="String" xid="xid9"></column>
+  <column label="国家中文名" name="chineseName" type="String" xid="xid10"></column></div></div> 
 <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1">
    <div class="x-panel-top" xid="top1"><div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar titlebar" xid="titleBar1">
    <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button1" icon="linear linear-chevronleft" onClick="button1Click">
@@ -16,7 +23,7 @@
    <div class="x-col x-col-10 row-buttom-border" xid="col4"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button2" icon="e-commerce e-commerce-fangdajing" style="color:#C3C3C3;">
    <i xid="i2" class="e-commerce e-commerce-fangdajing"></i>
    <span xid="span2"></span></a></div>
-   <div class="x-col row-buttom-border" xid="col6"><input component="$UI/system/components/justep/input/input" class="input-group-addon" xid="input1" placeHolder="搜索"></input></div></div><div component="$UI/system/components/justep/list/list" class="x-list " xid="list1" data="data1">
+   <div class="x-col row-buttom-border" xid="col6"><input component="$UI/system/components/justep/input/input" class="input-group-addon" xid="input1" placeHolder="搜索" onChange="input1Change"></input></div></div><div component="$UI/system/components/justep/list/list" class="x-list " xid="list1" data="data1">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1">
   <div component="$UI/system/components/justep/row/row" class="x-row list-row" xid="row1" bind-click="row1Click">

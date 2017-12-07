@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:431px;left:281px;" onParamsReceive="modelParamsReceive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="number"><column label="区号" name="number" type="String" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:408px;left:350px;" onParamsReceive="modelParamsReceive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="number"><column label="区号" name="number" type="String" xid="xid1"></column>
   <column label="国家" name="nation" type="String" xid="xid2"></column>
   <data xid="default1">[{&quot;number&quot;:&quot;+86&quot;,&quot;nation&quot;:&quot;中国&quot;}]</data></div></div> 
 <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full " xid="panel1">
