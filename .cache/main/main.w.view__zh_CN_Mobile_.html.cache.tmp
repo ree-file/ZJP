@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window cErUZja" component="$model/UI2/system/components/justep/window/window" design="device:m;" data-bind="component:{name:'$model/UI2/system/components/justep/window/window'}" __cid="cErUZja" components="$model/UI2/system/components/justep/model/model,$model/UI2/system/components/justep/loadingBar/loadingBar,$model/UI2/system/components/justep/titleBar/titleBar,$model/UI2/system/components/justep/panel/child,$model/UI2/system/components/justep/window/window,$model/UI2/system/components/justep/panel/panel,">  
+  <div xmlns="" component="$model/UI2/system/components/justep/model/model" xid="model" style="display:none" data-bind="component:{name:'$model/UI2/system/components/justep/model/model'}" __cid="cErUZja" class="cErUZja"/>  
+  <div xmlns="" component="$model/UI2/system/components/justep/panel/panel" class="x-panel x-full pcJv2uE3-iosstatusbar cErUZja" xid="panel1" data-bind="component:{name:'$model/UI2/system/components/justep/panel/panel'}" __cid="cErUZja"> 
+    <div class="x-panel-top cErUZja" xid="top1" component="$model/UI2/system/components/justep/panel/child" data-bind="component:{name:'$model/UI2/system/components/justep/panel/child'}" __cid="cErUZja"> 
+      <div component="$model/UI2/system/components/justep/titleBar/titleBar" class="x-titlebar cErUZja" xid="titleBar1" data-bind="component:{name:'$model/UI2/system/components/justep/titleBar/titleBar'}" __cid="cErUZja"> 
+        <div class="x-titlebar-left cErUZja" xid="left1" __cid="cErUZja"/>  
+        <div class="x-titlebar-title cErUZja" xid="title1" __cid="cErUZja">主页</div>  
+        <div class="x-titlebar-right  cErUZja" xid="right1" __cid="cErUZja"> 
+          <div class="empty cErUZja" __cid="cErUZja"/> 
+        </div> 
+      </div> 
+    </div>  
+    <div class="x-panel-content cErUZja" xid="content1" component="$model/UI2/system/components/justep/panel/child" data-bind="component:{name:'$model/UI2/system/components/justep/panel/child'}" __cid="cErUZja"/>  
+    <div class="x-panel-bottom cErUZja" xid="bottom1" component="$model/UI2/system/components/justep/panel/child" data-bind="component:{name:'$model/UI2/system/components/justep/panel/child'}" __cid="cErUZja"/>  
+    <style __cid="cErUZja" class="cErUZja">.x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-top {height: 48px;}.x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-content { top: 48px;bottom: nullpx;}.x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-bottom {height: nullpx;}.iosstatusbar .x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-top,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-top {height: 68px;}.iosstatusbar .x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-content,.iosstatusbar .x-panel .x-panel-content .x-has-iosstatusbar.x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-content { top: 68px;}.iosstatusbar .x-panel .x-panel-content .x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-top {height: 48px;}.iosstatusbar .x-panel .x-panel-content .x-panel.pcJv2uE3-iosstatusbar &gt;.x-panel-content {top: 48px;}</style> 
+  </div> 
+</div>
