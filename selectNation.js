@@ -17,9 +17,11 @@ define(function(require){
 		var row = event.bindingContext.$object;
 		var nation = data.getValue("nation", row);
 		var number = data.getValue("number", row);
+		var picture = data.getValue("picture", row)
 		var params = {
 				"nation":nation,
-				"number":number
+				"number":number,
+				"picture":picture
 		};
 		justep.Shell.showPage("main", params);
 	};
