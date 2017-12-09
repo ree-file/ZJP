@@ -8,6 +8,7 @@ define(function(require){
 	//图片路径转换
 	Model.prototype.getImageUrl = function(url){
 		return require.toUrl(url);
+		
 	};
 	
 	return Model;
