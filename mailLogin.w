@@ -28,10 +28,10 @@
       <span xid="span2">登录</span></a> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
       <div class="x-col" xid="col1">
-       <h5 xid="h55" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;">忘记密码？</h5></div> 
-      <div class="x-col center-block text-center" xid="col2"></div>
+       </div> 
+      <div class="x-col center-block text-center" xid="col2"><h5 xid="h55" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;">忘记密码？</h5></div>
       <div class="x-col" xid="col3">
-       <h5 xid="h56" style="text-align:right;font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;">注册新用户</h5></div> </div> 
+       </div> </div> 
      <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="手机登录" xid="button3" style="background-color:#454C5E;border-width:0px 0px 0px 0px;" onClick="button3Click">
       <i xid="i3"></i>
       <span xid="span9">手机登录</span></a> </div> </div> </div></div>
