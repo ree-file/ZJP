@@ -130,3 +130,30 @@
 .index, .community{
 	font-size:1.3em;
 }
+.dropdown-toggle{
+	background:#252932;
+	border-color:#868687;
+	color:#868687;
+	border-radius:5px;
+}
+.dropdown-toggle .btn active{
+	background:#868687;
+}
+.nav-bar{
+	background:#252932;
+	height:48px;
+	text-align:center;
+}
+.nav-bar .x-col{
+	padding-top:0;
+}
+.title span{
+	font-size:20px;
+	line-height:40px;
+}
+.dropdown-menu{
+	background:#1C1F26;
+	border-width:0 2px 2px 2px;
+	border-style:solid;
+	border-color:#252932;
+}

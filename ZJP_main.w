@@ -8,16 +8,26 @@
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
-        <div component="$UI/system/components/justep/titleBar/titleBar" title="欢迎入坑"
-          class="x-titlebar" style="background-color:#252932;">
-          <div class="x-titlebar-left"> 
-            </div>  
-          <div class="x-titlebar-title">欢迎入坑</div>  
-          <div class="x-titlebar-right reverse"> 
-          </div>
-        </div> 
-      </div>  
-    <div class="x-panel-content" xid="content1"><div component="$UI/system/components/justep/panel/panel" class="x-panel" xid="first-part" style="width:100%;height:65%;background-color:#1C1F26;">
+        <div component="$UI/system/components/justep/row/row" class="x-row nav-bar" xid="row12">
+   <div class="x-col" xid="col13"></div>
+   <div class="x-col title" xid="col17"><span xid="span24"><![CDATA[欢迎入坑]]></span></div>
+   <div class="x-col" xid="col19"><div class="dropdown btn-group" component="$UI/system/components/bootstrap/dropdown/dropdown" xid="dropdown1">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-icon-right dropdown-toggle" label="更多" icon="icon-arrow-down-b" xid="button4">
+    <i class="icon-arrow-down-b" xid="i4"></i>
+    <span xid="span18">更多</span></a> 
+   <ul component="$UI/system/components/justep/menu/menu" class="x-menu dropdown-menu" xid="menu1">
+    <li class="x-menu-item" xid="item1">
+     <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="孵化中心" xid="button5">
+      <i xid="i5"></i>
+      <span xid="span19">孵化中心</span></a> </li> 
+    <li class="x-menu-item" xid="item2">
+     <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="个人中心" xid="button6">
+      <i xid="i6"></i>
+      <span xid="span20">个人中心</span></a> </li> </ul> </div></div></div></div>  
+    <div class="x-panel-content" xid="content1">
+  
+  <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
+   <div class="x-contents-content" xid="content2"><div component="$UI/system/components/justep/panel/panel" class="x-panel" xid="first-part" style="width:100%;height:65%;background-color:#1C1F26;">
 	
    <div xid="main_message" style="position:absolute;width:100%;height:80%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
    <div class="x-col" xid="col1"><span xid="span1" class="pull-right"><![CDATA[每日拉人]]></span></div>
@@ -32,15 +42,15 @@
   <div component="$UI/system/components/justep/row/row" class="x-row row-title" xid="row3">
    <div class="x-col" xid="col9"><span xid="span3"><![CDATA[今日收益]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-content" xid="row4">
-   <div class="x-col" xid="col12"><span xid="span4"><![CDATA[3679($)]]></span></div></div></div></div></div></div><div xid="first-bottom" class="first-bottom"><div component="$UI/system/components/justep/row/row" class="x-row bottom-row1" xid="row5">
+   <div class="x-col" xid="col12"><span xid="span4"><![CDATA[3679($)]]></span></div></div></div></div>
+  </div></div><div xid="first-bottom" class="first-bottom"><div component="$UI/system/components/justep/row/row" class="x-row bottom-row1" xid="row5">
    <div class="x-col" xid="col3" style="background-color:transparent;"><span xid="span5"><![CDATA[预计明日收益]]></span></div>
    <div class="x-col" xid="col7"><span xid="span6"><![CDATA[当前总金额]]></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row bottom-row2" xid="row6">
    <div class="x-col" xid="col10"><span xid="span7"><![CDATA[237($)]]></span></div>
    <div class="x-col" xid="col11"><span xid="span8"><![CDATA[78637($)]]></span></div>
-   </div></div></div>
-  <div component="$UI/system/components/justep/panel/panel" class="x-panel" xid="last-part">
+   </div></div></div><div component="$UI/system/components/justep/panel/panel" class="x-panel" xid="last-part">
   
    <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" autoLoad="true" data="AccountData">
    <ul class="x-list-template" xid="listTemplateUl1">
@@ -57,8 +67,7 @@
    <div class="x-col earning_name" xid="col23"><span xid="span11"><![CDATA[收益金额]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="margin:0px 0px 0px 0px;height:35px;">
    <div class="x-col earning_content" xid="col24"><span xid="span13" bind-text='val("earning_num")'></span></div>
-   </div></div></div></li></ul> </div></div>
-  </div>
+   </div></div></div></li></ul> </div></div></div></div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link index" label="首页" xid="button1">
     <i xid="i1"></i>
