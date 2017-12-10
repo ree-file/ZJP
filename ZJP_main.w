@@ -67,7 +67,8 @@
    <div class="x-col earning_name" xid="col23"><span xid="span11"><![CDATA[收益金额]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="margin:0px 0px 0px 0px;height:35px;">
    <div class="x-col earning_content" xid="col24"><span xid="span13" bind-text='val("earning_num")'></span></div>
-   </div></div></div></li></ul> </div></div></div></div></div>
+   </div></div></div></li></ul> </div></div></div>
+  <div class="x-contents-content" xid="content3"></div></div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link index" label="首页" xid="button1">
     <i xid="i1"></i>
