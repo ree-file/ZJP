@@ -31,16 +31,16 @@
   <a component="$UI/system/components/justep/button/button" class="btn btn-default;rb;" label="三级代理" xid="ThirdBtn" style="width:33%;color:#C0C0C0;margin:0px 0px 0px 0px;background-color:#282D40;" target="content3">
    <i xid="i3"></i>
    <span xid="span5" style="color:#FFFFFF;">三级代理</span></a></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
-   <div class="x-contents-content" xid="content1" onActive="content1Active" onInactive="content1Inactive"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row74" style="position:relative;top:30%;left:16%;">
+   <div class="x-contents-content" xid="content1" onActive="content1Active" onInactive="content1Inactive"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row74" style="position:relative;left:16%;top:150px;">
    <div class="x-col x-col-33" xid="col79"><span xid="span53" style="margin-left:10%;"><![CDATA[总  人  数  ：]]></span></div>
    <div class="x-col" xid="col80"><div component="$UI/system/components/justep/output/output" class="x-output" xid="output1"></div></div>
    </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row75" style="position:relative;top:30%;left:16%;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row75" style="position:relative;left:16%;top:150px;">
    <div class="x-col x-col-33" xid="col82">
     <span xid="span54"><![CDATA[总直接加速：]]></span></div> 
    <div class="x-col" xid="col83">
     <div component="$UI/system/components/justep/output/output" class="x-output" xid="output2"></div></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row76" style="position:relative;top:30%;left:16%;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row76" style="position:relative;left:16%;top:150px;">
    <div class="x-col x-col-33" xid="col84">
     <span xid="span55"><![CDATA[总社区加速：]]></span></div> 
    <div class="x-col" xid="col85">
