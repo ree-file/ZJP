@@ -3,7 +3,8 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:408px;left:350px;" onParamsReceive="modelParamsReceive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="number"><column label="区号" name="number" type="String" xid="xid1"></column>
   <column label="国家" name="nation" type="String" xid="xid2"></column>
-  <data xid="default1">[{&quot;number&quot;:&quot;+86&quot;,&quot;nation&quot;:&quot;中国&quot;}]</data></div></div> 
+  <column label="国旗" name="picture" type="String" xid="xid3"></column>
+  <data xid="default1">[{&quot;number&quot;:&quot;+86&quot;,&quot;nation&quot;:&quot;中国&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/china.gif&quot;}]</data></div></div> 
 <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full " xid="panel1">
    <div class="x-panel-top" xid="top1">
     <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar titlebar-background" xid="titleBar1">
@@ -16,7 +17,8 @@
     <div xid="div3" class="div-padding"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
    <div class="x-col x-col-25 center-block" xid="col7" style="vertical-align:middle;text-align:left;"><h5 xid="h51" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#FFFFFF;"><![CDATA[国家/地区]]></h5></div>
    <div class="x-col" xid="col9" style="vertical-align:middle;text-align:left;" bind-click="col9Click">
-  <h5 xid="h52" style="font-size:medium;font-family:华文细黑;font-weight:500;color:##5D92E2;" bind-text=' $model.data1.val("nation")' class="center-block text-center"><![CDATA[]]></h5></div>
+  <h5 xid="h52" style="font-size:medium;font-family:华文细黑;font-weight:500;color:##5D92E2;" bind-text=' $model.data1.val("nation")' class="center-block text-center"><![CDATA[]]></h5>
+  </div>
   <div class="x-col x-col-10" xid="col4"><h5 xid="h54" style="font-size:medium;font-family:华文细黑;font-weight:600;color:#5D92E2;" class="center-block text-right">&gt;</h5></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
    <div class="x-col x-col-25 center-block" xid="col10"><input component="$UI/system/components/justep/input/input" class="input-group-addon" xid="input6" onFocus="input6Focus" onBlur="input6Blur" bind-ref='$model.data1.ref("number")' placeHolder="+86"></input></div>

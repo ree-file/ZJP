@@ -51,18 +51,22 @@ define(function(require){
 		justep.Shell.showPage("selectNation");
 
 	};
-
+	
+	Model.prototype.getImageUrl = function(url){
+		return require.toUrl(url);
+	};
 
 	Model.prototype.modelParamsReceive = function(event){
 		var nation = this.params.nation;
 		var number = this.params.number;
+		var picture = this.params.picture; 
 		var data = this.comp("data1");
 		var options = {
 				 defaultValues : [
-				        {nation:nation,number:number}
+				        {nation:nation,number:number,picture:picture}
 				 ]
 		 };
-		if(nation && number){
+		if(nation && number && picture){
 			data.newData(options);
 		}
 		
