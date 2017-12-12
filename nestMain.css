@@ -31,6 +31,26 @@
 	margin:0px 0px 0px 0px;
 	padding:0px 0px 0px 0px;
 }
+.checkbtn{
+	border-color:#282B32;
+}
+.checkbtn-active{
+	background-color:#5D92E2;
+	color:#FFFFFF;
+}
+.col-buttom-border{
+	border-width:0px 0px 1px 0px;
+	border-bottom-style:solid;
+	border-color:#868687;
+}
+.noTopButtomPadding{
+	padding-top:0px;
+	padding-bottom:0px;
+}
+.btn .active{
+	background-color:#5D92E2;
+	color:#FFFFFF;
+}
 
 
 
