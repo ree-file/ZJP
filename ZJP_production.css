@@ -1,0 +1,102 @@
+.row-title{
+	height:100%;
+	background:#252932;
+	text-align:center;
+}
+
+.row-title span{
+	color:white;
+	font-size:1.5em;
+}
+.x-panel-content{
+	background:#1C1F26;
+}
+
+.row-introduction{
+	text-align:center;
+}
+.row-introduction span{
+	color:white;
+	font-size:1.2em;
+}
+p{
+	padding:0 2px 0 5px;
+	text-indent:2em;
+	font-size:1.1em;
+	color:red;
+}
+.x-col-33 span{
+	float:right;
+	color:white;
+}
+.x-17{
+	
+}
+.x-col-50{
+	padding-left:0px;
+	padding-right:0px;
+}
+.x-col-33{
+	white-space:nowrap;
+}
+.x-radio-sm{
+	margin-right:0px;
+	z-index:10;
+}
+.community .x-col-50{
+	padding-top:10px;
+}
+.btn img{
+	width:20px;
+	height:auto;
+}
+.x-popOver-content{
+	background-color:rgb(179,168,150);
+	width:60%;
+	height:25%;
+	border-radius:5px;
+	box-shadow: 10px 10px 5px #888888;
+}
+.x-popOver-content{
+	display:table;
+	
+}
+.x-popOver-content p{
+	display:table-cell;
+	color:white;
+	vertical-align:middle;
+}
+.necessary{
+	padding-bottom:0;
+}
+.necessary .x-17{
+	padding-top:0;
+}
+
+.necessary .x-col-50{
+	padding-top:0;
+	padding-bottom:0;
+}
+.x-col-67 span, .x-radio{
+	color:red;
+}
+
+.create_benefit .x-col-33 span, .creat_interval .x-col-33 span, .community .x-col-33 span, .creat_email .x-col-33 span{
+	line-height:32px;
+}
+.community_show{
+	display:none;
+}
+.creat_interval{
+	z-index:999;
+}
+.submit{
+	margin-top:20px;
+	text-align:left;
+}
+.submit .btn{
+	color:white;
+	border-width:3px;
+	border-color:rgb(88, 115, 193);
+	border-radius:5px;
+}
