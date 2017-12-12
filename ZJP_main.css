@@ -1,3 +1,4 @@
+/*中间部分*/
 .x-col span{color:white;}
 .circle{
 	width:100%;height:90%;position:absolute;text-align: center !important;
@@ -53,6 +54,7 @@
 	margin:0;
 	background:#1C1F26;
 }
+/*中间的底部*/
 .first-bottom .x-row{
 	height:50%;
 	
@@ -70,6 +72,7 @@
 	font-size:20px;
 	color:white;
 }
+/*收益明细*/
 .x-list, .x-list-template{
 	
 	width:100%;
@@ -115,6 +118,7 @@
 	
 }
 
+/*底部*/
  .btn-group{
 	background:#1C1F26;
 }
@@ -130,6 +134,10 @@
 .index, .community{
 	font-size:1.3em;
 }
+.btn active{
+	background:#252932;
+}
+/*头部*/
 .dropdown-toggle{
 	background:#252932;
 	border-color:#868687;
@@ -153,7 +161,77 @@
 }
 .dropdown-menu{
 	background:#1C1F26;
-	border-width:0 2px 2px 2px;
+	border-width:0 2px 0px 2px;
 	border-style:solid;
 	border-color:#252932;
+}
+.x-menu-item{
+	border-bottom-width:1px;
+	border-bottom-style:solid;
+	border-bottom-color:#868687
+}
+/*孵化宝页面*/
+.content-nest{
+	
+	background:#252932;
+}
+.production-li{
+	margin-top:20px;
+}
+.hatched-title{
+	border-top-width:5px;
+	border-top-color:rgb(8,50,110);
+	filter:brightness(1);
+	border-top-style:solid;
+	text-align:center;
+}
+.production{
+	border-width:2px;
+	borderp-color:rgb(52,158,103);
+	filter:brightness(1);
+	border-style:solid;
+	padding:0;
+}
+.hatched-title span{
+	color:white;
+	font-size:1.2em;
+}
+.production-img img{
+	margin-top:25%;
+	
+	width:100%;
+	height:auto;
+	float:right;
+}
+.production-name{
+	text-align:center;
+	border-right-width:2px;
+	border-right-style:solid;
+	border-right-color:rgb(52,158,103);
+}
+.production-name .x-col{
+	padding-left:0;
+	padding-right:0;
+}
+.production-details{
+	padding-left:0;
+	padding-right:0;
+}
+.production-details .x-row{
+	padding-left:0;
+	padding-right:0;
+}
+.production-options{
+	padding:0px;
+}
+.production-options .x-row{
+	padding:0px;
+}
+.production-options .x-row .x-col{
+	padding-top:3px;
+	padding-left:0px;
+	padding-right:0px;
+}
+.production-options .btn{
+	border-color:#868687;
 }
