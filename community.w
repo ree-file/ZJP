@@ -2,7 +2,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="main13" component="$UI/system/components/justep/window/window"
   design="device:mobile;" xid="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;left:32px;top:226px;" onActive="modelActive"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:99px;left:-58px;" onActive="modelActive"> 
     </div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full x-card x-has-iosstatusbar"> 
     <div class="x-panel-top" height="49"> 
