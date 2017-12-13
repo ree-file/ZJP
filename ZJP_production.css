@@ -19,6 +19,13 @@
 	color:white;
 	font-size:1.2em;
 }
+.introduction >.x-row >.x-col >.btn{
+	border-color:rgb(88, 115, 193);
+}
+.introduction-article{
+	display:none;
+}
+
 p{
 	padding:0 2px 0 5px;
 	text-indent:2em;
@@ -32,7 +39,22 @@ p{
 .x-17{
 	
 }
-.x-col-50{
+select {
+    border: solid 1px #000;
+  	width:80%;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+
+    padding:5px 14px 5px 0;
+
+    background: url("$UI/ZJP/images/arrow.png") no-repeat scroll right center white;
+
+}
+
+
+ select::-ms-expand { display: none; }
+ .x-col-50{
 	padding-left:0px;
 	padding-right:0px;
 }
@@ -99,4 +121,7 @@ p{
 	border-width:3px;
 	border-color:rgb(88, 115, 193);
 	border-radius:5px;
+}
+.common_show{
+	display:none;
 }
