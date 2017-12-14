@@ -49,9 +49,9 @@
    <img src="$UI/ZJP/images/helps.gif" xid="image3"></img><span xid="span14">帮助</span></a></div>
   </div><div component="$UI/system/components/justep/row/row" class="x-row community community_show" xid="community">
    <div class="x-col x-col-33" xid="col22"><span xid="span7"><![CDATA[社区：]]></span></div>
-   <div class="x-col x-col-50" xid="col24"><span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio1" label="A区" name="community_radio"></span>
-  <span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio2" name="community_radio" label="B区"></span>
-  <span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio3" name="community_radio" label="C区"></span></div>
+   <div class="x-col x-col-50" xid="col24"><span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio1" label="A区" name="community_radio" checked="false" disabled="true"></span>
+  <span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio2" name="community_radio" label="B区" disabled="true"></span>
+  <span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio3" name="community_radio" label="C区" disabled="true"></span></div>
   <div class="x-col x-17" xid="col35"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm btn-only-icon" label="帮助" xid="button5" icon="img:$UI/ZJP/images/helps.gif|" onClick="button5Click">
    <i xid="i4"></i>
    <img src="$UI/ZJP/images/helps.gif" xid="image4"></img><span xid="span15">帮助</span></a></div></div>
@@ -73,7 +73,9 @@
    <span xid="span19">确定</span></a></div>
   <div class="x-col" xid="col32"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="重置" xid="button7" onClick="button7Click">
    <i xid="i7"></i>
-   <span xid="span20">重置</span></a></div></div></div>
+   <span xid="span20">重置</span></a></div></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
+   </div></div>
   </div>
   </div>
    </div>

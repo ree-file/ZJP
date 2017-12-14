@@ -1,54 +1,80 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
-	var Community = require('./js/community');
+	var Community = require('./js/nests');
 	var action ="";
 	var worth = 1800;//后期用页面数据传递得到
 	var my_money = 5000;//后期通过php的api接口获得
-	var name = "一号产品";//后期通过页面数据传递获得
+	var name = "chenggong";//后期通过页面数据传递获得
+	var contract_id = 1;//后期通过页面数据传递获得
+	var limit_money =1000;
 	var handleProduction = require('./js/handleProduction');
+	var users = require('./js/users');
 	var Model = function(){
 		this.callParent();
 	};
-
+//提示
 	Model.prototype.button2Click = function(event){
 		this.comp("popOver1").show();
 
 		$(this.getElementByXid("p2")).text("此选项表明你需要升级到什么样的产品。（只能升到比当前产品等级高的产品）");
 	};
-
+//提示
 	Model.prototype.button4Click = function(event){
 		this.comp("popOver1").show();
 		$(this.getElementByXid("p2")).text("此选项需要填入你已经购买的一个产品（或者叫巢）的名称，新建的产品（巢）会成为你的产品（巢）的下级");
 	};
-
+//提示
 	Model.prototype.button5Click = function(event){
 		this.comp("popOver1").show();
 		
 		$(this.getElementByXid("p2")).text("A社区：只有直线加速；B社区：有直线加速和社区加速（具体请看规则详情页）；C社区：有直线加速和社区加速（具体请看规则详情页）");
 		
 	};
-
+//提示
 	Model.prototype.button3Click = function(event){
 		this.comp("popOver1").show();
 		$(this.getElementByXid("p2")).text("填入一个产品（巢）的名称，可以获得直线加速");
 		
 	};
-
+//提示
 	Model.prototype.button1Click = function(event){
 		this.comp("popOver1").show();
 		$(this.getElementByXid("p2")).text("填入一个邮箱，若为本人则产品挂在本人名下，若为他人的则挂在他人名下，若邮箱未注册过，则会自动生成一个账号，然后挂在新账号名下");
 	};
-	
+//填写收益人时触发各种判断	
 	Model.prototype.input4Blur = function(event){
 		var benefit_name = this.comp("input4").val();
 		var communitys =$(this.getElementByXid("community"));
 		if ($.trim(benefit_name)) {
 			//还要拿benefit_name去数据查看他社区开通了哪些
-			Community.community_premission();
-			communitys.css("height",0);
-			communitys.removeClass("community_show");
-			communitys.animate({height:42});
+			var premission=Community.community_premission(benefit_name);
+			console.log(premission);
+			switch (premission) {
+			case 1:
+				this.comp("radio1").set({disabled:false});
+				break;
+			case 2:
+				this.comp("radio1").set({disabled:false});
+				this.comp("radio2").set({disabled:false});
+			case 3:
+				this.comp("radio1").set({disabled:false});
+				this.comp("radio2").set({disabled:false});
+				this.comp("radio3").set({disabled:false});
+				break;
+			default:
+				justep.Util.hint("没有这个用户");
+				this.comp("radio1").set({disabled:true,checked:false});
+				this.comp("radio2").set({disabled:true,checked:false});
+				this.comp("radio3").set({disabled:true,checked:false});
+				break;
+			}
+			if (premission!=404) {
+				communitys.css("height",0);
+				communitys.removeClass("community_show");
+				communitys.animate({height:42});
+			}
+			
 			
 		}
 		else{
@@ -81,14 +107,14 @@ define(function(require){
 	};
 	//不同的action不同的操作
 	Model.prototype.modelParamsReceive = function(event){
-		action = "123";
-		console.log(action);
+		action = "upgrade";
 		if (action=="upgrade") {
+			my_money = users.getMymoney();
 			$(this.getElementByXid("create_benefit")).addClass("common_show");
 			this.comp("row4").addClass("common_show");
 			this.comp("row5").addClass("common_show");
 			$(this.getElementByXid("production_worth")).html(worth);
-			$(this.getElementByXid("money")).html(my_money);
+			$(this.getElementByXid("money")).html(my_money['active']);
 			$(this.getElementByXid("need_money")).html(0);
 		}
 	};
@@ -99,8 +125,9 @@ define(function(require){
 				object.val("");
 			}
 			else{
-				if (production-worth<my_money) {
-					$(this.getElementByXid("need_money")).html(production-worth);
+				if (parseFloat(production-worth)<(parseFloat(my_money['active'])+parseFloat(my_money['limit']))) {
+					
+					$(this.getElementByXid("need_money")).html((production-worth).toFixed(2));
 				}
 				else{
 					justep.Util.hint("账户金额少于所需要的金额");
@@ -137,8 +164,11 @@ define(function(require){
 	Model.prototype.button6Click = function(event){
 		if (action=="upgrade") {
 			var paymoney =$(this.getElementByXid("need_money")).html();
+			limit_money = 1000;
+			active_money = 3200;
+			console.log(paymoney);
 			var rank = this.comp("select1").val();
-			handleProduction.upgrade_production(name,rank,paymoeny,action);
+			handleProduction.upgrade_production(contract_id,rank,limit_money,active_money,action);
 		}
 	};
 

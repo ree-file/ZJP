@@ -3,13 +3,13 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	return {
 		//升单，复投---许鑫君
-		upgrade_production:function(name,rank,paymoney,action){
+		upgrade_production:function(contract_id,rank,paymoney,action){
 			$.ajax({
-				url:"",
+				url:"http://127.0.0.1:8081/api/v1/contracts/upgrade",
 				async:false,
-				data:{name:name,rank:rank,paymoney:paymoeny,action:action},
+				data:{contract_id:contract_id,contract_rank:rank,paymoney:paymoney,action:action},
 				dataType:"json",
-				type:POST,
+				type:'POST',
 				success:function(data){
 					
 				},
