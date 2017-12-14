@@ -81,33 +81,35 @@
    <div class="x-col x-col-20 center-block" xid="col15" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <span xid="span13" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:5px;" class="center-block"><![CDATA[密码：]]></span></div> 
    <div class="x-col" xid="col13" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" class="form-control" xid="input3" style="height:100%;"></input>
+    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="pswInput1" style="height:100%;"></input>
     </div> 
    <div class="x-col x-col-20" xid="col14">
-    </div> </div>
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block middlebtn" label="button" xid="showhidBtn" icon="dataControl dataControl-visiblel" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;left:40%;" onClick="showhidBtnClick">
+   <i xid="i9" class="dataControl dataControl-visiblel"></i>
+   <span xid="span25"></span></a></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:30px;">
    <div class="x-col x-col-20 center-block" xid="col16" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <span xid="span17" style="font-size:xx-small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:10px;" class="center-block"><![CDATA[确认密码：]]></span></div> 
    <div class="x-col" xid="col18" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" class="form-control" xid="input5" style="height:100%;"></input></div> 
+    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="pswInput2" style="height:100%;"></input></div> 
    <div class="x-col x-col-20" xid="col17">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block middlebtn" label="button" xid="button6" icon="round round-chose" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;left:40%;">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block middlebtn" label="button" xid="button6" icon="round round-chose" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;left:40%;" onClick="button6Click">
      <i xid="i6" class="round round-chose"></i>
      <span xid="span16"></span></a> </div> </div></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;" bind-click="row1Click">
+  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;">
    <div class="x-col" xid="col34">
-    <span xid="span19" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[版本信息]]></span></div> 
+    <span xid="span19" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[产品介绍]]></span></div> 
    <div class="x-col x-col-10" xid="col33">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button5" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
      <i xid="i5" class="dataControl dataControl-arrowrightl"></i>
      <span xid="span20"></span></a> </div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row16" style="background-color:#1C1F26;" bind-click="row1Click">
-   <div class="x-col" xid="col38">
-    <span xid="span25" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[产品概念]]></span></div> 
-   <div class="x-col x-col-10" xid="col39">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button10" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
-     <i xid="i10" class="dataControl dataControl-arrowrightl"></i>
-     <span xid="span26"></span></a> </div> </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row15" style="background-color:#1C1F26;position:relative;" bind-click="row1Click">
+  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row16" style="background-color:#1C1F26;">
+   <div class="x-col" xid="col19">
+    <span xid="span22" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;">版本信息</span></div> 
+   <div class="x-col x-col-10" xid="col22">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button4" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
+     <i xid="i7" class="dataControl dataControl-arrowrightl"></i>
+     <span xid="span24"></span></a> </div> </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row15" style="background-color:#1C1F26;position:relative;">
    <div class="x-col" xid="col36" style="position:relative;">
     <span xid="span21" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[退出登录]]>
   </span></div> 
@@ -116,7 +118,7 @@
    <i xid="i8" class="icon-power"></i>
    <span xid="span23"></span></a></div></div>
   </div>
-   <div class="x-panel-bottom" xid="bottom1"></div></div>
+   </div>
   </div>
   </div> 
 </div>
