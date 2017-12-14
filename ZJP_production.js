@@ -17,30 +17,30 @@ define(function(require){
 	Model.prototype.button2Click = function(event){
 		this.comp("popOver1").show();
 
-		$(this.getElementByXid("p2")).text("此选项表明你需要升级到什么样的产品。（只能升到比当前产品等级高的产品）");
+				$(this.getElementByXid("p2")).text("此选项表明你升级后猫窝的价值");
 	};
 //提示
 	Model.prototype.button4Click = function(event){
 		this.comp("popOver1").show();
-		$(this.getElementByXid("p2")).text("此选项需要填入你已经购买的一个产品（或者叫巢）的名称，新建的产品（巢）会成为你的产品（巢）的下级");
+		$(this.getElementByXid("p2")).text("此选项将决定此猫窝的上级");
 	};
 //提示
 	Model.prototype.button5Click = function(event){
 		this.comp("popOver1").show();
 		
-		$(this.getElementByXid("p2")).text("A社区：只有直线加速；B社区：有直线加速和社区加速（具体请看规则详情页）；C社区：有直线加速和社区加速（具体请看规则详情页）");
+		$(this.getElementByXid("p2")).text("A社区：直接加速成长；B社区：直接加速和社区加速【每日最多加速现猫窝投资额的30%】；C社区：直线加速和社区加速【每日最多加速此猫窝累计投资额的30%】");
 		
 	};
 //提示
 	Model.prototype.button3Click = function(event){
 		this.comp("popOver1").show();
-		$(this.getElementByXid("p2")).text("填入一个产品（巢）的名称，可以获得直线加速");
+		$(this.getElementByXid("p2")).text("填入一个猫窝的编码，该编码的猫窝将会获得直线加速");
 		
 	};
 //提示
 	Model.prototype.button1Click = function(event){
 		this.comp("popOver1").show();
-		$(this.getElementByXid("p2")).text("填入一个邮箱，若为本人则产品挂在本人名下，若为他人的则挂在他人名下，若邮箱未注册过，则会自动生成一个账号，然后挂在新账号名下");
+		$(this.getElementByXid("p2")).text("此选项将决定猫窝的归属交易账户，若是一个新邮箱，将会建立一个新的交易账户");
 	};
 //填写收益人时触发各种判断	
 	Model.prototype.input4Blur = function(event){
