@@ -36,9 +36,6 @@ p{
 	float:right;
 	color:white;
 }
-.x-17{
-	
-}
 select {
     border: solid 1px #000;
   	width:80%;
@@ -113,15 +110,60 @@ select {
 	z-index:999;
 }
 .submit{
-	margin-top:20px;
 	text-align:left;
 }
 .submit .btn{
 	color:white;
-	border-width:3px;
-	border-color:rgb(88, 115, 193);
 	border-radius:5px;
 }
 .common_show{
 	display:none;
+}
+.blueButton{
+	background-color:#5D92E2;
+	border-width:0px 0px 0px 0px;
+	width:100%;
+}
+.garyButton{
+	background-color:#454C5E;
+	border-width:0px 0px 0px 0px;
+	width:100%;
+	color:#FFFFFF;
+}
+.backgroundAll{
+	background-color:#252932;
+}
+.backgroundD{
+	background-color:#1C1F26;
+}
+.inputAndSelect{
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	background-color:#1C1F26;
+	color:#FFFFFF;
+	border-color:#2F363E;
+}
+.leftspan{
+	color:#A6A6A6;
+	position:relative;
+	top:5px;
+}
+.normalRow{
+	background-color:#252932;
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	height:50px;
+}
+.nopadding{
+	padding:0px 0px 0px 0px;
+}
+.button8{
+	background-color:transparent;
+	border-bottom-style:solid;
+	border-width:0px 0px 1px 0px;
+	width:100%;
+	font-size:12px;font-family:华文细黑;
+	font-weight:400;color:#FFFFFF;
+	border-color:#E4E4E4;
+	position:relative;top:9px;
 }

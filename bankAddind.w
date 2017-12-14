@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onActive="modelActive"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="top:14px;left:107px;height:auto;" onActive="modelActive"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bankData" idColumn="id"><column name="id" type="Integer" xid="xid1"></column>
   <column label="银行名称" name="name" type="String" xid="xid2"></column>
   <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;中国银行&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;中国工商银行&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;中国建设银行&quot;}]</data></div></div>  
