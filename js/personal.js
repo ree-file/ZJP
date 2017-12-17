@@ -3,39 +3,40 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 
 	return{
-		bankBanding : function(user_id){
-			var bankBanded;
+		personal : function(user_id){
 			$.ajax({
-				url:"http://zjp.app/api/v1/bank/bankBanding",//php的api路径
+				url:"http://zjp.app/api/v1/personal/personalInformation",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{user_id:user_id},//需要传递的数据
 				type:'GET',//php获取类型
 				success:function(data){//请求成功返回值存在data里
-					bankBanded = data.data;
+					console.log(data.data);
+					return data.data;
 				},
 				error:function(ero){//请求失败错误信息在ero里
 					console.log(ero);
 				}
 			});
-			return bankBanded;
 		},
-
-		bankAdding : function(user_id){
+		
+		money : function(user_id){
 			$.ajax({
-				url:"http://zjp.app/api/v1/bank/bankAdding",//php的api路径
+				url:"http://zjp.app/api/v1/personal/personalMoney",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{user_id:user_id},//需要传递的数据
 				type:'GET',//php获取类型
 				success:function(data){//请求成功返回值存在data里
+					console.log(data.data);
+					return data.data;
 				},
 				error:function(ero){//请求失败错误信息在ero里
 					console.log(ero);
 				}
 			});
 		}
-
+		
 	};
-
+	
 });

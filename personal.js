@@ -1,6 +1,7 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
+	var personalInformation = require('./js/personal');
 	var ifhid = 0;
 	var pwState = false;
 
@@ -26,6 +27,7 @@ define(function(require){
 		$(this.getElementByXid("hidRow")).hide();
 		$(this.getElementByXid("bandNameInput")).hide();//姓名输入框绑定
 		$(this.getElementByXid("bandNameBtn")).hide();//姓名输入框绑定
+//		personalInformation.personal();
 	};
 
 	Model.prototype.button6Click = function(event){
@@ -43,6 +45,22 @@ define(function(require){
       pw2.attr("type","password");
       pwState = false;
     }
+	};
+
+	Model.prototype.col7Click = function(event){
+		justep.Shell.showPage("wallet");
+	};
+
+	Model.prototype.col8Click = function(event){
+		justep.Shell.showPage("bankBanding");
+	};
+
+	Model.prototype.row14Click = function(event){
+		justep.Shell.showPage("illustrate");
+	};
+
+	Model.prototype.row16Click = function(event){
+		justep.Shell.showPage("varsioninformation");
 	};
 
 	return Model;

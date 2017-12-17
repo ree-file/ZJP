@@ -1,6 +1,7 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
+	var personalMoney = require('./js/personal');
 	var pwState = true;
 
 	var Model = function(){
@@ -25,6 +26,14 @@ define(function(require){
       monetspan4.text("22.49");//money_market+money_active+money_limit
       pwState = false;
     }
+	};
+
+	Model.prototype.modelLoad = function(event){
+		personalMoney.money();
+	};
+
+	Model.prototype.row14Click = function(event){
+		justep.Shell.showPage("recharge");
 	};
 
 	return Model;

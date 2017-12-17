@@ -1,6 +1,7 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
+	var bank = require('./js/bank');
 
 	var Model = function(){
 		this.callParent();
@@ -29,6 +30,10 @@ define(function(require){
 		t.onkeydown=change;
 		t.onkeyup=change;
 		t.onkeypress=change;
+	};
+	
+	Model.prototype.button5Click = function(event){
+		var bankcard = bank.bankAdding();
 	};
 	
 	return Model;

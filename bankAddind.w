@@ -60,7 +60,7 @@
      <i xid="i4" class="icon-ios7-keypad"></i>
      <span xid="span10"></span></a> </div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
-   <div class="x-col" xid="col18"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" label="提交并审核" xid="button5" style="background-color:#049FCC;">
+   <div class="x-col" xid="col18"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" label="提交并审核" xid="button5" style="background-color:#049FCC;" onClick="button5Click">
    <i xid="i5"></i>
    <span xid="span12" style="color:#FFFFFF;">提交并审核</span></a></div>
    </div></div>

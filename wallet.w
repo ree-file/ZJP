@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id"><column label="1" name="id" type="Integer" xid="xid1"></column>
   <data xid="default1">[{&quot;id&quot;:1}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
@@ -67,7 +67,7 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="background-color:#1C1F26;padding:0px 0px 20px 0px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col" xid="col34" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="span16" style="font-size:small;color:#808080;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[激活金额—通过孵化获得只能用于激活的金额数]]></span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;">
+  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;" bind-click="row14Click">
    <div class="x-col" xid="col35">
     <span xid="span19" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[金额充值]]></span></div> 
    <div class="x-col x-col-10" xid="col36">
