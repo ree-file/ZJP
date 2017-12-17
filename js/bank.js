@@ -1,33 +1,35 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
+	var config = require("$UI/ZJP/js/config");
 
 	return{
-		bankBanding : function(user_id){
-			var bankBanded;
+		cardBanded : function(){
+			var Banded;
 			$.ajax({
-				url:"http://zjp.app/api/v1/bank/bankBanding",//php的api路径
+				url: config.site+"/api/v1/user/cards",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{user_id:user_id},//需要传递的数据
+				data:{},//需要传递的数据
 				type:'GET',//php获取类型
 				success:function(data){//请求成功返回值存在data里
-					bankBanded = data.data;
+					console.log(data);
+					Banded = data.data;
 				},
 				error:function(ero){//请求失败错误信息在ero里
 					console.log(ero);
 				}
 			});
-			return bankBanded;
+			return Banded;
 		},
 
-		bankAdding : function(user_id){
+		cardAdding : function(username,number,bankname){
 			$.ajax({
-				url:"http://zjp.app/api/v1/bank/bankAdding",//php的api路径
+				url:config.site+"/api/v1/cards",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{user_id:user_id},//需要传递的数据
-				type:'GET',//php获取类型
+				data:{username:username,number:number,bankname:bankname},//需要传递的数据
+				type:'post',//php获取类型
 				success:function(data){//请求成功返回值存在data里
 				},
 				error:function(ero){//请求失败错误信息在ero里

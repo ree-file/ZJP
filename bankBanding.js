@@ -8,7 +8,7 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
-		var bankBanded = bank.bankBanding("1");
+		var bankBanded = bank.cardBanded();
 		console.log(bankBanded);
 		var bankBandedData = this.comp("bankBandedData");
         for (var i = 0; i <= bankBanded.length-1; i++) {

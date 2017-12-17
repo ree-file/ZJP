@@ -27,7 +27,7 @@
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1" style="padding-right:10px;padding-left:10px;">
   
-  <div component="$UI/system/components/justep/row/row" class="x-row bankrow" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 10px 0px;background-color:#8686FF;">
+  <div component="$UI/system/components/justep/row/row" class="x-row bankrow" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 10px 0px;background-color:#8C8CFF;">
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="margin-bottom:0px;padding-bottom:0px;padding-left:20px;margin-top:12px;">
    <div class="x-col x-col-10 imgcol" xid="col1" style="position:relative;background-color:#FFFFFF;"><img alt="" xid="bankImage" height="100%" style="position:relative;width:100%;" src="$UI/ZJP/images/bankimg/银行.png"></img></div>
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;"><div component="$UI/system/components/justep/output/output" class="x-output" xid="bankName" bind-ref='ref("bankname")' style="color:#FFFFFF;font-weight:bold;font-size:medium;margin:0px 0px 0px 5px;padding:5px 0px 0px 0px;"></div></div></div>

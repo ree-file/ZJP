@@ -6,35 +6,19 @@ define(function(require){
 	var Model = function(){
 		this.callParent();
 	};
-	
-	function change(){
-		this.value=this.value.replace(/\D/g,'').replace(/....(?!$)/g,'$& ');//四个字符替代谓四个字符一个空格
-	}
-	
+
 	Model.prototype.modelActive = function(event){
-		var t=this.getElementById("cardidInput");
-		t.onkeydown=change;
-		t.onkeyup=change;
-		t.onkeypress=change;
-	};
-	
-	Model.prototype.cardidInputChange = function(event){
-		var t=$(this.getElementByXid("cardidInput"));
-		t.onkeydown=change;
-		t.onkeyup=change;
-		t.onkeypress=change;
-	};
-	
-	Model.prototype.cardidInputBlur = function(event){
-		var t=$(this.getElementByXid("cardidInput"));
-		t.onkeydown=change;
-		t.onkeyup=change;
-		t.onkeypress=change;
 	};
 	
 	Model.prototype.button5Click = function(event){
-		var bankcard = bank.bankAdding();
+		var nameInput = this.getElementByXid("nameInput").value;
+		var number = this.getElementByXid("cardidInput").value;
+		var bankname = this.comp('bankSelect').val();
+		bank.cardAdding(nameInput,number,bankname);
+		// console.log(nameInput);
+		// console.log(number);
+		// console.log(bankname);
 	};
-	
+
 	return Model;
 });
