@@ -6,5 +6,12 @@ define(function(require){
 		this.callParent();
 	};
 
+	Model.prototype.modelLoad = function(event){
+	};
+
+	Model.prototype.col11Click = function(event){
+		$(this.getElementByXid("popOver1")).show();
+	};
+
 	return Model;
 });

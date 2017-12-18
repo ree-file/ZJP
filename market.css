@@ -1,0 +1,7 @@
+.moneycenter{ text-align:center; float:left;}
+.moneycenterright{ text-align:right; float:left;}
+.btn-link:active{
+        color:red;
+        background-color:red;
+        text-decoration: none;
+}
