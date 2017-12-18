@@ -1,7 +1,7 @@
 /*中间部分*/
 .x-col span{color:white;}
 .circle{
-	width:100%;height:90%;position:absolute;text-align: center !important;
+	width:100%;position:relative;text-align: center !important;
 }
 .circle-box{
 	width:200px;height:200px;background:#2BD0A3;margin: auto;border-radius:50%;
@@ -49,8 +49,6 @@
 .first-bottom{
 	position:absolute;
 	width:100%;
-	height:20%;
-	top:80%;
 	margin:0;
 	background:#1C1F26;
 }
@@ -85,10 +83,10 @@
 }
 .account{
 	width:100%;
-	height:auto;
-	border-width:0 0 2px 5px;
+	border-width:2px 0 2px 5px;
 	border-style:solid;
 	border-bottom-color:#F0F0F0;
+	border-top-color:#F0F0F0;
 	text-align:center;
 	border-left-color:red;
 }
@@ -138,6 +136,10 @@
 	background:#252932;
 }
 /*头部*/
+.titlebar{
+	background-color:#252932;
+	color:#868687;
+}
 .dropdown-toggle{
 	background:#252932;
 	border-color:#868687;
@@ -160,10 +162,10 @@
 	line-height:40px;
 }
 .dropdown-menu{
-	background:#1C1F26;
-	border-width:0 2px 0px 2px;
+	background:#252932;
+	border-width:0 1px 0px 2px;
 	border-style:solid;
-	border-color:#252932;
+	border-color:#20232A;
 }
 .x-menu-item{
 	border-bottom-width:1px;
