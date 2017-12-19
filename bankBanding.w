@@ -30,13 +30,13 @@
    <div class="x-col" xid="col9"><div component="$UI/system/components/justep/output/output" class="x-output" xid="bankCardId"></div></div></div></li></ul> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1D1D1D;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:40px;">
    <div class="x-col x-col-10" xid="col6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button4" icon="glyphicon glyphicon-plus" style="height:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;left:50%;top:25%;">
+    <a component="$UI/system/components/justep/button/button" class="btn text-center btn-link btn-only-icon" label="button" xid="button4" icon="glyphicon glyphicon-plus" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;width:100%;top:8px;">
      <i xid="i3" class="glyphicon glyphicon-plus"></i>
      <span xid="span4"></span></a> </div> 
    <div class="x-col" xid="col4">
     <span xid="span6" style="font-size:medium;position:relative;top:5px;">添加银行卡</span></div> 
    <div class="x-col x-col-10" xid="col5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-only-icon btn-default;" label="button" xid="button3" icon="linear linear-chevronright" style="height:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;top:25%;">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-only-icon btn-default;" label="button" xid="button3" icon="linear linear-chevronright" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;width:100%;top:8px;">
      <i xid="i4" class="linear linear-chevronright"></i>
      <span xid="span5"></span></a> </div> </div></div>
   </div> 
