@@ -2,7 +2,8 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var me;
-	
+	var login = require("./js/login");
+	var loginable = false;//能否点击登录按钮的状态
 	var Model = function(){
 		this.callParent();
 		me = this;
@@ -14,10 +15,36 @@ define(function(require){
 		
 
 	};
-
+	Model.prototype.showprompt = function(text){
+		justep.Util.hint(text,{	
+						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+					});
+					$(".x-hint").find("button[class='close']").hide();
+	};
 	Model.prototype.input5Blur = function(event){
 		$(this.getElementByXid("input5")).css("border-color","#FFFFFF");
 		$(this.getElementByXid("input5")).css("border-width","0px 0px 1px 0px");
+		//验证手机是否存在--许鑫君
+		var number = $.trim(this.comp("input5").val());
+		if(number){
+			var Prefix = this.comp("input6").val();
+			Prefix = parseInt(Prefix);
+			var is_live = login.phoneNumberIsLive(Prefix+number);
+			if (!is_live) {
+				this.showprompt("手机号不存在");
+				
+				loginable=false;
+			}
+			else{
+				loginable=true;
+			}
+		}
+		else{
+			this.showprompt("手机号不能为空");
+			
+			loginable=false;
+		}
+		
 
 	};
 
@@ -40,6 +67,10 @@ define(function(require){
 	Model.prototype.password1Blur = function(event){
 		$(this.getElementByXid("password1")).css("border-color","#FFFFFF");
 		$(this.getElementByXid("password1")).css("border-width","0px 0px 1px 0px");
+		var password = $(this.getElementByXid("password1")).val();
+		if (!$.trim(password)) {
+			this.showprompt("密码不能为空");
+		}
 	};
 
 	Model.prototype.button3Click = function(event){
@@ -82,6 +113,32 @@ define(function(require){
 	Model.prototype.col2Click = function(event){
 		justep.Shell.showPage("resetPassword");
 
+	};
+
+
+//登录操作的实现--许鑫君
+	Model.prototype.button1Click = function(event){
+		if (loginable) {
+			var Prefix = this.comp("input6").val();
+			Prefix = parseInt(Prefix);
+			var phoneNumber = $.trim(this.comp("input5").val());
+			var password = $.trim($(this.getElementByXid("password1")).val());
+			if (!password ||!phoneNumber ) {
+				this.showprompt("账号或密码不能为空");
+				
+			}else{
+				var is_success=login.phonelogin(Prefix+phoneNumber,password);
+				if (is_success) {
+					justep.Shell.showPage(require.toUrl("./ZJP_main.w"),{check:1});
+				}
+				else{
+					this.showprompt("账号或密码错误");
+					loginable = false;
+				}
+			}
+			
+		}
+		
 	};
 
 

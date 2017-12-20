@@ -1,7 +1,12 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
-
+	function showprompt(text){
+		justep.Util.hint(text,{	
+			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+		});
+		$(".x-hint").find("button[class='close']").hide();
+	}
 	return{
 		//获取巢的社区权限（子巢可以挂的范围）---许鑫君
 		community_premission : function(nest_name){
@@ -48,7 +53,7 @@ define(function(require){
 			}
 			
 		},
-		//巢是否存在
+		//巢是否存在--许鑫君
 		is_live:function(name){
 			var is_has = true;
 			$.ajax({
@@ -65,6 +70,23 @@ define(function(require){
 				}
 			});
 			return is_has;
+		},
+		nestInfo:function(){
+			var nest_Info;
+			$.ajax({
+				url:"",
+				async:false,
+				dataType:"json",
+				type:"POST",
+				success:function(data){
+					//对data做处理
+				},
+				error:function(ero){
+					showprompt("检查网络或者重新登录");
+				}
+			});
+			return nest_Info;
+			//nest_Info模型=nest_Info['Investment'],nest_Info['today'],nest_Info['incomedata']=[{time:time,income:income,name:name,type:type(收益来源)}],nest_Info['nestdata']=[{id:nest_id,name:name,income:income(总的收益),freese:freese,time:time(创建日期),type:contractType*config.rate}]
 		}
 	};
 	

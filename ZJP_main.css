@@ -237,3 +237,30 @@
 .production-options .btn{
 	border-color:#868687;
 }
+.copy{
+	-webkit-user-select: text;
+        user-select: text;
+}
+.remark{
+	width:20%;
+	height:30xp;
+	float:right;
+	display:inline;
+	
+}
+.remark .x-row{
+	padding:0;
+}
+.remark .x-row .x-col{
+	padding:0;
+}
+.remark .x-row .x-col span{
+	font-size:1px;
+	display:block;
+	margin-bottom:10px;
+}
+.remark .sign{
+	width:50%;
+	height:15px;
+	background:#2BD0A3;
+}

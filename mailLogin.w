@@ -23,7 +23,7 @@
       <div class="x-col" xid="col15" style="padding-bottom:0px;">
        <input component="$UI/system/components/justep/input/password" class="input-group-addon" xid="password1" bind-focus="password1Focus" bind-blur="password1Blur"></input></div> </div> </div> 
     <div xid="div1" style="padding:10px 10px 10px 10px;">
-     <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="登录" xid="button1" style="background-color:#5D92E2;">
+     <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="登录" xid="button1" style="background-color:#5D92E2;" onClick="button1Click">
       <i xid="i1"></i>
       <span xid="span2">登录</span></a> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">

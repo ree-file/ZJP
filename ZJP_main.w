@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:395px;left:167px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onModelConstruct="modelModelConstruct"> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="AccountData" onCustomRefresh="AccountDataCustomRefresh" idColumn="id"><column name="id" type="Integer" xid="xid1"></column>
-  <column label="收益名称" name="earning_name" type="String" xid="xid2"></column>
-  <column label="收益数量" name="earning_num" type="Decimal" xid="xid3"></column>
-  <column label="所占比例" name="proportion" type="Decimal" xid="xid4"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="nestsAccount" idColumn="id"><column name="id" type="Integer" xid="xid5"></column>
-  <column label="合约类型" name="nesttype" type="String" xid="xid6"></column>
-  <column label="获得的金额" name="has_hatched" type="Integer" xid="xid7"></column>
-  <column label="冻结金额" name="hacthing" type="Integer" xid="xid8"></column>
-  <column label="社区人数" name="community" type="Integer" xid="xid9"></column>
-  <data xid="default3">[{&quot;id&quot;:1,&quot;nesttype&quot;:&quot;第一级600&quot;,&quot;has_hatched&quot;:300,&quot;hacthing&quot;:1500,&quot;community&quot;:20},{&quot;id&quot;:2,&quot;nesttype&quot;:&quot;第二级1800&quot;,&quot;has_hatched&quot;:900,&quot;hacthing&quot;:4500,&quot;community&quot;:30}]</data></div></div>  
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:124px;left:17px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onParamsReceive="modelParamsReceive"> 
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="NestsAccount" idColumn="id"><column name="id" type="Integer" xid="xid5"></column>
+  <column label="获得的金额" name="income" type="Integer" xid="xid7"></column>
+  <column label="产品获得时间" name="time" type="Date" xid="xid10"></column>
+  <column label="巢名称" name="name" type="String" xid="xid13"></column>
+  <column label="产品类型" name="type" type="String" xid="xid14"></column>
+  <column label="利率" name="rate" type="String" xid="xid1"></column>
+  <column label="冻结金额" name="freese" type="Integer" xid="xid2"></column>
+  <data xid="default2">[{&quot;id&quot;:1,&quot;income&quot;:600,&quot;time&quot;:&quot;2017-11-11&quot;,&quot;name&quot;:&quot;qweasd133&quot;,&quot;type&quot;:&quot;1800&quot;,&quot;rate&quot;:&quot;300%&quot;,&quot;freese&quot;:4900},{&quot;id&quot;:2,&quot;income&quot;:1200,&quot;time&quot;:&quot;2017-12-12&quot;,&quot;name&quot;:&quot;qwezxcert&quot;,&quot;type&quot;:&quot;1800&quot;,&quot;rate&quot;:&quot;300%&quot;,&quot;freese&quot;:4200}]</data></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="incomeAccount" idColumn="id"><column name="id" type="Integer" xid="xid6"></column>
+  <column name="name" type="String" xid="xid8"></column>
+  <column name="date" type="Date" xid="xid9"></column>
+  <column name="income" type="Float" xid="xid11"></column>
+  <column name="type" type="String" xid="xid15"></column>
+  <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;qweasd123&quot;,&quot;date&quot;:&quot;2017-11-11&quot;,&quot;income&quot;:600,&quot;type&quot;:&quot;社区&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;qweasd123&quot;,&quot;date&quot;:&quot;2017-11-11&quot;,&quot;income&quot;:600,&quot;type&quot;:&quot;直线&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;qweasd123&quot;,&quot;date&quot;:&quot;2017-11-11&quot;,&quot;income&quot;:600,&quot;type&quot;:&quot;日常&quot;}]</data></div>
+  </div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -36,7 +41,22 @@
    <div class="x-contents-content" xid="content2"><div xid="main1" style="position:absolute;width:100%;height:50%;">
     
    <div xid="circle" class="circle" style="top:30px;">
-    <div xid="circle-box" class="circle-box">
+    <div xid="remark" class="remark">
+   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
+    <div class="x-col" xid="col11">
+     <div xid="div4" class="sign"></div></div> 
+    <div class="x-col" xid="col16">
+     <span xid="span24">活动</span></div> </div> 
+   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
+    <div class="x-col" xid="col17">
+     <div xid="div5" class="sign" style="background-color:#EA2229;"></div></div> 
+    <div class="x-col" xid="col25">
+     <span xid="span25">投资</span></div> </div> 
+   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row16">
+    <div class="x-col" xid="col26">
+     <div xid="div6" class="sign" style="background-color:#EFA433;"></div></div> 
+    <div class="x-col" xid="col28">
+     <span xid="span26">市场</span></div> </div> </div><div xid="circle-box" class="circle-box">
      <div xid="circle-left" class="circle-left">
       <div xid="left" class="left"></div></div> 
      <div xid="circle-right" class="circle-right">
@@ -51,7 +71,8 @@
         <span xid="span3" style="color:#8D8E8F;font-size:medium;">今日收益</span></div> </div> 
       <div component="$UI/system/components/justep/row/row" class="x-row row-content" xid="row4">
        <div class="x-col" xid="col12">
-        <span xid="span4" style="font-size:x-large;color:#FFFFFF;"><![CDATA[$369.2]]></span></div> </div> </div> </div> </div> 
+        <span xid="span4" style="font-size:x-large;color:#FFFFFF;"><![CDATA[$369.2]]></span></div> </div> </div> </div> 
+  </div> 
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="position:relative;top:60px;">
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col text-center" xid="col10"><span xid="span5" style="color:#8D8E8F;"><![CDATA[总投资]]></span></div>
@@ -70,21 +91,23 @@
    <div class="x-col text-center" xid="col37" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><span xid="span13" style="color:#8D8E8F;"><![CDATA[金额]]></span></div>
    <div class="x-col text-center" xid="col39" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><span xid="span14" style="color:#8D8E8F;"><![CDATA[猫窝]]></span></div>
   <div class="x-col text-center" xid="col40" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><![CDATA[]]>
-  <span xid="span1" style="color:#8D8E8F;"><![CDATA[来源]]></span></div></div></div>
-  <ul component="$UI/system/components/justep/list/list" class="x-list x-list-template" xid="list3">
-   <li xid="li3"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row21" style="padding-left:0px;margin-left:0px;">
-   <div class="x-col" xid="col47"></div>
-   <div class="x-col" xid="col48" style="border-color:#282B32;"></div>
-   <div class="x-col" xid="col49"></div>
-  <div class="x-col" xid="col50"></div></div></li></ul></div></div></div>
+  <span xid="span1" style="color:#8D8E8F;"><![CDATA[类型]]></span></div></div></div>
+  
+  <div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="incomeAccount">
+   <ul class="x-list-template" xid="listTemplateUl2">
+    <li xid="li2"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row21" style="padding-left:0px;margin-left:0px;text-align:center;">
+   <div class="x-col" xid="col47"><span xid="span27" bind-text='val("date")'></span></div>
+   <div class="x-col" xid="col48" style="border-color:#282B32;"><span xid="span28" bind-text='val("income")'></span></div>
+   <div class="x-col" xid="col49"><span xid="span29" bind-text='val("name")'></span></div>
+  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div></div></li></ul> </div></div></div></div>
   <div class="x-contents-content content-nest" xid="content3" style="background:#1C1F26"><div xid="div2">
-  <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1">
+  <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="NestsAccount">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
    <div class="x-col" xid="col1" style="text-align:center;"><span xid="span2" style="font-weight:600;font-size:medium;"><![CDATA[天使猫窝]]></span></div>
-   <div class="x-col" xid="col2" style="text-align:center;"><span xid="span9"><![CDATA[FL3694]]></span></div>
-   <div class="x-col" xid="col7" style="text-align:center;"><span xid="span23"><![CDATA[2017-08-23]]></span></div>
+   <div class="x-col" xid="col2" style="text-align:center;"><span xid="span9" bind-text='val("name")' class="copy"><![CDATA[FL3694]]></span></div>
+   <div class="x-col" xid="col7" style="text-align:center;"><span xid="span23" bind-text='val("time")'><![CDATA[2017-08-23]]></span></div>
   <div class="x-col" xid="col32"><button xid="button13" style="width:100%;background-color:#454C5E;border-width:0px 0px 0px 0px;color:#FFFFFF;">详情</button></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
    <div class="x-col" xid="col15" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col" xid="col19" style="border-color:#282B32;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;text-align:center;"><span xid="span10" style="color:#8D8E8F;"><![CDATA[收益率]]></span></div>
@@ -92,11 +115,11 @@
    <div class="x-col" xid="col33" style="border-color:#282B32;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;text-align:center;"><span xid="span31" style="color:#8D8E8F;"><![CDATA[释放金额]]></span></div>
   <div class="x-col" xid="col34" style="border-color:#282B32;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;text-align:center;"><span xid="span32" style="color:#8D8E8F;"><![CDATA[冻结金额]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="border-color:#282B32;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-bottom-style:solid;border-bottom-width:1px;">
-   <div class="x-col" xid="col22" style="text-align:center;"><span xid="span11" style="color:#36C4D2;font-size:small;"><![CDATA[300%]]></span>
+   <div class="x-col" xid="col22" style="text-align:center;"><span xid="span11" style="color:#36C4D2;font-size:small;" bind-text='val("rate")'><![CDATA[300%]]></span>
   </div>
-   <div class="x-col" xid="col23" style="text-align:center;"><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;"><![CDATA[$3600]]></span></div>
-   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;">$3600</span></div>
-  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;">$3600</span></div></div></div>
+   <div class="x-col" xid="col23" style="text-align:center;"><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("type")'><![CDATA[$3600]]></span></div>
+   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'>$3600</span></div>
+  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'>$3600</span></div></div></div>
    </div></li></ul> </div></div></div></div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link index" label="首页" xid="button1" target="content2" style="font-size:medium;border-color:#282B32;">
