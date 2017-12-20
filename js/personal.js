@@ -55,6 +55,22 @@ define(function(require){
 				}
 			});
 		},
+
+		activeToMarket : function(type,card_number,money,message){
+			$.ajax({
+				url: config.site+"/api/v1/supplies",//php的api路径
+				async:false,
+				dataType:"json",
+				data:{type:type,card_number:card_number,money:money,message:message},//需要传递的数据
+				type:'post',//php获取类型
+				success:function(data){//请求成功返回值存在data里
+				},
+				error:function(ero){//请求失败错误信息在ero里
+					console.log(ero);
+				}
+			});
+		},
+
 	};
 
 });
