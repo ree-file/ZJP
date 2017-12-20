@@ -1,6 +1,7 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
+	var personaljs = require('./js/personal');
 	var ifhid = 0;
 	var pwState = false;
 
@@ -12,6 +13,9 @@ define(function(require){
 		if(ifhid == 0){
 			$(this.getElementByXid("hidRow")).show();
 			ifhid = 1;
+			var useremail = personaljs.getemail();
+      var emailSpan = $(this.getElementByXid("emailSpan"));
+			emailSpan.text(useremail);
 		}
 		else {
 			$(this.getElementByXid("hidRow")).hide();
@@ -24,11 +28,6 @@ define(function(require){
 
 	Model.prototype.modelLoad = function(event){
 		$(this.getElementByXid("hidRow")).hide();
-		$(this.getElementByXid("bandNameInput")).hide();//姓名输入框绑定
-		$(this.getElementByXid("bandNameBtn")).hide();//姓名输入框绑定
-	};
-
-	Model.prototype.button6Click = function(event){
 	};
 
 	Model.prototype.showhidBtnClick = function(event){
@@ -43,6 +42,32 @@ define(function(require){
       pw2.attr("type","password");
       pwState = false;
     }
+	};
+
+	Model.prototype.col7Click = function(event){
+		justep.Shell.showPage("wallet");
+	};
+
+	Model.prototype.col8Click = function(event){
+		justep.Shell.showPage("bankBanding");
+	};
+
+	Model.prototype.row14Click = function(event){
+		justep.Shell.showPage("illustrate");
+	};
+
+	Model.prototype.row16Click = function(event){
+		justep.Shell.showPage("varsioninformation");
+	};
+
+	Model.prototype.col17Click = function(event){
+			var pswInput1 = this.getElementByXid("pswInput1").value;
+			var pswInput2 = this.getElementByXid("pswInput2").value;
+			if(pswInput1 == pswInput2){
+				personaljs.changepassword(pswInput1);
+				this.getElementByXid("pswInput1").value="";
+				this.getElementByXid("pswInput2").value="";
+			}
 	};
 
 	return Model;

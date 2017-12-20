@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id"><column label="1" name="id" type="Integer" xid="xid1"></column>
   <data xid="default1">[{&quot;id&quot;:1}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
@@ -23,8 +23,8 @@
       </div>  
     <div class="x-panel-content" xid="content1" style="background-color:#282F37;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
    <div class="x-panel-content" xid="content2"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
-   <div class="x-col x-col-10" xid="col4" style="position:relative;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block" label="button" xid="button1" icon="glyphicon glyphicon-yen" style="color:#FFFFFF;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:100%;width:100%;font-size:xx-large;">
-   <i xid="i1" class="glyphicon glyphicon-yen" style="position:relative;top:15%;left:15%;"></i>
+   <div class="x-col x-col-10" xid="col4" style="position:relative;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block" label="button" xid="button1" icon="glyphicon glyphicon-usd" style="color:#FFFFFF;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:100%;width:100%;font-size:xx-large;top:10px;">
+   <i xid="i1" class="glyphicon-usd glyphicon" style="position:relative;left:15%;top:15%;"></i>
    <span xid="span2"></span></a></div>
    <div class="x-col" xid="col5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col" xid="col7" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
@@ -37,24 +37,24 @@
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-   <div class="x-col" xid="col17" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="marketMSpan" type="password" style="font-size:x-large;color:#FFFFFF;position:relative;font-family:Trebuchet MS;font-variant:small-caps;text-transform:lowercase;font-style:inherit;top:1%;font-weight:bolder;text-decoration:blink;left:3%;"><![CDATA[12312.1]]></span>
+   <div class="x-col" xid="col17" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="marketMSpan" type="password" style="font-size:x-large;color:#FFFFFF;position:relative;font-family:Trebuchet MS;font-variant:small-caps;text-transform:lowercase;font-style:inherit;top:1%;font-weight:bolder;text-decoration:blink;left:5%;"><![CDATA[]]></span>
   </div>
    </div></div>
    </div></div>
    <div class="x-col" xid="col10"></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="background-color:#1C1F26;border-top-style:groove;border-top-width:thin;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
-   <div class="x-col x-col-25" xid="col20" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="span6" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[交易金额]]></span></div>
-   <div class="x-col" xid="col23" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="activeMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[0.00]]></span></div></div>
+   <div class="x-col x-col-25" xid="col20" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="span6" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[流动金额]]></span></div>
+   <div class="x-col" xid="col23" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="activeMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col x-col-25" xid="col25" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="span8" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[激活金额]]></span></div> 
    <div class="x-col" xid="col24" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
-    <span xid="limitMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[22.49]]></span></div> </div>
+    <span xid="limitMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[]]></span></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col x-col-25" xid="col26" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="span10" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[总金额]]></span></div> 
    <div class="x-col" xid="col27" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
-    <span xid="allMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;">22.49</span></div> </div>
+    <span xid="allMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[]]></span></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10" style="background-color:#1C1F26;padding:0px 20px 0px 20px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col" xid="col28" style="border-bottom-style:solid;border-bottom-width:thin;"></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
@@ -67,7 +67,7 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="background-color:#1C1F26;padding:0px 0px 20px 0px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col" xid="col34" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="span16" style="font-size:small;color:#808080;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[激活金额—通过孵化获得只能用于激活的金额数]]></span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;">
+  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;" bind-click="row14Click">
    <div class="x-col" xid="col35">
     <span xid="span19" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[金额充值]]></span></div> 
    <div class="x-col x-col-10" xid="col36">
@@ -84,4 +84,6 @@
    </div>
   </div>
   </div> 
-</div>
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" style="height:50%;position:relative;width:50%;top:20%;left:25%;">
+   <div class="x-popOver-overlay" xid="div1"></div>
+   <div class="x-popOver-content" xid="div2"></div></div></div>
