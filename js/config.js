@@ -1,13 +1,7 @@
-
-define(function(require) {
-	return {
-		site: "http://stabunkow.site"
-	};
-});
-
 define(function(require){
 	var $ =require('jquery');
 	return{
+		site: "http://stabunkow.site",
 		eggval : function () {
 			$.ajax({
 				url:"http://127.0.0.1:8081/api/v1/config/eggval",

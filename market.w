@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="top:314px;left:306px;height:auto;" onLoad="modelLoad"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:12px;left:50px;" onLoad="modelLoad"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="marketdata" idColumn="nest_id"><column name="nest_id" type="Integer" xid="xid1"></column>
   <column name="eggs" type="String" xid="xid2"></column>
   <column name="childrens" type="Integer" xid="xid3"></column>
@@ -11,7 +11,13 @@
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>
-  <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;fName&quot;:&quot;综合排序&quot;,&quot;fState&quot;:1},{&quot;id&quot;:&quot;2&quot;,&quot;fName&quot;:&quot;价格升序&quot;,&quot;fState&quot;:0},{&quot;id&quot;:&quot;3&quot;,&quot;fName&quot;:&quot;价格降序&quot;,&quot;fState&quot;:0}]</data></div></div>  
+  <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;fName&quot;:&quot;综合排序&quot;,&quot;fState&quot;:1},{&quot;id&quot;:&quot;2&quot;,&quot;fName&quot;:&quot;价格升序&quot;,&quot;fState&quot;:0},{&quot;id&quot;:&quot;3&quot;,&quot;fName&quot;:&quot;价格降序&quot;,&quot;fState&quot;:0}]</data></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="transactionrecord" idColumn="id"><column name="id" type="Integer" xid="xid10"></column>
+  <column name="productioncode" type="String" xid="xid11"></column>
+  <column name="transactionmoney" type="Integer" xid="xid12"></column>
+  <column name="status" type="String" xid="xid13"></column>
+  <column name="date" type="Date" xid="xid14"></column>
+  <data xid="default2">[{&quot;id&quot;:1,&quot;productioncode&quot;:&quot;skafji123zxkcid&quot;,&quot;transactionmoney&quot;:10030,&quot;status&quot;:&quot;买入&quot;,&quot;date&quot;:&quot;2017-10-11&quot;},{&quot;id&quot;:2,&quot;productioncode&quot;:&quot;akflzxcjoiwencl&quot;,&quot;transactionmoney&quot;:39478,&quot;status&quot;:&quot;卖出&quot;,&quot;date&quot;:&quot;2017-11-11&quot;},{&quot;id&quot;:3,&quot;productioncode&quot;:&quot;safbziksfpaf2fsk&quot;,&quot;transactionmoney&quot;:37899,&quot;status&quot;:&quot;出售中&quot;,&quot;date&quot;:&quot;2017-12-12&quot;}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -79,11 +85,23 @@
    <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div>
   </li></ul> </div>
   </div>
-  <div class="x-contents-content" xid="recordcontent"></div>
+  <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
+   <div class="x-col x-col-33" xid="col39"><span xid="span21"><![CDATA[产品编号]]></span></div>
+   <div class="x-col" xid="col43"><span xid="span22"><![CDATA[金额]]></span></div>
+   <div class="x-col" xid="col44"><span xid="span30"><![CDATA[状态]]></span></div>
+  <div class="x-col x-col-33" xid="col45"><span xid="span32"><![CDATA[交易时间]]></span></div>
+  </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="transactionrecord">
+   <ul class="x-list-template" xid="listTemplateUl2">
+    <li xid="li3" bind-click="li3Click"><div component="$UI/system/components/justep/row/row" class="x-row transcationcontent" xid="row19">
+   <div class="x-col x-col-33" xid="col46" style="text-align:center;white-space:nowrap;"><span xid="span33" bind-text='val("productioncode")'></span></div>
+   <div class="x-col" xid="col47" style="text-align:center;white-space:nowrap;color:#FFFFFF;"><span xid="span34" bind-text='val("transactionmoney")' style="white-space:nowrap;"></span></div>
+   <div class="x-col" xid="col48" style="text-align:center;white-space:nowrap;"><span xid="span35" bind-text='val("status")' style="color:#FFDE63;" bind-css="{'getmoney':  val(&quot;id&quot;)==2,'paymoney':  val(&quot;id&quot;)==1}"></span></div>
+  <div class="x-col x-col-33" xid="col50" style="text-align:center;white-space:nowrap;"><span xid="span36" bind-text='val("date")'></span></div></div></li></ul> </div>
+  </div>
   <div class="x-contents-content" xid="sellcontent"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="padding-right:20px;padding-left:20px;margin-top:20%;">
    <div class="x-col" xid="col38" style="margin-right:0px;padding-right:0px;border-bottom-style:groove;border-bottom-width:thin;position:relative;">
     <span xid="span26" class="pull-right center-block" style="color:#FFFFFF;margin-right:8px;position:relative;top:10px;"><![CDATA[孵化器ID]]></span></div> 
-   <div class="x-col x-col-50" xid="col36" style="margin-right:0px;margin-left:0px;padding-right:0px;padding-left:0px;border-bottom-style:groove;border-bottom-width:thin;"><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1"></input></div>
+   <div class="x-col x-col-50" xid="col36" style="margin-right:0px;margin-left:0px;padding-right:0px;padding-left:0px;border-bottom-style:groove;border-bottom-width:thin;"><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1" onBlur="input1Blur"></input></div>
    <div class="x-col x-col-20" xid="col37" style="padding-left:0px;margin-left:0px;border-bottom-style:groove;border-bottom-width:thin;">
     </div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="padding-right:20px;padding-left:20px;">
@@ -99,7 +117,7 @@
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row16">
    <div class="x-col" xid="col40"></div>
-   <div class="x-col x-col-75" xid="col41"><a component="$UI/system/components/justep/button/button" class="btn btn-warning btn-block" label="卖出" xid="button2">
+   <div class="x-col x-col-75" xid="col41"><a component="$UI/system/components/justep/button/button" class="btn btn-warning btn-block" label="卖出" xid="button2" onClick="button2Click">
    <i xid="i6"></i>
    <span xid="span19">卖出</span></a></div>
    <div class="x-col" xid="col42"></div></div></div></div></div>
@@ -164,4 +182,14 @@
    <span xid="span6">确认支付</span></a></div>
    <div class="x-col x-col-10" xid="col27"></div></div>
   </div></div>
-  </div>
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="chooseSoleStatus" opacity="0">
+   <div class="x-popOver-overlay" xid="div8"></div>
+   <div class="x-popOver-content chooseContent" xid="div9"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row20">
+   <div class="x-col" xid="col53" style="text-align:center;"><span xid="span37" style="color:white;"><![CDATA[是否下架]]></span></div></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row21">
+   <div class="x-col" xid="col55" style="text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="是" xid="button3" onClick="button3Click">
+   <i xid="i8"></i>
+   <span xid="span38" style="color:white;">是</span></a></div>
+   <div class="x-col" xid="col56" style="text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="否" xid="button6" onClick="button6Click">
+   <i xid="i12"></i>
+   <span xid="span39" style="color:white;">否</span></a></div></div></div></div></div>

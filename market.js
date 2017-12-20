@@ -2,7 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var getorders = require('./js/market');
-
+	var is_live;//用于判断产品是否存在
 	var Model = function(){
 		this.callParent();
 		this.type1=justep.Bind.observable('0');
@@ -106,6 +106,63 @@ define(function(require){
 
 	Model.prototype.input3Keyup = function(event){
 		console.log(this.getElementByXid("input3").value);
+	};
+//交易记录加载/刷新--许鑫君
+	Model.prototype.transactionrecordCustomRefresh = function(event){
+		var record = getorders.getTransactionRecord();
+	};
+//校验产品id是否属于当前用户--许鑫君
+	Model.prototype.input1Blur = function(event){
+		 is_live=getorders.checkProductionId();
+		if (!is_live) {
+			justep.Util.hint("产品不存在");
+			$(this.getElementByXid("input1")).focus().select();
+			
+		}
+		
+	};
+//将孵化器挂在交易榜上--许鑫君
+	Model.prototype.button2Click = function(event){
+		if (is_live!=undefined&&is_live) {
+
+			var productionId = $.trim(this.comp("input1").val());
+			if (!productionId) {
+				justep.Util.hint("产品编号不能为空");
+			}
+			else{
+				var is_success = getorders.sellProduction(procductionId);
+				if (is_success) {
+					justep.Util.hint("出售成功");
+				}else{
+					justep.Util.hint("出售失败，请重新提交");
+				}
+			}
+
+		}
+		
+	};
+//若点击销售中的产品提示是否下架--许鑫君
+	Model.prototype.li3Click = function(event){
+		var row = event.bindingContext.$object;
+		if(row.val('status')=="出售中"){
+			this.comp("chooseSoleStatus").show();
+		}
+		
+	};
+//点击后把销售中的商品下架--许鑫君
+	Model.prototype.button3Click = function(event){
+		var id=this.comp("transactionrecord").val("id");
+		var is_success = getorders.notSold(id);
+		if (is_success) {
+			justep.Util.hint("下架成功");
+		}else{
+			justep.Util.hint("下架失败请重新提交请求");
+			this.comp("chooseSoleStatus").hide();
+		}
+	};
+//点击后hide提示窗口--许鑫君
+	Model.prototype.button6Click = function(event){
+		this.comp("chooseSoleStatus").hide();
 	};
 
 	return Model;
