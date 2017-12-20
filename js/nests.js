@@ -7,18 +7,15 @@ define(function(require){
 		community_premission : function(nest_name){
 			var b =0;
 			$.ajax({
-				url:"http://127.0.0.1:8081/api/v1/community/premission",//php的api路径
+				url:"http://127.0.0.1:8081/api/v1/nest/community/premission",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{name:nest_name},//需要传递的数据
+				data:{nest_name:nest_name},//需要传递的数据
 				type:'GET',//php获取类型
 				success:function(data){//请求成功返回值存在data里
-					if (data.length==0) {
-						b=404;
-						
-					}else{
-						var children = data[0].children;
-						
+					
+						var children = data.data[0].children;
+						debugger;
 						if (children.length!=0) {
 							
 							for (var i = 0; i < children.length; i++) {
@@ -30,14 +27,15 @@ define(function(require){
 						}else{
 							b=-1;
 						}
-					}
+					
 					
 					
 				},
 				error:function(ero){//请求失败错误信息在ero里
-					return 0;
+					b=404;
 				}
 			});
+			debugger;
 			if (b==1) {
 				return 3;
 			}
@@ -49,6 +47,24 @@ define(function(require){
 				return b;
 			}
 			
+		},
+		//巢是否存在
+		is_live:function(name){
+			var is_has = true;
+			$.ajax({
+				url:"http://127.0.0.1:8081/api/v1/nest/live",
+				async:false,
+				dataType:"json",
+				data:{nest_name:name},
+				type:"GET",
+				success:function(data){
+					
+				},
+				error:function(ero){
+					is_has = false;
+				}
+			});
+			return is_has;
 		}
 	};
 	
