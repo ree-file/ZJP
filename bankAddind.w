@@ -27,7 +27,7 @@
    <div class="x-col" xid="col4"><span xid="span2"><![CDATA[请绑定持卡人本人的银行卡]]></span></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:#252932;padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;height:50px;">
    <div class="x-col x-col-20" xid="col1"><span xid="span1" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[持卡人]]></span></div>
-   <div class="x-col" xid="col2" style="padding:2px 0px 0px 0px;"><input component="$UI/system/components/justep/input/input" type="text" class="form-control" xid="nameInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E;" dataType="Integer" maxLength="20" pattern="/(\d{4})(?=[^\s])/,'$1 '"></input></div>
+   <div class="x-col" xid="col2" style="padding:2px 0px 0px 0px;"><input component="$UI/system/components/justep/input/input" type="text" class="form-control" xid="nameInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E;" dataType="String" maxLength="20" pattern="/(\d{4})(?=[^\s])/,'$1 '"></input></div>
    <div class="x-col x-col-20 x-col-15" xid="col7"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button1" icon="linear linear-user" style="position:relative;left:45%;color:#A6A6A6;">
    <i xid="i1" class="linear linear-user"></i>
    <span xid="span3"></span></a></div></div>
@@ -50,15 +50,6 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button3" icon="glyphicon glyphicon-bitcoin" style="position:relative;left:45%;color:#A6A6A6;">
      <i xid="i3" class="glyphicon glyphicon-bitcoin"></i>
      <span xid="span8"></span></a> </div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:40px;">
-   <div class="x-col x-col-20" xid="col16">
-    <span xid="span11" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[密码]]></span></div> 
-   <div class="x-col" xid="col15" style="padding:0px 0px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="input3" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> 
-   <div class="x-col x-col-20 x-col-15" xid="col14">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button4" icon="icon-ios7-keypad" style="position:relative;left:45%;color:#A6A6A6;">
-     <i xid="i4" class="icon-ios7-keypad"></i>
-     <span xid="span10"></span></a> </div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
    <div class="x-col" xid="col18"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" label="提交并审核" xid="button5" style="background-color:#049FCC;" onClick="button5Click">
    <i xid="i5"></i>

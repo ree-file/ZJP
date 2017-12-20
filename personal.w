@@ -64,7 +64,7 @@
    <div class="x-col x-col-20 center-block" xid="col6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <span xid="span10" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;top:5px;right:20px;" class="pull-right center-block"><![CDATA[邮箱]]></span></div> 
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span12" style="font-size:medium;color:#FFFFFF;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;position:relative;top:3px;"><![CDATA[2313212@qq.com]]></span></div> 
+    <span xid="emailSpan" style="font-size:large;color:#FFFFFF;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;position:relative;top:1px;"><![CDATA[]]></span></div> 
    <div class="x-col x-col-20" xid="col5">
     </div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:4px 0px 0px 0px;margin:0px 0px 0px 0px;height:30px;position:relative;top:5px;">

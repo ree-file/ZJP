@@ -3,33 +3,47 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var personalMoney = require('./js/personal');
 	var pwState = true;
+	var moneymarket;
+	var moneyactive;
+	var moneylimit;
 
 	var Model = function(){
 		this.callParent();
 	};
 
 	Model.prototype.showhidBtnClick = function(event){
-		var monetspan1 = $(this.getElementByXid("marketMSpan"));
-		var monetspan2 = $(this.getElementByXid("activeMSpan"));
-		var monetspan3 = $(this.getElementByXid("limitMSpan"));
-		var monetspan4 = $(this.getElementByXid("allMSpan"));
+		var moneyspan1 = $(this.getElementByXid("marketMSpan"));
+		var moneyspan2 = $(this.getElementByXid("activeMSpan"));
+		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
+		var moneyspan4 = $(this.getElementByXid("allMSpan"));
 		if (!pwState) {
-			monetspan1.text("******");
-			monetspan2.text("******");
-			monetspan3.text("******");
-			monetspan4.text("******");
+			moneyspan1.text("******");
+			moneyspan2.text("******");
+			moneyspan3.text("******");
+			moneyspan4.text("******");
       pwState = true;
     } else {
-      monetspan1.text("12312.1");//money_market
-      monetspan2.text("0.00");//money_active
-      monetspan3.text("22.49");//money_limit
-      monetspan4.text("22.49");//money_market+money_active+money_limit
+      moneyspan1.text(moneymarket);//money_market
+      moneyspan2.text(moneyactive);//money_active
+      moneyspan3.text(moneylimit);//money_limit
+      moneyspan4.text((Number(moneymarket)+Number(moneyactive)+Number(moneylimit)).toFixed(2));//money_market+money_active+money_limit
       pwState = false;
     }
 	};
 
 	Model.prototype.modelLoad = function(event){
-		personalMoney.money();
+		var moneyspan1 = $(this.getElementByXid("marketMSpan"));
+		var moneyspan2 = $(this.getElementByXid("activeMSpan"));
+		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
+		var moneyspan4 = $(this.getElementByXid("allMSpan"));
+		var moneyall = personalMoney.money();
+		moneyspan1.text(moneyall.money_market);
+		moneyspan2.text(moneyall.money_active);
+		moneyspan3.text(moneyall.money_limit);
+		moneymarket = moneyall.money_market;
+		moneyactive = moneyall.money_active;
+		moneylimit = moneyall.money_limit;
+		moneyspan4.text((Number(moneyall.money_market)+Number(moneyall.money_active)+Number(moneyall.money_limit)).toFixed(2));
 	};
 
 	Model.prototype.row14Click = function(event){
