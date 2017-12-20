@@ -13,3 +13,25 @@
 .tb-sorting .list-group-item .tb-liBtn{ display:none;}
 .tb-sorting .list-group-item.current .tb-liBtn{ display:block;}
 .tb-sorting .list-group-item.current{ color:#ff4400;}
+.transcationcontent{
+	padding:0;
+}
+
+.transactiontitle .x-col{
+	text-align:center;
+}
+
+.getmoney{
+	color:#45FF5E !important;
+}
+.paymoney{
+	color:#FF434A !important;
+}
+.chooseContent{
+	width:30%;
+	position:fixed;
+	height:auto;
+	border-radius:5px;
+	background:#545757;
+	box-shadow:5px 5px 5px
+}
