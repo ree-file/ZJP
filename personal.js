@@ -13,6 +13,9 @@ define(function(require){
 		if(ifhid == 0){
 			$(this.getElementByXid("hidRow")).show();
 			ifhid = 1;
+			var useremail = personaljs.getemail();
+      var emailSpan = $(this.getElementByXid("emailSpan"));
+			emailSpan.text(useremail);
 		}
 		else {
 			$(this.getElementByXid("hidRow")).hide();

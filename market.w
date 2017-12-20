@@ -7,7 +7,11 @@
   <column name="gradechildrens" type="Integer" xid="xid4"></column>
   <column name="money" type="Decimal" xid="xid5"></column>
   <column name="user_id" type="Integer" xid="xid6"></column>
-  <data xid="default3">[{&quot;nest_id&quot;:1506010027,&quot;eggs&quot;:&quot;500/1800&quot;,&quot;childrens&quot;:5,&quot;gradechildrens&quot;:14,&quot;money&quot;:9999.21,&quot;user_id&quot;:12321312},{&quot;nest_id&quot;:123124,&quot;eggs&quot;:&quot;123/322&quot;,&quot;childrens&quot;:2,&quot;gradechildrens&quot;:5,&quot;money&quot;:3232,&quot;user_id&quot;:232323}]</data></div></div>  
+  <data xid="default3">[{&quot;nest_id&quot;:1506010027,&quot;eggs&quot;:&quot;500/1800&quot;,&quot;childrens&quot;:5,&quot;gradechildrens&quot;:14,&quot;money&quot;:9999.21,&quot;user_id&quot;:12321312},{&quot;nest_id&quot;:123124,&quot;eggs&quot;:&quot;123/322&quot;,&quot;childrens&quot;:2,&quot;gradechildrens&quot;:5,&quot;money&quot;:3232,&quot;user_id&quot;:232323}]</data></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
+  <column name="fName" type="String" xid="xid8"></column>
+  <column name="fState" type="Integer" xid="xid9"></column>
+  <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;fName&quot;:&quot;综合排序&quot;,&quot;fState&quot;:1},{&quot;id&quot;:&quot;2&quot;,&quot;fName&quot;:&quot;价格升序&quot;,&quot;fState&quot;:0},{&quot;id&quot;:&quot;3&quot;,&quot;fName&quot;:&quot;价格降序&quot;,&quot;fState&quot;:0}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -37,16 +41,17 @@
    <i xid="i4"></i>
    <span xid="span4">快捷卖出</span></a></div>
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" style="position:relative;top:40px;">
-   <div class="x-contents-content" xid="marketcontent"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
-   <div class="x-col" xid="col45"><input component="$UI/system/components/justep/input/input" class="form-control pull-left" xid="minInput" style="width:43%;"></input>
-  <span xid="span22" class="pull-left" style="color:#C0C0C0;font-size:xx-large;margin-left:7px;margin-top:-4px;"><![CDATA[~]]></span>
-  <input component="$UI/system/components/justep/input/input" class="form-control pull-left" xid="maxInput" style="width:43%;margin-left:5px;"></input></div>
-   <div class="x-col x-col-20" xid="col47"><a component="$UI/system/components/justep/button/button" class="btn btn-primary btn-block" label="价位" xid="selectbtn" onClick="selectbtnClick">
-   <i xid="i8"></i>
-   <span xid="span21">价位</span></a></div></div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata" filter=' $row.val("money") &lt;=$model.type2.get() &amp;&amp;  $row.val("money") &gt;=$model.type1.get()'>
+   <div class="x-contents-content" xid="marketcontent"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup2" style="height:40px;">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="综合排序" xid="sortingBtn" icon="icon-arrow-down-b" onClick="sortingBtnClick" style="width:30%;">
+    <i xid="i13" class="icon-arrow-down-b text-danger" style="color:#24A3EE;"></i>
+    <span class="text-primary" xid="span24">综合排序</span></a> 
+   
+   <input component="$UI/system/components/justep/input/input" class="form-control" xid="input3" bind-keyup="input3Keyup"></input><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="筛选" icon="icon-arrow-down-b" xid="screeningBtn" style="width:30%;" onClick="screeningBtnClick">
+    <i xid="i10" class="icon-arrow-down-b"></i>
+    <span xid="span17">筛选</span></a> </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata" filter=' $row.val("money") &lt;=$model.type2.get() &amp;&amp;  $row.val("money") &gt;=$model.type1.get()'>
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
-   <div class="x-col x-col-20" xid="col1" style="position:relative;"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;top:37%;" bind-text='ref("nest_id")' class="center-block moneycenter"></span></div>
+   <div class="x-col x-col-20" xid="col1" style="position:relative;"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='ref("nest_id")' class="center-block moneycenter"></span></div>
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
@@ -63,10 +68,17 @@
     <span xid="span23" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[孙数]]></span></div> 
    <div class="x-col" xid="col31" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("gradechildrens")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div> </div></div>
-   <div class="x-col x-col-20 center-block" xid="col16" style="padding:6px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;"><span xid="moneySpan" style="color:#FFFFFF;font-size:large;font-family:Impact;position:relative;width:100%;top:23%;" bind-text='ref("money")' class="center-block moneycenter"></span></div><div class="x-col x-col-10" xid="col3" style="padding:0px 0px 0px 0px;position:relative;" bind-click="col3Click"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block center-block" label="购买" xid="button1" style="color:#FF3131;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:100%;top:36%;font-size:small;">
+   <div class="x-col x-col-33 center-block" xid="col16" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15" style="margin-top:0px;padding-top:0px;">
+   <div class="x-col" xid="col35"><span xid="span20" style="width:5%;color:#FFFFFF;font-size:large;padding-top:0px;margin-top:-1px;font-family:Cambria Math;" class="pull-left"><![CDATA[$]]></span><span xid="moneySpan" style="color:#FFFFFF;font-size:large;font-family:Impact;position:relative;width:92%;" bind-text='ref("money")' class="pull-left center-block moneycenter"></span>
+  </div>
+   </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
+   <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;" bind-click="col3Click"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;">
    <i xid="i5"></i>
-   <span xid="span8" style="position:relative;">购买</span></a></div></div>
-  </li></ul> </div></div>
+   <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div>
+  </li></ul> </div>
+  </div>
   <div class="x-contents-content" xid="recordcontent"></div>
   <div class="x-contents-content" xid="sellcontent"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="padding-right:20px;padding-left:20px;margin-top:20%;">
    <div class="x-col" xid="col38" style="margin-right:0px;padding-right:0px;border-bottom-style:groove;border-bottom-width:thin;position:relative;">
@@ -92,7 +104,32 @@
    <span xid="span19">卖出</span></a></div>
    <div class="x-col" xid="col42"></div></div></div></div></div>
   </div> 
-<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0.2" position="bottom" style="background-color:#1C1F26;width:100%;left:0%;top:40%;height:60%;">
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="right-bottom" xid="screeningPopOver" opacity="0" position="center" anchor="screeningBtn">
+   <div class="x-popOver-overlay" xid="div5"></div>
+   <div class="x-popOver-content tb-sorting" xid="div6"><div xid="div7">
+   <div class="list-group-item" xid="div26">
+    <span class="pull-left" xid="span28">价格区间（元）</span>
+    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="minInput" style="width:30%;"></input>
+    <span class="pull-left" xid="span27">－</span>
+    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="maxInput" style="width:30%;"></input>
+    <div class="clearfix" xid="div27"></div></div> 
+   
+   
+   <div class="text-center panel-body" xid="div33">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm tb-resetBtn x-flex1" label=" 重 置 " xid="resetBtn" onClick="resetBtnClick">
+     <i xid="i9"></i>
+     <span xid="span31">重 置</span></a> </div> 
+   <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-lg btn-block tb-okBtn" label="确认" xid="betweenbutton" style="width:80%;left:10%;position:relative;margin-bottom:5px;" onClick="betweenbuttonClick">
+    <i xid="i14"></i>
+    <span xid="span27" class="text-white">确认</span></a> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="left-bottom" xid="sortingPopOver" opacity="0" anchor="sortingBtn">
+   <div class="x-popOver-overlay" xid="div3"></div>
+   <div class="x-popOver-content tb-sorting" xid="div4"><div component="$UI/system/components/justep/list/list" class="x-list" data="conditionData" bind-click="sortingListClick" xid="conditionList" dataItemAlias="conditionRow">
+   <ul class="x-list-template" xid="ul1">
+    <li class="list-group-item" bind-css="{'current':conditionRow.val('fState')==1}" xid="li2">
+     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-xs btn-only-icon pull-right tb-liBtn" label="button" icon="icon-checkmark" xid="button5">
+      <i xid="i11" class="icon-checkmark text-danger"></i>
+      <span xid="span29"></span></a> 
+     <span bind-text='val("fName")' xid="span25"></span></li> </ul> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0.2" position="bottom" style="background-color:#1C1F26;width:100%;left:0%;top:40%;height:60%;">
    <div class="x-popOver-overlay" xid="div1"></div>
    <div class="x-popOver-content" xid="div2" style="background-color:#1C1F26;width:100%;left:0%;top:40%;height:60%;border-top-style:groove;border-top-width:thin;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10" style="border-bottom-style:groove;border-bottom-width:thin;padding:0px 0px 0px 0px;">

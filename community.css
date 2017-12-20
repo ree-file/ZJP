@@ -5,3 +5,5 @@
         text-decoration: none;
 }*/
 .ctbtn{border:2px solid;border-radius:25px;}
+
+.spancenter{ text-align:center; float:left;word-wrap: break-word;}
