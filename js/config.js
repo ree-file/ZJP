@@ -24,7 +24,7 @@ define(function(require){
 				dataType:"json",
 				type:"GET",
 				success:function(data){
-			
+
 					config_egg = data;
 				},
 				error:function(ero){
@@ -34,6 +34,5 @@ define(function(require){
 			return config_egg;
 		}
 	}
-	
-});
 
+});

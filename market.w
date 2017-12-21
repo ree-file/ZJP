@@ -54,7 +54,7 @@
    
    <input component="$UI/system/components/justep/input/input" class="form-control" xid="input3" bind-keyup="input3Keyup"></input><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="筛选" icon="icon-arrow-down-b" xid="screeningBtn" style="width:30%;" onClick="screeningBtnClick">
     <i xid="i10" class="icon-arrow-down-b"></i>
-    <span xid="span17">筛选</span></a> </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata" filter=' $row.val("money") &lt;=$model.type2.get() &amp;&amp;  $row.val("money") &gt;=$model.type1.get()'>
+    <span xid="span17">筛选</span></a> </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata" filter=' $row.val("money") &lt;=$model.type2.get() &amp;&amp;  $row.val("money") &gt;=$model.type1.get()' limit="-1" disableInfiniteLoad="false">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
    <div class="x-col x-col-20" xid="col1" style="position:relative;"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='ref("nest_id")' class="center-block moneycenter"></span></div>
