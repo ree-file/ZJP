@@ -25,25 +25,25 @@ define(function(require){
 		$(this.getElementByXid("input5")).css("border-color","#FFFFFF");
 		$(this.getElementByXid("input5")).css("border-width","0px 0px 1px 0px");
 		//验证手机是否存在--许鑫君
-		var number = $.trim(this.comp("input5").val());
-		if(number){
-			var Prefix = this.comp("input6").val();
-			Prefix = parseInt(Prefix);
-			var is_live = login.phoneNumberIsLive(Prefix+number);
-			if (!is_live) {
-				this.showprompt("手机号不存在");
-				
-				loginable=false;
-			}
-			else{
-				loginable=true;
-			}
-		}
-		else{
-			this.showprompt("手机号不能为空");
-			
-			loginable=false;
-		}
+//		var number = $.trim(this.comp("input5").val());
+//		if(number){
+//			var Prefix = this.comp("input6").val();
+//			Prefix = parseInt(Prefix);
+//			var is_live = login.phoneNumberIsLive(Prefix+number);
+//			if (!is_live) {
+//				this.showprompt("手机号不存在");
+//				
+//				loginable=false;
+//			}
+//			else{
+//				loginable=true;
+//			}
+//		}
+//		else{
+//			this.showprompt("手机号不能为空");
+//			
+//			loginable=false;
+//		}
 		
 
 	};
@@ -67,10 +67,10 @@ define(function(require){
 	Model.prototype.password1Blur = function(event){
 		$(this.getElementByXid("password1")).css("border-color","#FFFFFF");
 		$(this.getElementByXid("password1")).css("border-width","0px 0px 1px 0px");
-		var password = $(this.getElementByXid("password1")).val();
-		if (!$.trim(password)) {
-			this.showprompt("密码不能为空");
-		}
+//		var password = $(this.getElementByXid("password1")).val();
+//		if (!$.trim(password)) {
+//			this.showprompt("密码不能为空");
+//		}
 	};
 
 	Model.prototype.button3Click = function(event){
@@ -118,6 +118,7 @@ define(function(require){
 
 //登录操作的实现--许鑫君
 	Model.prototype.button1Click = function(event){
+		this.showprompt("暂时未开通手机号登录，请用邮箱登录");
 		if (loginable) {
 			var Prefix = this.comp("input6").val();
 			Prefix = parseInt(Prefix);

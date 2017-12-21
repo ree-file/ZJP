@@ -2,12 +2,12 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var nest = require('./js/nests');
-	var action ="";
-	var worth = "1800（二级产品）";//后期用页面数据传递得到
-	var name = "chenggong";//后期通过页面数据传递获得
-	var contract_id = 1;//后期通过页面数据传递获得
-	var current_rank ;
-	var config_egg ;
+	var action ="";//用于判断页面需要执行什么操作
+	var worth ;//后期用页面数据传递得到用于产品升级和复投的显示
+	var nest_id;//后期通过页面数据传递获得用于产品升级和复投的传参数
+	var contract_id;//后期通过页面数据传递获得用于产品复投的传参数
+	var current_rank =0 ;//通过页面传参数获得用于产品升级时做比较，另外一律为0；
+	var config_egg ;//通过向服务端请求获得产品的配置信息
 	var handleProduction = require('./js/handleProduction');
 	var users = require('./js/users');
 	var config = require('./js/config');
@@ -110,69 +110,70 @@ define(function(require){
 		
 		
 	};
-	//不同的action不同的操作
-	Model.prototype.modelParamsReceive = function(event){
-		action = "invite";
-		if (action=="upgrade") {
-			config_egg = config.configegg();
-			current_rank = config_egg.level_worth[1];
-			var my_money = users.getMymoney();
-			$(this.getElementByXid("production_worth")).html(worth);
-			$(this.getElementByXid("money")).html(my_money['active']);
-			$(this.getElementByXid("investment")).html(my_money['limit']);
-			$(this.getElementByXid("need_money")).html(0);
-			$(this.getElementByXid("create_benefit")).addClass("common_show");
-			this.comp("row4").addClass("common_show");
-			this.comp("row5").addClass("common_show");
-			this.comp("titleBar1").title = "猫窝升级";
+	Model.prototype.actionOption = function(action){
+		//必要的信息获取和填充
+		config_egg = config.configegg();
+		var my_money = users.getMymoney();
+		$(this.getElementByXid("money")).html(my_money['active']);
+		$(this.getElementByXid("investment")).html(my_money['limit']);
+//		根据不同action执行相应操作
+		if (action=="upgrade"||action=="Re-investment") {
 			
-		}
-		else if(action =="Re-investment"){
-			config_egg = config.configegg();
-			current_rank = 0;
-			var my_money = users.getMymoney();
-			$(this.getElementByXid("money")).html(my_money['active']);
-			$(this.getElementByXid("investment")).html(my_money['limit']);
-			$(this.getElementByXid("need_money")).html(0);
-			$(this.getElementByXid("production_worth")).html(0);
-			$(this.getElementByXid("create_benefit")).addClass("common_show");
+			//不需要邀请人和邮箱地址和收益人（默认为之前的受益人）
 			this.comp("row4").addClass("common_show");
 			this.comp("row5").addClass("common_show");
-			this.comp("titleBar1").set({
-				title:"猫窝复投"
-			});
-			$(this.getElementByXid("h51")).text("关于复投");
+			$(this.getElementByXid("create_benefit")).addClass("common_show");
+			nest_id = this.params.nest_id;
+			if (action=="upgrade") {
+					this.comp("titleBar1").set({
+						title:"猫窝升级"
+					});
+					contract_id = this.params.contract_id;
+					current_rank = this.params.current_rank;
+					worth = this.params.worth;
+			}
+			else{
+					this.comp("titleBar1").set({
+						title:"猫窝复投"
+					});
+					worth = 0;
+					$(this.getElementByXid("h51")).text("关于复投");
+				}
+			$(this.getElementByXid("production_worth")).html(worth);
 		}
-		else if(action == "create"){
-			config_egg = config.configegg();
-			current_rank = 0;
-			var my_money = users.getMymoney();
-			$(this.getElementByXid("money")).html(my_money['active']);
-			$(this.getElementByXid("investment")).html(my_money['limit']);
-			$(this.getElementByXid("upgrade-message")).addClass("common_show");
+		else if (action = "create") {
+			
 			this.comp("titleBar1").set({
 				title:"猫窝创建"
 			});
+			$(this.getElementByXid("h51")).text("关于创建");
+//			创建的时候不需要邮箱地址也不需要邀请人，更不需要产品信息
+			$(this.getElementByXid("upgrade-message")).addClass("common_show");
 			$(this.getElementByXid("row4")).addClass("common_show");
 			$(this.getElementByXid("row5")).addClass("common_show");
-			$(this.getElementByXid("h51")).text("关于创建");
 		}
-		else if(action=="invite"){
-			
+		else if(action=="invite")
+		{
+			$(this.getElementByXid("upgrade-message")).addClass("common_show");
 		}
+	};
+	//不同的action不同的操作
+	Model.prototype.modelParamsReceive = function(event){
+		action = this.params.action;
+		this.actionOption(action);
 	};
 	//下拉框内容变动时做出的改变
 	Model.prototype.check_money=function(production,object){
-		
-		if (current_rank*config_egg.egg_val>=production) {
+		var current_worth = config_egg.level_worth[current_rank]*config_egg.egg_val;
+		if (current_worth>=production) {
 				this.showprompt("不能选择比当前产品低或者一样的产品");
 				object.val("");
 			}
 			else{
-				if ((parseFloat(production)-parseFloat(worth))<(parseFloat($(this.getElementByXid("money")).html())+parseFloat($(this.getElementByXid("investment")).html())))
+				if ((parseFloat(production)-parseFloat(current_worth))<(parseFloat($(this.getElementByXid("money")).html())+parseFloat($(this.getElementByXid("investment")).html())))
 				 {
 					
-					$(this.getElementByXid("need_money")).html((parseFloat(production)-parseFloat(current_rank*config_egg.egg_val)).toFixed(2));
+					$(this.getElementByXid("need_money")).html((parseFloat(production)-parseFloat(current_worth)).toFixed(2));
 				}
 				else{
 					this.showprompt("账户金额少于所需金额");
@@ -183,6 +184,9 @@ define(function(require){
 	}
 	Model.prototype.select1Change = function(event){
 	console.log(event.source.val());
+	var row =event.bindingContext.object;
+	this.comp("typedata").val("id", row);
+	debugger;
 		switch (event.source.val()) {
 		case "第一级产品":
 			this.check_money(config_egg.egg_val*config_egg.level_worth[0],event.source);
@@ -214,6 +218,10 @@ define(function(require){
 			var is_real = users.realsecondPassword(secondePassword);
 			if (is_real) {
 				//进行提交操作
+				if (action=="upgrade"){
+					//获取差价
+//					var difference = config_egg.level_worth['']
+				}
 			}
 			else{
 				this.showprompt("二级密码错误");

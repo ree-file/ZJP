@@ -1,6 +1,7 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
+	var config = require("./config");
 	return {
 		phoneNumberIsLive:function(number){
 			var is_live;
@@ -56,11 +57,11 @@ define(function(require){
 		emaillogin:function(email,password){
 			var is_success;
 			$.ajax({
-				url:"",
+				url:config.site+"login",
 				async:false,
 				dataType:"json",
 				data:{email:email,password:password},
-				type:"GET",
+				type:"POST",
 				success:function(){
 					is_success=true;
 				},

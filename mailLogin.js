@@ -20,6 +20,9 @@ define(function(require){
 			this.showprompt("密码不能为空");
 			
 		}
+		else{
+			loginable =true;
+		}
 	};
 	Model.prototype.input5Focus = function(event){
 		$(this.getElementByXid("input5")).css("border-color","#567DC7");
@@ -32,21 +35,16 @@ define(function(require){
 		var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
 		var email = $.trim($(this.getElementByXid("input5")).val());
 		if (email) {
-			if(reg.test(email)){
-				var is_live=login.emailIsLive(email);
-				if (is_live) {
-					loginable=true;
-				}
-				else{
-					this.showprompt("邮箱不存在");
-				}
-				
-			}
-			else{
-				this.showprompt("邮箱格式错误");
-				
-				loginable =false;
-			}
+//				var is_live=login.emailIsLive(email);
+//				is_live =true;
+//				if (is_live) {
+//					loginable=true;
+//				}
+//				else{
+//					this.showprompt("邮箱不存在");
+//				}
+			loginable = true;
+			
 		}
 		else{
 			this.showprompt("邮箱不能为空");
@@ -69,7 +67,7 @@ define(function(require){
 	//邮箱登录--许鑫君
 	Model.prototype.button1Click = function(event){
 		if (loginable) {
-			var password = $.trim($(this.getElementByXid("password1")));
+			var password = $.trim($(this.getElementByXid("password1")).val());
 			var email = $.trim($(this.getElementByXid("input5")).val());
 			if(password&&email)
 			{
