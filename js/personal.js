@@ -7,7 +7,7 @@ define(function(require){
 		getemail : function(){
 			var useremail;
 			$.ajax({
-				url: config.site+"/api/v1/user",//php的api路径
+				url: config.site+"user",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{},//需要传递的数据
@@ -26,7 +26,7 @@ define(function(require){
 		money : function(){
 			var moneyall;
 			$.ajax({
-				url: config.site+"/api/v1/user",//php的api路径
+				url: config.site+"user",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{},//需要传递的数据
@@ -43,7 +43,7 @@ define(function(require){
 
 		changepassword : function(password){
 			$.ajax({
-				url: config.site+"/api/v1/password",//php的api路径
+				url: config.site+"password",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{password:password},//需要传递的数据
@@ -58,7 +58,7 @@ define(function(require){
 
 		activeToMarket : function(type,card_number,money,message){
 			$.ajax({
-				url: config.site+"/api/v1/supplies",//php的api路径
+				url: config.site+"supplies",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{type:type,card_number:card_number,money:money,message:message},//需要传递的数据

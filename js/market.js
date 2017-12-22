@@ -7,7 +7,7 @@ define(function(require){
 		getorders : function(){
 			var allorders;
 			$.ajax({
-				url: config.site+"/api/v1/orders",//php的api路径
+				url: config.site+"orders",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{},//需要传递的数据
@@ -28,10 +28,10 @@ define(function(require){
 				dataType:"json",
 				type:"GET",
 				success:function(){
-					
+
 				},
 				error:function(){
-					
+
 				}
 			});
 		},
