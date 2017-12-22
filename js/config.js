@@ -13,6 +13,7 @@ define(function(require){
 				dataType:"json",
 				type:"GET",
 				success:function(data){
+
 					config_egg.egg_val = data.data.EGG_VAL;
 					for(var attr in data.data){
 						if (attr == "EGG_VAL") {
@@ -22,6 +23,10 @@ define(function(require){
 							config_egg.level_worth[config_egg.level_worth.length]=data.data[attr];
 						}
 					}
+
+
+					config_egg = data;
+
 				},
 				error:function(ero){
 					console.log(ero);
@@ -30,6 +35,12 @@ define(function(require){
 			
 			return config_egg;
 		}
+
 	};
 	
 });
+
+	}
+
+});
+
