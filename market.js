@@ -2,15 +2,22 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var getorders = require('./js/market');
-	var is_live;//用于判断产品是否存在
+	var nest = require('./js/nests');
+	var sell_nestId;//用于判断产品是否存在
 	var Model = function(){
 		this.callParent();
 		this.type1=justep.Bind.observable('0');
 		this.type2=justep.Bind.observable(Number.POSITIVE_INFINITY);
 	};
-
+//封装提示框--许鑫君
+	Model.prototype.showprompt = function(text){
+		justep.Util.hint(text,{	
+						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+					});
+					$(".x-hint").find("button[class='close']").hide();
+	};
 	Model.prototype.modelLoad = function(event){
-		var allorders = getorders.getorders();
+//		var allorders = getorders.getorders();
 		// console.log(allorders);
 		var marketdata = this.comp("marketdata");
         // for (var i = 0; i <= getorders.length-1; i++) {
@@ -107,44 +114,57 @@ define(function(require){
 	Model.prototype.input3Keyup = function(event){
 		console.log(this.getElementByXid("input3").value);
 	};
+	//判断产品是否属于当前用户
+	Model.prototype.belongtouser=function(simpleinfo,name){
+		for (var int = 0; int < simpleinfo.length; int++) {
+			if (simpleinfo[int].name==name) {
+				sell_nestId = simpleinfo[int].id;
+				return true;
+			}
+		}
+		return false;
+	}
 //交易记录加载/刷新--许鑫君
 	Model.prototype.transactionrecordCustomRefresh = function(event){
+		event.source.clear();
 		var record = getorders.getTransactionRecord();
+		if (record.length==0) {
+			this.showprompt("无交易记录");
+		}else{
+			event.source.loadData(record);
+		}
 	};
 //校验产品id是否属于当前用户--许鑫君
 	Model.prototype.input1Blur = function(event){
-		 is_live=getorders.checkProductionId();
-		if (!is_live) {
-			justep.Util.hint("产品不存在");
-			$(this.getElementByXid("input1")).focus().select();
+		var name = $.trim(this.comp("input1").val());
+		if (name) {
+			var simpleinfo=nest.nestsimpleinfo();
 			
+			if (!this.belongtouser(simpleinfo, name)) {
+				this.showprompt("产品不存在");
+			}
 		}
+		else{
+			this.showprompt("产品名称不能为空");
+		}
+		 
 		
 	};
 //将孵化器挂在交易榜上--许鑫君
 	Model.prototype.button2Click = function(event){
-		if (is_live!=undefined&&is_live) {
-
-			var productionId = $.trim(this.comp("input1").val());
-			if (!productionId) {
-				justep.Util.hint("产品编号不能为空");
-			}
-			else{
-				var is_success = getorders.sellProduction(procductionId);
-				if (is_success) {
-					justep.Util.hint("出售成功");
-				}else{
-					justep.Util.hint("出售失败，请重新提交");
-				}
-			}
-
-		}
 		
+		if (!sell_nestId) {
+			this.showprompt("产品编号错误");
+		}
+		else{
+			this.comp("secondPassword").show();
+		}
+	
 	};
 //若点击销售中的产品提示是否下架--许鑫君
 	Model.prototype.li3Click = function(event){
 		var row = event.bindingContext.$object;
-		if(row.val('status')=="出售中"){
+		if(row.val('status')=="Selling"){
 			this.comp("chooseSoleStatus").show();
 		}
 		
@@ -154,15 +174,58 @@ define(function(require){
 		var id=this.comp("transactionrecord").val("id");
 		var is_success = getorders.notSold(id);
 		if (is_success) {
-			justep.Util.hint("下架成功");
+			this.showprompt("下架成功");
+			this.comp("chooseSoleStatus").hide();
+			$(this.getElementByXid("password1")).val("");
+			this.comp("price").setValue("price", 0);
+			this.comp("input1").val("");
+			this.comp("transactionrecord").refreshData();
 		}else{
-			justep.Util.hint("下架失败请重新提交请求");
+			this.showprompt("下架失败请重新提交请求");
 			this.comp("chooseSoleStatus").hide();
 		}
 	};
 //点击后hide提示窗口--许鑫君
 	Model.prototype.button6Click = function(event){
 		this.comp("chooseSoleStatus").hide();
+	};
+
+	Model.prototype.button9Click = function(event){
+		
+				
+	};
+	Model.prototype.sell=function(price){
+	
+			var secondPassword = $.trim($(this.getElementByXid("password1")).val());
+			if (secondPassword) {
+				var is_success = getorders.sellProduction(sell_nestId,price,secondPassword);
+				if (is_success) {
+					this.showprompt("出售成功");
+					this.comp("secondPassword").hide();
+					this.comp("transactionrecord").refreshData();
+					$(this.getElementByXid("password1")).val("");
+					this.comp("price").setValue("price", 0);
+					this.comp("input1").val("");
+					}
+					else{
+					this.showprompt("出售失败");
+					}
+			}else{
+				this.showprompt("二级密码不能为空");
+			}
+			
+		
+	};
+	Model.prototype.button7Click = function(event){
+		var price = this.comp("price").val("price");
+		if(price==0){
+			if (confirm("确定售价为0吗")) {
+			this.sell(price);
+			}	
+		}
+		else{
+			this.sell(price);
+		}
 	};
 
 	return Model;

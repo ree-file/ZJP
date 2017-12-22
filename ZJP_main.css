@@ -264,3 +264,13 @@
 	height:15px;
 	background:#2BD0A3;
 }
+/*显示设置二级密码窗口*/
+.setSecondPassword{
+	display:block;
+	width:50%;
+	left:25%;
+	position:absolute;
+	background:#1C1F26;
+	height:auto;
+	border-radius:10px;
+}

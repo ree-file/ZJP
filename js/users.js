@@ -1,6 +1,8 @@
 define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var $ = require('jquery');
+	var config = require('./config');
+	var jwt = require("./jwt");
 	function showprompt(text){
 		justep.Util.hint(text,{	
 			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
@@ -8,28 +10,6 @@ define(function(require){
 		$(".x-hint").find("button[class='close']").hide();
 	}
 	return{
-		//获得我的active钱包和limit钱包
-		getMymoney : function(){
-			var money = [];
-
-			$.ajax({
-				url:"http://127.0.0.1:8081/api/v1/user",
-				async:false,
-				dataType:"json",
-				type:"GET",
-				success:function(data){
-				
-					
-						money['active']=data.data.money_active;
-						money['limit'] = data.data.money_limit;
-					
-				},
-				error:function(){
-					showprompt("网络出错请重新登录");
-				}
-			});
-			return money;
-		},
 		//判断某个用户是否存在--许鑫君
 		userlive:function(name){
 			var is_live =true;
@@ -51,15 +31,24 @@ define(function(require){
 		},
 		//获取用户信息（各个钱包金额）--许鑫君
 		getUserMessage:function(){
-			var worthInfo;
+			var worthInfo=[];
 			$.ajax({
-				url:"",
+				url:config.site+"private",
 				async:false,
 				dataType:"json",
 				type:"GET",
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
 				success:function(data){
 					//对data进行处理得到三部分钱包金额，
-					worthInfo = data;
+					if (data.status=="success") {
+						worthInfo['market'] = parseFloat(data.data.money_market);
+						worthInfo['limit'] = parseFloat(data.data.money_limit);
+						worthInfo['active'] =  parseFloat(data.data.money_active);
+						worthInfo['all'] = worthInfo['market']+worthInfo['limit']+parseFloat(data.data.money_active);
+					}
+					
 				},
 				error:function(){
 					showprompt("请检查网络或者重新登录");
@@ -68,38 +57,70 @@ define(function(require){
 			return worthInfo;//包含了active，limit，market三部分钱
 		},
 		checksecondPassword:function(){
-			var is_live;
+			var is_live = true;
 			$.ajax({
-				url:"",
+				url:config.site+"private",
 				async:false,
 				dataType:"json",
 				type:"GET",
-				success:function(data){
-					is_live=true;
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
-				error:function(){
-					is_live = false;
+				success:function(data){
+					if (!data.data.has_security_code) {
+						is_live=false;
+					}
+					
+				},
+				error:function(ero){
+					console.log(ero);
+					showprompt("网络错误请重新登录");
 				}
 			});
 			return is_live;
 			
 		},
 		realsecondPassword:function(secondPassword){
-			var is_real;
+			var is_real=true;
+//			$.ajax({
+//				url:"",
+//				async:false,
+//				dataType:"json",
+//				data:{secondPassword:secondPassword},
+//				type:"GET",
+//				success:function(data){
+//					is_real=true;
+//				},
+//				error:function(){
+//					is_real = false;
+//				}
+//			});
+			return is_real;
+		},
+		setSecondPassword:function(password){
+			var is_success = true;
 			$.ajax({
-				url:"",
+				url:config.site+"private/store-security-code",
 				async:false,
 				dataType:"json",
-				data:{secondPassword:secondPassword},
-				type:"GET",
-				success:function(data){
-					is_real=true;
+				type:"POST",
+				data:{security_code:password},
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
-				error:function(){
-					is_real = false;
+				success:function(data){
+					if(data.status != "success")
+					{
+						var is_success = false;
+					}
+				},
+				error:function(ero){
+					console.log(ero);
+					is_success = false;
 				}
 			});
-			return is_real;
+			return is_success;
+			
 		}
 	};
 });

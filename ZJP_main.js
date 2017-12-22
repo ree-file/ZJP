@@ -23,23 +23,57 @@ define(function(require) {
 	Model.prototype.modelLoad = function(event){
 		//计算三部分资金所占比重
 		var worthInfo =	user.getUserMessage();
-//		var rightRotate = parseFloat(worthInfo['market'])/(parseFloat(worthInfo['all']))*180;
-//		var leftRotate = parseFloat(worthInfo['limit'])/(parseFloat(worthInfo['all']))*180;
-		var rightRotate = 60;
-		var leftRotate = 60;
-		var right = $(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
-		var left = $(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
+		var rightRotate = 180-parseFloat(worthInfo['market'])/(parseFloat(worthInfo['all']))*180;
+		var leftRotate = 180-parseFloat(worthInfo['limit'])/(parseFloat(worthInfo['all']))*180;
+		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
+		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
+		$(this.getElementByXid("span7")).html("$"+worthInfo['all'])
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){
 		var check = this.params.check;
+		
 		if (check==1) {
 			//检查用户是否有二级密码--许鑫君
 			var is_live = user.checksecondPassword();
 			if (!is_live) {
 				//跳到设置二级密码页面
 				this.showprompt("你还没有二级密码请设置");
+				this.comp("setSecondPassword").show();
 			}
+		}
+	};
+
+	Model.prototype.password1Blur = function(event){
+		var secondpassword = $.trim($(this.getElementByXid("password1")).val());
+		if (!secondpassword) {
+			this.showprompt("密码不能为空");
+		}
+	};
+
+	Model.prototype.password2Blur = function(event){
+		var confirmpassword = $.trim($(this.getElementByXid("password2")).val());
+		var secondpassword = $.trim($(this.getElementByXid("password1")).val());
+		if (confirmpassword!=secondpassword) {
+			this.showprompt("密码不匹配");
+		}
+	};
+
+	Model.prototype.button7Click = function(event){
+		var confirmpassword = $.trim($(this.getElementByXid("password2")).val());
+		var secondpassword = $.trim($(this.getElementByXid("password1")).val());
+		if (confirmpassword&&secondpassword&&(confirmpassword==secondpassword)) {
+			var is_success=user.setSecondPassword(secondpassword);
+			if (is_success) {
+				this.showprompt("设置成功");
+				this.comp("setSecondPassword").hide();
+			}
+			else{
+				this.showprompt("设置失败，请重新登录");
+			}
+		}
+		else{
+			this.showprompt("密码不匹配");
 		}
 	};
 

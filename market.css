@@ -35,3 +35,29 @@
 	background:#545757;
 	box-shadow:5px 5px 5px
 }
+.secondcheck{
+	text-align:center;
+}
+.setSecondPassword{
+	display:block;
+	width:50%;
+	left:25%;
+	position:absolute;
+	background:#1C1F26;
+	height:auto;
+	border-radius:10px;
+}
+.chooseSoleStatus{
+	background-color:rgb(179,168,150);
+	width:60%;
+	height:25%;
+	border-radius:5px;
+	box-shadow: 10px 10px 5px #888888;
+}
+.chooseSoleStatus{
+	display:table;
+	
+}
+.x-col{
+	white-space:nowrap;
+}

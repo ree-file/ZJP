@@ -2,6 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var config = require("./config");
+	var jwt = require("./jwt");
 	return {
 		phoneNumberIsLive:function(number){
 			var is_live;
@@ -62,8 +63,9 @@ define(function(require){
 				dataType:"json",
 				data:{email:email,password:password},
 				type:"POST",
-				success:function(){
+				success:function(data){
 					is_success=true;
+					jwt.setToken(data.data.jwt_token);
 				},
 				error:function(){
 					is_success=false;

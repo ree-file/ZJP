@@ -1,39 +1,35 @@
 define(function(require){
+	var justep = require("$UI/system/lib/justep");
 	var $ =require('jquery');
+
 	return{
 		site: "http://47.96.154.21/api/v1/",
-		eggval : function () {
-			$.ajax({
-				url:"http://127.0.0.1:8081/api/v1/config/eggval",
-				async:false,
-				dataType:"json",
-				type:"GET",
-				success:function(data){
-					console.log(data);
-				},
-				error:function(ero){
-					console.log(ero);
-				}
-			});
-		},
 		configegg : function(){
-			var config_egg = [];
+			var config_egg = {};
+			config_egg.level_worth=[];
 			$.ajax({
-				url:"http://127.0.0.1:8081/api/v1/config/egg",
+				url:this.site+"common",
 				async:false,
 				dataType:"json",
 				type:"GET",
 				success:function(data){
-			
-					config_egg = data;
+					config_egg.egg_val = data.data.EGG_VAL;
+					for(var attr in data.data){
+						if (attr == "EGG_VAL") {
+							config_egg.egg_val = data.data[attr];
+						}
+						if(attr.indexOf("CONTRACT_LEVEL_")!=-1){
+							config_egg.level_worth[config_egg.level_worth.length]=data.data[attr];
+						}
+					}
 				},
 				error:function(ero){
 					console.log(ero);
 				}
 			});
+			
 			return config_egg;
 		}
-	}
+	};
 	
 });
-

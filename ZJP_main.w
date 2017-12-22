@@ -81,7 +81,7 @@
    <div class="x-col text-center" xid="col18"><span xid="span8" style="font-size:x-large;color:#D0AD4F;"><![CDATA[$3600.5]]></span></div>
    </div></div>
    <div class="x-col" xid="col8" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-left-style:solid;border-left-width:1px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-   <div class="x-col text-center" xid="col14"><span xid="span6" style="color:#8D8E8F;"><![CDATA[总收益]]></span></div>
+   <div class="x-col text-center" xid="col14"><span xid="span6" style="color:#8D8E8F;"><![CDATA[总金额]]></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col text-center" xid="col24"><span xid="span7" style="font-size:x-large;color:#D0AD4F;"><![CDATA[$7200.8]]></span></div>
@@ -131,4 +131,16 @@
   <a component="$UI/system/components/justep/button/button" class="btn btn-link community" label="个人中心" xid="button3" style="font-size:medium;border-color:#282B32;">
    <i xid="i3"></i>
    <span xid="span17">个人中心</span></a></div></div></div> 
-</div>
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="setSecondPassword">
+   <div class="x-popOver-overlay" xid="div3"></div>
+   <div class="x-popOver-content setSecondPassword" xid="div7"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
+   <div class="x-col x-col-33" xid="col13"><h5 xid="h51" style="color:white;white-space:nowrap;font-size:x-small;"><![CDATA[二级密码：]]></h5></div>
+   <div class="x-col" xid="col27"><input component="$UI/system/components/justep/input/password" class="form-control input-sm" xid="password1" bind-blur="password1Blur"></input></div></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row18">
+   <div class="x-col x-col-33" xid="col29"><h5 xid="h52" style="color:white;white-space:nowrap;font-size:x-small;"><![CDATA[确认密码：]]></h5></div>
+   <div class="x-col" xid="col31"><input component="$UI/system/components/justep/input/password" class="form-control input-sm" xid="password2" bind-blur="password2Blur"></input></div></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row19">
+   <div class="x-col" xid="col38"><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="确认" xid="button7" style="width:100%;border-radius:5px;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;border-color:#C7C7C7 #C7C7C7 #C7C7C7 #C7C7C7;" onClick="button7Click">
+   <i xid="i7"></i>
+   <span xid="span35">确认</span></a></div>
+   </div></div></div></div>

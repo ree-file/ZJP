@@ -170,3 +170,6 @@ select {
 .secondcheck{
 	text-align:center;
 }
+.x-col{
+	white-space:nowrap;
+}
