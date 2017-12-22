@@ -12,7 +12,7 @@ define(function(require){
 		var bankBandedData = this.comp("bankBandedData");
         for (var i = 0; i <= bankBanded.length-1; i++) {
 					bankBandedData.add({
-            "id": i+1,
+            "id": bankBanded[i].id,
             "username": bankBanded[i].username,
             "number": bankBanded[i].number,
             "bankname": bankBanded[i].bankname,
@@ -30,6 +30,13 @@ define(function(require){
         return 'images/bankimg/bank.png';
     }
     return require.toUrl(row.val('image'));
+	};
+
+	Model.prototype.deletebuttonClick = function(event){
+	  var card_id = event.bindingContext.$object.val('id');
+		bank.cardDelete(card_id);
+		console.log(card_id);
+		window.location.reload();
 	};
 
 	return Model;
