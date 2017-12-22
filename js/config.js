@@ -40,7 +40,4 @@ define(function(require){
 	
 });
 
-	}
-
-});
 
