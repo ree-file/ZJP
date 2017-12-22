@@ -31,13 +31,16 @@ define(function(require){
 	};
 
 	Model.prototype.showhidBtnClick = function(event){
+		var pw0 = $(this.getElementByXid("oldpassword"));
 		var pw1 = $(this.getElementByXid("pswInput1"));
 		var pw2 = $(this.getElementByXid("pswInput2"));
 		if (!pwState) {
+			pw0.attr("type","text");
 			pw1.attr("type","text");
 			pw2.attr("type","text");
       pwState = true;
     } else {
+      pw0.attr("type","password");
       pw1.attr("type","password");
       pw2.attr("type","password");
       pwState = false;
@@ -63,10 +66,12 @@ define(function(require){
 	Model.prototype.col17Click = function(event){
 			var pswInput1 = this.getElementByXid("pswInput1").value;
 			var pswInput2 = this.getElementByXid("pswInput2").value;
+			var oldpassword = this.getElementByXid("oldpassword").value;
 			if(pswInput1 == pswInput2){
-				personaljs.changepassword(pswInput1);
+				personaljs.changePassword(oldpassword,pswInput1);
 				this.getElementByXid("pswInput1").value="";
 				this.getElementByXid("pswInput2").value="";
+				this.getElementByXid("oldpassword").value="";
 			}
 	};
 

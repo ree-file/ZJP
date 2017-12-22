@@ -71,7 +71,7 @@
    <div class="x-col x-col-20 center-block" xid="col9" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <span xid="span9" style="font-size:xx-small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;right:20px;top:10px;" class="pull-right center-block"><![CDATA[原密码]]></span></div> 
    <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="input1" style="height:100%;"></input></div> 
+    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="oldpassword" style="height:100%;"></input></div> 
    <div class="x-col x-col-20" xid="col10">
     </div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:8px 0px 0px 0px;margin:0px 0px 0px 0px;height:30px;position:relative;top:10px;">
    <div class="x-col x-col-20 center-block" xid="col15" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
@@ -89,7 +89,7 @@
    <div class="x-col" xid="col18" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
     <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="pswInput2"></input></div> 
    <div class="x-col x-col-20" xid="col17" bind-click="col17Click">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block middlebtn" label="button" xid="button6" icon="round round-chose" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;left:40%;" onClick=" ">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block middlebtn" label="button" xid="resetbutton" icon="round round-chose" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;left:40%;">
      <i xid="i6" class="round round-chose"></i>
      <span xid="span16"></span></a> </div> </div>
   </div></div>

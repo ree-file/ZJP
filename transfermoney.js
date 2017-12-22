@@ -1,12 +1,10 @@
 define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
-	var Message = require("$UI/system/components/justep/common/common");
 	var personaljs = require("./js/personal");
 
 	var Model = function(){
 		this.callParent();
-		this.flag = Message.flag;
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -19,42 +17,33 @@ define(function(require){
 		var cardnumber = this.getElementByXid("cardidInput").value;
 		var money = this.getElementByXid("moneyInput").value;
 		var otherbankInput = this.getElementByXid("otherbankInput").value;
-		var user = personaljs.money();//支付密码的验证
-		console.log(user);
-		if(from == "市场金额"){
-			if (to == "钱包金额") {
-
-			}
-			else {
-				Message.message('aler','\"市场金额\"只能转入\"钱包\"');
-				console.log('\"市场金额\"只能转入\"钱包\"');
-			}
+		var securityInput = this.getElementByXid("securityInput").value;
+		if (from == to) {
+			this.showprompt('\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
 		}
-		if (from == "钱包金额" && to =="市场金额") {
-
+		else if(from != "钱包金额" && to != "钱包金额") {
+			this.showprompt('\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
 		}
-		if (from != "钱包金额" && to !="钱包金额") {
-			Message.message('aler','\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
-			console.log('\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
+		else if(from == "钱包金额" && to == "市场金额"){
+			personaljs.transferMoney(money,"active-to-market",securityInput);
 		}
-		if (from == "钱包金额" && to =="钱包金额") {
-			Message.message('aler','\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
-			console.log('\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
+		else if(from == "市场金额" && to == "钱包金额"){
+			personaljs.transferMoney(money,"market-to-active",securityInput);
 		}
 		else if(from == "钱包金额"){
 			if (to == "其他银行") {
-				personaljs.activeToMarket("get",cardnumber,money,otherbankInput);
+				personaljs.supplies(money,"get",cardnumber,otherbankInput);
 			}
 			else {
-				personaljs.activeToMarket("get",cardnumber,money,to);
+				personaljs.supplies(money,"get",cardnumber,to);
 			}
 		}
 		else if(to == "钱包金额"){
 			if (from == "其他银行") {
-				personaljs.activeToMarket("get",cardnumber,money,otherbankInput);
+				personaljs.supplies(money,"save",cardnumber,otherbankInput);
 			}
 			else {
-				personaljs.activeToMarket("get",cardnumber,money,to);
+				personaljs.supplies(money,"save",cardnumber,from);
 			}
 		}
 	};
@@ -80,6 +69,14 @@ define(function(require){
 			$(this.getElementByXid("otherbankrow")).hide();
 		}
 	};
+
+	//封装提示框--许鑫君
+		Model.prototype.showprompt = function(text){
+			justep.Util.hint(text,{
+							"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+						});
+						$(".x-hint").find("button[class='close']").hide();
+		};
 
 	return Model;
 });

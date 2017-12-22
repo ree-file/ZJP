@@ -29,7 +29,7 @@
    <div class="x-col" xid="col5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col" xid="col7" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-   <div class="x-col" xid="col14" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span3" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;top:1%;"><![CDATA[钱包金额（元）]]></span></div>
+   <div class="x-col" xid="col14" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span3" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;top:1%;"><![CDATA[钱包金额]]></span></div>
    <div class="x-col x-col-25" xid="col15" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="showhidBtn" icon="linear linear-eye" style="color:#FFFFFF;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" onClick="showhidBtnClick">
    <i xid="i2" class="linear linear-eye" style="position:relative;"></i>
    <span xid="span4"></span></a></div>
@@ -76,13 +76,6 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button5" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
      <i xid="i5" class="dataControl dataControl-arrowrightl"></i>
      <span xid="span20"></span></a> </div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row15" style="background-color:#1C1F26;">
-   <div class="x-col" xid="col38">
-    <span xid="span17" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[密码修改]]></span></div> 
-   <div class="x-col x-col-10" xid="col37">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button3" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
-     <i xid="i3" class="dataControl dataControl-arrowrightl"></i>
-     <span xid="span18"></span></a> </div> </div>
   </div>
    </div>
   </div>

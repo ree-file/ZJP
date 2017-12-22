@@ -12,7 +12,7 @@
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
-        <div component="$UI/system/components/justep/titleBar/titleBar" title="转账"
+        <div component="$UI/system/components/justep/titleBar/titleBar" title="充值转账"
           class="x-titlebar" style="background-color:#252932;">
           <div class="x-titlebar-left"> 
             <a component="$UI/system/components/justep/button/button"
@@ -22,7 +22,7 @@
               <span></span> 
             </a> 
           </div>  
-          <div class="x-titlebar-title">转账</div>  
+          <div class="x-titlebar-title">充值转账</div>  
           <div class="x-titlebar-right reverse"> 
           </div>
         </div> 
@@ -30,12 +30,7 @@
     <div class="x-panel-content" xid="content1" style="background-color:#252932;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
    <div class="x-col" xid="col4">
     <span xid="span2">请确保已汇款后再提交，钱包金额与交流金额互相转款为立即生效。</span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:50px;">
-   <div class="x-col x-col-25" xid="col1">
-    <span xid="span1" style="color:#A6A6A6;position:relative;top:5px;">持卡人</span></div> 
-   <div class="x-col" xid="col2">
-    <span xid="span4" style="color:#FFFFFF;position:relative;top:5px;">徐重霄</span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#252932;padding:0px 0px 0px 0px;margin:15px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col10">
     <span xid="span7" style="color:#A6A6A6;position:relative;">卡号</span></div> 
    <div class="x-col" xid="col9" style="padding:0px 5px 0px 0px;">
@@ -48,7 +43,7 @@
    <div class="x-col x-col-25" xid="col11">
     <span xid="otherbankName" style="color:#A6A6A6;position:relative;"><![CDATA[银行名]]></span></div> 
    <div class="x-col" xid="col8" style="padding:0px 5px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" type="text" class="form-control" xid="otherbankInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer" maxLength="20" pattern="/(\d{4})(?=[^\s])/,'$1 '"></input></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
+    <input component="$UI/system/components/justep/input/input" type="text" class="form-control" xid="otherbankInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="String" maxLength="20" pattern="/(\d{4})(?=[^\s])/,'$1 '"></input></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col13" style="text-decoration:underline;">
     <span xid="span9" style="color:#A6A6A6;position:relative;top:5px;">去向</span></div> 
    <div class="x-col" xid="col12" style="padding:0px 5px 0px 0px;">
@@ -63,7 +58,7 @@
    <div class="x-col x-col-25" xid="col3">
     <span xid="span13" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[支付密码]]></span></div> 
    <div class="x-col" xid="col5" style="padding:0px 5px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="input1" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> </div>
+    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
    <div class="x-col" xid="col18">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" label="提交" xid="setupButton" style="background-color:#049FCC;" onClick="setupButtonClick">
