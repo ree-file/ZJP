@@ -130,7 +130,7 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						jwt.authRefresh();
 						this.notSold(id);
 					}
