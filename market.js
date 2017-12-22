@@ -11,7 +11,7 @@ define(function(require){
 	};
 //封装提示框--许鑫君
 	Model.prototype.showprompt = function(text){
-		justep.Util.hint(text,{	
+		justep.Util.hint(text,{
 						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
 					});
 					$(".x-hint").find("button[class='close']").hide();
@@ -139,7 +139,7 @@ define(function(require){
 		var name = $.trim(this.comp("input1").val());
 		if (name) {
 			var simpleinfo=nest.nestsimpleinfo();
-			
+
 			if (!this.belongtouser(simpleinfo, name)) {
 				this.showprompt("产品不存在");
 			}
@@ -147,19 +147,19 @@ define(function(require){
 		else{
 			this.showprompt("产品名称不能为空");
 		}
-		 
-		
+
+
 	};
 //将孵化器挂在交易榜上--许鑫君
 	Model.prototype.button2Click = function(event){
-		
+
 		if (!sell_nestId) {
 			this.showprompt("产品编号错误");
 		}
 		else{
 			this.comp("secondPassword").show();
 		}
-	
+
 	};
 //若点击销售中的产品提示是否下架--许鑫君
 	Model.prototype.li3Click = function(event){
@@ -167,7 +167,7 @@ define(function(require){
 		if(row.val('status')=="Selling"){
 			this.comp("chooseSoleStatus").show();
 		}
-		
+
 	};
 //点击后把销售中的商品下架--许鑫君
 	Model.prototype.button3Click = function(event){
@@ -191,11 +191,11 @@ define(function(require){
 	};
 
 	Model.prototype.button9Click = function(event){
-		
-				
+
+
 	};
 	Model.prototype.sell=function(price){
-	
+
 			var secondPassword = $.trim($(this.getElementByXid("password1")).val());
 			if (secondPassword) {
 				var is_success = getorders.sellProduction(sell_nestId,price,secondPassword);
@@ -213,15 +213,15 @@ define(function(require){
 			}else{
 				this.showprompt("二级密码不能为空");
 			}
-			
-		
+
+
 	};
 	Model.prototype.button7Click = function(event){
 		var price = this.comp("price").val("price");
 		if(price==0){
 			if (confirm("确定售价为0吗")) {
 			this.sell(price);
-			}	
+			}
 		}
 		else{
 			this.sell(price);
