@@ -12,11 +12,11 @@ define(function(require) {
         	window.localStorage.removeItem('jwt_token');
     	},
     	authRefresh: function() {
-    		if (this.getToken()) {
+    		if (this.getToken) {
     			var status = false;
     			$.ajax({
 			        url: config.site + "refresh",
-			        type: "GET",
+			        type: "POST",
 			        async: false,
 			        headers: {
 			            "Authorization" : "Bearer " + this.getToken() // 带入验证头部
