@@ -16,7 +16,7 @@ define(function(require) {
 	};
 	Model.prototype.modelModelConstructDone = function(event){
 		//获得用户所有巢的信息
-		var nestInfo = nest.nestInfo();
+		this.comp("NestsAccount").refreshData();
 		//把nestInfo填充到各个data数据和今日收益，和总投资里
 	};
 
@@ -75,6 +75,16 @@ define(function(require) {
 		else{
 			this.showprompt("密码不匹配");
 		}
+	};
+
+	Model.prototype.incomeAccountCustomRefresh = function(event){
+
+	};
+
+	Model.prototype.NestsAccountCustomRefresh = function(event){
+		var nestInfo = nest.nestInfo();
+		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
+		event.source.loadData(nestInfo.contracts);
 	};
 
 	return Model;
