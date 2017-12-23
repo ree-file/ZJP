@@ -14,7 +14,6 @@ define(function(require){
 				type:"GET",
 				success:function(data){
 
-					config_egg.egg_val = data.data.EGG_VAL;
 					for(var attr in data.data){
 						if (attr == "EGG_VAL") {
 							config_egg.egg_val = data.data[attr];
@@ -23,16 +22,11 @@ define(function(require){
 							config_egg.level_worth[config_egg.level_worth.length]=data.data[attr];
 						}
 					}
-
-
-					config_egg = data;
-
 				},
 				error:function(ero){
 					console.log(ero);
 				}
 			});
-			
 			return config_egg;
 		}
 

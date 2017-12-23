@@ -67,7 +67,10 @@ define(function(require){
 		},
 		//巢的详细信息--许鑫君
 		nestInfo:function(){
-			var nest_Info;
+			var nest_Info={};
+				nest_Info.contracts=[];
+				nest_Info.assets=0;
+				eggval=config.configegg().egg_val;
 			$.ajax({
 				url:config.site+"private/nests",
 				async:false,
@@ -77,7 +80,18 @@ define(function(require){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					debugger;
+					for (var i = 0; i < data.data.length; i++) {
+						nest_Info.assets+=Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs*eggval);
+						nest_Info.contracts[i] = {};
+						nest_Info.contracts[i].id = data.data[i].contracts[data.data[i].contracts.length-1].id;
+						nest_Info.contracts[i].nest_id =  data.data[i].id;
+						nest_Info.contracts[i].income = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].from_receivers+data.data[i].contracts[data.data[i].contracts.length-1].from_community);
+						nest_Info.contracts[i].time = data.data[i].created_at;
+						nest_Info.contracts[i].worth = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs*eggval);
+						nest_Info.contracts[i].rate="300%";
+						nest_Info.contracts[i].freese = nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+						debugger;
+					}
 					//对data做处理
 				},
 				error:function(ero){
@@ -85,13 +99,15 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 						
 						jwt.authRefresh();
-						nestInfo();
+						this.nestInfo();
 					}
 					else{
 						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
 					}
-				}
+				}.bind(this)
 			});
+			debugger;
 			return nest_Info;
 			//nest_Info模型=nest_Info['Investment'],nest_Info['today'],nest_Info['incomedata']=[{time:time,income:income,name:name,type:type(收益来源)}],nest_Info['nestdata']=[{id:nest_id,name:name,income:income(总的收益),freese:freese,time:time(创建日期),type:contractType*config.rate}]
 		},
@@ -210,6 +226,41 @@ define(function(require){
 						
 						jwt.authRefresh();
 						this.reinvestment();
+					}
+					else if(responseText.message=="The lastest contract is not finished.")
+						{
+							is_success = false;
+						}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
+			});
+			return is_success;
+		},
+		invitenest:function(params){
+			var is_success= false;
+			$.ajax({
+				url:config.site+"users",
+				async:false,
+				dataType:"json",
+				type:"post",
+				data:params,
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					if (data.status=="success") {
+						is_success = true;
+					}
+				},
+				error:function(ero){
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.invitenest();
 					}
 					else if(responseText.message=="The lastest contract is not finished.")
 						{

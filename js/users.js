@@ -51,8 +51,17 @@ define(function(require){
 					
 				},
 				error:function(){
-					showprompt("请检查网络或者重新登录");
-				}
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.getUserMessage();
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
 			});
 			return worthInfo;//包含了active，limit，market三部分钱
 		},
@@ -73,29 +82,21 @@ define(function(require){
 					
 				},
 				error:function(ero){
-					console.log(ero);
-					showprompt("网络错误请重新登录");
-				}
+
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.checksecondPassword();
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
 			});
 			return is_live;
 			
-		},
-		realsecondPassword:function(secondPassword){
-			var is_real=true;
-//			$.ajax({
-//				url:"",
-//				async:false,
-//				dataType:"json",
-//				data:{secondPassword:secondPassword},
-//				type:"GET",
-//				success:function(data){
-//					is_real=true;
-//				},
-//				error:function(){
-//					is_real = false;
-//				}
-//			});
-			return is_real;
 		},
 		setSecondPassword:function(password){
 			var is_success = true;
@@ -115,9 +116,18 @@ define(function(require){
 					}
 				},
 				error:function(ero){
-					console.log(ero);
-					is_success = false;
-				}
+
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.setSecondPassword();
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
 			});
 			return is_success;
 			

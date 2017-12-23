@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:124px;left:17px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onParamsReceive="modelParamsReceive"> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="NestsAccount" idColumn="id"><column name="id" type="Integer" xid="xid5"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="NestsAccount" idColumn="id" onCustomRefresh="NestsAccountCustomRefresh"><column name="id" type="Integer" xid="xid5"></column>
   <column label="获得的金额" name="income" type="Integer" xid="xid7"></column>
   <column label="产品获得时间" name="time" type="Date" xid="xid10"></column>
   <column label="巢名称" name="name" type="String" xid="xid13"></column>
-  <column label="产品类型" name="type" type="String" xid="xid14"></column>
+  <column label="产品类型" name="worth" type="String" xid="xid14"></column>
   <column label="利率" name="rate" type="String" xid="xid1"></column>
   <column label="冻结金额" name="freese" type="Integer" xid="xid2"></column>
-  <data xid="default2">[{&quot;id&quot;:1,&quot;income&quot;:600,&quot;time&quot;:&quot;2017-11-11&quot;,&quot;name&quot;:&quot;qweasd133&quot;,&quot;type&quot;:&quot;1800&quot;,&quot;rate&quot;:&quot;300%&quot;,&quot;freese&quot;:4900},{&quot;id&quot;:2,&quot;income&quot;:1200,&quot;time&quot;:&quot;2017-12-12&quot;,&quot;name&quot;:&quot;qwezxcert&quot;,&quot;type&quot;:&quot;1800&quot;,&quot;rate&quot;:&quot;300%&quot;,&quot;freese&quot;:4200}]</data></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="incomeAccount" idColumn="id"><column name="id" type="Integer" xid="xid6"></column>
+  <column name="nest_id" type="Integer" xid="xid3"></column></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="incomeAccount" idColumn="id" onCustomRefresh="incomeAccountCustomRefresh"><column name="id" type="Integer" xid="xid6"></column>
   <column name="name" type="String" xid="xid8"></column>
   <column name="date" type="Date" xid="xid9"></column>
   <column name="income" type="Float" xid="xid11"></column>

@@ -178,12 +178,12 @@ define(function(require){
 	//不同的action不同的操作
 	Model.prototype.modelParamsReceive = function(event){
 //		action = this.params.action;
-		action = "create";
+		action = "invite";
 		this.actionOption(action);
 	};
 	//下拉框内容变动时做出的改变
 	Model.prototype.check_money=function(production,object){
-		var current_worth = current_rank==-1?0:Math.ceil(config_egg.level_worth[current_rank]*config_egg.egg_val);
+		var current_worth = current_rank==-1?0:Math.floor(config_egg.level_worth[current_rank]*config_egg.egg_val);
 		if (current_worth>=production) {
 				this.showprompt("不能选择比当前产品低或者一样的产品");
 				object.val("");
@@ -206,7 +206,7 @@ define(function(require){
 		var id = event.source.val();
 		this.comp("typedata").each(function(obj){
 			if (obj.row.val("id")==id) {
-				me.check_money(Math.ceil(config_egg.egg_val*config_egg.level_worth[id-1]),event.source);
+				me.check_money(Math.floor(config_egg.egg_val*config_egg.level_worth[id-1]),event.source);
 			}
 
 		});
@@ -245,7 +245,7 @@ define(function(require){
 		var choose_rank = parseInt(this.comp("select1").val())-1;
 		var current_worth = current_rank==-1?0:config_egg.level_worth[current_rank];
 		var eggs = config_egg.level_worth[choose_rank]-current_worth;
-		
+		var email = $.trim(this.comp("input1").val());
 		var radios = $("[name='community_radio']");
 		var community = "";
 		for (var i = 0; i < radios.length; i++) {
@@ -268,7 +268,7 @@ define(function(require){
 		var invite_name = $.trim(this.comp("input2").val());
 		var parent_name = $.trim(this.comp("input4").val());
 		var secondPassword = $.trim($(this.getElementByXid("password1")).val());
-		var params ={contract_id:contract_id,inviter_name:invite_name,parent_name:parent_name,security_code:secondPassword,pay_active:paymoney.activepay,pay_limit:paymoney.limitpay,eggs:eggs,community:community};
+		var params ={email:email,contract_id:contract_id,inviter_name:invite_name,parent_name:parent_name,security_code:secondPassword,pay_active:paymoney.activepay,pay_limit:paymoney.limitpay,eggs:eggs,community:community};
 		return params;
 	};
 	Model.prototype.success=function(params){
@@ -303,6 +303,15 @@ define(function(require){
 				else if(action=="create"){
 					var params = this.createParams();
 					var is_success = nest.createnest(params);
+					if (is_success) {
+						this.showprompt("创建成功");
+						this.success(params);
+						this.comp("secondPassword").hide();
+					}
+				}
+				else if(action =="invite"){
+					var params = this.createParams();
+					var is_success = nest.invitenest(params);
 					if (is_success) {
 						this.showprompt("创建成功");
 						this.success(params);
@@ -351,19 +360,12 @@ define(function(require){
 		var name = this.comp("input1").val();
 
 		if ($.trim(name)) {
-			if(vdt.test(name)){
-				if(!users.userlive(name)){
-				this.showprompt("将会创建一个用户");
-			}
-			}else{
-				this.showprompt("邮箱不合法");
-			}
-			
-		}
-		else{
+			if(!vdt.test(name)){
 			this.showprompt("请输入邮箱地址");
+			}
+		}else{
+			this.showprompt("邮箱不能为空");
 		}
-		
 	};
 
 	Model.prototype.button10Click = function(event){
@@ -380,7 +382,7 @@ define(function(require){
 			event.source.newData({"defaultValues":
 				[{
 					id:i+1,
-					type:i+1+"级产品（$"+Math.ceil(config_egg.level_worth[i]*config_egg.egg_val)+")",
+					type:i+1+"级产品（$"+Math.floor(config_egg.level_worth[i]*config_egg.egg_val)+")",
 					is_show:0
 				}]
 			});
