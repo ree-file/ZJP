@@ -2,6 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var login = require("./js/login");
+	var jwt = require('./js/jwt');
 	var loginable =false;
 	var Model = function(){
 		this.callParent();
@@ -85,6 +86,11 @@ define(function(require){
 				this.showprompt("账号或者密码不能为空");
 				
 			}
+		}
+	};
+	Model.prototype.modelModelConstruct = function(event){
+		if (jwt.getToken) {
+			justep.Shell.showPage(require.toUrl("./ZJP_main.w"));
 		}
 	};
 	return Model;

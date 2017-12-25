@@ -51,7 +51,21 @@
 	background-color:#5D92E2;
 	color:#FFFFFF;
 }
-
+.withDrawWindow{
+	width:70%;
+	height:auto;
+	background:#282B32;
+	border-radius:5px;
+	box-shadow:5px 5px 5px #868687;
+}
+.withDrawWindow .btn{
+	width:100%;
+	border-radius:5px;
+	border-width:2px;
+	border-style:solid;
+	border-color:#3BBFFF;;
+	color:white;
+}
 
 
 

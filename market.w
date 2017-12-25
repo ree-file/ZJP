@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:56px;left:119px;" onLoad="modelLoad"> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="marketdata" idColumn="nest_id"><column name="nest_id" type="Integer" xid="xid1"></column>
-  <column name="eggs" type="String" xid="xid2"></column>
-  <column name="childrens" type="Integer" xid="xid3"></column>
-  <column name="gradechildrens" type="Integer" xid="xid4"></column>
-  <column name="money" type="Decimal" xid="xid5"></column>
-  <column name="user_id" type="Integer" xid="xid6"></column>
-  <data xid="default3">[{&quot;nest_id&quot;:1506010027,&quot;eggs&quot;:&quot;500/1800&quot;,&quot;childrens&quot;:5,&quot;gradechildrens&quot;:14,&quot;money&quot;:9999.21,&quot;user_id&quot;:12321312},{&quot;nest_id&quot;:123124,&quot;eggs&quot;:&quot;123/322&quot;,&quot;childrens&quot;:2,&quot;gradechildrens&quot;:5,&quot;money&quot;:3232,&quot;user_id&quot;:232323}]</data></div>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:56px;left:119px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone"> 
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="marketdata" idColumn="id" onCustomRefresh="marketdataCustomRefresh"><column name="id" type="Integer" xid="xid1"></column>
+  <column name="name" type="String" xid="xid2"></column>
+  <column name="childrenNum" type="Integer" xid="xid3"></column>
+  <column name="grandChildrenNum" type="Integer" xid="xid4"></column>
+  <column name="worth" type="Decimal" xid="xid5"></column>
+  <column name="nest_id" type="Integer" xid="xid6"></column>
+  <column name="contract_worth" type="Float" xid="xid17"></column>
+  <column name="contract_remaining" type="Float" xid="xid18"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>
@@ -56,37 +57,38 @@
    
    <input component="$UI/system/components/justep/input/input" class="form-control" xid="input3" bind-keyup="input3Keyup"></input><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="筛选" icon="icon-arrow-down-b" xid="screeningBtn" style="width:30%;" onClick="screeningBtnClick">
     <i xid="i10" class="icon-arrow-down-b"></i>
-    <span xid="span17">筛选</span></a> </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata" filter=' $row.val("money") &lt;=$model.type2.get() &amp;&amp;  $row.val("money") &gt;=$model.type1.get()' limit="-1" disableInfiniteLoad="false">
+    <span xid="span17">筛选</span></a> </div>
+  <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
-   <div class="x-col x-col-20" xid="col1" style="position:relative;"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='ref("nest_id")' class="center-block moneycenter"></span></div>
+   <div class="x-col x-col-20" xid="col1" style="position:relative;"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='val("name")' class="center-block moneycenter"></span></div>
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col x-col-25" xid="col10" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span13" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[剩余]]></span></div>
-   <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="messageoutput" bind-ref='ref("eggs")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div>
+   <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;text-align:center"><span xid="span44" bind-text='val("contract_remaining")'></span>
+  <span xid="span45"><![CDATA[/]]></span>
+  <span xid="span46" bind-text='val("contract_worth")'></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-style:groove;border-top-width:thin;">
    <div class="x-col x-col-25" xid="col18" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <span xid="span15" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[子数]]></span></div> 
    <div class="x-col" xid="col17" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output1" bind-ref='ref("childrens")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div> </div>
+    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output1" bind-ref='ref("childrenNum")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-style:groove;border-top-width:thin;">
    <div class="x-col x-col-25" xid="col30" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <span xid="span23" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[孙数]]></span></div> 
    <div class="x-col" xid="col31" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("gradechildrens")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div> </div></div>
+    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("grandChildrenNum")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div> </div></div>
    <div class="x-col x-col-33 center-block" xid="col16" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15" style="margin-top:0px;padding-top:0px;">
-   <div class="x-col" xid="col35"><span xid="span20" style="width:5%;color:#FFFFFF;font-size:large;padding-top:0px;margin-top:-1px;font-family:Cambria Math;" class="pull-left"><![CDATA[$]]></span><span xid="moneySpan" style="color:#FFFFFF;font-size:large;font-family:Impact;position:relative;width:92%;" bind-text='ref("money")' class="pull-left center-block moneycenter"></span>
+   <div class="x-col" xid="col35"><span xid="span20" style="width:5%;color:#FFFFFF;font-size:large;padding-top:0px;margin-top:-1px;font-family:Cambria Math;" class="pull-left"><![CDATA[$]]></span><span xid="moneySpan" style="color:#FFFFFF;font-size:large;font-family:Impact;position:relative;width:92%;" bind-text='val("worth")' class="pull-left center-block moneycenter"></span>
   </div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;" bind-click="col3Click"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;">
    <i xid="i5"></i>
-   <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div>
-  </li></ul> </div>
-  </div>
+   <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div></li></ul> </div></div>
   <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
    <div class="x-col x-col-33" xid="col39"><span xid="span21"><![CDATA[产品编号]]></span></div>
    <div class="x-col" xid="col43"><span xid="span22"><![CDATA[金额]]></span></div>

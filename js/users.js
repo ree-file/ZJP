@@ -1,6 +1,7 @@
 define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var $ = require('jquery');
+
 	var config = require('./config');
 	var jwt = require("./jwt");
 	function showprompt(text){
@@ -50,7 +51,7 @@ define(function(require){
 					}
 					
 				},
-				error:function(){
+				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
@@ -131,6 +132,8 @@ define(function(require){
 			});
 			return is_success;
 			
-		}
+		},
+		
+
 	};
 });

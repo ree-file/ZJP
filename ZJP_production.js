@@ -123,9 +123,13 @@ define(function(require){
 		config_egg = config.configegg();
 		this.comp("typedata").refreshData();
 		var my_money = users.getUserMessage();
-		$(this.getElementByXid("money")).html(my_money['active']);
-		$(this.getElementByXid("investment")).html(my_money['limit']);
-
+		$(this.getElementByXid("money")).html(my_money['active'].toFixed(2));
+		$(this.getElementByXid("investment")).html(my_money['limit'].toFixed(2));
+		if (this.params.name) {
+			this.comp("input2").val(this.params.name);
+			this.comp("input4").val(this.params.name);
+		}
+		
 //		根据不同action执行相应操作
 		if (action=="upgrade"||action=="Re-investment") {
 			
@@ -138,19 +142,15 @@ define(function(require){
 					this.comp("titleBar1").set({
 						title:"猫窝升级"
 					});
-//					contract_id = this.params.contract_id;
-//					current_rank = this.params.current_rank;
-//					worth = this.params.worth;
-					contract_id = 1;
-					current_rank = 1;
-					worth = 1800;
+					nest_id = this.params.nest_id;
+					current_rank = this.params.current_rank;
+					worth = this.params.current_worth;
 			}
 			else{
 					this.comp("titleBar1").set({
 						title:"猫窝复投"
 					});
-//					contract_id = this.params.contract_id;
-					contract_id = 1;
+					nest_id = this.params.nest_id;
 					worth = 0;
 					$(this.getElementByXid("h51")).text("关于复投");
 				}
@@ -177,12 +177,16 @@ define(function(require){
 	};
 	//不同的action不同的操作
 	Model.prototype.modelParamsReceive = function(event){
-//		action = this.params.action;
-		action = "invite";
+		if(!this.params){
+			this.showprompt("请重新在产品界面进入");
+			return;
+		}
+		action = this.params.action;
 		this.actionOption(action);
 	};
 	//下拉框内容变动时做出的改变
 	Model.prototype.check_money=function(production,object){
+
 		var current_worth = current_rank==-1?0:Math.floor(config_egg.level_worth[current_rank]*config_egg.egg_val);
 		if (current_worth>=production) {
 				this.showprompt("不能选择比当前产品低或者一样的产品");
@@ -268,7 +272,7 @@ define(function(require){
 		var invite_name = $.trim(this.comp("input2").val());
 		var parent_name = $.trim(this.comp("input4").val());
 		var secondPassword = $.trim($(this.getElementByXid("password1")).val());
-		var params ={email:email,contract_id:contract_id,inviter_name:invite_name,parent_name:parent_name,security_code:secondPassword,pay_active:paymoney.activepay,pay_limit:paymoney.limitpay,eggs:eggs,community:community};
+		var params ={nest_id:nest_id,email:email,contract_id:contract_id,inviter_name:invite_name,parent_name:parent_name,security_code:secondPassword,pay_active:paymoney.activepay,pay_limit:paymoney.limitpay,eggs:eggs,community:community};
 		return params;
 	};
 	Model.prototype.success=function(params){
@@ -322,7 +326,7 @@ define(function(require){
 			else{
 				this.showprompt("二级密码错误");
 			}
-
+		$(this.getElementByXid("password1")).val("");
 	};
 	//提交数据
 	Model.prototype.button6Click = function(event){

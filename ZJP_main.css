@@ -274,3 +274,6 @@
 	height:auto;
 	border-radius:10px;
 }
+.is_finished{
+	color:#8D8E8F !important;
+}

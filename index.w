@@ -4,5 +4,5 @@
   design="device:m;">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;left:390px;top:161px;" onLoad="modelLoad"/>  
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full"
-    active="0" xid="pages" swipe="false"><div class="x-contents-content" xid="main"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="mainContainer" src="./main.w"></div></div></div>
+    active="0" xid="pages" swipe="false"><div class="x-contents-content" xid="main"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="mainContainer" src="$UI/ZJP/mailLogin.w"></div></div></div>
 </div>

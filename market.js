@@ -4,6 +4,8 @@ define(function(require){
 	var getorders = require('./js/market');
 	var nest = require('./js/nests');
 	var sell_nestId;//用于判断产品是否存在
+	var complex_page=1;
+	var filter_page=1;
 	var Model = function(){
 		this.callParent();
 		this.type1=justep.Bind.observable('0');
@@ -126,6 +128,9 @@ define(function(require){
 	}
 //交易记录加载/刷新--许鑫君
 	Model.prototype.transactionrecordCustomRefresh = function(event){
+		if (this.params.name) {
+			this.comp("input1").val(this.params.name);
+		}
 		event.source.clear();
 		var record = getorders.getTransactionRecord();
 		if (record.length==0) {
@@ -226,6 +231,17 @@ define(function(require){
 		else{
 			this.sell(price);
 		}
+	};
+
+	Model.prototype.marketdataCustomRefresh = function(event){
+		if(complex_page=1){
+			event.source.clear();
+		}
+		var records = getorders.getorders(complex_page);
+		event.source.loadData(records);
+	};
+
+	Model.prototype.modelModelConstructDone = function(event){
 	};
 
 	return Model;

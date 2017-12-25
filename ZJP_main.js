@@ -3,6 +3,8 @@ define(function(require) {
 	var justep = require("$UI/system/lib/justep");
 	var user = require("./js/users");
 	var nest = require("./js/nests");
+	var config = require("./js/config");
+	var ids=[];
 	var Model = function() {
 		this.callParent();
 	};
@@ -23,8 +25,16 @@ define(function(require) {
 	Model.prototype.modelLoad = function(event){
 		//计算三部分资金所占比重
 		var worthInfo =	user.getUserMessage();
-		var rightRotate = 180-parseFloat(worthInfo['market'])/(parseFloat(worthInfo['all']))*180;
-		var leftRotate = 180-parseFloat(worthInfo['limit'])/(parseFloat(worthInfo['all']))*180;
+		var rightRotate = 180-parseFloat(worthInfo['market'])/(parseFloat(worthInfo['all']))*360;
+		var leftRotate = 180-parseFloat(worthInfo['limit'])/(parseFloat(worthInfo['all']))*360;
+		if (rightRotate<0) {
+			$(this.getElementByXid("span24")).html("市场");
+			$(this.getElementByXid("span26")).html("活动");
+		}
+		else if(leftRotate<0){
+			$(this.getElementByXid("span24")).html("投资");
+			$(this.getElementByXid("span25")).html("活动");
+		}
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span7")).html("$"+worthInfo['all'])
@@ -78,13 +88,59 @@ define(function(require) {
 	};
 
 	Model.prototype.incomeAccountCustomRefresh = function(event){
-
+		var date = new Date();
+		var todayincome =0.00;
+		var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
+		var times = currentdate.getTime();
+		var eggval = config.configegg().egg_val
+		var records = nest.incomeInfo(ids,ids.length,times);
+		var MyincomeInfo = [];
+		for (var i = 0; i < records.length; i++) {
+			if (records[i]!=undefined&&records[i].length!=0) {
+				for (var j = 0; j < records[i].length; j++){
+					MyincomeInfo[MyincomeInfo.length]={
+							contract_id:records[i][j].contract_id,
+							type:records[i][j].type=="invite_got"?"邀请获得":records[i][j].type=="community_got"?"家族获得":"日常获得",
+							income:parseFloat(parseFloat(records[i][j].eggs)*parseFloat(eggval)).toFixed(2),
+							date:records[i][j].created_at
+					};
+					todayincome+=parseFloat(records[i][j].eggs)*parseFloat(eggval);
+				}
+			}
+		}
+		for (var i = 0; i < MyincomeInfo.length; i++) {
+			this.comp("NestsAccount").each(function(obj){
+				if (MyincomeInfo[i].contract_id==obj.row.val("id")) {
+					MyincomeInfo[i].name = obj.row.val("name");
+				}
+			});
+		}
+		event.source.loadData(MyincomeInfo);
+		ids=null;
+		$(this.getElementByXid("span4")).html("$"+todayincome);
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
 		var nestInfo = nest.nestInfo();
 		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
 		event.source.loadData(nestInfo.contracts);
+		if (nestInfo.contracts.length!=0) {
+			for (var i = 0; i < nestInfo.contracts.length; i++) {
+				ids[i]=nestInfo.contracts[i].nest_id;
+			}
+		}
+		
+
+		this.comp("incomeAccount").refreshData();
+	};
+
+	Model.prototype.button8Click = function(event){
+		var row = event.bindingContext.$object;
+		var params = {
+				nest_id:row.val("nest_id"),
+				contract_id:row.val("id"),
+		};
+		justep.Shell.showPage(require.toUrl("./nestMain.w"), params);
 	};
 
 	return Model;

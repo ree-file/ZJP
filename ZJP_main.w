@@ -8,7 +8,9 @@
   <column label="产品类型" name="worth" type="String" xid="xid14"></column>
   <column label="利率" name="rate" type="String" xid="xid1"></column>
   <column label="冻结金额" name="freese" type="Integer" xid="xid2"></column>
-  <column name="nest_id" type="Integer" xid="xid3"></column></div>
+  <column name="nest_id" type="Integer" xid="xid3"></column>
+  <column name="finished" type="Integer" xid="xid4"></column>
+  <column name="excess" type="Integer" xid="xid12"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="incomeAccount" idColumn="id" onCustomRefresh="incomeAccountCustomRefresh"><column name="id" type="Integer" xid="xid6"></column>
   <column name="name" type="String" xid="xid8"></column>
   <column name="date" type="Date" xid="xid9"></column>
@@ -106,9 +108,11 @@
     <li xid="li1">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
    <div class="x-col" xid="col1" style="text-align:center;"><span xid="span2" style="font-weight:600;font-size:medium;"><![CDATA[天使猫窝]]></span></div>
-   <div class="x-col" xid="col2" style="text-align:center;"><span xid="span9" bind-text='val("name")' class="copy"><![CDATA[FL3694]]></span></div>
+   <div class="x-col" xid="col2" style="text-align:center;"><span xid="span9" bind-text='val("name")' class="copy" bind-css='{"is_finished": val("finished")=="1"}'><![CDATA[FL3694]]></span></div>
    <div class="x-col" xid="col7" style="text-align:center;"><span xid="span23" bind-text='val("time")'><![CDATA[2017-08-23]]></span></div>
-  <div class="x-col" xid="col32"><button xid="button13" style="width:100%;background-color:#454C5E;border-width:0px 0px 0px 0px;color:#FFFFFF;">详情</button></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
+  <div class="x-col" xid="col32"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm nestInfo" label="详情" xid="button8" style="background-color:#454C5E;width:100%;border-width:0px 0px 0px 0px;color:#FFFFFF;" onClick="button8Click">
+   <i xid="i8"></i>
+   <span xid="span36">详情</span></a></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
    <div class="x-col" xid="col15" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col" xid="col19" style="border-color:#282B32;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;text-align:center;"><span xid="span10" style="color:#8D8E8F;"><![CDATA[收益率]]></span></div>
    <div class="x-col" xid="col20" style="border-color:#282B32;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;text-align:center;"><span xid="span21" style="color:#8D8E8F;"><![CDATA[投资金额]]></span></div>
@@ -117,7 +121,7 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="border-color:#282B32;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-bottom-style:solid;border-bottom-width:1px;">
    <div class="x-col" xid="col22" style="text-align:center;"><span xid="span11" style="color:#36C4D2;font-size:small;" bind-text='val("rate")'><![CDATA[300%]]></span>
   </div>
-   <div class="x-col" xid="col23" style="text-align:center;"><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("type")'><![CDATA[$3600]]></span></div>
+   <div class="x-col" xid="col23" style="text-align:center;"><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("worth")'><![CDATA[$3600]]></span></div>
    <div class="x-col" xid="col42" style="text-align:center;"><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'>$3600</span></div>
   <div class="x-col" xid="col43" style="text-align:center;"><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'>$3600</span></div></div></div>
    </div></li></ul> </div></div></div></div></div>

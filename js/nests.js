@@ -9,6 +9,8 @@ define(function(require){
 		});
 		$(".x-hint").find("button[class='close']").hide();
 	}
+	var record=[];
+//	var currentDate =  
 	return{
 		//获取巢的社区权限（子巢可以挂的范围）---许鑫君
 		community_premission : function(nest_name){
@@ -89,8 +91,10 @@ define(function(require){
 						nest_Info.contracts[i].time = data.data[i].created_at;
 						nest_Info.contracts[i].worth = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs*eggval);
 						nest_Info.contracts[i].rate="300%";
-						nest_Info.contracts[i].freese = nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
-						debugger;
+						nest_Info.contracts[i].freese = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+						nest_Info.contracts[i].name = data.data[i].name;
+						nest_Info.contracts[i].finished = data.data[i].contracts[data.data[i].contracts.length-1].is_finished;
+						nest_Info.contracts[i].excess = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
 					}
 					//对data做处理
 				},
@@ -107,7 +111,6 @@ define(function(require){
 					}
 				}.bind(this)
 			});
-			debugger;
 			return nest_Info;
 			//nest_Info模型=nest_Info['Investment'],nest_Info['today'],nest_Info['incomedata']=[{time:time,income:income,name:name,type:type(收益来源)}],nest_Info['nestdata']=[{id:nest_id,name:name,income:income(总的收益),freese:freese,time:time(创建日期),type:contractType*config.rate}]
 		},
@@ -176,7 +179,7 @@ define(function(require){
 		upgradenest:function(params){
 			var is_success =false;
 			$.ajax({
-				url:config.site+"nests/"+params.contract_id+"/upgrade",
+				url:config.site+"nests/"+params.nest_id+"/upgrade",
 				async:false,
 				dataType:"json",
 				type:"patch",
@@ -207,7 +210,7 @@ define(function(require){
 		reinvestment:function(params){
 			var is_success= false;
 			$.ajax({
-				url:config.site+"nests/"+params.contract_id+"/reinvest",
+				url:config.site+"nests/"+params.nest_id+"/reinvest",
 				async:false,
 				dataType:"json",
 				type:"patch",
@@ -274,6 +277,106 @@ define(function(require){
 			});
 			return is_success;
 		},
+	
+		incomeInfo:function(ids,times,today){
+			if (times==0) {
+				return;
+			}
+			times--;
+			
+			$.ajax({
+				url:config.site+"nests/"+ids[times]+"/records",
+				async:false,
+				cache:false,
+				dataType:"json",
+				type:"GET",
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					if (data.data.got_records.length!=0) {
+						record[times]=[];
+						for (var i = 0; i < data.data.got_records.length; i++) {
+							var addDate = data.data.got_records[i].created_at.substring(0,10);
+							var datearr = addDate.split("-");
+							var date = new Date(parseInt(datearr[0]),parseInt(datearr[1])-1,parseInt(datearr[2]));
+							var timestamps = date.getTime();
+							if (timestamps==today) {
+								record[times][record[times].length]=data.data.got_records[i];
+							}
+						}
+						
+					}
+					this.incomeInfo(ids,times,today);
+				}.bind(this),
+				error:function(ero){
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.incomeInfo(ids,times,today);
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
+				
+			});
+			return record;
+		},
+		singlenestInfo:function(nest_id){
+			var nestInfo = {};
+			$.ajax({
+				url:config.site+"nests/"+nest_id+"/records",
+				async:false,
+				dataType:"json",
+				type:"GET",
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					nestInfo.nestrecords = data.data;
+				},
+				error:function(ero){
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.singlenestInfo(nest_id);
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
+			});
+			$.ajax({
+				url:config.site+"nests/"+nest_id,
+				async:false,
+				dataType:"json",
+				type:"GET",
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					nestInfo.nestinfo = data.data;
+				},
+				error:function(ero){
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.singlenestInfo(nest_id);
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
+			});
+			return nestInfo;
+		}
 	};
 	
 });
