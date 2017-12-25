@@ -199,7 +199,10 @@
       <div class="x-col text-center" xid="col57" style="white-space:nowrap;padding-left:0;padding-right:0;">
        <span xid="span25" bind-text='"当天可提$"+val("withdraw")'>people</span></div> 
       <div class="x-col text-center" xid="col58">
-       <span xid="span24" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("message")'>type</span></div> </div> </li> </ul> </div></div><div class="x-contents-content" xid="content4" onActive="content4Active" onInactive="content4Inactive"></div></div></div>
+       <span xid="span24" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("message")'>type</span></div> </div> </li> </ul> </div></div><div class="x-contents-content" xid="content4" onActive="content4Active" onInactive="content4Inactive" style="width:100%;height:auto;"><div xid="div8" style="width:100%;height:250px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row35">
+   <div class="x-col" xid="col96"></div>
+   <div class="x-col" xid="col97"></div>
+   <div class="x-col" xid="col98"></div></div></div></div></div></div>
   </div>
    <div class="x-panel-bottom" xid="bottom1"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified noMarginPadding background-color-black" tabbed="true" xid="buttonGroup2" style="width:100%;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" label="升级小窝" xid="button2" style="width:25%;" onClick="button2Click">

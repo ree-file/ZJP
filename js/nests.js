@@ -280,7 +280,8 @@ define(function(require){
 	
 		incomeInfo:function(ids,times,today){
 			if (times==0) {
-				return;
+				var norecords=[];
+				return norecords;
 			}
 			times--;
 			
@@ -323,6 +324,7 @@ define(function(require){
 				}.bind(this)
 				
 			});
+			debugger;
 			return record;
 		},
 		singlenestInfo:function(nest_id){
