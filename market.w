@@ -8,7 +8,9 @@
   <column name="worth" type="Decimal" xid="xid5"></column>
   <column name="nest_id" type="Integer" xid="xid6"></column>
   <column name="contract_worth" type="Float" xid="xid17"></column>
-  <column name="contract_remaining" type="Float" xid="xid18"></column></div>
+  <column name="contract_remaining" type="Float" xid="xid18"></column>
+  <column name="type" type="Integer" xid="xid19"></column>
+  <column name="remainingeggs" type="Integer" xid="xid20"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>

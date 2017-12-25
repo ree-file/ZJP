@@ -42,6 +42,7 @@ define(function(require){
 						status:"Bought"
 					}]
 				});
+				debugger;
 				$(this.getElementByXid("passwordInput")).val("");
 				this.comp("popOver1").hide();
 			}
@@ -283,7 +284,11 @@ define(function(require){
 	};
 
 	Model.prototype.li1Click = function(event){
-		
+		var row = event.bindingContext.$object;
+		var type = row.val("type");
+		var remaining = row.val("remainingeggs");
+		var id = row.val("id");
+		justep.Shell.showPage(require.toUrl("./particulars"),{type:type,remaing:remiang,id:id});
 	};
 
 	return Model;

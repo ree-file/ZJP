@@ -123,7 +123,9 @@ define(function(require){
 						allorders[i].grandChildrenNum = num;
 						allorders[i].worth = ordersData[i].price;
 						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
-						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
+						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3,
+						allorders[i].type=parseInt(contract.eggs),
+						allorders[i].remainingeggs = parseInt(contract_remaining)
 					}
 				},
 				error:function(ero){//请求失败错误信息在ero里

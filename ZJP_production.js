@@ -182,6 +182,7 @@ define(function(require){
 			return;
 		}
 		action = this.params.action;
+//		action = "invite";
 		this.actionOption(action);
 	};
 	//下拉框内容变动时做出的改变
