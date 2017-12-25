@@ -75,5 +75,9 @@ define(function(require){
 			}
 	};
 
+	Model.prototype.inviteRowClick = function(event){
+		justep.Shell.showpage("ZJP_production");
+	};
+
 	return Model;
 });
