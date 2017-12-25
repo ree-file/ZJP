@@ -48,19 +48,19 @@ define(function(require){
 	};
 
 	Model.prototype.col7Click = function(event){
-		justep.Shell.showPage("wallet");
+		justep.Shell.showPage(require.toUrl("./wallet.w"));
 	};
 
 	Model.prototype.col8Click = function(event){
-		justep.Shell.showPage("bankBanding");
+		justep.Shell.showPage(require.toUrl("./bankBanding.w"));
 	};
 
 	Model.prototype.row14Click = function(event){
-		justep.Shell.showPage("illustrate");
+		justep.Shell.showPage(require.toUrl("./illustrate.w"));
 	};
 
 	Model.prototype.row16Click = function(event){
-		justep.Shell.showPage("varsioninformation");
+		justep.Shell.showPage(require.toUrl("./varsioninformation.w"));
 	};
 
 	Model.prototype.col17Click = function(event){
@@ -76,7 +76,7 @@ define(function(require){
 	};
 
 	Model.prototype.inviteRowClick = function(event){
-		justep.Shell.showpage("ZJP_production");
+		justep.Shell.showPage(require.toUrl("./ZJP_production.w"));
 	};
 
 	return Model;

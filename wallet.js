@@ -47,7 +47,7 @@ define(function(require){
 	};
 
 	Model.prototype.row14Click = function(event){
-		justep.Shell.showPage("recharge");
+			justep.Shell.showPage(require.toUrl("./recharge.w"));
 	};
 
 	return Model;

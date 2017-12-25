@@ -22,7 +22,7 @@ define(function(require){
 	};
 
 	Model.prototype.row2Click = function(event){
-		justep.Shell.showPage("bandAdding");
+			justep.Shell.showPage(require.toUrl("./bandAdding.w"));
 	};
 
 	Model.prototype.getImageUrl = function(row) {
