@@ -71,7 +71,7 @@ define(function(require){
 						allorders[i].childrenNum = ordersData[i].nest.children.length;
 						allorders[i].grandChildrenNum = num;
 						allorders[i].worth = ordersData[i].price;
-						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contr	acts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
+						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
 						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
 					}
 				},

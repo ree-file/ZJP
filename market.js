@@ -33,7 +33,7 @@ define(function(require){
 			var is_success = getorders.buy(orderId,password);
 			if (is_success) {
 				this.showprompt("购买成功");
-				market.remove();
+				
 				this.comp("transactionrecord").newData({
 					"defaultValues":[{
 						productioncode:market.val("name"),
@@ -42,7 +42,8 @@ define(function(require){
 						status:"Bought"
 					}]
 				});
-				debugger;
+				market.remove();
+				
 				$(this.getElementByXid("passwordInput")).val("");
 				this.comp("popOver1").hide();
 			}
@@ -185,6 +186,10 @@ define(function(require){
 			this.comp("price").setValue("price", 0);
 			this.comp("input1").val("");
 			this.comp("transactionrecord").refreshData();
+			if (datastatus==0) {
+				complex_page=1;
+				this.comp("marketdata").refreshData();
+			}
 		}else{
 			this.showprompt("下架失败请重新提交请求");
 			this.comp("chooseSoleStatus").hide();
@@ -211,6 +216,10 @@ define(function(require){
 					$(this.getElementByXid("password1")).val("");
 					this.comp("price").setValue("price", 0);
 					this.comp("input1").val("");
+					if(datastatus==0){
+						complex_page=1;
+						this.comp("marketdata").refreshData();
+					}
 					}
 					else{
 					this.showprompt("出售失败");
@@ -284,12 +293,25 @@ define(function(require){
 	};
 
 	Model.prototype.li1Click = function(event){
+		
+	};
+
+	Model.prototype.col1Click = function(event){
 		var row = event.bindingContext.$object;
 		var type = row.val("type");
 		var remaining = row.val("remainingeggs");
 		var id = row.val("id");
 		var grandchildren = row.val("grandChildrenNum");
-		justep.Shell.showPage(require.toUrl("./particulars"),{type:type,remaing:remiang,id:id,grandchildren:grandchildren});
+		justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren});
+	};
+
+	Model.prototype.col2Click = function(event){
+		var row = event.bindingContext.$object;
+		var type = row.val("type");
+		var remaining = row.val("remainingeggs");
+		var id = row.val("id");
+		var grandchildren = row.val("grandChildrenNum");
+		justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren});
 	};
 
 	return Model;

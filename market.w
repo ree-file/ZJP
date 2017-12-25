@@ -63,8 +63,8 @@
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
-   <div class="x-col x-col-20" xid="col1" style="position:relative;"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='val("name")' class="center-block moneycenter"></span></div>
-   <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;">
+   <div class="x-col x-col-20" xid="col1" style="position:relative;" bind-click="col1Click"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='val("name")' class="center-block moneycenter"></span></div>
+   <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;" bind-click="col2Click">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col x-col-25" xid="col10" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span13" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[剩余]]></span></div>
@@ -88,7 +88,7 @@
   </div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
-   <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;" onClick="button1Click">
+   <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;z-index:9999999;" onClick="button1Click">
    <i xid="i5"></i>
    <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div></li></ul> </div></div>
   <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
@@ -201,7 +201,7 @@
    <span xid="span39" style="color:white;">否</span></a></div></div></div></div>
   <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword">
    <div class="x-popOver-overlay" xid="div11"></div>
-   <div class="x-popOver-content setSecondPassword" xid="div10" style="height:auto;">
+   <div class="x-popOver-content setSecondPassword chooseSoleStatus" xid="div10" style="height:auto;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
      <div class="x-col x-col-33" xid="col52">
       <h5 xid="h52" style="color:#000000;">二级密码：</h5></div> 

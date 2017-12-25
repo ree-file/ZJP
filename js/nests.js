@@ -324,7 +324,6 @@ define(function(require){
 				}.bind(this)
 				
 			});
-			debugger;
 			return record;
 		},
 		singlenestInfo:function(nest_id){
