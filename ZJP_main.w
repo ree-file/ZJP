@@ -24,19 +24,9 @@
         <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar titlebar" xid="titleBar1">
    <div class="x-titlebar-left" xid="left1"></div>
    <div class="x-titlebar-title" xid="title1"><![CDATA[天使猫]]></div>
-   <div class="x-titlebar-right reverse" xid="right1"><div class="dropdown btn-group" component="$UI/system/components/bootstrap/dropdown/dropdown" xid="dropdown1">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-icon-right dropdown-toggle" label="更多" icon="icon-arrow-down-b" xid="button4" style="border-width:0px 0px 0px 0px;font-size:small;">
-    <i class="icon-arrow-down-b" xid="i4"></i>
-    <span xid="span18">更多</span></a> 
-   <ul component="$UI/system/components/justep/menu/menu" class="x-menu dropdown-menu" xid="menu1">
-    <li class="x-menu-item" xid="item1">
-     <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="产品中心" xid="button5">
-      <i xid="i5"></i>
-      <span xid="span19">产品中心</span></a> </li> 
-    <li class="x-menu-item" xid="item2">
-     <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="个人中心" xid="button6">
-      <i xid="i6"></i>
-      <span xid="span20">个人中心</span></a> </li> </ul> </div></div></div></div>  
+   <div class="x-titlebar-right reverse" xid="right1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="市场" xid="button4" style="border-radius:5px;border-style:solid solid solid solid;border-width:2px 2px 2px 2px;border-color:#D3D3D3 #D3D3D3 #D3D3D3 #D3D3D3;" onClick="button4Click">
+   <i xid="i4"></i>
+   <span xid="span18" style="font-size:small;">市场</span></a></div></div></div>  
     <div class="x-panel-content" xid="content1" style="background:#1C1F26">
   
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
@@ -124,7 +114,8 @@
    <div class="x-col" xid="col23" style="text-align:center;"><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("worth")'><![CDATA[$3600]]></span></div>
    <div class="x-col" xid="col42" style="text-align:center;"><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'>$3600</span></div>
   <div class="x-col" xid="col43" style="text-align:center;"><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'>$3600</span></div></div></div>
-   </div></li></ul> </div></div></div></div></div>
+   </div></li></ul> </div></div></div>
+  <div class="x-contents-content" xid="content4"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="$UI/ZJP/personal.w"></div></div></div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link index" label="首页" xid="button1" target="content2" style="font-size:medium;border-color:#282B32;">
     <i xid="i1"></i>
@@ -132,7 +123,7 @@
    <a component="$UI/system/components/justep/button/button" label="猫窝" xid="button2" target="content3" class="btn" style="font-size:medium;border-color:#282B32;">
     <i xid="i2"></i>
     <span xid="span16">猫窝</span></a> 
-  <a component="$UI/system/components/justep/button/button" class="btn btn-link community" label="个人中心" xid="button3" style="font-size:medium;border-color:#282B32;">
+  <a component="$UI/system/components/justep/button/button" class="btn btn-link community" label="个人中心" xid="button3" style="font-size:medium;border-color:#282B32;" target="content4">
    <i xid="i3"></i>
    <span xid="span17">个人中心</span></a></div></div></div> 
 <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="setSecondPassword">

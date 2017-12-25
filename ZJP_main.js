@@ -95,6 +95,7 @@ define(function(require) {
 		var eggval = config.configegg().egg_val
 		var records = nest.incomeInfo(ids,ids.length,times);
 		var MyincomeInfo = [];
+		debugger;
 		for (var i = 0; i < records.length; i++) {
 			if (records[i]!=undefined&&records[i].length!=0) {
 				for (var j = 0; j < records[i].length; j++){
@@ -141,6 +142,10 @@ define(function(require) {
 				contract_id:row.val("id"),
 		};
 		justep.Shell.showPage(require.toUrl("./nestMain.w"), params);
+	};
+
+	Model.prototype.button4Click = function(event){
+		justep.Shell.showPage(require.toUrl("./market.w"));
 	};
 
 	return Model;
