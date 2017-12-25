@@ -288,7 +288,8 @@ define(function(require){
 		var type = row.val("type");
 		var remaining = row.val("remainingeggs");
 		var id = row.val("id");
-		justep.Shell.showPage(require.toUrl("./particulars"),{type:type,remaing:remiang,id:id});
+		var grandchildren = row.val("grandChildrenNum");
+		justep.Shell.showPage(require.toUrl("./particulars"),{type:type,remaing:remiang,id:id,grandchildren:grandchildren});
 	};
 
 	return Model;

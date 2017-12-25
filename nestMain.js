@@ -281,6 +281,8 @@ define(function(require){
 	
 	
 	Model.prototype.li2Click = function(event){
+		var row = event.bindingContext.$object;
+		this.comp("withdrawData").to(row);
 		this.comp("withDrawWindow").show();
 	};
 
