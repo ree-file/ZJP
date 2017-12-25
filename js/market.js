@@ -4,7 +4,7 @@ define(function(require){
 	var config = require("$UI/ZJP/js/config");
 	var jwt = require("./jwt");
 	function showprompt(text){
-		justep.Util.hint(text,{	
+		justep.Util.hint(text,{
 			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
 		});
 		$(".x-hint").find("button[class='close']").hide();
@@ -71,7 +71,7 @@ define(function(require){
 						allorders[i].childrenNum = ordersData[i].nest.children.length;
 						allorders[i].grandChildrenNum = num;
 						allorders[i].worth = ordersData[i].price;
-						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
+						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contr	acts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
 						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
 					}
 				},
@@ -131,7 +131,7 @@ define(function(require){
 				error:function(ero){//请求失败错误信息在ero里
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						jwt.authRefresh();
 						this.getorders();
 					}
@@ -144,7 +144,7 @@ define(function(require){
 			return allorders;
 		},
 		ordersInfo:function(){
-			
+
 		},
 		//获得交易记录--许鑫君
 		getTransactionRecord:function(){
@@ -183,7 +183,7 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						jwt.authRefresh();
 						this.getTransactionRecord();
 					}
@@ -192,7 +192,7 @@ define(function(require){
 						justep.Shell.showPage(require.toUrl("./index.w"));
 					}
 				}.bind(this)
-				
+
 			});
 			return record;
 		},
@@ -214,7 +214,7 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						jwt.authRefresh();
 						this.sellProduction(productionId,price);
 					}
@@ -247,7 +247,7 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						jwt.authRefresh();
 						this.notSold(id);
 					}

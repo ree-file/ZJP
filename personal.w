@@ -52,7 +52,13 @@
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;top:15%;">
      <div class="x-col" xid="col29" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
       <span xid="span15" style="font-size:x-small;color:#C3C3C3;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;"><![CDATA[绑定、添加银行卡]]></span></div> </div> </div> </div></div>
-   </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row1" style="margin-top:25px;background-color:#1C1F26;" bind-click="row1Click">
+   </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="inviteRow" style="margin-top:25px;background-color:#1C1F26;" bind-click="inviteRowClick">
+   <div class="x-col" xid="col24">
+    <span xid="span7" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[邀请他人]]></span></div> 
+   <div class="x-col x-col-10" xid="col25">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button6" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
+     <i xid="i4" class="dataControl dataControl-arrowrightl"></i>
+     <span xid="span12"></span></a> </div> </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row1" style="background-color:#1C1F26;" bind-click="row1Click">
    <div class="x-col" xid="col1"><span xid="span3" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[修改密码]]></span></div>
    <div class="x-col x-col-10" xid="col3"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button1" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
    <i xid="i1" class="dataControl dataControl-arrowrightl"></i>
