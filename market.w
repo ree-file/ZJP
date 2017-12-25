@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:56px;left:119px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone"> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="marketdata" idColumn="id" onCustomRefresh="marketdataCustomRefresh"><column name="id" type="Integer" xid="xid1"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="marketdata" idColumn="id" onCustomRefresh="marketdataCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid1"></column>
   <column name="name" type="String" xid="xid2"></column>
   <column name="childrenNum" type="Integer" xid="xid3"></column>
   <column name="grandChildrenNum" type="Integer" xid="xid4"></column>
@@ -60,7 +60,7 @@
     <span xid="span17">筛选</span></a> </div>
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata">
    <ul class="x-list-template" xid="listTemplateUl1">
-    <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
+    <li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
    <div class="x-col x-col-20" xid="col1" style="position:relative;"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='val("name")' class="center-block moneycenter"></span></div>
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;">
   
@@ -86,7 +86,7 @@
   </div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
-   <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;" bind-click="col3Click"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;">
+   <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;" onClick="button1Click">
    <i xid="i5"></i>
    <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div></li></ul> </div></div>
   <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
@@ -131,9 +131,9 @@
    <div class="x-popOver-content tb-sorting" xid="div6"><div xid="div7">
    <div class="list-group-item" xid="div26">
     <span class="pull-left" xid="span28">价格区间（元）</span>
-    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="minInput" style="width:30%;"></input>
+    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="minInput" style="width:30%;" onBlur="minInputBlur"></input>
     <span class="pull-left" xid="span27">－</span>
-    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="maxInput" style="width:30%;"></input>
+    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="maxInput" style="width:30%;" onBlur="maxInputBlur"></input>
     <div class="clearfix" xid="div27"></div></div> 
    
    
@@ -161,7 +161,7 @@
    <div class="x-col" xid="col29"><span xid="span7" class="center-block moneycenter" style="color:#FFFFFF;font-size:medium;font-family:等线 Light;width:90%;height:100%;top:5px;position:relative;"><![CDATA[确认付款]]></span></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="margin-top:10px;">
    <div class="x-col x-col-25" xid="col19"></div>
-   <div class="x-col" xid="col20"><span xid="span5" class="pull-left center-block moneycenterright" style="color:#FFFFFF;font-size:xx-large;font-family:等线 Light;width:10%;padding-right:6px;padding-top:0px;"><![CDATA[$]]></span><span xid="moneynumberSpan" class="center-block moneycenter" style="color:#FFFFFF;font-size:xx-large;font-family:等线 Light;width:90%;font-weight:bold;" bind-text='$model.marketdata.ref("money")'><![CDATA[]]></span>
+   <div class="x-col" xid="col20"><span xid="span5" class="pull-left center-block moneycenterright" style="color:#FFFFFF;font-size:xx-large;font-family:等线 Light;width:10%;padding-right:6px;padding-top:0px;"><![CDATA[$]]></span><span xid="moneynumberSpan" class="center-block moneycenter" style="color:#FFFFFF;font-size:xx-large;font-family:等线 Light;width:90%;font-weight:bold;"><![CDATA[]]></span>
   </div>
    <div class="x-col x-col-25" xid="col21"></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="padding-right:20px;padding-left:20px;">
@@ -172,7 +172,7 @@
     <span xid="span14" class="pull-right center-block" style="color:#FFFFFF;margin-right:8px;"><![CDATA[付款方式]]></span></div> 
    <div class="x-col x-col-50" xid="col12" style="margin-right:0px;margin-left:0px;padding-right:0px;padding-left:0px;border-bottom-style:groove;border-bottom-width:thin;"></div>
    <div class="x-col" xid="col14" style="padding-left:0px;margin-left:0px;border-bottom-style:groove;border-bottom-width:thin;">
-    <span xid="span16" class="pull-right center-block" style="color:#FFFFFF;margin-right:8px;"><![CDATA[钱包余额]]></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
+    <span xid="span16" class="pull-right center-block" style="color:#FFFFFF;margin-right:8px;"><![CDATA[市场余额]]></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
    <div class="x-col" xid="col4"></div>
    <div class="x-col" xid="col5"></div>
    <div class="x-col" xid="col6"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row8" style="position:relative;top:10px;">

@@ -10,6 +10,35 @@ define(function(require){
 		$(".x-hint").find("button[class='close']").hide();
 	}
 	return{
+		buy:function(id,password){
+			var is_success =false;
+			$.ajax({
+				url: config.site+"orders/"+id+"/buy",//php的api路径
+				async:false,
+				dataType:"json",
+				data:{security_code:password},//需要传递的数据
+				type:'patch',//php获取类型
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
+				},
+				success:function(data){//请求成功返回值存在data里
+					is_success=true;
+				},
+				error:function(ero){//请求失败错误信息在ero里
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.getorders();
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));
+					}
+				}.bind(this)
+			});
+			return is_success;
+		},
 		getorders : function(page){
 			var allorders=[];
 			var eggval = parseFloat(config.configegg().egg_val);
@@ -44,7 +73,57 @@ define(function(require){
 						allorders[i].worth = ordersData[i].price;
 						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
 						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
-						debugger;
+					}
+				},
+				error:function(ero){//请求失败错误信息在ero里
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.getorders();
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));
+					}
+				}.bind(this)
+			});
+			return allorders;
+		},
+		filterOrders:function(page,min,max){
+			var allorders=[];
+			var eggval = parseFloat(config.configegg().egg_val);
+			$.ajax({
+				url: config.site+"orders",//php的api路径
+				async:false,
+				dataType:"json",
+				data:{page:page,min:min,max:max},//需要传递的数据
+				type:'GET',//php获取类型
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
+				},
+				success:function(data){//请求成功返回值存在data里
+					var ordersData = data.data.data;
+					for (var i = 0; i < ordersData.length; i++) {
+						if (ordersData[i].status!="selling") {
+							continue;
+						}
+						var contract_remaining=0;
+						var contract = ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1];
+						contract_remaining = parseInt(contract.eggs)-parseInt(contract.extracted);
+						var num =0;
+						for (var j = 0; j < ordersData[i].nest.children.length; j++) {
+							num+=ordersData[i].nest.children[j].children.length;
+						}
+						allorders[i]={};
+						allorders[i].id=ordersData[i].id;
+						allorders[i].name=ordersData[i].nest.name,
+						allorders[i].nest_id = ordersData[i].nest_id,
+						allorders[i].childrenNum = ordersData[i].nest.children.length;
+						allorders[i].grandChildrenNum = num;
+						allorders[i].worth = ordersData[i].price;
+						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
+						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
 					}
 				},
 				error:function(ero){//请求失败错误信息在ero里
@@ -85,7 +164,7 @@ define(function(require){
 						if(data.data[i].buyer_id==null){
 							status ="Selling"
 						}
-						else if(data.data[i].buyer_id==data.data[i].user_id){
+						else if(data.data[i].buyer_id==localStorage.getItem("thismyuserId")){
 							status = "Bought";
 						}
 						else{

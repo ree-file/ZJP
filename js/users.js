@@ -48,6 +48,7 @@ define(function(require){
 						worthInfo['limit'] = parseFloat(data.data.money_limit);
 						worthInfo['active'] =  parseFloat(data.data.money_active);
 						worthInfo['all'] = worthInfo['market']+worthInfo['limit']+parseFloat(data.data.money_active);
+						localStorage.setItem("thismyuserId", data.data.id);
 					}
 					
 				},

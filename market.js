@@ -6,10 +6,9 @@ define(function(require){
 	var sell_nestId;//用于判断产品是否存在
 	var complex_page=1;
 	var filter_page=1;
+	var datastatus=0;
 	var Model = function(){
 		this.callParent();
-		this.type1=justep.Bind.observable('0');
-		this.type2=justep.Bind.observable(Number.POSITIVE_INFINITY);
 	};
 //封装提示框--许鑫君
 	Model.prototype.showprompt = function(text){
@@ -19,38 +18,40 @@ define(function(require){
 					$(".x-hint").find("button[class='close']").hide();
 	};
 	Model.prototype.modelLoad = function(event){
-//		var allorders = getorders.getorders();
-		// console.log(allorders);
-		var marketdata = this.comp("marketdata");
-        // for (var i = 0; i <= getorders.length-1; i++) {
-				// 	marketdata.add({
-        //     "id": i+1,
-        //     "username": getorders[i].username,
-        //     "number": getorders[i].number,
-        //     "bankname": getorders[i].bankname
-        //   });
-        // }
+		
 	};
 	//"X"按钮
 	Model.prototype.button4Click = function(event){
 		$(this.getElementByXid("popOver1")).hide();
 	};
-
-	//购买按钮
-	var nest_id,user_id,money;
-	Model.prototype.col3Click = function(event){
-		$(this.getElementByXid("popOver1")).show();
-	  nest_id = event.bindingContext.$object.val('nest_id');
-	  user_id = event.bindingContext.$object.val('user_id');//获取数据库当前行的孵化器的信息。然后把该孵化器信息的交易提交
-		console.log(user_id);
-		money = event.bindingContext.$object.val('money');
-	};
 	//确认支付按钮
 	Model.prototype.paybuttonClick = function(event){
-		// console.log(nest_id);
-		// console.log(user_id);
-		// console.log(money);
-
+		var market = this.comp("marketdata");
+		var orderId = market.val("id");
+		var password = $.trim($(this.getElementByXid("passwordInput")).val());
+		if (password) {
+			var is_success = getorders.buy(orderId,password);
+			if (is_success) {
+				this.showprompt("购买成功");
+				market.remove();
+				this.comp("transactionrecord").newData({
+					"defaultValues":[{
+						productioncode:market.val("name"),
+						transactionmoney:market.val("worth"),
+						date:new Date(),
+						status:"Bought"
+					}]
+				});
+				$(this.getElementByXid("passwordInput")).val("");
+				this.comp("popOver1").hide();
+			}
+			else{
+				this.showprompt("购买失败");
+			}
+		}
+		else{
+			this.showprompt("安全密码不能为空");
+		}
 	};
 	//排序按钮
 	Model.prototype.sortingBtnClick = function(event){
@@ -66,16 +67,17 @@ define(function(require){
 	};
 	//筛选价值的确认按钮
 	Model.prototype.betweenbuttonClick = function(event){
-		var min = this.getElementByXid("minInput").value;
-		var max = this.getElementByXid("maxInput").value;
-		if (!min) {
-			min = "0";
+		var min = $.trim(this.getElementByXid("minInput").value);
+		var max = $.trim(this.getElementByXid("maxInput").value);
+		if (min&&max) {
+			if (max!=0) {
+				datastatus = 1;
+			}
+			this.comp("marketdata").refreshData();
 		}
-		if (!max) {
-			max = Number.POSITIVE_INFINITY;
+		else{
+			this.showprompt("价格区间不能为空");
 		}
-		this.type1.set(min);
-		this.type2.set(max);
 		this.comp("screeningPopOver").hide();
 	};
 	//排序下的按钮
@@ -94,12 +96,9 @@ define(function(require){
 	};
 	//重置按钮
 	Model.prototype.resetBtnClick = function(event){
-		$(this.getElementByXid("minInput")).val("");
-		$(this.getElementByXid("maxInput")).val("");
-		var min = "0";
-		var max = Number.POSITIVE_INFINITY;
-		this.type1.set(min);
-		this.type2.set(max);
+		$(this.getElementByXid("minInput")).val(0);
+		$(this.getElementByXid("maxInput")).val(0);
+		datastatus =0;
 	};
 	//筛选按钮
 	Model.prototype.screeningBtnClick = function(event){
@@ -234,14 +233,57 @@ define(function(require){
 	};
 
 	Model.prototype.marketdataCustomRefresh = function(event){
-		if(complex_page=1){
+		if(complex_page==1&&datastatus==0){
 			event.source.clear();
+			var records = getorders.getorders(complex_page);
+			event.source.loadData(records);
 		}
-		var records = getorders.getorders(complex_page);
-		event.source.loadData(records);
+		else if(datastatus==0&&complex_page!=1){
+			
+		}
+		if (filter_page==1&&datastatus==1) {
+			event.source.clear();
+			var records = getorders.filterOrders(filter_page,parseFloat(this.comp("minInput").val()),parseFloat(this.comp("maxInput").val()));
+			event.source.loadData(records);
+		}
+		else if(datastatus==1&&filter_page!=1){
+			
+		}
+		
 	};
 
 	Model.prototype.modelModelConstructDone = function(event){
+	};
+
+	Model.prototype.minInputBlur = function(event){
+		var min = $.trim(this.comp("minInput").val());
+		var max = $.trim(this.comp("maxInput").val());
+		if (max) {
+			if (parseFloat(min)>parseFloat(max)) {
+				this.showprompt("价格区间错误");
+			}
+		}
+	};
+
+	Model.prototype.maxInputBlur = function(event){
+		var min = $.trim(this.comp("minInput").val());
+		var max = $.trim(this.comp("maxInput").val());
+		if (min) {
+			if (parseFloat(min)>parseFloat(max)) {
+				this.showprompt("价格区间错误");
+			}
+		}
+	};
+//购买按钮
+	Model.prototype.button1Click = function(event){
+		$(this.getElementByXid("popOver1")).show();
+		var row = event.bindingContext.$object;
+		this.comp("marketdata").to(row);
+		$(this.getElementByXid("moneynumberSpan")).html(this.comp("marketdata").val("worth"));
+	};
+
+	Model.prototype.li1Click = function(event){
+		
 	};
 
 	return Model;
