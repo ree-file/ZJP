@@ -76,7 +76,9 @@ define(function(require){
 	};
 
 	Model.prototype.inviteRowClick = function(event){
-		justep.Shell.showPage(require.toUrl("./ZJP_production.w"));
+		justep.Shell.showPage(require.toUrl("./ZJP_production.w"),{
+			action:"invite"
+		});
 	};
 
 	Model.prototype.row15Click = function(event){

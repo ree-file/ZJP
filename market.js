@@ -302,13 +302,6 @@ define(function(require){
 		var remaining = row.val("remainingeggs");
 		var id = row.val("id");
 		var grandchildren = row.val("grandChildrenNum");
-		justep.Shell.showPage(require.toUrl("./particulars.w"),{
-			action:"orderpart",
-			type:type,
-			remaing:remaining,
-			id:id,
-			grandchildren:grandchildren
-		});
 	};
 
 	Model.prototype.col2Click = function(event){

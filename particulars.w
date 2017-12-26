@@ -39,7 +39,7 @@
    <div class="x-col" xid="col14">
     <span xid="priceSpan" style="font-size:medium;" class="moneyspan"><![CDATA[]]></span></div> </div></div>
    <div xid="div1" style="position:absolute;background-color:#1C1F26;left:10%;top:-8%;padding-right:10px;padding-left:10px;"><span xid="span4" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[卖家详情]]></span></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row8" style="position:relative;border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;top:9%;height:245px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row8" style="position:relative;border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;top:9%;height:275px;">
    <div class="x-col" xid="col22" style="padding-top:9px;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
      <div class="x-col x-col-33" xid="col20">
