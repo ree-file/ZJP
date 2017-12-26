@@ -10,7 +10,8 @@
   <column name="contract_worth" type="Float" xid="xid17"></column>
   <column name="contract_remaining" type="Float" xid="xid18"></column>
   <column name="type" type="Integer" xid="xid19"></column>
-  <column name="remainingeggs" type="Integer" xid="xid20"></column></div>
+  <column name="remainingeggs" type="Integer" xid="xid20"></column>
+  <column name="freeseeggs" type="Integer" xid="xid21"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>
@@ -64,7 +65,7 @@
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
    <div class="x-col x-col-20" xid="col1" style="position:relative;" bind-click="col1Click"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='val("name")' class="center-block moneycenter"></span></div>
-   <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;" bind-click="col2Click">
+   <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;" bind-click="col1Click">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col x-col-25" xid="col10" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span13" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[剩余]]></span></div>

@@ -89,7 +89,7 @@ define(function(require){
 		}
 	};
 	Model.prototype.modelModelConstruct = function(event){
-		if (jwt.getToken) {
+		if (jwt.getToken()) {	
 			justep.Shell.showPage(require.toUrl("./ZJP_main.w"));
 		}
 	};

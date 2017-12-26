@@ -95,7 +95,6 @@ define(function(require) {
 		var eggval = config.configegg().egg_val
 		var records = nest.incomeInfo(ids,ids.length,times);
 		var MyincomeInfo = [];
-		debugger;
 		for (var i = 0; i < records.length; i++) {
 			if (records[i]!=undefined&&records[i].length!=0) {
 				for (var j = 0; j < records[i].length; j++){
