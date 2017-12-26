@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive"> 
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
@@ -75,7 +75,11 @@
     <span xid="nestGrandchildrenLengthSpan" style="font-size:medium;" class="redspan"><![CDATA[]]></span></div> </div>
   
   
-  </div> 
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
+   <div class="x-col x-col-33" xid="col2">
+    <span xid="span3" style="color:#C0C0C0;font-size:medium;"><![CDATA[所在社区]]></span></div> 
+   <div class="x-col" xid="col4">
+    <span xid="communitySpan" style="font-size:medium;" class="redspan"></span></div> </div></div> 
    <div xid="div2" style="position:absolute;background-color:#1C1F26;left:10%;padding-right:10px;padding-left:10px;top:-4%;">
     <span xid="span11" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[孵化器详情]]></span></div> </div></div>
   </div> 

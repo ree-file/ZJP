@@ -18,7 +18,7 @@ define(function(require){
 					$(".x-hint").find("button[class='close']").hide();
 	};
 	Model.prototype.modelLoad = function(event){
-		
+
 	};
 	//"X"按钮
 	Model.prototype.button4Click = function(event){
@@ -33,7 +33,7 @@ define(function(require){
 			var is_success = getorders.buy(orderId,password);
 			if (is_success) {
 				this.showprompt("购买成功");
-				
+
 				this.comp("transactionrecord").newData({
 					"defaultValues":[{
 						productioncode:market.val("name"),
@@ -43,7 +43,7 @@ define(function(require){
 					}]
 				});
 				market.remove();
-				
+
 				$(this.getElementByXid("passwordInput")).val("");
 				this.comp("popOver1").hide();
 			}
@@ -249,7 +249,7 @@ define(function(require){
 			event.source.loadData(records);
 		}
 		else if(datastatus==0&&complex_page!=1){
-			
+
 		}
 		if (filter_page==1&&datastatus==1) {
 			event.source.clear();
@@ -257,9 +257,9 @@ define(function(require){
 			event.source.loadData(records);
 		}
 		else if(datastatus==1&&filter_page!=1){
-			
+
 		}
-		
+
 	};
 
 	Model.prototype.modelModelConstructDone = function(event){
@@ -293,7 +293,7 @@ define(function(require){
 	};
 
 	Model.prototype.li1Click = function(event){
-		
+
 	};
 
 	Model.prototype.col1Click = function(event){
@@ -302,7 +302,13 @@ define(function(require){
 		var remaining = row.val("remainingeggs");
 		var id = row.val("id");
 		var grandchildren = row.val("grandChildrenNum");
-		justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren});
+		justep.Shell.showPage(require.toUrl("./particulars.w"),{
+			action:"orderpart",
+			type:type,
+			remaing:remaining,
+			id:id,
+			grandchildren:grandchildren
+		});
 	};
 
 	Model.prototype.col2Click = function(event){

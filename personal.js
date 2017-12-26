@@ -79,5 +79,9 @@ define(function(require){
 		justep.Shell.showPage(require.toUrl("./ZJP_production.w"));
 	};
 
+	Model.prototype.row15Click = function(event){
+		justep.Shell.showPage(require.toUrl("./mailLogin.w"));
+	};
+
 	return Model;
 });
