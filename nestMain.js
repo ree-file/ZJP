@@ -421,5 +421,10 @@ define(function(require){
 	};
 	
 	
+	Model.prototype.button11Click = function(event){
+		justep.Shell.showPage(require.toUrl("community.w"), {nest_id:this.comp("nest").val("id")});
+	};
+	
+	
 	return Model;
 });

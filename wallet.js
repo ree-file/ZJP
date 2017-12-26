@@ -47,7 +47,7 @@ define(function(require){
 	};
 
 	Model.prototype.row14Click = function(event){
-			justep.Shell.showPage(require.toUrl("./recharge.w"));
+			justep.Shell.showPage(require.toUrl('./ZJP_resetPassword.w'), {action:"resetsecondPassword"});
 	};
 
 	return Model;

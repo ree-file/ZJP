@@ -3,6 +3,7 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var login = require("./js/login");
 	var jwt = require('./js/jwt');
+	var user = require('./js/users');
 	var loginable =false;
 	var Model = function(){
 		this.callParent();
@@ -92,6 +93,9 @@ define(function(require){
 		if (jwt.getToken()) {	
 			justep.Shell.showPage(require.toUrl("./ZJP_main.w"));
 		}
+	};
+	Model.prototype.button2Click = function(event){
+		justep.Shell.showPage(require.toUrl("./ZJP_resetPassword.w"),{action:"resetpassword"});
 	};
 	return Model;
 });

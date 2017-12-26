@@ -201,7 +201,7 @@ define(function(require){
 	};
 
 	Model.prototype.button9Click = function(event){
-
+		justep.Shell.showPage(require.toUrl('./ZJP_resetPassword.w'), {action:"resetsecondPassword"});
 
 	};
 	Model.prototype.sell=function(price){

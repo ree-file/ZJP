@@ -29,7 +29,9 @@
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
       <div class="x-col" xid="col1">
        </div> 
-      <div class="x-col center-block text-center" xid="col2"><h5 xid="h55" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;">忘记密码？</h5></div>
+      <div class="x-col center-block text-center" xid="col2"><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="忘记密码" xid="button2" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;width:100%;" onClick="button2Click">
+   <i xid="i2"></i>
+   <span xid="span3">忘记密码</span></a></div>
       <div class="x-col" xid="col3">
        </div> </div> 
      <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="手机登录" xid="button3" style="background-color:#454C5E;border-width:0px 0px 0px 0px;" onClick="button3Click">

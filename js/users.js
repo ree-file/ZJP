@@ -11,6 +11,89 @@ define(function(require){
 		$(".x-hint").find("button[class='close']").hide();
 	}
 	return{
+		resetsecondPassword:function(password,code){
+			var is_success =false;
+			$.ajax({
+				url:config.site+"private/reset-security-code",
+				async:false,
+				dataType:"json",
+				type:"POST",
+				data:{security_code:password,code:code},
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					is_success=true;
+				},
+				error:function(){
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.resetPassword(password,code);
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage(require.toUrl("./index.w"));	
+					}
+				}.bind(this)
+			});
+			return is_success;
+		},
+		forgetsecondpassword:function(){
+			var is_success =false;
+			$.ajax({
+				url:config.site+"private/forget-security-code",
+				async:false,
+				dataType:"json",
+				type:"get",
+				data:{},
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					is_success=true;
+				},
+				error:function(){
+					is_success = false;
+				}
+			});
+			return is_success;
+		},
+		resetPassword:function(password,code,email){
+			var is_success =false;
+			$.ajax({
+				url:config.site+"reset-password",
+				async:false,
+				dataType:"json",
+				type:"POST",
+				data:{password:password,code:code,email:email},
+				success:function(data){
+					is_success=true;
+				},
+				error:function(){
+					is_success = false;
+				}
+			});
+			return is_success;
+		},
+		forgetpassword:function(email){
+			var is_success =false;
+			$.ajax({
+				url:config.site+"forget-password",
+				async:false,
+				dataType:"json",
+				type:"get",
+				data:{email:email},
+				success:function(data){
+					is_success=true;
+				},
+				error:function(){
+					is_success = false;
+				}
+			});
+			return is_success;
+		},
 		//判断某个用户是否存在--许鑫君
 		userlive:function(name){
 			var is_live =true;

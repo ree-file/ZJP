@@ -4,22 +4,7 @@
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
-      <div class="x-panel-top" xid="top1"> 
-        <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" style="background-color:#252932;">
-          <div class="x-titlebar-left"> 
-            <a component="$UI/system/components/justep/button/button"
-              label="" class="btn btn-link btn-only-icon" icon="icon-chevron-left"
-              onClick="{operation:'window.close'}" xid="backBtn"> 
-              <i class="icon-chevron-left"/>  
-              <span></span> 
-            </a> 
-          </div>  
-          <div class="x-titlebar-title"></div>  
-          <div class="x-titlebar-right reverse"> 
-          </div>
-        </div> 
-      </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#282F37;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
+      <div class="x-panel-content" xid="content1" style="background-color:#282F37;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
    <div class="x-panel-content" xid="content2">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:30%;">
    <div class="x-col" xid="col4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:100%;width:100%;position:relative;"><img src="$UI/ZJP/images/timg.jpg" alt="" xid="image1" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;width:100%;" height="100%"></img>
