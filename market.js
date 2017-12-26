@@ -304,7 +304,7 @@ define(function(require){
 		var grandchildren = row.val("grandChildrenNum");
 		var freeseeggs = row.val("freeseeggs");
 		justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren,freeseeggs:freeseeggs});
-		
+
 	};
 
 //	Model.prototype.col2Click = function(event){
