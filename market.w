@@ -182,7 +182,7 @@
    <div class="x-col x-col-25" xid="col22" style="padding:0px 0px 0px 0px;position:relative;"><span xid="span10" class="pull-right " style="color:#FFFFFF;margin:0px 0px 0px 0px;position:relative;top:13px;"><![CDATA[支付密码]]></span></div>
    <div class="x-col" xid="col23"><input component="$UI/system/components/justep/input/input" type = "password" class="form-control" xid="passwordInput"></input></div>
    <div class="x-col x-col-20" xid="col24"></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="position:absolute;bottom:5px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="position:relative;top:20%;">
    <div class="x-col x-col-10" xid="col25"></div>
    <div class="x-col" xid="col26"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="确认支付" xid="paybutton" onClick="paybuttonClick">
    <i xid="i7"></i>
