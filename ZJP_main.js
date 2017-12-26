@@ -11,7 +11,7 @@ define(function(require) {
 
 //封装提示框--许鑫君
 	Model.prototype.showprompt = function(text){
-		justep.Util.hint(text,{	
+		justep.Util.hint(text,{
 						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
 					});
 					$(".x-hint").find("button[class='close']").hide();
@@ -42,7 +42,7 @@ define(function(require) {
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){
 		var check = this.params.check;
-		
+
 		if (check==1) {
 			//检查用户是否有二级密码--许鑫君
 			var is_live = user.checksecondPassword();
@@ -92,7 +92,7 @@ define(function(require) {
 		var todayincome =0.00;
 		var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
 		var times = currentdate.getTime();
-		var eggval = config.configegg().egg_val
+		var eggval = config.configegg().egg_val;
 		var records = nest.incomeInfo(ids,ids.length,times);
 		var MyincomeInfo = [];
 		for (var i = 0; i < records.length; i++) {
@@ -129,7 +129,7 @@ define(function(require) {
 				ids[i]=nestInfo.contracts[i].nest_id;
 			}
 		}
-		
+
 
 		this.comp("incomeAccount").refreshData();
 	};

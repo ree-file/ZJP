@@ -112,7 +112,7 @@
    <div class="x-col x-col-10" xid="col22">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button4" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
      <i xid="i7" class="dataControl dataControl-arrowrightl"></i>
-     <span xid="span24"></span></a> </div> </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row15" style="background-color:#1C1F26;position:relative;">
+     <span xid="span24"></span></a> </div> </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row15" style="background-color:#1C1F26;position:relative;" bind-click="row15Click">
    <div class="x-col" xid="col36" style="position:relative;">
     <span xid="span21" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[退出登录]]>
   </span></div> 
