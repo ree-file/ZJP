@@ -7,7 +7,9 @@
   <data xid="default1">[{&quot;id&quot;:1,&quot;type&quot;:&quot;第一级产品&quot;,&quot;is_show&quot;:1},{&quot;id&quot;:2,&quot;type&quot;:&quot;第二级产品&quot;,&quot;is_show&quot;:1},{&quot;id&quot;:3,&quot;type&quot;:&quot;第三级产品&quot;,&quot;is_show&quot;:1},{&quot;id&quot;:4,&quot;type&quot;:&quot;第四级产品&quot;,&quot;is_show&quot;:1}]</data></div></div> 
 <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1">
    <div class="x-panel-top" xid="top1"><div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar backgroundAll" xid="titleBar1" title="猫窝升级">
-   <div class="x-titlebar-left" xid="left1"></div>
+   <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" xid="button11" icon="linear linear-chevronleft" onClick="button11Click">
+   <i xid="i11" class="linear linear-chevronleft"></i>
+   <span xid="span1"></span></a></div>
    <div class="x-titlebar-title" xid="title1">猫窝升级</div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>
    <div class="x-panel-content backgroundAll" xid="content1"><div xid="div1" class="introduction">
