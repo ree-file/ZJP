@@ -140,12 +140,13 @@ define(function(require) {
 		var params = {
 				nest_id:row.val("nest_id"),
 				contract_id:row.val("id"),
+				page:"ZJP_main"
 		};
-		justep.Shell.showPage(require.toUrl("./nestMain.w"), params);
+		justep.Shell.showPage("nestMain", params);
 	};
 
 	Model.prototype.button4Click = function(event){
-		justep.Shell.showPage(require.toUrl("./market.w"));
+		justep.Shell.showPage("market");
 	};
 
 	return Model;

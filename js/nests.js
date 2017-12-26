@@ -87,7 +87,7 @@ define(function(require){
 						nest_Info.contracts[i] = {};
 						nest_Info.contracts[i].id = data.data[i].contracts[data.data[i].contracts.length-1].id;
 						nest_Info.contracts[i].nest_id =  data.data[i].id;
-						nest_Info.contracts[i].income = Math.floor(parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_receivers)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_community)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_weeks));
+						nest_Info.contracts[i].income = Math.floor(parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_receivers)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_community)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_weeks))*parseFloat(eggval);
 						nest_Info.contracts[i].time = data.data[i].created_at;
 						nest_Info.contracts[i].worth = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs*eggval);
 						nest_Info.contracts[i].rate="300%";

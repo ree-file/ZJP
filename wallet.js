@@ -47,11 +47,11 @@ define(function(require){
 	};
 
 	Model.prototype.row14Click = function(event){
-			justep.Shell.showPage(require.toUrl('./transfermoney.w'));
+			justep.Shell.showPage("transfermoney");
 	};
 
 	Model.prototype.resetSecurityClick = function(event){
-			justep.Shell.showPage(require.toUrl('./ZJP_resetPassword.w'), {action:"resetsecondPassword"});
+			justep.Shell.showPage("ZJP_resetPassword", {action:"resetsecondPassword"});
 	};
 
 	return Model;

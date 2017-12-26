@@ -48,11 +48,22 @@
 	border-radius:10px;
 }
 .chooseSoleStatus{
-	background-color:rgb(179,168,150);
 	width:60%;
 	height:25%;
+	background:#282B32;
 	border-radius:5px;
-	box-shadow: 10px 10px 5px #888888;
+	/* box-shadow:5px 5px 5px #868687; */
+	border-with:1px;
+	border-style:solid;
+	border-color:#3BBFFF;
+}
+.chooseSoleStatus .btn{
+	width:100%;
+	border-radius:5px;
+	border-width:2px;
+	border-style:solid;
+	border-color:#3BBFFF;;
+	color:white;
 }
 .chooseSoleStatus{
 	display:table;

@@ -49,19 +49,19 @@ define(function(require){
 	};
 
 	Model.prototype.col7Click = function(event){
-		justep.Shell.showPage(require.toUrl("./wallet.w"));
+		justep.Shell.showPage("wallet");
 	};
 
 	Model.prototype.col8Click = function(event){
-		justep.Shell.showPage(require.toUrl("./bankBanding.w"));
+		justep.Shell.showPage("bankBanding");
 	};
 
 	Model.prototype.row14Click = function(event){
-		justep.Shell.showPage(require.toUrl("./illustrate.w"));
+		justep.Shell.showPage("illustrate");
 	};
 
 	Model.prototype.row16Click = function(event){
-		justep.Shell.showPage(require.toUrl("./versioninformation.w"));
+		justep.Shell.showPage("versioninformation");
 	};
 
 	Model.prototype.col17Click = function(event){
@@ -77,13 +77,13 @@ define(function(require){
 	};
 
 	Model.prototype.inviteRowClick = function(event){
-		justep.Shell.showPage(require.toUrl("./ZJP_production.w"),{
+		justep.Shell.showPage("ZJP_production",{
 			action:"invite"
 		});
 	};
 
 	Model.prototype.row15Click = function(event){
-		justep.Shell.showPage(require.toUrl("./mailLogin.w"));
+		justep.Shell.showPage("mailLogin");
 		jwt.removeToken();
 	};
 

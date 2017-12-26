@@ -370,7 +370,7 @@ define(function(require){
 					current_rank=i;
 				}
 			}
-			justep.Shell.showPage(require.toUrl("./ZJP_production.w"), {
+			justep.Shell.showPage("ZJP_production", {
 				action:"upgrade",
 				nest_id:this.comp("nest").val("id"),
 				current_rank:current_rank,
@@ -383,7 +383,7 @@ define(function(require){
 	Model.prototype.button3Click = function(event){
 		var is_finished = this.comp("nest").val("is_finished");
 		if (is_finished==1) {
-			justep.Shell.showPage(require.toUrl("./ZJP_production.w"), {
+			justep.Shell.showPage("ZJP_production", {
 				action:"Re-investment",
 				nest_id:this.comp("nest").val("id"),
 				current_worth:0,
@@ -397,7 +397,7 @@ define(function(require){
 	
 	//创建小窝
 	Model.prototype.button4Click = function(event){
-		justep.Shell.showPage(require.toUrl("./market.w"), {
+		justep.Shell.showPage("market", {
 				action:"sell",
 				nest_id:this.comp("nest").val("id"),
 				name:this.comp("nest").val("name"),
@@ -406,7 +406,7 @@ define(function(require){
 	
 	
 	Model.prototype.button9Click = function(event){
-		justep.Shell.showPage(require.toUrl("./ZJP_production.w"), {
+		justep.Shell.showPage("ZJP_production", {
 				action:"create",
 				nest_id:this.comp("nest").val("id"),
 				current_worth:0,
@@ -420,7 +420,7 @@ define(function(require){
 	
 	
 	Model.prototype.button11Click = function(event){
-		justep.Shell.showPage(require.toUrl("community.w"), {nest_id:this.comp("nest").val("id")});
+		justep.Shell.showPage("community", {nest_id:this.comp("nest").val("id")});
 	};
 	
 	

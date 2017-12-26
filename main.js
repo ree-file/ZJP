@@ -130,7 +130,7 @@ define(function(require){
 			}else{
 				var is_success=login.phonelogin(Prefix+phoneNumber,password);
 				if (is_success) {
-					justep.Shell.showPage(require.toUrl("./ZJP_main.w"),{check:1});
+					justep.Shell.showPage("ZJP_main",{check:1});
 				}
 				else{
 					this.showprompt("账号或密码错误");

@@ -145,6 +145,7 @@ define(function(require){
 					nest_id = this.params.nest_id;
 					current_rank = this.params.current_rank;
 					worth = this.params.current_worth;
+					$(this.getElementByXid("span21")).html("关于升级");
 			}
 			else{
 					this.comp("titleBar1").set({
@@ -152,7 +153,7 @@ define(function(require){
 					});
 					nest_id = this.params.nest_id;
 					worth = 0;
-					$(this.getElementByXid("h51")).text("关于复投");
+					$(this.getElementByXid("span21")).html("关于升级");
 				}
 			$(this.getElementByXid("production_worth")).html(worth);
 		}
@@ -161,7 +162,7 @@ define(function(require){
 			this.comp("titleBar1").set({
 				title:"猫窝创建"
 			});
-			$(this.getElementByXid("h51")).text("关于创建");
+			$(this.getElementByXid("span21")).html("关于创建");
 //			创建的时候不需要邮箱地址也不需要邀请人，更不需要产品信息
 			$(this.getElementByXid("upgrade-message")).addClass("common_show");
 			$(this.getElementByXid("row4")).addClass("common_show");
@@ -173,6 +174,7 @@ define(function(require){
 			this.comp("titleBar1").set({
 				title:"猫窝邀请"
 			});
+			$(this.getElementByXid("span21")).html("关于邀请");
 		}
 	};
 	//不同的action不同的操作
@@ -379,7 +381,7 @@ define(function(require){
 	};
 //前往二级密码重置页面
 	Model.prototype.button9Click = function(event){
-
+		justep.Shell.showPage("ZJP_resetPassword");
 	};
 
 	Model.prototype.typedataCustomRefresh = function(event){

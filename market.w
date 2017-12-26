@@ -211,7 +211,7 @@
    <div class="x-popOver-content setSecondPassword chooseSoleStatus" xid="div10" style="height:auto;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
      <div class="x-col x-col-33" xid="col52">
-      <h5 xid="h52" style="color:#000000;">二级密码：</h5></div> 
+      <h5 xid="h52" style="color:#FFF8F3;">二级密码：</h5></div> 
      <div class="x-col" xid="col54">
       <input component="$UI/system/components/justep/input/password" class="form-control input-sm" xid="password1"></input></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row secondcheck" xid="row23">

@@ -254,7 +254,7 @@ define(function(require){
 	};
 
 	Model.prototype.button9Click = function(event){
-		justep.Shell.showPage(require.toUrl('./ZJP_resetPassword.w'), {action:"resetsecondPassword"});
+		justep.Shell.showPage("ZJP_resetPassword", {action:"resetsecondPassword"});
 
 	};
 	Model.prototype.sell=function(price){
@@ -390,7 +390,7 @@ define(function(require){
 		var id = row.val("id");
 		var grandchildren = row.val("grandChildrenNum");
 		var freeseeggs = row.val("freeseeggs");
-		justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren,freeseeggs:freeseeggs});
+		justep.Shell.showPage("particulars",{type:type,remaing:remaining,id:id,grandchildren:grandchildren,freeseeggs:freeseeggs});
 
 	};
 

@@ -64,10 +64,10 @@
     <h5 xid="investment" class="leftspan"><![CDATA[]]></h5></div> </div>
   
   <div component="$UI/system/components/justep/row/row" class="x-row row-introduction normalRow" xid="row3">
-   <div class="x-col x-col-20" xid="col7"><h5 xid="h51" class="text-left  leftspan"><![CDATA[关于升级]]></h5></div>
-   <div class="x-col" xid="col9"><a component="$UI/system/components/justep/button/button" class="btn btn-xs button8" label="查看" xid="button8" onClick="button8Click">
+   <div class="x-col x-col-20" xid="col7"></div>
+   <div class="x-col" xid="col9"><a component="$UI/system/components/justep/button/button" class="btn btn-xs button8" xid="button8" onClick="button8Click">
    <i xid="i8"></i>
-   <span xid="span21">查看</span></a></div>
+   <span xid="span21"></span></a></div>
   <div class="x-col x-col-20" xid="col42"></div></div><div xid="div2" class="introduction-article"><p xid="p1"><![CDATA[您将支付与现猫窝不同种类猫窝的差价来将其升级为更高级的猫窝]]></p></div><div component="$UI/system/components/justep/row/row" class="x-row submit" xid="submit">
    <div class="x-col" xid="col29"><a component="$UI/system/components/justep/button/button" class="btn blueButton" label="确定" xid="button6" onClick="button6Click">
    <i xid="i6"></i>
@@ -86,10 +86,10 @@
   <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0">
    <div class="x-popOver-overlay" xid="div4"></div>
    <div class="x-popOver-content" xid="div5"><p xid="p2"><![CDATA[这是一段帮助内容，内容随着不同按钮点击而变化]]></p></div></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword" opacity="0">
    <div class="x-popOver-overlay" xid="div7"></div>
    <div class="x-popOver-content" xid="div8" style="height:auto;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
-   <div class="x-col x-col-33" xid="col2"><h5 xid="h52" style="color:#000000;"><![CDATA[二级密码：]]></h5></div>
+   <div class="x-col x-col-33" xid="col2"><h5 xid="h52" style="color:#FAFFF3;"><![CDATA[二级密码：]]></h5></div>
    <div class="x-col" xid="col3"><input component="$UI/system/components/justep/input/password" class="form-control input-sm" xid="password1"></input></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row secondcheck" xid="row2">
    <div class="x-col" xid="col5"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="确认密码" xid="button7" style="color:#8E8E8E;" onClick="button7Click">

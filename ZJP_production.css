@@ -70,11 +70,14 @@ select {
 	height:auto;
 }
 .x-popOver-content{
-	background-color:rgb(179,168,150);
 	width:60%;
 	height:25%;
+	background:#282B32;
 	border-radius:5px;
-	box-shadow: 10px 10px 5px #888888;
+	/* box-shadow:5px 5px 5px #868687; */
+	border-with:1px;
+	border-style:solid;
+	border-color:#3BBFFF;
 }
 .x-popOver-content{
 	display:table;
