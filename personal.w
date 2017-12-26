@@ -18,10 +18,10 @@
    <span xid="span5"></span></a></div>
    <div class="x-col" xid="col21" style="margin:0px 0px 0px 0px;position:relative;padding-right:0px;padding-bottom:0px;padding-left:0px;">
   
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="margin:8px 0px 0px 0px;position:relative;border-right-style:groove;border-right-width:thin;top:15%;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="margin:8px 0px 0px 0px;position:relative;border-right-style:groove;border-right-width:thin;padding-right:0px;padding-bottom:0px;padding-left:0px;">
    <div class="x-col" xid="col23" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;"><span xid="span6" style="font-size:large;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;top:1%;"><![CDATA[钱包]]></span></div>
    </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-right-style:groove;border-right-width:thin;position:relative;top:15%;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-right-style:groove;border-right-width:thin;position:relative;">
    <div class="x-col" xid="col26" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span8" style="font-size:x-small;color:#C3C3C3;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;"><![CDATA[交易&激活金额]]></span></div>
    </div></div>
    </div></div>
@@ -31,10 +31,10 @@
      <i xid="i3" class="icon-card" style="position:relative;top:18%;left:15%;"></i>
      <span xid="span11"></span></a> </div> 
    <div class="x-col" xid="col31" style="margin:0px 0px 0px 0px;position:relative;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="margin:8px 0px 0px 0px;position:relative;top:15%;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="margin:8px 0px 0px 0px;position:relative;padding-right:0px;padding-bottom:0px;padding-left:0px;">
      <div class="x-col" xid="col30" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
       <span xid="span14" style="font-size:large;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;top:1%;"><![CDATA[银行卡绑定]]></span></div> </div> 
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;top:15%;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
      <div class="x-col" xid="col29" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
       <span xid="span15" style="font-size:x-small;color:#C3C3C3;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;"><![CDATA[绑定、添加银行卡]]></span></div> </div> </div> </div></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="inviteRow" style="margin-top:25px;background-color:#1C1F26;" bind-click="inviteRowClick">
