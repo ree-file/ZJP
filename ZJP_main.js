@@ -100,7 +100,7 @@ define(function(require) {
 				for (var j = 0; j < records[i].length; j++){
 					MyincomeInfo[MyincomeInfo.length]={
 							contract_id:records[i][j].contract_id,
-							type:records[i][j].type=="invite_got"?"邀请获得":records[i][j].type=="community_got"?"家族获得":"日常获得",
+							type:records[i][j].type=="invite_got"?"邀请获得":records[i][j].type=="week_got"?"日常获得":"家族获得",
 							income:parseFloat(parseFloat(records[i][j].eggs)*parseFloat(eggval)).toFixed(2),
 							date:records[i][j].created_at
 					};
@@ -121,6 +121,7 @@ define(function(require) {
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
+		
 		var nestInfo = nest.nestInfo();
 		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
 		event.source.loadData(nestInfo.contracts);
