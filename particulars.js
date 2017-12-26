@@ -8,6 +8,7 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
+		console.log(this.params.type);
 		var orderparticulars = nestParticulars.orders("2");
 		var orderIDSpan = $(this.getElementByXid("orderIDSpan"));
 		var sellerIDSpan = $(this.getElementByXid("sellerIDSpan"));
