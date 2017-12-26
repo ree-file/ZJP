@@ -2,6 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var personaljs = require('./js/personal');
+	var jwt = require('./js/jwt');
 	var ifhid = 0;
 	var pwState = false;
 
@@ -60,7 +61,7 @@ define(function(require){
 	};
 
 	Model.prototype.row16Click = function(event){
-		justep.Shell.showPage(require.toUrl("./varsioninformation.w"));
+		justep.Shell.showPage(require.toUrl("./versioninformation.w"));
 	};
 
 	Model.prototype.col17Click = function(event){
@@ -83,6 +84,7 @@ define(function(require){
 
 	Model.prototype.row15Click = function(event){
 		justep.Shell.showPage(require.toUrl("./mailLogin.w"));
+		jwt.removeToken();
 	};
 
 	return Model;

@@ -89,7 +89,7 @@
   </div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
-   <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;z-index:9999999;" onClick="button1Click">
+   <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;" onClick="button1Click">
    <i xid="i5"></i>
    <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div></li></ul> </div></div>
   <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
