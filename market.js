@@ -254,6 +254,7 @@ define(function(require){
 		if (filter_page==1&&datastatus==1) {
 			event.source.clear();
 			var records = getorders.filterOrders(filter_page,parseFloat(this.comp("minInput").val()),parseFloat(this.comp("maxInput").val()));
+			debugger;
 			event.source.loadData(records);
 		}
 		else if(datastatus==1&&filter_page!=1){
