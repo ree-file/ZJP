@@ -307,14 +307,14 @@ define(function(require){
 
 	};
 
-	// Model.prototype.col2Click = function(event){
-	// 	var row = event.bindingContext.$object;
-	// 	var type = row.val("type");
-	// 	var remaining = row.val("remainingeggs");
-	// 	var id = row.val("id");
-	// 	var grandchildren = row.val("grandChildrenNum");
-	// 	justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren});
-	// };
+//	Model.prototype.col2Click = function(event){
+//		var row = event.bindingContext.$object;
+//		var type = row.val("type");
+//		var remaining = row.val("remainingeggs");
+//		var id = row.val("id");
+//		var grandchildren = row.val("grandChildrenNum");
+//		justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren});
+//	};
 
 	return Model;
 });
