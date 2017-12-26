@@ -25,9 +25,9 @@ define(function(require){
         },
 				success:function(data){//请求成功返回值存在data里
 					Banded = data.data;
-					console.log(Banded);
 				},
 				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
+					showprompt('查询失败');
 					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
             		if (jwt.authRefresh()) {
             			this.getUser(); // 重新调用自己再次访问

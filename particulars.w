@@ -61,7 +61,7 @@
    <div class="x-col" xid="col27">
     <span xid="eggsrestspan" style="font-size:medium;" class="redspan"><![CDATA[]]></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
    <div class="x-col x-col-33" xid="col30">
-    <span xid="span24" style="color:#C0C0C0;font-size:medium;"><![CDATA[孵化情况]]></span></div> 
+    <span xid="span24" style="color:#C0C0C0;font-size:medium;"><![CDATA[未孵蛋数]]></span></div> 
    <div class="x-col" xid="col29">
     <span xid="eggscasespan" style="font-size:medium;" class="redspan"><![CDATA[]]></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row7">
      <div class="x-col x-col-33" xid="col16">

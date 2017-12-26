@@ -25,7 +25,6 @@ define(function(require){
         },
 				success:function(data){//请求成功返回值存在data里
 					orderparticulars = data.data;
-					console.log(data.data);
 				},
 				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
 					showprompt('查询失败');
