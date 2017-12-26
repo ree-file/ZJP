@@ -11,7 +11,8 @@
   <column name="contract_remaining" type="Float" xid="xid18"></column>
   <column name="type" type="Integer" xid="xid19"></column>
   <column name="remainingeggs" type="Integer" xid="xid20"></column>
-  <column name="freeseeggs" type="Integer" xid="xid21"></column></div>
+  <column name="freeseeggs" type="Integer" xid="xid21"></column>
+  <column name="orderid" type="Integer" xid="xid25"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>
@@ -23,7 +24,11 @@
   <column name="date" type="Date" xid="xid14"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="price" idColumn="id"><column name="id" type="Integer" xid="xid15"></column>
   <column name="price" type="Integer" xid="xid16"></column>
-  <data xid="default5">[{&quot;id&quot;:1,&quot;price&quot;:0}]</data></div></div>  
+  <data xid="default5">[{&quot;id&quot;:1,&quot;price&quot;:0}]</data></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="filterdata" idColumn="id"><column name="id" type="Integer" xid="xid22"></column>
+  <column name="min" type="Float" xid="xid23"></column>
+  <column name="max" type="Float" xid="xid24"></column>
+  <data xid="default2">[{&quot;id&quot;:1,&quot;min&quot;:0,&quot;max&quot;:0}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -53,7 +58,7 @@
    <i xid="i4"></i>
    <span xid="span4">快捷卖出</span></a></div>
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" style="position:relative;top:40px;">
-   <div class="x-contents-content" xid="marketcontent"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup2" style="height:40px;">
+   <div class="x-contents-content" xid="marketcontent" bind-touchstart="marketcontentTouchstart" bind-touchend="marketcontentTouchend"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup2" style="height:40px;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="综合排序" xid="sortingBtn" icon="icon-arrow-down-b" onClick="sortingBtnClick" style="width:30%;">
     <i xid="i13" class="icon-arrow-down-b text-danger" style="color:#24A3EE;"></i>
     <span class="text-primary" xid="span24">综合排序</span></a> 
@@ -63,7 +68,8 @@
     <span xid="span17">筛选</span></a> </div>
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata">
    <ul class="x-list-template" xid="listTemplateUl1">
-    <li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
+    <div xid="div13" class="refresh"><span xid="span49" style="font-size:medium;"></span>
+  <span xid="span48">加载中</span></div><li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
    <div class="x-col x-col-20" xid="col1" style="position:relative;" bind-click="col1Click"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='val("name")' class="center-block moneycenter"></span></div>
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;" bind-click="col1Click">
   
@@ -91,7 +97,10 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" label="购买" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;height:100%;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;" onClick="button1Click">
    <i xid="i5"></i>
-   <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div></li></ul> </div></div>
+   <span xid="span8" style="position:relative;">购买</span></a></div></div></div></div>
+  </li></ul> </div>
+  <div xid="div12" class="load"><span xid="span42" style="font-size:medium;"><![CDATA[]]></span>
+  <span xid="span47"><![CDATA[加载完成]]></span></div></div>
   <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
    <div class="x-col x-col-33" xid="col39"><span xid="span21"><![CDATA[产品编号]]></span></div>
    <div class="x-col" xid="col43"><span xid="span22"><![CDATA[金额]]></span></div>
@@ -151,9 +160,6 @@
    <div class="x-popOver-content tb-sorting" xid="div4"><div component="$UI/system/components/justep/list/list" class="x-list" data="conditionData" bind-click="sortingListClick" xid="conditionList" dataItemAlias="conditionRow">
    <ul class="x-list-template" xid="ul1">
     <li class="list-group-item" bind-css="{'current':conditionRow.val('fState')==1}" xid="li2">
-     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-xs btn-only-icon pull-right tb-liBtn" label="button" icon="icon-checkmark" xid="button5">
-      <i xid="i11" class="icon-checkmark text-danger"></i>
-      <span xid="span29"></span></a> 
      <span bind-text='val("fName")' xid="span25"></span></li> </ul> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0.2" position="bottom" style="background-color:#1C1F26;width:100%;left:0%;top:40%;height:60%;">
    <div class="x-popOver-overlay" xid="div1"></div>
    <div class="x-popOver-content" xid="div2" style="background-color:#1C1F26;width:100%;left:0%;top:40%;height:60%;border-top-style:groove;border-top-width:thin;">

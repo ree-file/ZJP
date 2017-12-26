@@ -7,8 +7,15 @@ define(function(require){
 	var complex_page=1;
 	var filter_page=1;
 	var datastatus=0;
+	var starty=0;
+	var endy =0;
+	var is_append=0;
+	var is_loading=0;
+	var is_refresh = 0;
+	var me;
 	var Model = function(){
 		this.callParent();
+		me =this;
 	};
 //封装提示框--许鑫君
 	Model.prototype.showprompt = function(text){
@@ -76,12 +83,48 @@ define(function(require){
 				datastatus = 1;
 			}
 			this.comp("marketdata").refreshData();
+			this.comp("filterdata").setValue("min",min);
+			this.comp("filterdata").setValue("max",max);
 		}
 		else{
 			this.showprompt("价格区间不能为空");
 		}
 		this.comp("screeningPopOver").hide();
 	};
+	Model.prototype.orderby =function(objData,relation,type){
+            var lRow = objData.getLastRow();
+            var len = objData.count();
+            var row1,row2;
+            for (var i = 0;i<len;i++) {                   
+                    objData.first(); //获取第一行位置，一次比较均是从第一行开始
+                    do {
+                        row1 = objData.getCurrentRow();
+                        objData.next();
+                        row2 = objData.getCurrentRow();
+
+                        switch(type){
+                            case 0:
+                                    if (row1.val(relation) > row2.val(relation)) {
+                                        objData.exchangeRow(row1,row2);
+                                }
+                                    break;
+                            case 1:
+                                    if (row1.val(relation) < row2.val(relation)) {
+                                        objData.exchangeRow(row1,row2);
+                                }
+                            }        
+                    } while (lRow != row2);
+                    
+                    //获取比较的最后的位置，循环一次，往前推一个
+                    objData.last();
+                    for (var j = 0; j < i; j++) {
+                            objData.pre();
+                    }
+                    lRow= objData.getCurrentRow();
+
+            }// end for
+  
+	}
 	//排序下的按钮
 	// 1、排序点击事件
 	// 2、修改当前排序
@@ -92,9 +135,19 @@ define(function(require){
 		var row = data.getCurrentRow();
 		data.setValue("fState","1",row);
 		this.comp("sortingBtn").set("label",data.getValue("fName",row));
-		this.comp("sortingPopOver").hide();
 		var rank = data.getValue("fName",row);
-		console.log(rank);
+		if (rank=="价格升序") {
+			this.orderby(this.comp("marketdata"),"worth",1);
+			this.comp("list1").refresh(false);
+		}
+		else if(rank=="价格降序")	{
+			this.orderby(this.comp("marketdata"),"worth",0);
+		}
+		else{
+			this.orderby(this.comp("marketdata"),"orderid",1);
+		}
+		this.comp("sortingPopOver").hide();
+		
 	};
 	//重置按钮
 	Model.prototype.resetBtnClick = function(event){
@@ -241,24 +294,57 @@ define(function(require){
 			this.sell(price);
 		}
 	};
-
+	Model.prototype.loading=function(records){
+		if (records.length==0) {
+				is_append =1;
+			}
+			if (is_append==0) {
+				event.source.newData({
+					"defaultValues":records
+				});
+			}
+			else{
+				this.showprompt("暂无更多数据");
+			}
+			setTimeout(function(){
+				$(this.getElementByXid("span42")).removeClass("icon-ios7-reloading");
+				$(this.getElementByXid("span42")).addClass("icon-ios7-reload");
+				$(this.getElementByXid("span47")).html("加载完成");
+				is_loading=0;
+			}, 1000);
+			
+	};
+	Model.prototype.refresh=function(){
+		$(this.getElementByXid("span49")).removeClass("icon-ios7-reloading");
+			$(this.getElementByXid("span49")).addClass("icon-ios7-reload");
+			$(this.getElementByXid("span48")).html("刷新完成");
+			$(this.getElementByXid("div13")).animate({height:0},"slow",function(){
+				$(me.getElementByXid("div13")).removeClass("show");
+				is_refresh=0;
+			});
+	};
 	Model.prototype.marketdataCustomRefresh = function(event){
 		if(complex_page==1&&datastatus==0){
 			event.source.clear();
 			var records = getorders.getorders(complex_page);
 			event.source.loadData(records);
+			this.refresh();
 		}
 		else if(datastatus==0&&complex_page!=1){
-
+			var records = getorders.getorders(complex_page);
+			this.loading(records);
+			
 		}
 		if (filter_page==1&&datastatus==1) {
 			event.source.clear();
-			var records = getorders.filterOrders(filter_page,parseFloat(this.comp("minInput").val()),parseFloat(this.comp("maxInput").val()));
-			debugger;
+			var records = getorders.filterOrders(filter_page,this.comp("filterdata").val("min"),this.comp("filterdata").val("max"));
 			event.source.loadData(records);
+			this.refresh();
 		}
 		else if(datastatus==1&&filter_page!=1){
-
+			var records = getorders.filterOrders(filter_page,this.comp("filterdata").val("min"),this.comp("filterdata").val("max"));
+			this.loading(records);
+			
 		}
 
 	};
@@ -316,6 +402,60 @@ define(function(require){
 //		var grandchildren = row.val("grandChildrenNum");
 //		justep.Shell.showPage(require.toUrl("./particulars.w"),{type:type,remaing:remaining,id:id,grandchildren:grandchildren});
 //	};
+
+	Model.prototype.marketcontentTouchstart = function(event){
+		starty = event.originalEvent.changedTouches[0].pageY;
+	};
+
+	Model.prototype.marketcontentTouchend = function(event){
+		endy = event.originalEvent.changedTouches[0].pageY;	
+		 var scrollTop = document.documentElement.scrollTop;
+		 var height = document.documentElement.scrollHeight;
+		 var screen = document.documentElement.clientHeight;
+		 if (height<=screen+scrollTop&&is_loading==0&&starty-endy>100&&this.comp("marketdata").count()%10==0) {
+			if (starty-endy>100) {
+				$(this.getElementByXid("span42")).removeClass("icon-ios7-reload");
+				$(this.getElementByXid("span42")).addClass("icon-ios7-reloading");
+				$(this.getElementByXid("span47")).html("加载中");
+				is_loading=1;
+				if (datastatus==0) {
+					complex_page+=1;
+					this.comp("marketdata").refreshData();
+				}
+				else if(datastatus==1)
+				{
+					filter_page+=1;
+					this.comp("marketdata").refreshData();
+				}
+			}
+		}
+		else if(scrollTop<=0&&is_refresh==0&&starty-endy<-100){
+			if (starty-endy<-100) {
+				$(this.getElementByXid("div13")).addClass("show");
+				$(this.getElementByXid("div13")).attr({
+					height:0
+				});
+				$(this.getElementByXid("span49")).removeClass("icon-ios7-reload");
+				$(this.getElementByXid("span49")).addClass("icon-ios7-reloading");
+				$(this.getElementByXid("span48")).html("刷新中");
+				is_refresh=1;
+				$(this.getElementByXid("div13")).animate({height:22}, "slow",function(){});
+				setTimeout(function(){
+					if (datastatus==0) {
+					complex_page=1;
+					me.comp("marketdata").refreshData();
+					}
+					else if(datastatus==1)
+					{
+						filter_page=1;
+						this.comp("marketdata").refreshData();
+					}
+				}, 1000);
+				
+			}
+		}
+		starty=0;endy=0;	
+	};
 
 	return Model;
 });

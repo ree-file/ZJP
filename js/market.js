@@ -65,6 +65,7 @@ define(function(require){
 							num+=ordersData[i].nest.children[j].children.length;
 						}
 						allorders[i]={};
+						allorders[i].orderid = i;
 						allorders[i].id=ordersData[i].id;
 						allorders[i].name=ordersData[i].nest.name,
 						allorders[i].nest_id = ordersData[i].nest_id,

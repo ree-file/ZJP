@@ -61,3 +61,28 @@
 .x-col{
 	white-space:nowrap;
 }
+.load{
+	display:table;
+	height:auto;
+	background-color:#9D9996;
+	width:100%;
+	text-align:center;
+	verticle:middle;
+	z-index:9999;
+}
+.load span{
+	
+	
+}
+.show{
+	display:table;
+}
+.refresh{
+	display:none;
+	height:auto;
+	background-color:#9D9996;
+	width:100%;
+	text-align:center;
+	verticle:middle;
+	z-index:9999;
+}
