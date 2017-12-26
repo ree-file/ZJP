@@ -57,9 +57,13 @@ define(function(require) {
 
 	Model.prototype.modelParamsReceive = function(event){
 		var nest_id = this.params.nest_id;
+		console.log(nest_id);
 		var mynest = communityjs.gaynumber(nest_id);
 		var childrenlength = mynest.children.length;
-		var grandchildrenlength = mynest.grandchildren.length;
+		var grandchildrenlength = "0";
+		if (mynest.grandchildren) {
+			grandchildrenlength = mynest.grandchildren.length;
+		}
 		var contractslength = count(mynest.contracts);
 		// 二级ABC社区人数、三级ABC社区人数、总人数=二+三、
 		var i = 0;
