@@ -83,7 +83,7 @@ define(function(require){
 				url:config.site+"forget-password",
 				async:false,
 				dataType:"json",
-				type:"get",
+				type:"post",
 				data:{email:email},
 				success:function(data){
 					is_success=true;

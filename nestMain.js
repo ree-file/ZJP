@@ -414,8 +414,6 @@ define(function(require){
 				name:this.comp("nest").val("name"),
 			});
 	};
-	
-	
 	Model.prototype.button1Click = function(event){
 		history.back(-1);
 	};
