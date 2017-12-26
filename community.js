@@ -7,9 +7,6 @@ define(function(require) {
 		this.callParent();
 	};
 
-	Model.prototype.modelActive = function(event){
-	};
-
 	Model.prototype.content1Active = function(event){
 		var allBtn = $(this.getElementByXid("allBtn"));
 		$(allBtn).css({
@@ -58,9 +55,8 @@ define(function(require) {
 		});
 	};
 
-
-	Model.prototype.modelLoad = function(event){
-		var nest_id = "1";
+	Model.prototype.modelParamsReceive = function(event){
+		var nest_id = this.params.nest_id;
 		var mynest = communityjs.gaynumber(nest_id);
 		var childrenlength = mynest.children.length;
 		var grandchildrenlength = mynest.grandchildren.length;
@@ -89,8 +85,6 @@ define(function(require) {
 		Anumber2Span.text(peoplenumber(mynest.grandchildren,"A"));
 		Bnumber2Span.text(peoplenumber(mynest.grandchildren,"B"));
 		Cnumber2Span.text(peoplenumber(mynest.grandchildren,"C"));
-
-		console.log("A");
 	};
 
 	function count(o){
