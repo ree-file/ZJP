@@ -24,10 +24,10 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					// console.log(data.data.email);
 					useremail = data.data.email;
 				},
 				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
+					showprompt("邮箱获取失败，请重新登录");
 					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
             		if (jwt.authRefresh()) {
             			this.getUser(); // 重新调用自己再次访问
@@ -54,7 +54,7 @@ define(function(require){
 					showprompt('修改成功');
 				},
 				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt('修改失败');
+					showprompt('修改失败，请重新修改');
 					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
             		if (jwt.authRefresh()) {
             			this.getUser(); // 重新调用自己再次访问
@@ -81,6 +81,7 @@ define(function(require){
 					moneyall = data.data;
 				},
 				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
+					showprompt("金额查询失败，请重新登录");
 					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
             		if (jwt.authRefresh()) {
             			this.getUser(); // 重新调用自己再次访问
@@ -110,7 +111,7 @@ define(function(require){
 					showprompt('转账成功');
 				},
 				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt('转账失败');
+					showprompt('转账失败，请检查所填信息');
 					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
             		if (jwt.authRefresh()) {
             			this.getUser(); // 重新调用自己再次访问
@@ -136,7 +137,7 @@ define(function(require){
 					showprompt('提交成功');
 				},
 				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt('提交失败');
+					showprompt('提交失败，请检查所填信息');
 					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
             		if (jwt.authRefresh()) {
             			this.getUser(); // 重新调用自己再次访问
