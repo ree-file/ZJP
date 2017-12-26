@@ -27,12 +27,18 @@ define(function(require){
 		var nestIDSpan = $(this.getElementByXid("nestIDSpan"));
 		var nestNameSpan = $(this.getElementByXid("nestNameSpan"));
 		var nestChildrenLengthSpan = $(this.getElementByXid("nestChildrenLengthSpan"));
+		var communitySpan = $(this.getElementByXid("communitySpan"));
 		sellerIDSpan.text(orderparticulars.seller.id);//卖家id
 		sellerEmailSpan.text(orderparticulars.seller.email);//卖家邮箱
 		priceSpan.text(orderparticulars.price);//价格
 		nestIDSpan.text(orderparticulars.nest.id);//巢id
 		nestNameSpan.text(orderparticulars.nest.name);//巢姓名
 		nestChildrenLengthSpan.text(orderparticulars.nest.children.length);//子数
+		communitySpan.text(orderparticulars.nest.community);//子数
+	};
+
+	Model.prototype.modelLoad = function(event){
+
 	};
 
 	return Model;
