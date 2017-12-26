@@ -41,7 +41,7 @@
   </div>
    </div></div>
    </div></div>
-   <div class="x-col" xid="col10" style="padding-top:3%;"><a component="$UI/system/components/justep/button/button" class="btn btn-default pull-right resetbtn" label="重置支付密码" xid="resetSecurity" style="font-size:small;">
+   <div class="x-col" xid="col10" style="padding-top:3%;"><a component="$UI/system/components/justep/button/button" class="btn btn-default pull-right resetbtn" label="重置支付密码" xid="resetSecurity" style="font-size:small;" bind-click="resetSecurityClick">
    <i xid="i4"></i>
    <span xid="span7">重置支付密码</span></a></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="background-color:#1C1F26;border-top-style:groove;border-top-width:thin;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
