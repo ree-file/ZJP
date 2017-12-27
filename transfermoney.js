@@ -25,25 +25,55 @@ define(function(require){
 			this.showprompt('\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
 		}
 		else if(from == "钱包金额" && to == "市场金额"){
-			personaljs.transferMoney(money,"active-to-market",securityInput);
+			var is_success1 = personaljs.transferMoney(money,"active-to-market",securityInput);
+			if (is_success1 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt("请重新登录");
+				return;
+			}
 		}
 		else if(from == "市场金额" && to == "钱包金额"){
-			personaljs.transferMoney(money,"market-to-active",securityInput);
+			var is_success2 = personaljs.transferMoney(money,"market-to-active",securityInput);
+			if (is_success2 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt("请重新登录");
+				return;
+			}
 		}
 		else if(from == "钱包金额"){
 			if (to == "其他银行") {
-				personaljs.supplies(money,"get",cardnumber,otherbankInput);
+				var is_success3 = personaljs.supplies(money,"get",cardnumber,otherbankInput);
+				if (is_success3 == undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt("请重新登录");
+					return;
+				}
 			}
 			else {
-				personaljs.supplies(money,"get",cardnumber,to);
+				var is_success4 = personaljs.supplies(money,"get",cardnumber,to);
+				if (is_success4 == undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt("请重新登录");
+					return;
+				}
 			}
 		}
 		else if(to == "钱包金额"){
 			if (from == "其他银行") {
-				personaljs.supplies(money,"save",cardnumber,otherbankInput);
+				var is_success5 = personaljs.supplies(money,"save",cardnumber,otherbankInput);
+				if (is_success5 == undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt("请重新登录");
+					return;
+				}
 			}
 			else {
-				personaljs.supplies(money,"save",cardnumber,from);
+				var is_success6 = personaljs.supplies(money,"save",cardnumber,from);
+				if (is_success6 == undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt("请重新登录");
+					return;
+				}
 			}
 		}
 	};
@@ -71,15 +101,21 @@ define(function(require){
 	};
 
 	//封装提示框--许鑫君
-		Model.prototype.showprompt = function(text){
-			justep.Util.hint(text,{
-							"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
-						});
-						$(".x-hint").find("button[class='close']").hide();
-		};
+	Model.prototype.showprompt = function(text){
+		justep.Util.hint(text,{
+						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+					});
+					$(".x-hint").find("button[class='close']").hide();
+	};
 
 	Model.prototype.backBtnClick = function(event){
 		justep.Shell.closePage();
+	};
+
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			this.comp("windowDialog1").close();
+		}
 	};
 
 	return Model;

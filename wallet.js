@@ -37,6 +37,11 @@ define(function(require){
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
 		var moneyspan4 = $(this.getElementByXid("allMSpan"));
 		var moneyall = personalMoney.money();
+		if (moneyall == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt("请重新登录");
+			return;
+		}
 		moneyspan1.text(moneyall.money_active);
 		moneyspan2.text(moneyall.money_market);
 		moneyspan3.text(moneyall.money_limit);
@@ -56,6 +61,19 @@ define(function(require){
 
 	Model.prototype.backBtnClick = function(event){
 		justep.Shell.closePage();
+	};
+
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			this.comp("windowDialog1").close();
+		}
+	};
+	//封装提示框--许鑫君
+	Model.prototype.showprompt = function(text){
+		justep.Util.hint(text,{
+						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+					});
+					$(".x-hint").find("button[class='close']").hide();
 	};
 
 	return Model;

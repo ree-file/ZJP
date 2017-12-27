@@ -26,22 +26,32 @@ define(function(require){
 				success:function(data){//请求成功返回值存在data里
 					useremail = data.data.email;
 				},
-				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt("邮箱获取失败，请重新登录");
-					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
-            		if (jwt.authRefresh()) {
-            			this.getUser(); // 重新调用自己再次访问
-            		} else {
-            			// 导向登录页面
-            			justep.Shell.showPage("mian");
-            		}
-	            }
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							this.resetsecondPassword(password,code);
+						}
+						else
+						{
+							useremail=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						useremail=undefined;
+					}
+					else{
+						useremail=undefined;
+					}
 	        }.bind(this),
 			});
 			return useremail;
 		},
 
 		changePassword : function(password,new_password){
+			var is_success =false;
 			$.ajax({
 				url: config.site+"private/change-password",//php的api路径
 				async:false,
@@ -52,20 +62,31 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
+					is_success =true;
 					showprompt('修改成功');
 				},
-				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt('修改失败，请重新修改');
-					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
-            		if (jwt.authRefresh()) {
-            			this.getUser(); // 重新调用自己再次访问
-            		} else {
-            			// 导向登录页面
-            			justep.Shell.showPage("mian");
-            		}
-	            }
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							this.resetsecondPassword(password,code);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
+					}
+					else{
+						is_success=undefined;
+					}
 	        }.bind(this),
 			});
+			return is_success;
 		},
 
 		money : function(){
@@ -82,25 +103,32 @@ define(function(require){
 				success:function(data){//请求成功返回值存在data里
 					moneyall = data.data;
 				},
-				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt("金额查询失败，请重新登录");
-					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
-            		if (jwt.authRefresh()) {
-            			this.getUser(); // 重新调用自己再次访问
-            		} else {
-            			// 导向登录页面
-            			justep.Shell.showPage("mian");
-            		}
-	            }
-					// if (jqXHR.responseJSON.message == ) {
-					//
-					// }
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							this.resetsecondPassword(password,code);
+						}
+						else
+						{
+							moneyall=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						moneyall=undefined;
+					}
+					else{
+						moneyall=undefined;
+					}
 	        }.bind(this)
 			});
 			return moneyall;
 		},
 
 		transferMoney : function(pay,type,security_code){
+			var is_success =false;
 			$.ajax({
 				url: config.site+"private/transfer-money",//php的api路径
 				async:false,
@@ -111,23 +139,35 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
+					is_success =true;
 					showprompt('转账成功');
 				},
-				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt('转账失败，请检查所填信息');
-					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
-            		if (jwt.authRefresh()) {
-            			this.getUser(); // 重新调用自己再次访问
-            		} else {
-            			// 导向登录页面
-            			justep.Shell.showPage("mian");
-            		}
-	            }
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							this.resetsecondPassword(password,code);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
+					}
+					else{
+						is_success=undefined;
+					}
 	        }.bind(this),
 			});
+			return is_success;
 		},
 
 		supplies : function(money,type,card_number,message){
+			var is_success =false;
 			$.ajax({
 				url: config.site+"supplies",//php的api路径
 				async:false,
@@ -138,20 +178,31 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
+					is_success =true;
 					showprompt('提交成功');
 				},
-				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt('提交失败，请检查所填信息');
-					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
-            		if (jwt.authRefresh()) {
-            			this.getUser(); // 重新调用自己再次访问
-            		} else {
-            			// 导向登录页面
-            			justep.Shell.showPage("mian");
-            		}
-	            }
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							this.resetsecondPassword(password,code);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
+					}
+					else{
+						is_success=undefined;
+					}
 	        }.bind(this),
 			});
+			return is_success;
 		},
 
 	};

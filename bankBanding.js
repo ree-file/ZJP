@@ -8,17 +8,24 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
-		var bankBanded = bank.cardBanded();
 		var bankBandedData = this.comp("bankBandedData");
-        for (var i = 0; i <= bankBanded.length-1; i++) {
-					bankBandedData.add({
-            "id": bankBanded[i].id,
-            "username": bankBanded[i].username,
-            "number": bankBanded[i].number,
-            "bankname": bankBanded[i].bankname,
-						"image" : "images/bankimg/"+bankBanded[i].bankname+".png"
-          });
-        }
+		var bankBanded = bank.cardBanded();
+		if (bankBanded != undefined) {
+			for (var i = 0; i <= bankBanded.length-1; i++) {
+				bankBandedData.add({
+					"id": bankBanded[i].id,
+					"username": bankBanded[i].username,
+					"number": bankBanded[i].number,
+					"bankname": bankBanded[i].bankname,
+					"image" : "images/bankimg/"+bankBanded[i].bankname+".png"
+				});
+			}
+		}
+		else {
+			this.comp("windowDialog1").open();
+			this.showprompt("请重新登录");
+			return;
+		}
 	};
 
 	Model.prototype.row2Click = function(event){
@@ -34,13 +41,23 @@ define(function(require){
 
 	Model.prototype.deletebuttonClick = function(event){
 	  var card_id = event.bindingContext.$object.val('id');
-		bank.cardDelete(card_id);
-		console.log(card_id);
+		var is_success = bank.cardDelete(card_id);
+		if (is_success == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt("请重新登录");
+			return;
+		}
 		window.location.reload();
 	};
 
 	Model.prototype.backBtnClick = function(event){
 		justep.Shell.closePage();
+	};
+
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			this.comp("windowDialog1").close();
+		}
 	};
 
 	return Model;

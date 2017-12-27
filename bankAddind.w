@@ -56,4 +56,4 @@
    <span xid="span12" style="color:#FFFFFF;">提交并审核</span></a></div>
    </div></div>
   </div> 
-</div>
+<span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span></div>

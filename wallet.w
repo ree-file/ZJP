@@ -80,6 +80,6 @@
    </div>
   </div>
   </div> 
-<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" style="position:relative;top:30px;left:160px;">
+<span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" style="position:relative;top:30px;left:160px;">
    <div class="x-popOver-overlay" xid="div1"></div>
    <div class="x-popOver-content" xid="div2"></div></div></div>

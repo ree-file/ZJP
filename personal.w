@@ -2,8 +2,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onActive="modelActive" onLoad="modelLoad"> 
   </div>  
-  <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+  <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-content" xid="content1" style="background-color:#282F37;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
    <div class="x-panel-content" xid="content2" style="height:100%;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:30%;">
@@ -108,5 +107,5 @@
   </div>
    </div>
   </div>
-  </div> 
+  </div><span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span> 
 </div>

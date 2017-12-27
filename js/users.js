@@ -5,7 +5,7 @@ define(function(require){
 	var config = require('./config');
 	var jwt = require("./jwt");
 	function showprompt(text){
-		justep.Util.hint(text,{	
+		justep.Util.hint(text,{
 			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
 		});
 		$(".x-hint").find("button[class='close']").hide();
@@ -24,12 +24,12 @@ define(function(require){
 				},
 				success:function(data){
 					is_success=true;
-					
+
 				},
-				error:function(){
-					responseText = JSON.parse(ero.responseText);
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							this.resetsecondPassword(password,code);
 						}
@@ -37,7 +37,7 @@ define(function(require){
 						{
 							is_success=undefined;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
@@ -66,7 +66,7 @@ define(function(require){
 				error:function(){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							this.forgetsecondpassword();
 						}
@@ -74,7 +74,7 @@ define(function(require){
 						{
 							is_success=undefined;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
@@ -130,14 +130,14 @@ define(function(require){
 				type:"GET",
 				data:{email:name},
 				success:function(data){
-					
+
 				},
 				error:function(){
 					is_live = false;
 				}
 			});
 			return is_live;
-			
+
 		},
 		//获取用户信息（各个钱包金额）--许鑫君
 		getUserMessage:function(){
@@ -159,12 +159,12 @@ define(function(require){
 						worthInfo['all'] = worthInfo['market']+worthInfo['limit']+parseFloat(data.data.money_active);
 						localStorage.setItem("thismyuserId", data.data.id);
 					}
-					
+
 				},
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							this.getUserMessage();
 						}
@@ -172,7 +172,7 @@ define(function(require){
 						{
 							worthInfo=undefined;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						worthInfo=undefined;
@@ -198,12 +198,12 @@ define(function(require){
 					if (!data.data.has_security_code) {
 						is_live=false;
 					}
-					
+
 				},
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							this.checksecondPassword();
 						}
@@ -211,7 +211,7 @@ define(function(require){
 						{
 							is_live=undefined;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						is_live=undefined;
@@ -222,7 +222,7 @@ define(function(require){
 				}.bind(this)
 			});
 			return is_live;
-			
+
 		},
 		setSecondPassword:function(password){
 			var is_success = true;
@@ -244,7 +244,7 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							this.setSecondPassword(password);
 						}
@@ -252,7 +252,7 @@ define(function(require){
 						{
 							is_success=undefined;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
@@ -263,9 +263,9 @@ define(function(require){
 				}.bind(this)
 			});
 			return is_success;
-			
+
 		},
-		
+
 
 	};
 });

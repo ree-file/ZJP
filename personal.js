@@ -14,8 +14,13 @@ define(function(require){
 		if(ifhid == 0){
 			$(this.getElementByXid("hidRow")).show();
 			ifhid = 1;
+			var emailSpan = $(this.getElementByXid("emailSpan"));
 			var useremail = personaljs.getemail();
-      var emailSpan = $(this.getElementByXid("emailSpan"));
+			if (useremail == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt("请重新登录");
+				return;
+			}
 			emailSpan.text(useremail);
 		}
 		else {
@@ -69,7 +74,12 @@ define(function(require){
 			var pswInput2 = this.getElementByXid("pswInput2").value;
 			var oldpassword = this.getElementByXid("oldpassword").value;
 			if(pswInput1 == pswInput2){
-				personaljs.changePassword(oldpassword,pswInput1);
+				var is_success = personaljs.changePassword(oldpassword,pswInput1);
+				if (is_success == undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt("请重新登录");
+					return;
+				}
 				this.getElementByXid("pswInput1").value="";
 				this.getElementByXid("pswInput2").value="";
 				this.getElementByXid("oldpassword").value="";
@@ -85,6 +95,20 @@ define(function(require){
 	Model.prototype.row15Click = function(event){
 		jwt.removeToken();
 		this.owner.send({data:true});
+	};
+
+	//封装提示框--许鑫君
+	Model.prototype.showprompt = function(text){
+		justep.Util.hint(text,{
+				"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+			});
+			$(".x-hint").find("button[class='close']").hide();
+	};
+
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			this.comp("windowDialog1").close();
+		}
 	};
 
 	return Model;
