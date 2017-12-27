@@ -269,9 +269,12 @@ define(function(require){
 		if (nestInfo==undefined) {
 			return;
 		}
+		var money=0;
 		for (var int = 0; int < withdrawData.length; int++) {
 			withdrawData[int].withdraw = (withdrawData[int].withdraw*0.06).toFixed(2);
+			money+=withdrawData[int].money;
 		}
+		$(this.getElementByXid("h54")).html("$"+money);
 		event.source.loadData(withdrawData);
 		withdrawData=null;
 		nestInfo=null;
@@ -309,6 +312,7 @@ define(function(require){
 						this.comp("input1").val("");
 						this.comp("withDrawWindow").hide();
 						$(this.getElementByXid("h56")).html("$"+(parseFloat(this.comp("nest").val("withdraw"))+parseFloat(parseInt(eggs)*eggval)));
+						$(this.getElementByXid("h54")).html("$"+(parseFloat($(this.getElementByXid("h54")).html().substring(1))-parseFloat(parseInt(eggs)*eggval)));
 						$(this.getElementByXid("span22")).html("$"+(parseFloat($(this.getElementByXid("span22")).html())-parseFloat(parseInt(eggs)*eggval)));
 						this.comp("accountData").newData({
 							"defaultValues":[{
@@ -415,7 +419,7 @@ define(function(require){
 			});
 	};
 	Model.prototype.button1Click = function(event){
-		history.back(-1);
+		justep.Shell.closePage();
 	};
 	
 	

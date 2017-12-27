@@ -33,6 +33,7 @@ define(function(require){
             			this.getUser(); // 重新调用自己再次访问
             		} else {
             			// 导向登录页面
+            			justep.Shell.showPage("mian");
             		}
 	            }
 	        }.bind(this),

@@ -11,7 +11,7 @@
           <div class="x-titlebar-left"> 
             <a component="$UI/system/components/justep/button/button"
               label="" class="btn btn-link btn-only-icon" icon="icon-chevron-left"
-              onClick="{operation:'window.close'}" xid="backBtn"> 
+              onClick="backBtnClick" xid="backBtn"> 
               <i class="icon-chevron-left"/>  
               <span></span> 
             </a> 
@@ -80,6 +80,6 @@
    </div>
   </div>
   </div> 
-<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" style="height:50%;position:relative;width:50%;top:20%;left:25%;">
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" style="position:relative;top:30px;left:160px;">
    <div class="x-popOver-overlay" xid="div1"></div>
    <div class="x-popOver-content" xid="div2"></div></div></div>

@@ -33,7 +33,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -88,7 +88,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -142,7 +142,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -177,12 +177,13 @@ define(function(require){
 						else{
 							status = "Sell";
 						}
-						record[i]={};
-						record[i].id=data.data[i].id;
-						record[i].status=status;
-						record[i].productioncode = data.data[i].nest.name;
-						record[i].transactionmoney = data.data[i].price;
-						record[i].date = data.data[i].created_at;
+						record[record.length]={
+								id:data.data[i].id,
+								status:status,
+								productioncode:data.data[i].nest.name,
+								transactionmoney:data.data[i].price,
+								date:data.data[i].created_at
+						};
 					}
 				},
 				error:function(ero){
@@ -194,7 +195,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 
@@ -223,12 +224,13 @@ define(function(require){
 						jwt.authRefresh();
 						this.sellProduction(productionId,price);
 					}
-					else if(responseText.message=="The order is on selling")
+					else if(responseText.message=="The order is on selling.")
 					{
 						showprompt("商品正在出售中");
 					}
 					else{
 						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -262,6 +264,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});

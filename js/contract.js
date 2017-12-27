@@ -37,6 +37,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});

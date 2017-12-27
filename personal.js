@@ -83,7 +83,7 @@ define(function(require){
 	};
 
 	Model.prototype.row15Click = function(event){
-		justep.Shell.showPage("mailLogin");
+		justep.Shell.showPage("main");
 		jwt.removeToken();
 	};
 

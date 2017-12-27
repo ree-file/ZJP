@@ -82,9 +82,9 @@ define(function(require){
 			if (max!=0) {
 				datastatus = 1;
 			}
-			this.comp("marketdata").refreshData();
 			this.comp("filterdata").setValue("min",min);
 			this.comp("filterdata").setValue("max",max);
+			this.comp("marketdata").refreshData();
 		}
 		else{
 			this.showprompt("价格区间不能为空");
@@ -238,7 +238,7 @@ define(function(require){
 			$(this.getElementByXid("password1")).val("");
 			this.comp("price").setValue("price", 0);
 			this.comp("input1").val("");
-			this.comp("transactionrecord").refreshData();
+			this.comp("list2").refresh(true);
 			if (datastatus==0) {
 				complex_page=1;
 				this.comp("marketdata").refreshData();
@@ -455,6 +455,10 @@ define(function(require){
 			}
 		}
 		starty=0;endy=0;	
+	};
+
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
 	};
 
 	return Model;

@@ -37,7 +37,7 @@
           <div class="x-titlebar-left"> 
             <a component="$UI/system/components/justep/button/button"
               label="" class="btn btn-link btn-only-icon" icon="icon-chevron-left"
-              onClick="{operation:'window.close'}" xid="backBtn"> 
+              onClick="backBtnClick" xid="backBtn"> 
               <i class="icon-chevron-left"/>  
               <span></span> 
             </a> 
@@ -110,7 +110,8 @@
    <ul class="x-list-template" xid="listTemplateUl2">
     <li xid="li3" bind-click="li3Click"><div component="$UI/system/components/justep/row/row" class="x-row transcationcontent" xid="row19">
    <div class="x-col x-col-33" xid="col46" style="text-align:center;white-space:nowrap;"><span xid="span33" bind-text='val("productioncode")'></span></div>
-   <div class="x-col" xid="col47" style="text-align:center;white-space:nowrap;color:#FFFFFF;"><span xid="span34" bind-text='val("transactionmoney")' style="white-space:nowrap;"></span></div>
+   <div class="x-col" xid="col47" style="text-align:center;white-space:nowrap;color:#FFFFFF;"><span xid="span43"><![CDATA[$]]></span><span xid="span34" bind-text='val("transactionmoney")' style="white-space:nowrap;"></span>
+  </div>
    <div class="x-col" xid="col48" style="text-align:center;white-space:nowrap;"><span xid="span35" bind-text='val("status")' style="color:#FFDE63;" bind-css="{'getmoney':  val(&quot;status&quot;)==&quot;Sell&quot;,'paymoney':  val(&quot;status&quot;)==&quot;Bought&quot;}"></span></div>
   <div class="x-col x-col-33" xid="col50" style="text-align:center;white-space:nowrap;"><span xid="span36" bind-text='val("date")'></span></div></div></li></ul> </div>
   </div>
@@ -138,7 +139,7 @@
    <span xid="span19">卖出</span></a></div>
    <div class="x-col" xid="col42"></div></div></div></div></div>
   </div> 
-<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="right-bottom" xid="screeningPopOver" opacity="0" position="center" anchor="screeningBtn">
+<div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="right-bottom" xid="screeningPopOver" opacity="0" position="center" anchor="screeningBtn" style="top:88px;left:26px;">
    <div class="x-popOver-overlay" xid="div5"></div>
    <div class="x-popOver-content tb-sorting" xid="div6"><div xid="div7">
    <div class="list-group-item" xid="div26">
@@ -155,12 +156,12 @@
      <span xid="span31">重 置</span></a> </div> 
    <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-lg btn-block tb-okBtn" label="确认" xid="betweenbutton" style="width:80%;left:10%;position:relative;margin-bottom:5px;" onClick="betweenbuttonClick">
     <i xid="i14"></i>
-    <span xid="span27" class="text-white">确认</span></a> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="left-bottom" xid="sortingPopOver" opacity="0" anchor="sortingBtn">
+    <span xid="span27" class="text-white">确认</span></a> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="left-bottom" xid="sortingPopOver" opacity="0" anchor="sortingBtn" style="top:97px;left:25px;">
    <div class="x-popOver-overlay" xid="div3"></div>
    <div class="x-popOver-content tb-sorting" xid="div4"><div component="$UI/system/components/justep/list/list" class="x-list" data="conditionData" bind-click="sortingListClick" xid="conditionList" dataItemAlias="conditionRow">
    <ul class="x-list-template" xid="ul1">
     <li class="list-group-item" bind-css="{'current':conditionRow.val('fState')==1}" xid="li2">
-     <span bind-text='val("fName")' xid="span25"></span></li> </ul> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0.2" position="bottom" style="background-color:#1C1F26;width:100%;left:0%;top:40%;height:60%;">
+     <span bind-text='val("fName")' xid="span25"></span></li> </ul> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0.2" position="bottom" style="background-color:#1C1F26;top:66px;left:67px;">
    <div class="x-popOver-overlay" xid="div1"></div>
    <div class="x-popOver-content" xid="div2" style="background-color:#1C1F26;width:100%;left:0%;top:40%;height:60%;border-top-style:groove;border-top-width:thin;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10" style="border-bottom-style:groove;border-bottom-width:thin;padding:0px 0px 0px 0px;">
@@ -195,7 +196,7 @@
    <span xid="span6">确认支付</span></a></div>
    <div class="x-col x-col-10" xid="col27"></div></div>
   </div></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="chooseSoleStatus" opacity="0">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="chooseSoleStatus" opacity="0" style="top:26px;left:80px;">
    <div class="x-popOver-overlay" xid="div8"></div>
    <div class="x-popOver-content chooseContent chooseSoleStatus" xid="div9" style="height:auto;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row20">
    <div class="x-col" xid="col53" style="text-align:center;"><span xid="span37" style="color:white;"><![CDATA[是否下架]]></span></div></div>
@@ -206,7 +207,7 @@
    <div class="x-col" xid="col56" style="text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="否" xid="button6" onClick="button6Click">
    <i xid="i12"></i>
    <span xid="span39" style="color:white;">否</span></a></div></div></div></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword" style="top:15px;left:120px;">
    <div class="x-popOver-overlay" xid="div11"></div>
    <div class="x-popOver-content setSecondPassword chooseSoleStatus" xid="div10" style="height:auto;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">

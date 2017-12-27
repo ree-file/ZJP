@@ -89,7 +89,8 @@
    <ul class="x-list-template" xid="listTemplateUl2">
     <li xid="li2"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row21" style="padding-left:0px;margin-left:0px;text-align:center;">
    <div class="x-col" xid="col47"><span xid="span27" bind-text='val("date")'></span></div>
-   <div class="x-col" xid="col48" style="border-color:#282B32;"><span xid="span28" bind-text='val("income")'></span></div>
+   <div class="x-col" xid="col48" style="border-color:#282B32;"><span xid="span19"><![CDATA[$]]></span><span xid="span28" bind-text='val("income")'></span>
+  </div>
    <div class="x-col" xid="col49"><span xid="span29" bind-text='val("name")'></span></div>
   <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div></div></li></ul> </div></div></div></div>
   <div class="x-contents-content content-nest" xid="content3" style="background:#1C1F26"><div xid="div2">
@@ -111,9 +112,12 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="border-color:#282B32;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-bottom-style:solid;border-bottom-width:1px;">
    <div class="x-col" xid="col22" style="text-align:center;"><span xid="span11" style="color:#36C4D2;font-size:small;" bind-text='val("rate")'><![CDATA[300%]]></span>
   </div>
-   <div class="x-col" xid="col23" style="text-align:center;"><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("worth")'><![CDATA[$3600]]></span></div>
-   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'>$3600</span></div>
-  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'>$3600</span></div></div></div>
+   <div class="x-col" xid="col23" style="text-align:center;"><span xid="span20"><![CDATA[$]]></span><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("worth")'><![CDATA[]]></span>
+  </div>
+   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span37"><![CDATA[$]]></span><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'><![CDATA[]]></span>
+  </div>
+  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span38"><![CDATA[$]]></span><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'><![CDATA[]]></span>
+  </div></div></div>
    </div></li></ul> </div></div></div>
   <div class="x-contents-content" xid="content4"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="$UI/ZJP/personal.w"></div></div></div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">

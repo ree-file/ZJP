@@ -20,9 +20,9 @@ define(function(require){
 				dataType:"json",
 				data:{},//需要传递的数据
 				type:'GET',//php获取类型
-        headers: {
-            "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
-        },
+		        headers: {
+		            "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
+		        },
 				success:function(data){//请求成功返回值存在data里
 					useremail = data.data.email;
 				},
@@ -33,6 +33,7 @@ define(function(require){
             			this.getUser(); // 重新调用自己再次访问
             		} else {
             			// 导向登录页面
+            			justep.Shell.showPage("mian");
             		}
 	            }
 	        }.bind(this),
@@ -60,6 +61,7 @@ define(function(require){
             			this.getUser(); // 重新调用自己再次访问
             		} else {
             			// 导向登录页面
+            			justep.Shell.showPage("mian");
             		}
 	            }
 	        }.bind(this),
@@ -87,6 +89,7 @@ define(function(require){
             			this.getUser(); // 重新调用自己再次访问
             		} else {
             			// 导向登录页面
+            			justep.Shell.showPage("mian");
             		}
 	            }
 					// if (jqXHR.responseJSON.message == ) {
@@ -117,6 +120,7 @@ define(function(require){
             			this.getUser(); // 重新调用自己再次访问
             		} else {
             			// 导向登录页面
+            			justep.Shell.showPage("mian");
             		}
 	            }
 	        }.bind(this),
@@ -143,6 +147,7 @@ define(function(require){
             			this.getUser(); // 重新调用自己再次访问
             		} else {
             			// 导向登录页面
+            			justep.Shell.showPage("mian");
             		}
 	            }
 	        }.bind(this),

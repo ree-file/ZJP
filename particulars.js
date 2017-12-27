@@ -39,5 +39,9 @@ define(function(require){
 	Model.prototype.modelLoad = function(event){
 	};
 
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

@@ -32,7 +32,7 @@ define(function(require){
 
 
 	Model.prototype.button1Click = function(event){
-		history.back();
+		justep.Shell.closePage();
 	};
 
 

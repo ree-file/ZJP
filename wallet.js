@@ -54,5 +54,9 @@ define(function(require){
 			justep.Shell.showPage("ZJP_resetPassword", {action:"resetsecondPassword"});
 	};
 
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

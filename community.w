@@ -10,7 +10,7 @@
         title="社区" style="background-color:#252932;"> 
         <div class="x-titlebar-left"> 
           <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon"
-            xid="button6" icon="icon-chevron-left" onClick="{operation:'window.close'}" style="color:#565657;"> 
+            xid="button6" icon="icon-chevron-left" onClick="button6Click" style="color:#565657;"> 
             <i xid="i6" class="icon-chevron-left"/>  
             <span xid="span6"><![CDATA[]]></span> 
           </a> 

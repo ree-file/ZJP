@@ -24,6 +24,7 @@ define(function(require){
 				},
 				success:function(data){
 					is_success=true;
+					
 				},
 				error:function(){
 					responseText = JSON.parse(ero.responseText);
@@ -34,7 +35,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("main");	
 					}
 				}.bind(this)
 			});
@@ -56,7 +57,17 @@ define(function(require){
 				},
 				error:function(){
 					is_success = false;
-				}
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						
+						jwt.authRefresh();
+						this.forgetsecondpassword();
+					}
+					else{
+						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage("main");	
+					}
+				}.bind(this)
 			});
 			return is_success;
 		},
@@ -144,7 +155,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("main");	
 					}
 				}.bind(this)
 			});
@@ -176,7 +187,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("main");
 					}
 				}.bind(this)
 			});
@@ -210,7 +221,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("main");	
 					}
 				}.bind(this)
 			});

@@ -46,11 +46,17 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						community_premission(nest_name);
+						if (jwt.authRefresh()) {
+							community_premission(nest_name);
+						}
+						else{
+							justep.Shell.showPage("mian");
+						}
+						
 					}
 					else{
 						showprompt("检查网络或者重新登录");
+						justep.Shell.showPage("mian");
 						b=404;
 					}
 				}
@@ -104,10 +110,11 @@ define(function(require){
 						
 						jwt.authRefresh();
 						this.nestInfo();
+						
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -138,7 +145,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");	
 					}
 				}.bind(this)
 			});
@@ -170,7 +177,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -201,7 +208,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -236,7 +243,7 @@ define(function(require){
 						}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 			});
@@ -271,7 +278,7 @@ define(function(require){
 						}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");	
 					}
 				}.bind(this)
 			});
@@ -319,7 +326,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 				
@@ -348,7 +355,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");	
 					}
 				}.bind(this)
 			});
@@ -372,7 +379,7 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage(require.toUrl("./index.w"));	
+						justep.Shell.showPage("mian");	
 					}
 				}.bind(this)
 			});

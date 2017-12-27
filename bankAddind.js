@@ -17,5 +17,9 @@ define(function(require){
 		bank.cardAdding(nameInput,number,bankname);
 	};
 
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

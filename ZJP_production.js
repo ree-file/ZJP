@@ -189,7 +189,6 @@ define(function(require){
 	};
 	//下拉框内容变动时做出的改变
 	Model.prototype.check_money=function(production,object){
-		debugger;
 		var current_worth = current_rank==-1?0:Math.floor(config_egg.level_worth[current_rank]*config_egg.egg_val);
 		if (current_worth>=production) {
 				this.showprompt("不能选择比当前产品低或者一样的产品");
@@ -397,7 +396,7 @@ define(function(require){
 	};
 
 	Model.prototype.button11Click = function(event){
-		history.back();
+		justep.Shell.closePage();
 	};
 
 	return Model;

@@ -39,5 +39,9 @@ define(function(require){
 		window.location.reload();
 	};
 
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

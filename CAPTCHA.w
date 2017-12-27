@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model"/> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="top:165px;left:184px;height:auto;"/> 
 <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full background-color-black" xid="panel1">
    <div class="x-panel-top" xid="top1"><div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar titlebar-background" xid="titleBar1">
    <div class="x-titlebar-left" xid="left1"></div>

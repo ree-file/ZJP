@@ -83,5 +83,8 @@ define(function(require){
 			$(this.getElementByXid("p1")).text("重置流程；点击发送邮件获得验证码，并把其他选项补齐，点击重置按钮");
 		}
 	};	
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};	
 	return Model;
 });

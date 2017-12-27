@@ -115,5 +115,9 @@ define(function(require) {
     return n;
   }
 
+	Model.prototype.button6Click = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

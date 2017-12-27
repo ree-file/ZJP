@@ -6,5 +6,9 @@ define(function(require){
 		this.callParent();
 	};
 
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

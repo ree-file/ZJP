@@ -78,5 +78,9 @@ define(function(require){
 						$(".x-hint").find("button[class='close']").hide();
 		};
 
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

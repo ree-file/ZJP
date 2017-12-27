@@ -70,7 +70,11 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="height:35px;">
    <div class="x-col x-col-67" xid="col26"><h5 xid="h58" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[提现金额]]></h5></div>
    <div class="x-col" xid="col27"><h5 xid="h56" class="text-right font-white" bind-text="'$'+  $model.nest.val(&quot;withdraw&quot;)"><![CDATA[]]></h5></div></div>
-  </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row33" style="height:35px;">
+   <div class="x-col x-col-67" xid="col89">
+    <h5 xid="h57" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[可提金额]]></h5></div> 
+   <div class="x-col" xid="col33">
+    <h5 xid="h54" class="text-right font-white"></h5></div> </div></div>
   </div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-height" xid="row14">
    <div class="x-col " xid="col41"><h5 xid="h510" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
@@ -154,7 +158,8 @@
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row2">
    <div class="x-col text-center" xid="col4"><span xid="span2" bind-text='val("id")'><![CDATA[date]]></span></div>
-   <div class="x-col text-center" xid="col5"><span xid="span3" bind-style="{color:  val(&quot;type&quot;) =='直接加速'?'#FF565A':'#0EAA7D'}" bind-text='val("money")'><![CDATA[number]]></span></div>
+   <div class="x-col text-center" xid="col5"><span xid="span32"><![CDATA[$]]></span><span xid="span3" bind-style="{color:  val(&quot;type&quot;) =='直接加速'?'#FF565A':'#0EAA7D'}" bind-text='val("money")'><![CDATA[number]]></span>
+  </div>
    <div class="x-col text-center" xid="col6"><![CDATA[]]>
   <span xid="span4" bind-text='val("date")'><![CDATA[people]]></span></div>
   <div class="x-col text-center" xid="col8"><span xid="span9" bind-style="{color:   val(&quot;type&quot;) =='直接加速'?'#FF565A':'#0EAA7D'}" bind-text='val("message")'><![CDATA[type]]></span></div></div></li></ul> </div>
@@ -174,7 +179,8 @@
       <div class="x-col text-center" xid="col14">
        <span xid="span13" bind-text="$index()+1">time</span></div> 
       <div class="x-col text-center" xid="col15">
-       <span xid="span14" bind-text='val("money")'>number</span></div> 
+       <span xid="span33"><![CDATA[$]]></span><span xid="span14" bind-text='val("money")'>number</span>
+  </div> 
       <div class="x-col text-center" xid="col13">
        <span xid="span15" bind-text='val("message")'>people</span></div> 
       <div class="x-col text-center" xid="col12">
@@ -195,7 +201,8 @@
       <div class="x-col x-col-20 text-center" xid="col56">
        <span xid="span23" bind-text='val("id")'>time</span></div> 
       <div class="x-col text-center" xid="col39">
-       <span xid="span22" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("money")'>number</span></div> 
+       <span xid="span34"><![CDATA[$]]></span><span xid="span22" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("money")'>number</span>
+  </div> 
       <div class="x-col text-center" xid="col57" style="white-space:nowrap;padding-left:0;padding-right:0;">
        <span xid="span25" bind-text='"当天可提$"+val("withdraw")'>people</span></div> 
       <div class="x-col text-center" xid="col58">
@@ -219,7 +226,7 @@
    <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" label="创建小窝" xid="button9" style="width:25%;" onClick="button9Click">
     <i xid="i9"></i>
     <span xid="span27">创建小窝</span></a> </div></div></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0" style="top:51px;left:193px;">
    <div class="x-popOver-overlay" xid="div6"></div>
    <div class="x-popOver-content withDrawWindow" xid="div7"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row28">
    <div class="x-col x-col-33" xid="col82"><h5 xid="h51" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[产品支数：]]></h5></div>

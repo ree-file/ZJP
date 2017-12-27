@@ -83,10 +83,10 @@
   </div>
   </div>
    </div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver1" opacity="0" style="top:63px;left:119px;">
    <div class="x-popOver-overlay" xid="div4"></div>
    <div class="x-popOver-content" xid="div5"><p xid="p2"><![CDATA[这是一段帮助内容，内容随着不同按钮点击而变化]]></p></div></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword" opacity="0">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword" opacity="0" style="top:22px;left:229px;">
    <div class="x-popOver-overlay" xid="div7"></div>
    <div class="x-popOver-content" xid="div8" style="height:auto;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
    <div class="x-col x-col-33" xid="col2"><h5 xid="h52" style="color:#FAFFF3;"><![CDATA[二级密码：]]></h5></div>

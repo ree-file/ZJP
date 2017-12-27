@@ -121,7 +121,7 @@ define(function(require) {
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
-		
+		ids =[];
 		var nestInfo = nest.nestInfo();
 		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
 		event.source.loadData(nestInfo.contracts);
