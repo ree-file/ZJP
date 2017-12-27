@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:124px;left:17px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onParamsReceive="modelParamsReceive"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:124px;left:17px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onParamsReceive="modelParamsReceive" onActive="modelActive"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="NestsAccount" idColumn="id" onCustomRefresh="NestsAccountCustomRefresh"><column name="id" type="Integer" xid="xid5"></column>
   <column label="获得的金额" name="income" type="Integer" xid="xid7"></column>
   <column label="产品获得时间" name="time" type="Date" xid="xid10"></column>

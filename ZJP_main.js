@@ -149,5 +149,10 @@ define(function(require) {
 		justep.Shell.showPage("market");
 	};
 
+	Model.prototype.modelActive = function(event){
+		this.modelModelConstructDone(event);
+		this.modelLoad(event);
+	};
+
 	return Model;
 });
