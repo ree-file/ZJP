@@ -27,7 +27,7 @@
      <i xid="i2" class="e-commerce e-commerce-fangdajing"></i>
      <span xid="span2"></span></a> </div> 
    <div class="x-col row-buttom-border" xid="col6">
-    <input component="$UI/system/components/justep/input/input" class="input-group-addon" xid="input1" placeHolder="搜索" onChange="input1Change"></input></div> </div></div><div class="x-panel-content" xid="content1" style="background-color: rgb(28, 31, 38); bottom: 0px; background-size: cover;top:110px;" _xid="C7C9D25FFEE00001841916631CC2D1E0">
+    <input component="$UI/system/components/justep/input/input" class="input-group-addon" xid="input1" placeHolder="搜索" onChange="input1Change"></input></div> </div></div><div class="x-panel-content" xid="content1" style="background-color: rgb(28, 31, 38); bottom: 0px; background-size: cover;top:110px;height:100%;" _xid="C7C9D25FFEE00001841916631CC2D1E0">
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="data1" supportpulldown="true">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1" class="x-min-height">

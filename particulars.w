@@ -43,12 +43,12 @@
    <div class="x-col" xid="col22" style="padding-top:9px;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
      <div class="x-col x-col-33" xid="col20">
-      <span xid="span12" style="color:#C0C0C0;font-size:medium;"><![CDATA[孵化器ID]]></span></div> 
+      <span xid="span12" style="color:#C0C0C0;font-size:medium;"><![CDATA[猫窝ID]]></span></div> 
      <div class="x-col" xid="col21">
       <span xid="nestIDSpan" style="color:#FFFFFF;font-size:medium;"><![CDATA[]]></span></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9">
      <div class="x-col x-col-33" xid="col19">
-      <span xid="span14" style="color:#C0C0C0;font-size:medium;"><![CDATA[孵化器名]]></span></div> 
+      <span xid="span14" style="color:#C0C0C0;font-size:medium;"><![CDATA[猫窝名称]]></span></div> 
      <div class="x-col" xid="col18">
       <span xid="nestNameSpan" style="color:#FFFFFF;font-size:medium;"><![CDATA[]]></span></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12">

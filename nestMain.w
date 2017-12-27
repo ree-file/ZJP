@@ -46,7 +46,7 @@
    <span xid="span1"></span></a></div>
    <div class="x-titlebar-title" xid="title1"><![CDATA[小窝]]></div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>
-   <div class="x-panel-content background-color-black" xid="content1"><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="height:10px;padding:0px 0px 0px 0px;">
+   <div class="x-panel-content background-color-black" xid="content1" style="height:100%;"><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="height:10px;padding:0px 0px 0px 0px;">
    <div class="x-col" xid="col1">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13">
    <div class="x-col" xid="col38" style="padding:0px 0px 0px 0px;"><h5 xid="h52" class="gary-font-small" bind-text=' $model.nest.val("name")'><![CDATA[600U的小窝]]></h5></div>
@@ -241,4 +241,5 @@
    <i xid="i10"></i>
    <span xid="span28">确定</span></a></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row31">
-   <div class="x-col" xid="col90"><p xid="p1" style="color:white;"><![CDATA[获得金额的80%将充入活动资金，20%将充入投资资金]]></p></div></div></div></div></div>
+   <div class="x-col" xid="col90"><p xid="p1" style="color:white;"><![CDATA[获得金额的80%将充入活动资金，20%将充入投资资金]]></p></div></div></div></div>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span></div>

@@ -2,14 +2,15 @@ define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var ShellImpl = require('$UI/system/lib/portal/shellImpl');
-
+	var me;
 	var Model = function() {
+		me=this;
 		this.callParent();
 		var shellImpl = new ShellImpl(this, {
 			"contentsXid" : "pages",
 			"pageMappings" : {
 				"main" : {
-					url : require.toUrl('./mailLogin.w')
+					url : require.toUrl('./ZJP_main.w')
 				},
 				"mailphone" : {
 					url : require.toUrl('./main.w')
@@ -56,8 +57,8 @@ define(function(require) {
 				"wallet" : {
 					url : require.toUrl('./wallet.w')
 				},
-				"ZJP_main" : {
-					url : require.toUrl('./ZJP_main.w')
+				"eamillogin" : {
+					url : require.toUrl('./mailLogin.w')
 				},
 				"ZJP_production" : {
 					url : require.toUrl('./ZJP_production.w')
@@ -68,7 +69,25 @@ define(function(require) {
 	};
 
 	Model.prototype.modelLoad = function(event){
-		justep.Shell.showPage("main");
+		if (!localStorage.getItem("jwt_token")) {
+			this.comp("windowDialog1").open();
+		}
+		
+	};
+
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			this.comp("mainContainer").refresh();
+			setTimeout(function(){
+				me.comp("windowDialog1").close();
+			}, 500);
+			
+			
+		}
+	};
+
+	Model.prototype.windowDialog1Close = function(event){
+//		 	event.source.
 	};
 
 	return Model;

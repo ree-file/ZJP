@@ -85,6 +85,11 @@ define(function(require){
 		var nest_id = this.params.nest_id;
 		var contract_id = this.params.contract_id;
 		nestInfo = nest.singlenestInfo(nest_id);
+		if (nestInfo==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt("请重新登录");
+			return;
+		}
 		eggval = config.configegg().egg_val;
 		this.comp("nest").refreshData();
 		this.comp("historyData").refreshData();
@@ -425,6 +430,14 @@ define(function(require){
 	
 	Model.prototype.button11Click = function(event){
 		justep.Shell.showPage("community", {nest_id:this.comp("nest").val("id")});
+	};
+	
+	
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			this.modelParamsReceive(event);
+			this.comp("windowDialog1").close();
+		}
 	};
 	
 	

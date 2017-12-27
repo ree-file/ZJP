@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" onModelConstruct="modelModelConstruct"/> 
+  <div component="$UI/system/components/justep/model/model" xid="model" onModelConstruct="modelModelConstruct" style="height:auto;top:25px;left:422px;"/> 
 <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full background-color-black" xid="panel1">
    <div class="x-panel-top" xid="top1">
     <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar1" style="background-color:#252932;color:#868687;">
@@ -9,7 +9,7 @@
      <div class="x-titlebar-title" xid="title1">
       <span xid="span1" style="font-weight:normal;">登录</span></div> 
      <div class="x-titlebar-right reverse" xid="right1"></div></div> </div> 
-   <div class="x-panel-content background-color-black" xid="content1">
+   <div class="x-panel-content background-color-black" xid="content1" style="height:100%;">
     <div xid="div3" style="padding:10px 10px 10px 10px;">
      
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
@@ -36,4 +36,5 @@
        </div> </div> 
      <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="手机登录" xid="button3" style="background-color:#454C5E;border-width:0px 0px 0px 0px;" onClick="button3Click">
       <i xid="i3"></i>
-      <span xid="span9">手机登录</span></a> </div> </div> </div></div>
+      <span xid="span9">手机登录</span></a> </div> </div> </div>
+  </div>

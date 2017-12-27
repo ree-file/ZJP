@@ -11,6 +11,7 @@ define(function(require){
 	}
 	return{
 		buy:function(id,password){
+			
 			var is_success =false;
 			$.ajax({
 				url: config.site+"orders/"+id+"/buy",//php的api路径
@@ -28,12 +29,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.getorders();
+						if(jwt.authRefresh()){
+							this.buy(id,password);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -83,12 +92,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.getorders();
+						if(jwt.authRefresh()){
+							this.getorders(page);
+						}
+						else
+						{
+							allorders=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						allorders=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						allorders=undefined;
 					}
 				}.bind(this)
 			});
@@ -136,13 +153,21 @@ define(function(require){
 				error:function(ero){//请求失败错误信息在ero里
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
-						jwt.authRefresh();
-						this.getorders();
+						
+						if(jwt.authRefresh()){
+							this.filterOrders(page,min,max);
+						}
+						else
+						{
+							allorders=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						allorders=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						allorders=undefined;
 					}
 				}.bind(this)
 			});
@@ -189,13 +214,21 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
-						jwt.authRefresh();
-						this.getTransactionRecord();
+						
+						if(jwt.authRefresh()){
+							this.getTransactionRecord();
+						}
+						else
+						{
+							record=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						record=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						record=undefined;
 					}
 				}.bind(this)
 
@@ -219,18 +252,26 @@ define(function(require){
 				},
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
+					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
-						jwt.authRefresh();
-						this.sellProduction(productionId,price);
+						
+						if(jwt.authRefresh()){
+							this.sellProduction(productionId,price,password);
+						}
+						else
+						{
+							is_success=undefined;
+						}
 					}
 					else if(responseText.message=="The order is on selling.")
 					{
 						showprompt("商品正在出售中");
 					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
+					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -254,17 +295,21 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
-						jwt.authRefresh();
-						this.notSold(id);
+						
+						if(jwt.authRefresh()){
+							this.notSold(id);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+						
 					}
-					else if(responseText.message=="The order is on selling")
-					{
-						showprompt("商品正在出售中");
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						is_success=undefined;
 					}
 				}.bind(this)
 			});

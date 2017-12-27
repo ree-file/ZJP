@@ -223,4 +223,5 @@
      <div class="x-col" xid="col49">
       <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="设置密码" xid="button9" style="color:#8E8E8E;" onClick="button9Click">
        <i xid="i16"></i>
-       <span xid="span41">设置密码</span></a> </div> </div> </div> </div></div>
+       <span xid="span41">设置密码</span></a> </div> </div> </div> </div>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span></div>

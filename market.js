@@ -54,6 +54,11 @@ define(function(require){
 				$(this.getElementByXid("passwordInput")).val("");
 				this.comp("popOver1").hide();
 			}
+			else if (is_success==undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt("请重新登录");
+					return;
+				}
 			else{
 				this.showprompt("购买失败");
 			}
@@ -81,6 +86,9 @@ define(function(require){
 		if (min&&max) {
 			if (max!=0) {
 				datastatus = 1;
+			}
+			else if (max==0&&min==0) {
+				datastatus = 0;
 			}
 			this.comp("filterdata").setValue("min",min);
 			this.comp("filterdata").setValue("max",max);
@@ -183,10 +191,17 @@ define(function(require){
 //交易记录加载/刷新--许鑫君
 	Model.prototype.transactionrecordCustomRefresh = function(event){
 		if (this.params.name) {
-			this.comp("input1").val(this.params.name);
+			this.comp("input1").set({
+				placeHolder:this.params.name
+			});
 		}
 		event.source.clear();
 		var record = getorders.getTransactionRecord();
+		 if (record==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt("请重新登录");
+			return;
+		}
 		if (record.length==0) {
 			this.showprompt("无交易记录");
 		}else{
@@ -198,7 +213,11 @@ define(function(require){
 		var name = $.trim(this.comp("input1").val());
 		if (name) {
 			var simpleinfo=nest.nestsimpleinfo();
-
+			if (simpleinfo==undefined) {
+				this.showprompt("请重新登录");
+				this.comp("windowDialog1").open();
+				return;
+			}
 			if (!this.belongtouser(simpleinfo, name)) {
 				this.showprompt("产品不存在");
 			}
@@ -243,7 +262,13 @@ define(function(require){
 				complex_page=1;
 				this.comp("marketdata").refreshData();
 			}
-		}else{
+		}
+		else if (is_success==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt("请重新登录");
+			this.comp("chooseSoleStatus").hide();
+		}
+		else{
 			this.showprompt("下架失败请重新提交请求");
 			this.comp("chooseSoleStatus").hide();
 		}
@@ -274,6 +299,11 @@ define(function(require){
 						this.comp("marketdata").refreshData();
 					}
 					}
+					else if(is_success ==undefined){
+						this.showprompt("请重新登录");
+						this.comp("windowDialog1").open();
+						return;
+					}
 					else{
 					this.showprompt("出售失败");
 					}
@@ -299,7 +329,7 @@ define(function(require){
 				is_append =1;
 			}
 			if (is_append==0) {
-				event.source.newData({
+				this.comp("marketdata").newData({
 					"defaultValues":records
 				});
 			}
@@ -327,22 +357,42 @@ define(function(require){
 		if(complex_page==1&&datastatus==0){
 			event.source.clear();
 			var records = getorders.getorders(complex_page);
+			if (records==undefined) {
+				this.showprompt("请重新登录");
+				this.comp("windowDialog1").open();
+				return;
+			}
 			event.source.loadData(records);
 			this.refresh();
 		}
 		else if(datastatus==0&&complex_page!=1){
 			var records = getorders.getorders(complex_page);
+			if (records==undefined) {
+				this.showprompt("请重新登录");
+				this.comp("windowDialog1").open();
+				return;
+			}
 			this.loading(records);
 			
 		}
 		if (filter_page==1&&datastatus==1) {
 			event.source.clear();
 			var records = getorders.filterOrders(filter_page,this.comp("filterdata").val("min"),this.comp("filterdata").val("max"));
+			if (records==undefined) {
+				this.showprompt("请重新登录");
+				this.comp("windowDialog1").open();
+				return;
+			}
 			event.source.loadData(records);
 			this.refresh();
 		}
 		else if(datastatus==1&&filter_page!=1){
 			var records = getorders.filterOrders(filter_page,this.comp("filterdata").val("min"),this.comp("filterdata").val("max"));
+			if (records==undefined) {
+				this.showprompt("请重新登录");
+				this.comp("windowDialog1").open();
+				return;
+			}
 			this.loading(records);
 			
 		}
@@ -459,6 +509,22 @@ define(function(require){
 
 	Model.prototype.backBtnClick = function(event){
 		justep.Shell.closePage();
+	};
+
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			 complex_page=1;
+			 filter_page=1;
+			 datastatus=0;
+			 starty=0;
+			 endy =0;
+			 is_append=0;
+			 is_loading=0;
+			 is_refresh = 0;
+			 this.comp("transactionrecord").refreshData();
+			 this.comp("marketdata").refreshData();
+			 this.comp("windowDialog1").close();
+		}
 	};
 
 	return Model;

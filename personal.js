@@ -83,8 +83,8 @@ define(function(require){
 	};
 
 	Model.prototype.row15Click = function(event){
-		justep.Shell.showPage("main");
 		jwt.removeToken();
+		this.owner.send({data:true});
 	};
 
 	return Model;

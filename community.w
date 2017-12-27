@@ -20,7 +20,7 @@
         <div class="x-titlebar-right reverse"/> 
       </div> 
     </div>  
-    <div xid="content" class="x-panel-content x-cards" style="background-color:#1C1F26;"> 
+    <div xid="content" class="x-panel-content x-cards" style="background-color:#1C1F26;height:100%;"> 
       <div component="$UI/system/components/justep/button/buttonGroup" class="btn-group" tabbed="true" xid="buttonGroup1" style="width:100%;" selected="SecondBtn" bind-focus="buttonGroup1Focus">
    <a component="$UI/system/components/justep/button/button" class="btn btn-default;rb;" label="社区" xid="SecondBtn" style="width:50%;color:#C0C0C0;margin:0px 0px 0px 0px;background-color:#282D40;" target="content2">
     <i xid="i2"></i>

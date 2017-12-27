@@ -12,7 +12,7 @@
    <span xid="span1"></span></a></div>
    <div class="x-titlebar-title" xid="title1">猫窝升级</div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>
-   <div class="x-panel-content backgroundAll" xid="content1"><div xid="div1" class="introduction">
+   <div class="x-panel-content backgroundAll" xid="content1" style="height:100%;"><div xid="div1" class="introduction">
   <div xid="div3" class="production-upgrade"><div component="$UI/system/components/justep/row/row" class="x-row backgroundD" xid="row8">
    <div class="x-col" xid="col39"><span xid="span20"><![CDATA[请输入以下信息]]></span></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row normalRow" xid="upgrade-message">
@@ -97,4 +97,5 @@
    <span xid="span2">确认密码</span></a></div>
    <div class="x-col" xid="col6"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="设置密码" xid="button9" style="color:#8E8E8E;" onClick="button9Click">
    <i xid="i9"></i>
-   <span xid="span5">设置密码</span></a></div></div></div></div></div>
+   <span xid="span5">设置密码</span></a></div></div></div></div>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceived="windowDialog1Received"></span></div>

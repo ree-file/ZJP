@@ -8,7 +8,7 @@
    <div class="x-titlebar-title" xid="title1">
     <span xid="span1" style="font-weight:normal;color:#868687;"><![CDATA[验证码]]></span></div> 
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>
-   <div class="x-panel-content" xid="content1"><div xid="div3" class="div-padding">
+   <div class="x-panel-content" xid="content1" style="width:100%;"><div xid="div3" class="div-padding">
    
    
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="padding-top:1px;">

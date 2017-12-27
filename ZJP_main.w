@@ -27,7 +27,7 @@
    <div class="x-titlebar-right reverse" xid="right1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="市场" xid="button4" style="border-radius:5px;border-style:solid solid solid solid;border-width:2px 2px 2px 2px;border-color:#D3D3D3 #D3D3D3 #D3D3D3 #D3D3D3;" onClick="button4Click">
    <i xid="i4"></i>
    <span xid="span18" style="font-size:small;">市场</span></a></div></div></div>  
-    <div class="x-panel-content" xid="content1" style="background:#1C1F26">
+    <div class="x-panel-content" xid="content1" style="background:#1C1F26;height:100%;">
   
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
    <div class="x-contents-content" xid="content2"><div xid="main1" style="position:absolute;width:100%;height:50%;">
@@ -118,8 +118,9 @@
   </div>
   <div class="x-col" xid="col43" style="text-align:center;"><span xid="span38"><![CDATA[$]]></span><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'><![CDATA[]]></span>
   </div></div></div>
-   </div></li></ul> </div></div></div>
-  <div class="x-contents-content" xid="content4"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="$UI/ZJP/personal.w"></div></div></div></div>
+   </div></li></ul> </div></div>
+  <div xid="div8" style="height:48px;"></div></div>
+  <div class="x-contents-content" xid="content4"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="$UI/ZJP/personal.w" onReceive="windowContainer1Receive"></div></div></div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link index" label="首页" xid="button1" target="content2" style="font-size:medium;border-color:#282B32;">
     <i xid="i1"></i>
@@ -142,4 +143,5 @@
    <div class="x-col" xid="col38"><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="确认" xid="button7" style="width:100%;border-radius:5px;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;border-color:#C7C7C7 #C7C7C7 #C7C7C7 #C7C7C7;" onClick="button7Click">
    <i xid="i7"></i>
    <span xid="span35">确认</span></a></div>
-   </div></div></div></div>
+   </div></div></div>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" onReceive="windowDialog1Receive" src="$UI/ZJP/mailLogin.w"></span></div>

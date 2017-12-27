@@ -27,7 +27,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#252932;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
+    <div class="x-panel-content" xid="content1" style="background-color:#252932;height:100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
    <div class="x-col" xid="col4">
     <span xid="span2">请确保已汇款后再提交，钱包金额与交流金额互相转款为立即生效。</span></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#252932;padding:0px 0px 0px 0px;margin:15px 0px 0px 0px;height:60px;">

@@ -46,18 +46,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						if (jwt.authRefresh()) {
-							community_premission(nest_name);
+						if(jwt.authRefresh()){
+							this.community_premission(nest_name);
 						}
-						else{
-							justep.Shell.showPage("mian");
+						else
+						{
+							b=undefined;
 						}
 						
 					}
+					else if(responseText.message=="No token provided."){
+						b=undefined;
+					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
-						b=404;
+						b=undefined;
 					}
 				}
 			});
@@ -108,13 +110,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.nestInfo();
+						if(jwt.authRefresh()){
+							this.nestInfo();
+						}
+						else
+						{
+							nest_Info=undefined;
+						}
 						
 					}
+					else if(responseText.message=="No token provided."){
+						nest_Info=undefined;
+					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						nest_Info=undefined;
 					}
 				}.bind(this)
 			});
@@ -140,12 +149,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.nestsimpleinfo();
+						if(jwt.authRefresh()){
+							this.nestsimpleinfo();
+						}
+						else
+						{
+							nestdata=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						nestdata=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");	
+						nestdata=undefined;
 					}
 				}.bind(this)
 			});
@@ -172,12 +189,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.createnest();
+						if(jwt.authRefresh()){
+							this.createnest(params);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -203,12 +228,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.upgradenest();
+						if(jwt.authRefresh()){
+							this.upgradenest(params);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -234,16 +267,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.reinvestment();
-					}
-					else if(responseText.message=="The lastest contract is not finished.")
-						{
-							is_success = false;
+						if(jwt.authRefresh()){
+							this.reinvestment(params);
 						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
+					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -269,16 +306,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.invitenest();
-					}
-					else if(responseText.message=="The lastest contract is not finished.")
-						{
-							is_success = false;
+						if(jwt.authRefresh()){
+							this.invitenest(params);
 						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
+					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");	
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -326,7 +367,6 @@ define(function(require){
 					}
 					else{
 						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
 					}
 				}.bind(this)
 				
@@ -350,12 +390,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.singlenestInfo(nest_id);
+						if(jwt.authRefresh()){
+							this.singlenestInfo(nest_id);
+						}
+						else
+						{
+							nestInfo=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						nestInfo=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");	
+						nestInfo=undefined;
 					}
 				}.bind(this)
 			});
@@ -374,12 +422,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.singlenestInfo(nest_id);
+						if(jwt.authRefresh()){
+							this.singlenestInfo(nest_id);
+						}
+						else
+						{
+							nestInfo=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						nestInfo=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");	
+						nestInfo=undefined;
 					}
 				}.bind(this)
 			});

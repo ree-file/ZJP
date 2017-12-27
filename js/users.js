@@ -30,12 +30,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.resetPassword(password,code);
+						if(jwt.authRefresh()){
+							this.resetsecondPassword(password,code);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("main");	
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -56,16 +64,23 @@ define(function(require){
 					is_success=true;
 				},
 				error:function(){
-					is_success = false;
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.forgetsecondpassword();
+						if(jwt.authRefresh()){
+							this.forgetsecondpassword();
+						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("main");	
+						is_success=undefined;
 					}
 				}.bind(this)
 			});
@@ -150,12 +165,20 @@ define(function(require){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.getUserMessage();
+						if(jwt.authRefresh()){
+							this.getUserMessage();
+						}
+						else
+						{
+							worthInfo=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						worthInfo=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("main");	
+						worthInfo=undefined;
 					}
 				}.bind(this)
 			});
@@ -178,16 +201,23 @@ define(function(require){
 					
 				},
 				error:function(ero){
-
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.checksecondPassword();
+						if(jwt.authRefresh()){
+							this.checksecondPassword();
+						}
+						else
+						{
+							is_live=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_live=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("main");
+						is_live=undefined;
 					}
 				}.bind(this)
 			});
@@ -212,16 +242,23 @@ define(function(require){
 					}
 				},
 				error:function(ero){
-
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.setSecondPassword();
+						if(jwt.authRefresh()){
+							this.setSecondPassword(password);
+						}
+						else
+						{
+							is_success=undefined;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
 					}
 					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("main");	
+						is_success=undefined;
 					}
 				}.bind(this)
 			});

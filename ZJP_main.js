@@ -40,18 +40,19 @@ define(function(require) {
 		$(this.getElementByXid("span7")).html("$"+worthInfo['all'])
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
-	Model.prototype.modelParamsReceive = function(event){
-		var check = this.params.check;
-
-		if (check==1) {
+	Model.prototype.modelParamsReceive = function(event){	
 			//检查用户是否有二级密码--许鑫君
 			var is_live = user.checksecondPassword();
+			if (is_live ==undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt("请重新登录");
+				return;
+			}
 			if (!is_live) {
 				//跳到设置二级密码页面
 				this.showprompt("你还没有二级密码请设置");
 				this.comp("setSecondPassword").show();
 			}
-		}
 	};
 
 	Model.prototype.password1Blur = function(event){
@@ -78,7 +79,8 @@ define(function(require) {
 				this.showprompt("设置成功");
 				this.comp("setSecondPassword").hide();
 			}
-			else{
+			else if(is_success==undefined){
+				this.comp("windowDialog1").open();
 				this.showprompt("设置失败，请重新登录");
 			}
 		}
@@ -123,6 +125,10 @@ define(function(require) {
 	Model.prototype.NestsAccountCustomRefresh = function(event){
 		ids =[];
 		var nestInfo = nest.nestInfo();
+		if (!nestInfo) {
+			this.comp("windowDialog1").open();
+			return;
+		}
 		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
 		event.source.loadData(nestInfo.contracts);
 		if (nestInfo.contracts.length!=0) {
@@ -152,6 +158,25 @@ define(function(require) {
 	Model.prototype.modelActive = function(event){
 		this.modelModelConstructDone(event);
 		this.modelLoad(event);
+	};
+
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.data) {
+			this.comp("windowDialog1").close();
+			this.comp("contents1").next();
+			this.modelModelConstructDone(event);
+			this.modelLoad(event);
+		}
+	};
+
+	Model.prototype.windowContainer1Receive = function(event){
+		if (event.data.data) {
+			this.comp("windowDialog1").open();
+		}
+	};
+
+	Model.prototype.windowDialog1Received = function(event){
+
 	};
 
 	return Model;

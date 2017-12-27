@@ -12,7 +12,7 @@
      <div class="x-titlebar-title" xid="title1">
       <span xid="span1" style="font-weight:normal;color:#868687;">登录</span></div> 
      <div class="x-titlebar-right reverse" xid="right1"></div></div> </div> 
-   <div class="x-panel-content background-color-black" xid="content1">
+   <div class="x-panel-content background-color-black" xid="content1" style="height:100%;">
     
     <div xid="div3" class="div-padding"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
    <div class="x-col x-col-25 center-block" xid="col7" style="vertical-align:middle;text-align:left;"><h5 xid="h51" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#FFFFFF;"><![CDATA[国家/地区]]></h5></div>
