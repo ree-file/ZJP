@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:124px;left:17px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onParamsReceive="modelParamsReceive" onActive="modelActive"> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="NestsAccount" idColumn="id" onCustomRefresh="NestsAccountCustomRefresh"><column name="id" type="Integer" xid="xid5"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="NestsAccount" idColumn="id" onCustomRefresh="NestsAccountCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid5"></column>
   <column label="获得的金额" name="income" type="Integer" xid="xid7"></column>
   <column label="产品获得时间" name="time" type="Date" xid="xid10"></column>
   <column label="巢名称" name="name" type="String" xid="xid13"></column>
@@ -11,7 +11,7 @@
   <column name="nest_id" type="Integer" xid="xid3"></column>
   <column name="finished" type="Integer" xid="xid4"></column>
   <column name="excess" type="Integer" xid="xid12"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="incomeAccount" idColumn="id" onCustomRefresh="incomeAccountCustomRefresh"><column name="id" type="Integer" xid="xid6"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="incomeAccount" idColumn="id" onCustomRefresh="incomeAccountCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid6"></column>
   <column name="name" type="String" xid="xid8"></column>
   <column name="date" type="Date" xid="xid9"></column>
   <column name="income" type="Float" xid="xid11"></column>
@@ -119,7 +119,7 @@
   <div class="x-col" xid="col43" style="text-align:center;"><span xid="span38"><![CDATA[$]]></span><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'><![CDATA[]]></span>
   </div></div></div>
    </div></li></ul> </div></div>
-  <div xid="div8" style="height:48px;"></div></div>
+  <div xid="div8" style="height:100px;"></div></div>
   <div class="x-contents-content" xid="content4"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="$UI/ZJP/personal.w" onReceive="windowContainer1Receive"></div></div></div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link index" label="首页" xid="button1" target="content2" style="font-size:medium;border-color:#282B32;">

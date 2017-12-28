@@ -1,5 +1,6 @@
 define(function(require){
 	var $ = require("jquery");
+	var base64 = require("$UI/system/lib/base/base64");
 	var justep = require("$UI/system/lib/justep");
 	var config = require("./js/config");
 	var nest = require("./js/nests");
@@ -111,22 +112,23 @@ define(function(require){
 		historyData =[];
 		withdrawData=[];
 		var available =0;
+		
 		for (var i = 0; i < nestInfo.nestinfo.contracts.length; i++) {
 			var money =0;
 			var cpped=0;
 			if (nestInfo.nestinfo.contracts[i].is_finished=="1") {
-				money=parseFloat(nestInfo.nestinfo.contracts[i].eggs)-parseFloat(nestInfo.nestinfo.contracts[i].extracted);
-				capped = parseFloat(nestInfo.nestinfo.contracts[i].eggs)*parseFloat(eggval);
-				released+=capped*3;
-				available+=money*parseFloat(eggval);
-				withdraw+=parseFloat(nestInfo.nestinfo.contracts[i].extracted)*parseFloat(eggval);
+				money=parseFloat(nestInfo.nestinfo.contracts[i].eggs)*parseFloat(eggval)*3-parseFloat(nestInfo.nestinfo.contracts[i].extracted);
+				capped = parseFloat(nestInfo.nestinfo.contracts[i].eggs)*parseFloat(eggval)*3;
+				released+=capped;
+				available+=money;
+				withdraw+=parseFloat(nestInfo.nestinfo.contracts[i].extracted);
 			}
 			else{
 				capped=(parseFloat(nestInfo.nestinfo.contracts[i].from_weeks)+parseFloat(nestInfo.nestinfo.contracts[i].from_receivers)+parseFloat(nestInfo.nestinfo.contracts[i].from_community))*parseFloat(eggval);
-				money=parseFloat(nestInfo.nestinfo.contracts[i].from_weeks)+parseFloat(nestInfo.nestinfo.contracts[i].from_receivers)+parseFloat(nestInfo.nestinfo.contracts[i].from_community)-parseFloat(nestInfo.nestinfo.contracts[i].extracted);
-				released+=capped*3;
-				available+=money*parseFloat(eggval);
-				withdraw+=parseFloat(nestInfo.nestinfo.contracts[i].extracted)*parseFloat(eggval);
+				money=(parseFloat(nestInfo.nestinfo.contracts[i].from_weeks)+parseFloat(nestInfo.nestinfo.contracts[i].from_receivers)+parseFloat(nestInfo.nestinfo.contracts[i].from_community))*parseFloat(eggval)-parseFloat(nestInfo.nestinfo.contracts[i].extracted);
+				released+=capped;
+				available+=money;
+				withdraw+=parseFloat(nestInfo.nestinfo.contracts[i].extracted);
 			}
 			investment+=parseFloat(nestInfo.nestinfo.contracts[i].eggs)*eggval;
 			historyData[historyData.length]={
@@ -138,10 +140,10 @@ define(function(require){
 			withdrawData[i]={
 					id:i+1,
 					date:new Date(),
-					money:money*parseFloat(eggval)*3,
+					money:money.toFixed(2),
 					contract_id:nestInfo.nestinfo.contracts[i].id,
 					message:"点击提现",
-					withdraw:capped*3
+					withdraw:capped
 			}
 		}
 		
@@ -176,7 +178,8 @@ define(function(require){
 	
 	Model.prototype.historyDataCustomRefresh = function(event){
 		if (nestInfo==undefined) {
-				return;
+			return;
+		
 			}
 		if (nestInfo.nestrecords.contract_records.length!=0) {
 			for (var i = 0; i < nestInfo.nestrecords.contract_records.length; i++) {
@@ -196,7 +199,7 @@ define(function(require){
 	
 	Model.prototype.accountDataCustomRefresh = function(event){
 		if (nestInfo==undefined) {
-				return;
+			return;
 			}
 		var date = new Date();
 		var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
@@ -207,7 +210,7 @@ define(function(require){
 				accountData[j]={
 					id:j,
 					date:nestInfo.nestrecords.extract_records[j].created_at,
-					money:nestInfo.nestrecords.extract_records[j].eggs*eggval,
+					money:parseFloat(nestInfo.nestrecords.extract_records[j].money).toFixed(2),
 					message:"提现",
 					status:0
 				}
@@ -215,7 +218,7 @@ define(function(require){
 						if (nestInfo.nestrecords.extract_records[j].contract_id==withdrawData[i].contract_id) {
 					
 							if(Date.parse(nestInfo.nestrecords.extract_records[j].created_at)<times){
-								withdrawData[i].withdraw=withdrawData[i].withdraw-parseFloat(nestInfo.nestrecords.extract_records[j].eggs)*eggval;
+								withdrawData[i].withdraw=withdrawData[i].withdraw-parseFloat(nestInfo.nestrecords.extract_records[j].money);
 							}
 						}
 					}
@@ -273,16 +276,16 @@ define(function(require){
 	Model.prototype.withdrawDataCustomRefresh = function(event){
 		if (nestInfo==undefined) {
 			return;
+	
 		}
 		var money=0;
 		for (var int = 0; int < withdrawData.length; int++) {
 			withdrawData[int].withdraw = (withdrawData[int].withdraw*0.06).toFixed(2);
-			money+=withdrawData[int].money;
+			money+=parseFloat(withdrawData[int].money);
 		}
 		$(this.getElementByXid("h54")).html("$"+money);
 		event.source.loadData(withdrawData);
 		withdrawData=null;
-		nestInfo=null;
 	};
 
 	
@@ -298,30 +301,30 @@ define(function(require){
 	
 	
 	Model.prototype.button10Click = function(event){
-		var eggs = $.trim(this.comp("input1").val());
+		var money = $.trim(this.comp("input1").val());
 		var password = $.trim($(this.getElementByXid("password1")).val());
 		var reg = new RegExp("^[0-9]*$");
-		if (!eggs) {
+		if (!money) {
 			this.showprompt("金额不能为空");
 		}
 		else{
-			if (reg.test(eggs)) {
+			if (reg.test(money)) {
 				var current_worth =parseFloat(this.comp("withdrawData").val("money"));
-				if (parseFloat(parseInt(eggs)*eggval)>current_worth) {
+				if (parseFloat(money)>current_worth) {
 					this.showprompt("超出当前所拥有金额");
 					return;
 				}
 				if (password) {
-					var is_success=contract.withdrawFromcontract(parseInt(eggs),this.comp("withdrawData").val("contract_id"),password);
+					var is_success=contract.withdrawFromcontract(parseInt(money),this.comp("withdrawData").val("contract_id"),password);
 					if (is_success) {
 						this.comp("input1").val("");
 						this.comp("withDrawWindow").hide();
-						$(this.getElementByXid("h56")).html("$"+(parseFloat(this.comp("nest").val("withdraw"))+parseFloat(parseInt(eggs)*eggval)));
-						$(this.getElementByXid("h54")).html("$"+(parseFloat($(this.getElementByXid("h54")).html().substring(1))-parseFloat(parseInt(eggs)*eggval)));
-						$(this.getElementByXid("span22")).html("$"+(parseFloat($(this.getElementByXid("span22")).html())-parseFloat(parseInt(eggs)*eggval)));
+						$(this.getElementByXid("h56")).html("$"+(parseFloat(this.comp("nest").val("withdraw"))+parseFloat(money)));
+						$(this.getElementByXid("h54")).html("$"+(parseFloat($(this.getElementByXid("h54")).html().substring(1))-parseFloat(money)));
+						$(this.getElementByXid("span22")).html("$"+(parseFloat($(this.getElementByXid("span22")).html())-parseFloat(money)));
 						this.comp("accountData").newData({
 							"defaultValues":[{
-								money:parseFloat(parseInt(eggs)*eggval),
+								money:parseFloat(money),
 								date:new Date(),
 								status:0,
 								message:"提现"
@@ -351,16 +354,13 @@ define(function(require){
 	
 	Model.prototype.input1Blur = function(event){
 		var money = $.trim(this.comp("input1").val());
-		var reg = new RegExp("^[0-9]*$");
+		var reg = new RegExp("^[0-9.]*$");
 		if (!money) {
-			$(this.getElementByXid("span30")).html(0);
+			this.showprompt("金额不能为空");
 			return;
 		}
-		if (reg.test(money)) {
-			$(this.getElementByXid("span30")).html((parseInt(money)*eggval).toFixed(2));
-		}
-		else{
-			this.showprompt("只能输入整数");
+		if (!reg.test(money)) {
+			this.showprompt("填写错误金额");
 		}
 	};
 	
@@ -435,9 +435,18 @@ define(function(require){
 	
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
-			this.modelParamsReceive(event);
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("windowDialog1").close();
+			this.modelParamsReceive(event);
+			
 		}
+	
 	};
 	
 	

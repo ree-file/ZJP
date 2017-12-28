@@ -13,8 +13,24 @@ define(function(require){
 //	var currentDate =  
 	return{
 		//获取巢的社区权限（子巢可以挂的范围）---许鑫君
-		community_premission : function(nest_name){
+		community_premission:function(nest_name){
+			var premission;
+			do{
+				premission=0;
+				var result1 = this.community_premissionajax(nest_name);
+				if (result1<100) {
+					premission=result1;
+				}
+				else{
+					premission=undefined;
+				}
+				
+			}while(result1==500)
+			return premission;
+		},
+		community_premissionajax : function(nest_name){
 			var b =0;
+			var status =404;
 			$.ajax({
 				url:config.site+"nests",//php的api路径
 				async:false,
@@ -40,6 +56,7 @@ define(function(require){
 					else{
 						b=404;
 					}
+					status = 200;
 						
 				},
 				error:function(ero){//请求失败错误信息在ero里
@@ -47,39 +64,58 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.community_premission(nest_name);
+							status = 500;
 						}
 						else
 						{
-							b=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						b=undefined;
-					}
-					else{
-						b=undefined;
+						status = 404;
 					}
 				}
 			});
-			if (b==1) {
-				return 3;
+			if (status =200) {
+				if (b==1) {
+					return 3;
+				}
+				else if (b==0) {
+					return 2;
+				}else if(b==-1){
+					return 1;
+				}else{
+					return b;
+				}
 			}
-			else if (b==0) {
-				return 2;
-			}else if(b==-1){
-				return 1;
-			}else{
-				return b;
+			else{
+				return status;
 			}
+			
 			
 		},
 		//巢的详细信息--许鑫君
 		nestInfo:function(){
+			var nestInfo;
+			do{
+				nestInfo={};
+				var result1 = this.nestInfoajax();
+				if (typeof(result1)!="number") {
+						nestInfo=result1;
+				}
+				else{
+					nestInfo=undefined;
+				}
+				
+			}while(result1==500)
+			return nestInfo;
+		},
+		nestInfoajax:function(){
 			var nest_Info={};
 				nest_Info.contracts=[];
 				nest_Info.assets=0;
+				var status =404;
 				eggval=config.configegg().egg_val;
 			$.ajax({
 				url:config.site+"private/nests",
@@ -105,34 +141,53 @@ define(function(require){
 						nest_Info.contracts[i].excess = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
 					}
 					//对data做处理
+					status =200;
 				},
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.nestInfo();
+							status =500;
 						}
 						else
 						{
-							nest_Info=undefined;
+							status =404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						nest_Info=undefined;
+						status =404;
 					}
-					else{
-						nest_Info=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return nest_Info;
+			if (status==200) {
+				return nest_Info;
+			}
+			else{
+				return status;
+			}
 			//nest_Info模型=nest_Info['Investment'],nest_Info['today'],nest_Info['incomedata']=[{time:time,income:income,name:name,type:type(收益来源)}],nest_Info['nestdata']=[{id:nest_id,name:name,income:income(总的收益),freese:freese,time:time(创建日期),type:contractType*config.rate}]
 		},
 		//巢的简略信息--许鑫君
 		nestsimpleinfo:function(){
-			var nestdata;
+			var nestInfo;
+			do{
+				nestInfo={};
+				var result1 = this.nestsimpleinfoajax();
+				if (typeof(result1)!="number") {
+						nestInfo=result1;
+				}
+				else{
+					nestInfo=undefined;
+				}
+				
+			}while(result1==500)
+			return nestInfo;
+		},
+		nestsimpleinfoajax:function(){
+			var nestdata={};
+			var status =404;
 			$.ajax({
 				url:config.site+"private/nests",
 				async:false,
@@ -143,6 +198,7 @@ define(function(require){
 				},
 				success:function(data){
 					nestdata = data.data;
+					status =200;
 					//对data做处理
 				},
 				error:function(ero){
@@ -150,27 +206,46 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.nestsimpleinfo();
+							status =500;
 						}
 						else
 						{
-							nestdata=undefined;
+							status = 404
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						nestdata=undefined;
+						status = 404
 					}
-					else{
-						nestdata=undefined;
-					}
-				}.bind(this)
+				}
 			});
-
-			return nestdata;
+			if (status==200) {
+				return nestdata;
+			}
+			else{
+				return status;
+			}
 		},
 		createnest:function(params){
-			var is_success=false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.createnestajax(params);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		createnestajax:function(params){
+			var status =404
 			$.ajax({
 				url:config.site+"nests",
 				async:false,
@@ -182,7 +257,7 @@ define(function(require){
 				},
 				success:function(data){
 					if (data.status=="success") {
-						is_success = true;
+						status = 200;
 					}
 				},
 				error:function(ero){
@@ -190,26 +265,41 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.createnest(params);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 		upgradenest:function(params){
-			var is_success =false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.upgradenestajax(params);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		upgradenestajax:function(params){
+			var status = 404;
 			$.ajax({
 				url:config.site+"nests/"+params.nest_id+"/upgrade",
 				async:false,
@@ -221,7 +311,7 @@ define(function(require){
 				},
 				success:function(data){
 					if (data.status=="success") {
-						is_success = true;
+						status = 200;
 					}
 				},
 				error:function(ero){
@@ -229,26 +319,41 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.upgradenest(params);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 		reinvestment:function(params){
-			var is_success= false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.reinvestmentajax(params);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		reinvestmentajax:function(params){
+			var status = 404;
 			$.ajax({
 				url:config.site+"nests/"+params.nest_id+"/reinvest",
 				async:false,
@@ -260,7 +365,7 @@ define(function(require){
 				},
 				success:function(data){
 					if (data.status=="success") {
-						is_success = true;
+						status = 200;
 					}
 				},
 				error:function(ero){
@@ -268,26 +373,41 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.reinvestment(params);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 		invitenest:function(params){
-			var is_success= false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.invitenestajax(params);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		invitenestajax:function(params){
+			var status = 404;
 			$.ajax({
 				url:config.site+"users",
 				async:false,
@@ -299,31 +419,28 @@ define(function(require){
 				},
 				success:function(data){
 					if (data.status=="success") {
-						is_success = true;
+						status = 200;
 					}
 				},
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.invitenest(params);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 	
 		incomeInfo:function(ids,times,today){
@@ -359,7 +476,7 @@ define(function(require){
 					this.incomeInfo(ids,times,today);
 				}.bind(this),
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						jwt.authRefresh();
@@ -374,7 +491,33 @@ define(function(require){
 			return record;
 		},
 		singlenestInfo:function(nest_id){
-			var nestInfo = {};
+			var nestInfo;
+			do{
+				nestInfo={};
+				var result1 = this.nestrecordsajax(nest_id);
+				var result2 = this.nestinfoajax(nest_id);
+				if (typeof(result1)!="number") {
+					if (nestInfo!=undefined) {
+						nestInfo.nestrecords=result1;
+					}
+				}
+				else{
+					nestInfo=undefined;
+				}
+				if (typeof(result2)!="number") {
+					if (nestInfo!=undefined) {
+						nestInfo.nestinfo=result2;
+					}
+				}
+				else{
+					nestInfo=undefined;
+				}
+			}while(result1==500||result2==500)
+			return nestInfo;
+		},
+		nestrecordsajax:function(nest_id){
+			var status = 404;
+			var nestrecords;
 			$.ajax({
 				url:config.site+"nests/"+nest_id+"/records",
 				async:false,
@@ -384,29 +527,37 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					nestInfo.nestrecords = data.data;
+					nestrecords = data.data;
+					status =200;
 				},
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.singlenestInfo(nest_id);
+							status = 500;
 						}
 						else
 						{
-							nestInfo=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						nestInfo=undefined;
+						status = 404;
 					}
-					else{
-						nestInfo=undefined;
-					}
-				}.bind(this)
+				}
 			});
+			if (status = 200) {
+				return nestrecords;
+			}
+			else {
+				return status;
+			}
+		},
+		nestinfoajax:function(nest_id){
+			var status =400;
+			var nestinfo;
 			$.ajax({
 				url:config.site+"nests/"+nest_id,
 				async:false,
@@ -416,30 +567,35 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					nestInfo.nestinfo = data.data;
+					nestinfo = data.data;
+					status = 200;
 				},
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.singlenestInfo(nest_id);
+							status =500;
 						}
 						else
 						{
-							nestInfo=undefined;
+							status =404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						nestInfo=undefined;
+						status =404;
 					}
-					else{
-						nestInfo=undefined;
-					}
-				}.bind(this)
+					
+				}
 			});
-			return nestInfo;
+			if (status==200) {
+				return nestinfo;
+			}
+			else{
+				return status;
+			}
+			
 		}
 	};
 	

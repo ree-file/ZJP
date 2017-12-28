@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" onParamsReceive="modelParamsReceive" style="top:32px;left:296px;height:auto;"><div component="$UI/system/components/justep/data/data" autoLoad="false" xid="typedata" idColumn="id" onCustomRefresh="typedataCustomRefresh"><column name="id" type="Integer" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" onParamsReceive="modelParamsReceive" style="top:32px;left:296px;height:auto;"><div component="$UI/system/components/justep/data/data" autoLoad="false" xid="typedata" idColumn="id" onCustomRefresh="typedataCustomRefresh" confirmRefresh="false" confirmDelete="false"><column name="id" type="Integer" xid="xid1"></column>
   <column name="type" type="String" xid="xid2"></column>
   <column name="is_show" type="Integer" xid="xid3"></column>
   <data xid="default1">[{&quot;id&quot;:1,&quot;type&quot;:&quot;第一级产品&quot;,&quot;is_show&quot;:1},{&quot;id&quot;:2,&quot;type&quot;:&quot;第二级产品&quot;,&quot;is_show&quot;:1},{&quot;id&quot;:3,&quot;type&quot;:&quot;第三级产品&quot;,&quot;is_show&quot;:1},{&quot;id&quot;:4,&quot;type&quot;:&quot;第四级产品&quot;,&quot;is_show&quot;:1}]</data></div></div> 

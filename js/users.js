@@ -11,8 +11,27 @@ define(function(require){
 		$(".x-hint").find("button[class='close']").hide();
 	}
 	return{
+		
 		resetsecondPassword:function(password,code){
-			var is_success =false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.resetsecondPasswordajax(password,code);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		resetsecondPasswordajax:function(password,code){
+			var status =404;
 			$.ajax({
 				url:config.site+"private/reset-security-code",
 				async:false,
@@ -23,34 +42,50 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					is_success=true;
-
+					if (data.status=="success") {
+						status = 200;
+					}
 				},
 				error:function(ero){
-					var responseText = JSON.parse(ero.responseText);
+					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
+						
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
-
+						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 		forgetsecondpassword:function(){
-			var is_success =false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.forgetsecondpasswordajax();
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		forgetsecondpasswordajax:function(){
+			var status =404;
 			$.ajax({
 				url:config.site+"private/forget-security-code",
 				async:false,
@@ -61,30 +96,29 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					is_success=true;
+					if (data.status=="success") {
+						status = 200;
+					}
 				},
-				error:function(){
+				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
+						
 						if(jwt.authRefresh()){
-							this.forgetsecondpassword();
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
-
+						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 		resetPassword:function(password,code,email){
 			var is_success =false;
@@ -120,28 +154,28 @@ define(function(require){
 			});
 			return is_success;
 		},
-		//判断某个用户是否存在--许鑫君
-		userlive:function(name){
-			var is_live =true;
-			$.ajax({
-				url:"http://127.0.0.1:8081/api/v1/user/live",
-				async:false,
-				dataType:"json",
-				type:"GET",
-				data:{email:name},
-				success:function(data){
-
-				},
-				error:function(){
-					is_live = false;
-				}
-			});
-			return is_live;
-
-		},
+		
 		//获取用户信息（各个钱包金额）--许鑫君
 		getUserMessage:function(){
+			var worthInfo;
+			do{
+				worthInfo=[];
+				var result1 = this.getUserMessageajax();
+				if (typeof(result1)!="number") {
+					
+						worthInfo=result1;
+					
+				}
+				else{
+					worthInfo=undefined;
+				}
+				
+			}while(result1==500)
+			return worthInfo;
+		},
+		getUserMessageajax:function(){
 			var worthInfo=[];
+			var status =404;
 			$.ajax({
 				url:config.site+"private",
 				async:false,
@@ -159,33 +193,54 @@ define(function(require){
 						worthInfo['all'] = worthInfo['market']+worthInfo['limit']+parseFloat(data.data.money_active);
 						localStorage.setItem("thismyuserId", data.data.id);
 					}
-
+					status =200;
 				},
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							this.getUserMessage();
+							status =500;
 						}
 						else
 						{
-							worthInfo=undefined;
+							status =404;
 						}
 
 					}
 					else if(responseText.message=="No token provided."){
-						worthInfo=undefined;
+						status =404;
 					}
-					else{
-						worthInfo=undefined;
-					}
-				}.bind(this)
+					
+				}
 			});
-			return worthInfo;//包含了active，limit，market三部分钱
+			if (status ==200) {
+				return worthInfo;//包含了active，limit，market三部分钱
+			}
+			else{
+				return status;
+			}
 		},
-		checksecondPassword:function(){
-			var is_live = true;
+		checksecondPassword:function(password){
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.checksecondPasswordajax(password);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		checksecondPasswordajax:function(){
+			var status =404;
 			$.ajax({
 				url:config.site+"private",
 				async:false,
@@ -195,37 +250,51 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					if (!data.data.has_security_code) {
-						is_live=false;
+					if (data.status=="success") {
+						status = 200;
 					}
-
 				},
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
+						
 						if(jwt.authRefresh()){
-							this.checksecondPassword();
+							status = 500;
 						}
 						else
 						{
-							is_live=undefined;
+							status = 404;
 						}
-
+						
 					}
 					else if(responseText.message=="No token provided."){
-						is_live=undefined;
+						status = 404;
 					}
-					else{
-						is_live=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_live;
+			return status;
 
 		},
 		setSecondPassword:function(password){
-			var is_success = true;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.setSecondPasswordajax(password);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		setSecondPasswordajax:function(password){
+			var status =404;
 			$.ajax({
 				url:config.site+"private/store-security-code",
 				async:false,
@@ -236,34 +305,29 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					if(data.status != "success")
-					{
-						var is_success = false;
+					if (data.status=="success") {
+						status = 200;
 					}
 				},
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
+						
 						if(jwt.authRefresh()){
-							this.setSecondPassword(password);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
-
+						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
-
+			return status;
 		},
 
 

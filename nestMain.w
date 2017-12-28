@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id"><column label="id" name="id" type="String" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmDelete="false" confirmRefresh="false"><column label="id" name="id" type="String" xid="xid1"></column>
   <column label="图片" name="picture" type="String" xid="xid2"></column>
   <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/Germany.jpg&quot;}]</data></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="accelerate" idColumn="id"><column name="id" type="String" xid="xid3"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="accelerate" idColumn="id" confirmDelete="false" confirmRefresh="false"><column name="id" type="String" xid="xid3"></column>
   <column name="time" type="String" xid="xid4"></column>
   <column name="number" type="Float" xid="xid5"></column>
   <column name="people" type="String" xid="xid6"></column>
   <column name="type" type="String" xid="xid7"></column>
   <data xid="default6">[{&quot;id&quot;:&quot;1&quot;,&quot;time&quot;:&quot;1095-02-09&quot;,&quot;number&quot;:36.5,&quot;people&quot;:&quot;zhulinen&quot;,&quot;type&quot;:&quot;直接加速&quot;},{&quot;id&quot;:&quot;2&quot;,&quot;time&quot;:&quot;10095-02-15&quot;,&quot;number&quot;:73,&quot;people&quot;:&quot;samul&quot;,&quot;type&quot;:&quot;社区加速&quot;}]</data></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="nest" idColumn="id" onCustomRefresh="nestCustomRefresh"><column name="id" type="String" xid="xid19"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="nest" idColumn="id" onCustomRefresh="nestCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="String" xid="xid19"></column>
   <column label="编号" name="name" type="String" xid="xid20"></column>
   <column label="已释放的金额" name="released" type="Float" xid="xid21"></column>
   <column label="可提现金额" name="available" type="Float" xid="xid22"></column>
@@ -24,16 +24,16 @@
   <column name="expectReturn" type="Float" xid="xid30"></column>
   <column name="is_finished" type="Integer" xid="xid35"></column>
   <column label="合约等级" name="type" type="Integer" xid="xid36"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="historyData" idColumn="id" onCustomRefresh="historyDataCustomRefresh"><column name="id" type="Integer" xid="xid8"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="historyData" idColumn="id" onCustomRefresh="historyDataCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid8"></column>
   <column name="date" type="Date" xid="xid9"></column>
   <column name="message" type="String" xid="xid10"></column>
   <column name="money" type="Float" xid="xid11"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="accountData" idColumn="id" onCustomRefresh="accountDataCustomRefresh"><column name="id" type="Integer" xid="xid12"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="accountData" idColumn="id" onCustomRefresh="accountDataCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid12"></column>
   <column name="date" type="Date" xid="xid13"></column>
   <column name="money" type="Float" xid="xid14"></column>
   <column name="message" type="String" xid="xid15"></column>
   <column name="status" type="Integer" xid="xid16"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="withdrawData" idColumn="id" onCustomRefresh="withdrawDataCustomRefresh"><column name="id" type="Integer" xid="xid17"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="withdrawData" idColumn="id" onCustomRefresh="withdrawDataCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid17"></column>
   <column name="money" type="String" xid="xid18"></column>
   <column name="date" type="Date" xid="xid31"></column>
   <column name="contract_id" type="Integer" xid="xid32"></column>
@@ -229,12 +229,9 @@
   <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0" style="top:51px;left:193px;">
    <div class="x-popOver-overlay" xid="div6"></div>
    <div class="x-popOver-content withDrawWindow" xid="div7"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row28">
-   <div class="x-col x-col-33" xid="col82"><h5 xid="h51" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[产品支数：]]></h5></div>
+   <div class="x-col x-col-33" xid="col82"><h5 xid="h51" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[提取钱数：]]></h5></div>
    <div class="x-col" xid="col83"><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1" onBlur="input1Blur"></input></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row30">
-   <div class="x-col x-col-33" xid="col84" style="text-align:right;white-space:nowrap;"><span xid="span29" style="color:white"><![CDATA[获得金额:]]></span></div>
-   <div class="x-col" xid="col85" style="text-align:center"><span xid="span30" style="color:white"><![CDATA[0]]></span></div>
-   </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row11">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11">
    <div class="x-col x-col-33" xid="col34"><h5 xid="h53" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[安全密码：]]></h5></div>
    <div class="x-col" xid="col81"><input component="$UI/system/components/justep/input/password" class="form-control" xid="password1" style="border-radius:5px;"></input></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row29">
    <div class="x-col" xid="col86"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="确定" xid="button10" onClick="button10Click">

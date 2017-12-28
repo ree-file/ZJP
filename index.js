@@ -3,6 +3,7 @@ define(function(require) {
 	var justep = require("$UI/system/lib/justep");
 	var ShellImpl = require('$UI/system/lib/portal/shellImpl');
 	var me;
+	var base64 = require("$UI/system/lib/base/base64");
 	var Model = function() {
 		me=this;
 		this.callParent();
@@ -67,7 +68,6 @@ define(function(require) {
 		})
 
 	};
-
 	Model.prototype.modelLoad = function(event){
 		if (!localStorage.getItem("jwt_token")) {
 			this.comp("windowDialog1").open();
@@ -77,10 +77,17 @@ define(function(require) {
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("mainContainer").refresh();
 			setTimeout(function(){
 				me.comp("windowDialog1").close();
-			}, 500);
+			}, 200);
 			
 			
 		}

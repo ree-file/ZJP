@@ -2,6 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var user = require("./js/users");
+	var base64 = require("$UI/system/lib/base/base64");
 	var Model = function(){
 		this.callParent();
 	};
@@ -94,6 +95,13 @@ define(function(require){
 	};	
 	Model.prototype.windowDialog1Receive = function(event){
 		if(event.data.data){
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("windowDialog1").close();
 		}
 

@@ -5,6 +5,7 @@ define(function(require){
 	var handleProduction = require('./js/handleProduction');
 	var users = require('./js/users');
 	var config = require('./js/config');
+	var base64 = require("$UI/system/lib/base/base64");
 	var action ="";//用于判断页面需要执行什么操作
 	var worth ;//后期用页面数据传递得到用于产品升级和复投的显示
 	var nest_id;//后期通过页面数据传递获得用于产品升级和复投的传参数
@@ -62,7 +63,9 @@ define(function(require){
 			//还要拿benefit_name去数据查看他社区开通了哪些
 			var premission=nest.community_premission(benefit_name);
 			if (premission==undefined) {
+				this.comp("popOver1").hide();
 				this.comp("windowDialog1").open();
+				
 				return;
 			}
 			switch (premission) {
@@ -301,10 +304,9 @@ define(function(require){
 			$(this.getElementByXid("production_worth")).html(worth);
 		}
 		this.comp("secondPassword").hide();
-		this.showprompt("3秒后自动调到首页");
-		setTimeout(function(){
+		this.showprompt("自动调到首页");
 			justep.Shell.showPage("main");
-		}, 3000);
+
 		
 	}
 	//输入二级密码后确认是否正确然后提交数据
@@ -323,8 +325,9 @@ define(function(require){
 							this.showprompt("提升成功");
 						}
 						else if(is_success==undefined){
-							this.comp("windowDialog1").open();
 							this.comp("popOver1").hide();
+							this.comp("windowDialog1").open();
+							
 						}
 						else{
 							this.showprompt("提升失败");
@@ -342,8 +345,9 @@ define(function(require){
 						
 						}
 						else if(is_success==undefined){
-							this.comp("windowDialog1").open();
 							this.comp("popOver1").hide();
+							this.comp("windowDialog1").open();
+							
 						}
 						else{
 							this.showprompt("创建失败");
@@ -361,8 +365,9 @@ define(function(require){
 							
 						}
 						else if(is_success==undefined){
-							this.comp("windowDialog1").open();
 							this.comp("popOver1").hide();
+							this.comp("windowDialog1").open();
+						
 						}
 						else{
 							this.showprompt("创建失败");
@@ -378,6 +383,29 @@ define(function(require){
 	};
 	//提交数据
 	Model.prototype.button6Click = function(event){
+		var is_hascommunity=0;
+		var radios = $("[name='community_radio']");
+		for (var i = 0; i < radios.length; i++) {
+			if (radios[i].checked) {
+				switch (i) {
+				case 1:
+					is_hascommunity=1;
+					break;
+				case 3:
+					is_hascommunity=1
+					break;
+				case 5:
+					is_hascommunity=1
+					break;
+				default:
+					
+					break;
+				}
+			}
+		}
+		if (is_hascommunity==0&&(action=="create"||action=="invite")) {
+			this.input4Blur(event);return;
+		}
 		if (!$.trim(this.comp("input2").val())&&(action=="create"||action=="invite")) {
 			this.showprompt("邀请猫窝不能为空");
 		}
@@ -447,6 +475,13 @@ define(function(require){
 
 	Model.prototype.windowDialog1Received = function(event){
 		if (event.data.data) {
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("windowDialog1").close();
 		}
 	};

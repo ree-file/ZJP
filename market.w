@@ -13,19 +13,19 @@
   <column name="remainingeggs" type="Integer" xid="xid20"></column>
   <column name="freeseeggs" type="Integer" xid="xid21"></column>
   <column name="orderid" type="Integer" xid="xid25"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="conditionData" idColumn="id" confirmDelete="false" confirmRefresh="false"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>
   <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;fName&quot;:&quot;综合排序&quot;,&quot;fState&quot;:1},{&quot;id&quot;:&quot;2&quot;,&quot;fName&quot;:&quot;价格升序&quot;,&quot;fState&quot;:0},{&quot;id&quot;:&quot;3&quot;,&quot;fName&quot;:&quot;价格降序&quot;,&quot;fState&quot;:0}]</data></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="transactionrecord" idColumn="id" onCustomRefresh="transactionrecordCustomRefresh"><column name="id" type="Integer" xid="xid10"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="transactionrecord" idColumn="id" onCustomRefresh="transactionrecordCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid10"></column>
   <column name="productioncode" type="String" xid="xid11"></column>
   <column name="transactionmoney" type="Float" xid="xid12"></column>
   <column name="status" type="String" xid="xid13"></column>
   <column name="date" type="Date" xid="xid14"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="price" idColumn="id"><column name="id" type="Integer" xid="xid15"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="price" idColumn="id" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid15"></column>
   <column name="price" type="Integer" xid="xid16"></column>
   <data xid="default5">[{&quot;id&quot;:1,&quot;price&quot;:0}]</data></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="filterdata" idColumn="id"><column name="id" type="Integer" xid="xid22"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="filterdata" idColumn="id" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid22"></column>
   <column name="min" type="Float" xid="xid23"></column>
   <column name="max" type="Float" xid="xid24"></column>
   <data xid="default2">[{&quot;id&quot;:1,&quot;min&quot;:0,&quot;max&quot;:0}]</data></div></div>  

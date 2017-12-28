@@ -11,8 +11,25 @@ define(function(require){
 	}
 	return{
 		buy:function(id,password){
-			
-			var is_success =false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.buyajax(id,password);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		buyajax:function(id,password){
+			var status =404;
 			$.ajax({
 				url: config.site+"orders/"+id+"/buy",//php的api路径
 				async:false,
@@ -22,35 +39,50 @@ define(function(require){
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
-				success:function(data){//请求成功返回值存在data里
-					is_success=true;
+				success:function(data){
+					if (data.status=="success") {
+						status = 200;
+					}
 				},
-				error:function(ero){//请求失败错误信息在ero里
-					responseText = JSON.parse(ero.responseText);
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.buy(id,password);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
-		getorders : function(page){
+		getorders:function(page){
+			var allorders;
+			do{
+				allorders=[];
+				var result1 = this.getordersajax(page);
+				if (typeof(result1)!="number") {
+					allorders=result1;
+				}
+				else{
+					allorders=undefined;
+				}
+				
+			}while(result1==500)
+			return allorders;
+		},
+		getordersajax : function(page){
 			var allorders=[];
 			var eggval = parseFloat(config.configegg().egg_val);
+			var status =404;
 			$.ajax({
 				url: config.site+"orders",//php的api路径
 				async:false,
@@ -87,33 +119,52 @@ define(function(require){
 						allorders[i].remainingeggs = parseInt(contract_remaining);
 						allorders[i].freeseeggs = parseInt(contract.eggs)-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
 					}
+					status =200;
 				},
 				error:function(ero){//请求失败错误信息在ero里
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.getorders(page);
+							status =500;
 						}
 						else
 						{
-							allorders=undefined;
+							status =404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						allorders=undefined;
+						status =404
 					}
-					else{
-						allorders=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return allorders;
+			if (status ==200) {
+				return allorders;
+			}
+			else{
+				return status;
+			}
 		},
 		filterOrders:function(page,min,max){
+			var allorders;
+			do{
+				allorders=[];
+				var result1 = this.filterOrdersajax(page,min,max);
+				if (typeof(result1)!="number") {
+					allorders=result1;
+				}
+				else{
+					allorders=undefined;
+				}
+				
+			}while(result1==500)
+			return allorders;
+		},
+		filterOrdersajax:function(page,min,max){
 			var allorders=[];
 			var eggval = parseFloat(config.configegg().egg_val);
+			var status=404;
 			$.ajax({
 				url: config.site+"orders",//php的api路径
 				async:false,
@@ -149,36 +200,52 @@ define(function(require){
 						allorders[i].remainingeggs = parseInt(contract_remaining);
 						allorders[i].freeseeggs = parseInt(contract.eggs)-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
 					}
+					status =200;
 				},
 				error:function(ero){//请求失败错误信息在ero里
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.filterOrders(page,min,max);
+							status =500;
 						}
 						else
 						{
-							allorders=undefined;
+							status =404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						allorders=undefined;
+						status =404;
 					}
-					else{
-						allorders=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return allorders;
+			if (status =200) {
+				return allorders;
+			}
+			else{
+				return status;
+			}
 		},
-		ordersInfo:function(){
-
+		getTransactionRecord:function(){
+			var record;
+			do{
+				record=[];
+				var result1 = this.getTransactionRecordajax();
+				if (typeof(result1)!="number") {
+					record=result1;
+				}
+				else{
+					record=undefined;
+				}
+				
+			}while(result1==500)
+			return record;
 		},
 		//获得交易记录--许鑫君
-		getTransactionRecord:function(){
+		getTransactionRecordajax:function(){
 			var record=[];
+			var status = 404;
 			$.ajax({
 				url:config.site+"private/orders",
 				async:false,
@@ -210,34 +277,55 @@ define(function(require){
 								date:data.data[i].created_at
 						};
 					}
+					status =200;
 				},
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.getTransactionRecord();
+							status =500;
 						}
 						else
 						{
-							record=undefined;
+							status =404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						record=undefined;
+						status =404;
 					}
-					else{
-						record=undefined;
-					}
-				}.bind(this)
+				}
 
 			});
-			return record;
+			if (status =200) {
+				return record;
+			}
+			else{
+				return status;
+			}
 		},
 		//出售商品--许鑫君
 		sellProduction:function(productionId,price,password){
-			var is_success;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.sellProductionajax(productionId,price,password);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		sellProductionajax:function(productionId,price,password){
+			var status = 404;
 			$.ajax({
 				url:config.site+"orders",
 				async:false,
@@ -248,38 +336,51 @@ define(function(require){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					is_success=true;
+					if (data.status=="success") {
+						status = 200;
+					}
 				},
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.sellProduction(productionId,price,password);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
-					}
-					else if(responseText.message=="The order is on selling.")
-					{
-						showprompt("商品正在出售中");
+						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 		//下架--许鑫君
 		notSold:function(id){
-			var is_success =false;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.notSoldajax(id);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		notSoldajax:function(id){
+			var status =404;
 			$.ajax({
 				url:config.site+"orders/"+id+"/abandon",
 				async:false,
@@ -290,30 +391,29 @@ define(function(require){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					is_success=true;
+					if (data.status=="success") {
+						status = 200;
+					}
 				},
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){
-							this.notSold(id);
+							status = 500;
 						}
 						else
 						{
-							is_success=undefined;
+							status = 404;
 						}
 						
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						status = 404;
 					}
-					else{
-						is_success=undefined;
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		},
 	};
 

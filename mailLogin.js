@@ -75,7 +75,7 @@ define(function(require){
 			{
 				var is_success=login.emaillogin(email,password);
 				if (is_success) {
-					this.owner.send({data:true});
+					this.owner.send({data:true,email:this.comp("input5").val()});
 				}
 				else{
 					this.showprompt("账号或者密码错误");
@@ -94,6 +94,11 @@ define(function(require){
 	};
 	Model.prototype.button2Click = function(event){
 		justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+	};
+	Model.prototype.modelLoad = function(event){
+		if (localStorage.getItem("email")) {
+			this.comp("input5").val(localStorage.getItem("email"));
+		}
 	};
 	return Model;
 });

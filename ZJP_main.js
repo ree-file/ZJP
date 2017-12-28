@@ -4,6 +4,7 @@ define(function(require) {
 	var user = require("./js/users");
 	var nest = require("./js/nests");
 	var config = require("./js/config");
+	var base64 = require("$UI/system/lib/base/base64");
 	var ids=[];
 	var Model = function() {
 		this.callParent();
@@ -25,6 +26,11 @@ define(function(require) {
 	Model.prototype.modelLoad = function(event){
 		//计算三部分资金所占比重
 		var worthInfo =	user.getUserMessage();
+		if (worthInfo==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt("重新登录");
+			return;
+		}
 		var rightRotate = 180-parseFloat(worthInfo['market'])/(parseFloat(worthInfo['all']))*360;
 		var leftRotate = 180-parseFloat(worthInfo['limit'])/(parseFloat(worthInfo['all']))*360;
 		if (rightRotate<0) {
@@ -171,12 +177,22 @@ define(function(require) {
 
 	Model.prototype.windowContainer1Receive = function(event){
 		if (event.data.data) {
+			
 			this.comp("windowDialog1").open();
 		}
 	};
 
 	Model.prototype.windowDialog1Received = function(event){
-
+		if (event.data.data) {
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
+			this.comp("windowDialog1").close();
+		}
 	};
 
 	return Model;
