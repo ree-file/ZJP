@@ -63,20 +63,20 @@
         <span xid="span3" style="color:#8D8E8F;font-size:medium;">今日收益</span></div> </div> 
       <div component="$UI/system/components/justep/row/row" class="x-row row-content" xid="row4">
        <div class="x-col" xid="col12">
-        <span xid="span4" style="font-size:x-large;color:#FFFFFF;"><![CDATA[$369.2]]></span></div> </div> </div> </div> 
+        <span xid="span4" style="font-size:x-large;color:#FFFFFF;"><![CDATA[]]></span></div> </div> </div> </div> 
   </div> 
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="position:relative;top:60px;">
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col text-center" xid="col10"><span xid="span5" style="color:#8D8E8F;"><![CDATA[总投资]]></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-   <div class="x-col text-center" xid="col18"><span xid="span8" style="font-size:x-large;color:#D0AD4F;"><![CDATA[$3600.5]]></span></div>
+   <div class="x-col text-center" xid="col18"><span xid="span8" style="font-size:x-large;color:#D0AD4F;"><![CDATA[]]></span></div>
    </div></div>
    <div class="x-col" xid="col8" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-left-style:solid;border-left-width:1px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col text-center" xid="col14"><span xid="span6" style="color:#8D8E8F;"><![CDATA[总金额]]></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-   <div class="x-col text-center" xid="col24"><span xid="span7" style="font-size:x-large;color:#D0AD4F;"><![CDATA[$7200.8]]></span></div>
+   <div class="x-col text-center" xid="col24"><span xid="span7" style="font-size:x-large;color:#D0AD4F;"><![CDATA[]]></span></div>
    </div></div></div>
   <div xid="div1" style="position:relative;top:70px;"><div xid="div9"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col text-center" xid="col35" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><span xid="span12" style="color:#8D8E8F;"><![CDATA[日期]]></span></div>
@@ -99,8 +99,8 @@
     <li xid="li1">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
    <div class="x-col" xid="col1" style="text-align:center;"><span xid="span2" style="font-weight:600;font-size:medium;"><![CDATA[天使猫窝]]></span></div>
-   <div class="x-col" xid="col2" style="text-align:center;"><span xid="span9" bind-text='val("name")' class="copy" bind-css='{"is_finished": val("finished")=="1"}'><![CDATA[FL3694]]></span></div>
-   <div class="x-col" xid="col7" style="text-align:center;"><span xid="span23" bind-text='val("time")'><![CDATA[2017-08-23]]></span></div>
+   <div class="x-col" xid="col2" style="text-align:center;"><span xid="span9" bind-text='val("name")' class="copy" bind-css='{"is_finished": val("finished")=="1"}'><![CDATA[]]></span></div>
+   <div class="x-col" xid="col7" style="text-align:center;"><span xid="span23" bind-text='val("time")'><![CDATA[]]></span></div>
   <div class="x-col" xid="col32"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm nestInfo" label="详情" xid="button8" style="background-color:#454C5E;width:100%;border-width:0px 0px 0px 0px;color:#FFFFFF;" onClick="button8Click">
    <i xid="i8"></i>
    <span xid="span36">详情</span></a></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">

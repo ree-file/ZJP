@@ -90,7 +90,7 @@ define(function(require){
 				url:config.site+"private/forget-security-code",
 				async:false,
 				dataType:"json",
-				type:"get",
+				type:"post",
 				data:{},
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());

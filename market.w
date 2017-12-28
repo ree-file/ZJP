@@ -65,7 +65,8 @@
    
    <input component="$UI/system/components/justep/input/input" class="form-control" xid="input3" bind-keyup="input3Keyup"></input><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="筛选" icon="icon-arrow-down-b" xid="screeningBtn" style="width:30%;" onClick="screeningBtnClick">
     <i xid="i10" class="icon-arrow-down-b"></i>
-    <span xid="span17">筛选</span></a> </div>
+    <span xid="span17">筛选</span></a> 
+  </div>
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata">
    <ul class="x-list-template" xid="listTemplateUl1">
     <div xid="div13" class="refresh"><span xid="span49" style="font-size:medium;"></span>

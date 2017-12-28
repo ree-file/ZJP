@@ -106,6 +106,7 @@ define(function(require){
 		if (nestInfo==undefined) {
 			return;
 		}
+		event.source.clear();
 		var released =0;
 		var withdraw = 0;
 		var investment = 0;
@@ -201,6 +202,7 @@ define(function(require){
 		if (nestInfo==undefined) {
 			return;
 			}
+			event.source.clear();
 		var date = new Date();
 		var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
 		var times = currentdate.getTime();
@@ -279,6 +281,7 @@ define(function(require){
 	
 		}
 		var money=0;
+		event.source.clear();
 		for (var int = 0; int < withdrawData.length; int++) {
 			withdrawData[int].withdraw = (withdrawData[int].withdraw*0.06).toFixed(2);
 			money+=parseFloat(withdrawData[int].money);
@@ -286,6 +289,7 @@ define(function(require){
 		$(this.getElementByXid("h54")).html("$"+money);
 		event.source.loadData(withdrawData);
 		withdrawData=null;
+		nestInfo=undefined;
 	};
 
 	
@@ -303,7 +307,7 @@ define(function(require){
 	Model.prototype.button10Click = function(event){
 		var money = $.trim(this.comp("input1").val());
 		var password = $.trim($(this.getElementByXid("password1")).val());
-		var reg = new RegExp("^[0-9]*$");
+		var reg = new RegExp("^[0-9.]*$");
 		if (!money) {
 			this.showprompt("金额不能为空");
 		}
@@ -446,7 +450,15 @@ define(function(require){
 			this.modelParamsReceive(event);
 			
 		}
+	else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+		}
+	};
 	
+	
+	Model.prototype.button12Click = function(event){
+		justep.Shell.closePage();
 	};
 	
 	

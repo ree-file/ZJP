@@ -41,9 +41,9 @@
   <column name="withdraw" type="Float" xid="xid34"></column></div></div> 
 <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1">
    <div class="x-panel-top" xid="top1"><div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar titlebar" xid="titleBar1">
-   <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button1" icon="linear linear-chevronleft" onClick="button1Click">
-   <i xid="i1" class="linear linear-chevronleft"></i>
-   <span xid="span1"></span></a></div>
+   <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button12" icon="icon-chevron-left" onClick="button12Click">
+   <i xid="i12" class="icon-chevron-left"></i>
+   <span xid="span29"></span></a></div>
    <div class="x-titlebar-title" xid="title1"><![CDATA[小窝]]></div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>
    <div class="x-panel-content background-color-black" xid="content1" style="height:100%;"><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="height:10px;padding:0px 0px 0px 0px;">
@@ -226,7 +226,7 @@
    <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" label="创建小窝" xid="button9" style="width:25%;" onClick="button9Click">
     <i xid="i9"></i>
     <span xid="span27">创建小窝</span></a> </div></div></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0" style="top:51px;left:193px;">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0" style="top:17px;left:152px;">
    <div class="x-popOver-overlay" xid="div6"></div>
    <div class="x-popOver-content withDrawWindow" xid="div7"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row28">
    <div class="x-col x-col-33" xid="col82"><h5 xid="h51" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[提取钱数：]]></h5></div>
@@ -239,4 +239,4 @@
    <span xid="span28">确定</span></a></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row31">
    <div class="x-col" xid="col90"><p xid="p1" style="color:white;"><![CDATA[获得金额的80%将充入活动资金，20%将充入投资资金]]></p></div></div></div></div>
-  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span></div>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive" style="top:17px;left:103px;"></span></div>

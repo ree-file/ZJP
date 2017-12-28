@@ -11,7 +11,25 @@ define(function(require){
 	}
 	return{
 		withdrawFromcontract:function(money,id,password){
-			var is_success;
+			var is_success = false;
+			var status = 0;
+			do{
+				status = this.withdrawFromcontractajax(money,id,password);
+				switch (status) {
+				case 200:
+					is_success = true;
+					break;
+				case 404:
+					is_success = undefined;
+					break;
+				default:
+					break;
+				}
+			}while(status ==500);
+			return is_success;
+		},
+		withdrawFromcontractajax:function(money,id,password){
+			var status;
 			$.ajax({
 				url:config.site+"contracts/"+id+"/extract",
 				async:false,
@@ -22,26 +40,29 @@ define(function(require){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					is_success=true;
+					if (data.status=="success") {
+						status = 200;
+					}
 				},
 				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
+					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						
-						jwt.authRefresh();
-						this.sellProduction(productionId,price);
+						if(jwt.authRefresh()){
+							status = 500;
+						}
+						else
+						{
+							status = 404;
+						}
+						
 					}
-					else if(responseText.message=="Extract today to reach the maximum.")
-					{
-						showprompt("超出当前记录当天所提上线");
+					else if(responseText.message=="No token provided."){
+						status = 404;
 					}
-					else{
-						showprompt("检查网络或者重新登录");
-						justep.Shell.showPage("mian");
-					}
-				}.bind(this)
+				}
 			});
-			return is_success;
+			return status;
 		}
 		
 	}

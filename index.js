@@ -82,6 +82,7 @@ define(function(require) {
 			var id = JSON.parse(base64.decode(ids[1]));
 			if (id&&event.data.email) {
 				localStorage.setItem("thismyuserId", id.sub);
+				debugger;
 				localStorage.setItem("email", event.data.email);
 			}
 			this.comp("mainContainer").refresh();
@@ -90,6 +91,10 @@ define(function(require) {
 			}, 200);
 			
 			
+		}
+		else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
 	};
 

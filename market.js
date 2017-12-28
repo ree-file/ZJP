@@ -533,6 +533,10 @@ define(function(require){
 			 this.comp("marketdata").refreshData();
 			 this.comp("windowDialog1").close();
 		}
+		else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+		}
 	};
 
 	return Model;

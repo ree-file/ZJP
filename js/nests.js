@@ -24,8 +24,8 @@ define(function(require){
 				else{
 					premission=undefined;
 				}
-				
-			}while(result1==500)
+				debugger;
+			}while(result1==500);
 			return premission;
 		},
 		community_premissionajax : function(nest_name){
@@ -77,7 +77,7 @@ define(function(require){
 					}
 				}
 			});
-			if (status =200) {
+			if (status==200) {
 				if (b==1) {
 					return 3;
 				}

@@ -26,6 +26,9 @@ define(function(require){
 			if (is_success) {
 				this.showprompt("发送成功");
 			}
+			else if(is_success==undefined){
+				this.comp("windowDialog1").open();
+			}
 			else{
 				this.showprompt("发送失败");
 			}
@@ -85,8 +88,9 @@ define(function(require){
 		}
 	};
 	Model.prototype.modelParamsReceive = function(event){
+		this.comp("windowDialog1").close();
 		if (this.params.action=="resetsecondPassword") {
-			$(this.getElementByXid("row1")).addClass("show");
+			$(this.getElementByXid("row1")).hide();
 			$(this.getElementByXid("p1")).text("重置流程；点击发送邮件获得验证码，并把其他选项补齐，点击重置按钮");
 		}
 	};	

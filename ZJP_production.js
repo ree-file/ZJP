@@ -304,8 +304,7 @@ define(function(require){
 			$(this.getElementByXid("production_worth")).html(worth);
 		}
 		this.comp("secondPassword").hide();
-		this.showprompt("自动调到首页");
-			justep.Shell.showPage("main");
+		justep.Shell.closePage();
 
 		
 	}
@@ -325,7 +324,7 @@ define(function(require){
 							this.showprompt("提升成功");
 						}
 						else if(is_success==undefined){
-							this.comp("popOver1").hide();
+							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 							
 						}
@@ -345,7 +344,7 @@ define(function(require){
 						
 						}
 						else if(is_success==undefined){
-							this.comp("popOver1").hide();
+							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 							
 						}
@@ -365,7 +364,7 @@ define(function(require){
 							
 						}
 						else if(is_success==undefined){
-							this.comp("popOver1").hide();
+							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 						
 						}
@@ -404,6 +403,7 @@ define(function(require){
 			}
 		}
 		if (is_hascommunity==0&&(action=="create"||action=="invite")) {
+			this.showprompt("请选择社区");
 			this.input4Blur(event);return;
 		}
 		if (!$.trim(this.comp("input2").val())&&(action=="create"||action=="invite")) {
@@ -483,6 +483,10 @@ define(function(require){
 				localStorage.setItem("email", event.data.email);
 			}
 			this.comp("windowDialog1").close();
+		}
+		else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
 	};
 

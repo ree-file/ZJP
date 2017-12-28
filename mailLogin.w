@@ -34,7 +34,5 @@
    <span xid="span3">忘记密码</span></a></div>
       <div class="x-col" xid="col3">
        </div> </div> 
-     <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="手机登录" xid="button3" style="background-color:#454C5E;border-width:0px 0px 0px 0px;" onClick="button3Click">
-      <i xid="i3"></i>
-      <span xid="span9">手机登录</span></a> </div> </div> </div>
+     </div> </div> </div>
   </div>

@@ -93,7 +93,8 @@ define(function(require){
 		
 	};
 	Model.prototype.button2Click = function(event){
-		justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+		this.owner.send({data:false,reset:true});
+		
 	};
 	Model.prototype.modelLoad = function(event){
 		if (localStorage.getItem("email")) {
