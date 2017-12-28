@@ -29,15 +29,13 @@ define(function(require){
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							useremail =true;
 						}
 						else
 						{
 							useremail=undefined;
 						}
-
 					}
 					else if(responseText.message=="No token provided."){
 						useremail=undefined;
@@ -62,7 +60,6 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					is_success =true;
 					showprompt('修改成功');
 				},
 				error:function(ero){
@@ -70,7 +67,7 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							is_success =true;
 						}
 						else
 						{
@@ -108,7 +105,7 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							moneyall = true;
 						}
 						else
 						{
@@ -139,7 +136,6 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					is_success =true;
 					showprompt('转账成功');
 				},
 				error:function(ero){
@@ -147,7 +143,7 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							is_success =true;
 						}
 						else
 						{
@@ -159,7 +155,7 @@ define(function(require){
 						is_success=undefined;
 					}
 					else{
-						is_success=undefined;
+						showprompt('转账失败，请确认金额，来源，去向等');
 					}
 	        }.bind(this),
 			});
@@ -178,7 +174,6 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					is_success =true;
 					showprompt('提交成功');
 				},
 				error:function(ero){
@@ -186,7 +181,7 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							is_success =true;
 						}
 						else
 						{

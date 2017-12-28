@@ -6,6 +6,7 @@ define(function(require){
 	var moneymarket;
 	var moneyactive;
 	var moneylimit;
+	var base64 = require("$UI/system/lib/base/base64");
 
 	var Model = function(){
 		this.callParent();
@@ -42,6 +43,10 @@ define(function(require){
 			this.showprompt("请重新登录");
 			return;
 		}
+		else if (moneyall == true) {
+			this.modelLoad(event);
+			return;
+		}
 		moneyspan1.text(moneyall.money_active);
 		moneyspan2.text(moneyall.money_market);
 		moneyspan3.text(moneyall.money_limit);
@@ -65,7 +70,18 @@ define(function(require){
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("windowDialog1").close();
+		}
+		else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
 	};
 	//封装提示框--许鑫君
@@ -74,6 +90,10 @@ define(function(require){
 						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
 					});
 					$(".x-hint").find("button[class='close']").hide();
+	};
+
+	Model.prototype.modelActive = function(event){
+		this.modelLoad(event);
 	};
 
 	return Model;

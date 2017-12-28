@@ -2,6 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var personaljs = require("./js/personal");
+	var base64 = require("$UI/system/lib/base/base64");
 
 	var Model = function(){
 		this.callParent();
@@ -31,12 +32,20 @@ define(function(require){
 				this.showprompt("请重新登录");
 				return;
 			}
+			else if (is_success1 == true) {
+				this.setupButtonClick(event);
+				return;
+			}
 		}
 		else if(from == "市场金额" && to == "钱包金额"){
 			var is_success2 = personaljs.transferMoney(money,"market-to-active",securityInput);
 			if (is_success2 == undefined) {
 				this.comp("windowDialog1").open();
 				this.showprompt("请重新登录");
+				return;
+			}
+			else if (is_success2 == true) {
+				this.setupButtonClick(event);
 				return;
 			}
 		}
@@ -48,12 +57,20 @@ define(function(require){
 					this.showprompt("请重新登录");
 					return;
 				}
+				else if (is_success3 == true) {
+					this.setupButtonClick(event);
+					return;
+				}
 			}
 			else {
 				var is_success4 = personaljs.supplies(money,"get",cardnumber,to);
 				if (is_success4 == undefined) {
 					this.comp("windowDialog1").open();
 					this.showprompt("请重新登录");
+					return;
+				}
+				else if (is_success4 == true) {
+					this.setupButtonClick(event);
 					return;
 				}
 			}
@@ -66,12 +83,20 @@ define(function(require){
 					this.showprompt("请重新登录");
 					return;
 				}
+				else if (is_success5 == true) {
+					this.setupButtonClick(event);
+					return;
+				}
 			}
 			else {
 				var is_success6 = personaljs.supplies(money,"save",cardnumber,from);
 				if (is_success6 == undefined) {
 					this.comp("windowDialog1").open();
 					this.showprompt("请重新登录");
+					return;
+				}
+				else if (is_success6 == true) {
+					this.setupButtonClick(event);
 					return;
 				}
 			}
@@ -114,7 +139,18 @@ define(function(require){
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("windowDialog1").close();
+		}
+		else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
 	};
 

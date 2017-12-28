@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="top:168px;left:142px;height:auto;" onLoad="modelLoad"> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bankBandedData" idColumn="id"><column name="id" type="Integer" xid="xid5"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="top:168px;left:142px;height:auto;" onLoad="modelLoad" onActive="modelActive"> 
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bankBandedData" idColumn="id" confirmRefresh="false"><column name="id" type="Integer" xid="xid5"></column>
   <column name="username" type="String" xid="xid6"></column>
   <column name="number" type="Integer" xid="xid7"></column>
   <column name="bankname" type="String" xid="xid8"></column>
@@ -34,7 +34,7 @@
    <div class="x-col x-col-10" xid="col5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <a component="$UI/system/components/justep/button/button" class="btn btn-only-icon btn-default;" label="button" xid="button3" icon="linear linear-chevronright" style="height:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;color:#FFFFFF;font-weight:bolder;">
      <i xid="i4" class="linear linear-chevronright" style="position:relative;top:12px;"></i>
-     <span xid="span5"></span></a> </div> </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="bankBandedData">
+     <span xid="span5"></span></a> </div> </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="bankBandedData" style="padding-bottom:15%;">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1" style="padding-right:10px;padding-left:10px;">
   
