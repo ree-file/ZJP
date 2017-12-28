@@ -26,16 +26,23 @@ define(function(require){
 				success:function(data){//请求成功返回值存在data里
 					usernest=data.data;
 				},
-				error:function(jqXHR, textStatus, errorThrown){//请求失败错误信息在ero里
-					showprompt("社区详情查询失败，请重新登录");
-					if (jqXHR.responseJSON && jqXHR.responseJSON.message == 'Token expired.') {
-            		if (jwt.authRefresh()) {
-            			this.getUser(); // 重新调用自己再次访问
-            		} else {
-            			// 导向登录页面
-            			justep.Shell.showPage("mian");
-            		}
-	            }
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+						if(jwt.authRefresh()){
+							usernest = true;
+						}
+						else
+						{
+							usernest=undefined;
+						}
+					}
+					else if(responseText.message=="No token provided."){
+						usernest=undefined;
+					}
+					else{
+						usernest=undefined;
+					}
 	        }.bind(this),
 			});
 			return usernest;

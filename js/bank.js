@@ -31,7 +31,7 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							Banded = true;
 						}
 						else
 						{
@@ -64,21 +64,18 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					is_success =true;
 					showprompt('删除成功');
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							is_success = true;
 						}
 						else
 						{
 							is_success=undefined;
 						}
-
 					}
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
@@ -103,7 +100,6 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					is_success =true;
 					showprompt('添加成功');
 				},
 				error:function(ero){
@@ -111,7 +107,7 @@ define(function(require){
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							this.resetsecondPassword(password,code);
+							is_success = true;
 						}
 						else
 						{
