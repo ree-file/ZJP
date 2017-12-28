@@ -5,6 +5,7 @@ define(function(require){
 	var jwt = require('./js/jwt');
 	var ifhid = 0;
 	var pwState = false;
+	var base64 = require("$UI/system/lib/base/base64");
 
 	var Model = function(){
 		this.callParent();
@@ -19,6 +20,10 @@ define(function(require){
 			if (useremail == undefined) {
 				this.comp("windowDialog1").open();
 				this.showprompt("请重新登录");
+				return;
+			}
+			else if (useremail == true) {
+				this.row1Click(event);
 				return;
 			}
 			emailSpan.text(useremail);
@@ -80,6 +85,10 @@ define(function(require){
 					this.showprompt("请重新登录");
 					return;
 				}
+				else if (is_success == true) {
+					this.col17Click(event);
+					return;
+				}
 				this.getElementByXid("pswInput1").value="";
 				this.getElementByXid("pswInput2").value="";
 				this.getElementByXid("oldpassword").value="";
@@ -107,7 +116,18 @@ define(function(require){
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("windowDialog1").close();
+		}
+		else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
 	};
 

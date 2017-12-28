@@ -83,4 +83,4 @@
    <div xid="div2" style="position:absolute;background-color:#1C1F26;left:10%;padding-right:10px;padding-left:10px;top:-4%;">
     <span xid="span11" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[孵化器详情]]></span></div> </div></div>
   </div> 
-</div>
+<span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span></div>
