@@ -14,6 +14,14 @@ define(function(require){
 	var is_loading=0;
 	var is_refresh = 0;
 	var me;
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 		me =this;
@@ -26,7 +34,72 @@ define(function(require){
 					$(".x-hint").find("button[class='close']").hide();
 	};
 	Model.prototype.modelLoad = function(event){
-
+		this.comp("titile").set({
+			title:lang.market[0]
+		});
+		this.comp("marketbutton").set({
+			label:lang.market[1]
+		});
+		this.comp("recordbutton").set({
+			label:lang.market[2]
+		});
+		this.comp("sellbutton").set({
+			label:lang.market[3]
+		});
+		this.comp("sortingBtn").set({
+			label:lang.market[4]
+		});
+		this.comp("screeningBtn").set({
+			label:lang.market[5]
+		});
+		$(this.getElementByXid("span13")).html(lang.market[6]);
+		$(this.getElementByXid("span15")).html(lang.market[7]);
+		$(this.getElementByXid("span23")).html(lang.market[8]);
+		this.comp("button1").set({
+			label:lang.market[9]
+		});
+		$(this.getElementByXid("span47")).html(lang.market[10]);
+		$(this.getElementByXid("span48")).html(lang.market[11]);
+		$(this.getElementByXid("span21")).html(lang.market[12]);
+		$(this.getElementByXid("span22")).html(lang.market[13]);
+		$(this.getElementByXid("span30")).html(lang.market[14]);
+		$(this.getElementByXid("span32")).html(lang.market[15]);
+		$(this.getElementByXid("span26")).html(lang.market[16]);
+		$(this.getElementByXid("span9")).html(lang.market[17]);
+		$(this.getElementByXid("span18")).html(lang.market[18]);
+		this.comp("button2").set({
+			label:lang.market[19]
+		});
+		$(this.getElementByXid("span28")).html(lang.market[20]);
+		this.comp("resetBtn").set({
+			label:lang.market[21]
+		});
+		this.comp("betweenbutton").set({
+			label:lang.market[22]
+		});
+		$(this.getElementByXid("span7")).html(lang.market[26]);
+		$(this.getElementByXid("span11")).html(lang.market[27]);
+		$(this.getElementByXid("span14")).html(lang.market[28]);
+		$(this.getElementByXid("span12")).html(lang.market[29]);
+		$(this.getElementByXid("span16")).html(lang.market[30]);
+		$(this.getElementByXid("span10")).html(lang.market[31]);
+		this.comp("paybutton").set({
+			label:lang.market[32]
+		});
+		$(this.getElementByXid("span37")).html(lang.market[33]);
+		this.comp("button3").set({
+			label:lang.market[34]
+		});
+		this.comp("button6").set({
+			label:lang.market[35]
+		});
+		$(this.getElementByXid("h52")).html(lang.market[36]);
+		this.comp("button7").set({
+			label:lang.market[37]
+		});
+		this.comp("button9").set({
+			label:lang.market[38]
+		});
 	};
 	//"X"按钮
 	Model.prototype.button4Click = function(event){
@@ -40,7 +113,7 @@ define(function(require){
 		if (password) {
 			var is_success = getorders.buy(orderId,password);
 			if (is_success) {
-				this.showprompt("购买成功");
+				this.showprompt(lang.showprompt[5]);
 
 				this.comp("transactionrecord").newData({
 					"defaultValues":[{
@@ -57,15 +130,15 @@ define(function(require){
 			}
 			else if (is_success==undefined) {
 					this.comp("windowDialog1").open();
-					this.showprompt("请重新登录");
+					this.showprompt(lang.showprompt[0]);
 					return;
 				}
 			else{
-				this.showprompt("购买失败");
+				this.showprompt(lang.showprompt[6]);
 			}
 		}
 		else{
-			this.showprompt("安全密码不能为空");
+			this.showprompt(lang.showprompt[7]);
 		}
 	};
 	//排序按钮
@@ -96,8 +169,11 @@ define(function(require){
 			this.comp("marketdata").refreshData();
 		}
 		else{
-			this.showprompt("价格区间不能为空");
+			this.showprompt(lang.showprompt[8]);
 		}
+		this.comp("button1").set({
+			label:lang.market[9]
+		});
 		this.comp("screeningPopOver").hide();
 	};
 	Model.prototype.orderby =function(objData,relation,type){
@@ -145,18 +221,20 @@ define(function(require){
 		data.setValue("fState","1",row);
 		this.comp("sortingBtn").set("label",data.getValue("fName",row));
 		var rank = data.getValue("fName",row);
-		if (rank=="价格升序") {
+		if (rank==lang.market[24]) {
 			this.orderby(this.comp("marketdata"),"worth",1);
 			this.comp("list1").refresh(false);
 		}
-		else if(rank=="价格降序")	{
+		else if(rank==lang.market[25])	{
 			this.orderby(this.comp("marketdata"),"worth",0);
 		}
 		else{
 			this.orderby(this.comp("marketdata"),"orderid",1);
 		}
 		this.comp("sortingPopOver").hide();
-		
+		this.comp("button1").set({
+			label:lang.market[9]
+		});
 	};
 	//重置按钮
 	Model.prototype.resetBtnClick = function(event){
@@ -200,11 +278,11 @@ define(function(require){
 		var record = getorders.getTransactionRecord();
 		 if (record==undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		if (record.length==0) {
-			this.showprompt("无交易记录");
+			this.showprompt(lang.showprompt[9]);
 		}else{
 			event.source.loadData(record);
 		}
@@ -215,16 +293,16 @@ define(function(require){
 		if (name) {
 			var simpleinfo=nest.nestsimpleinfo();
 			if (simpleinfo==undefined) {
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				this.comp("windowDialog1").open();
 				return;
 			}
 			if (!this.belongtouser(simpleinfo, name)) {
-				this.showprompt("产品不存在");
+				this.showprompt(lang.showprompt[10]);
 			}
 		}
 		else{
-			this.showprompt("产品名称不能为空");
+			this.showprompt(lang.showprompt[11]);
 		}
 
 
@@ -233,7 +311,7 @@ define(function(require){
 	Model.prototype.button2Click = function(event){
 
 		if (!sell_nestId) {
-			this.showprompt("产品编号错误");
+			this.showprompt(lang.showprompt[12]);
 		}
 		else{
 			this.comp("secondPassword").show();
@@ -266,11 +344,11 @@ define(function(require){
 		}
 		else if (is_success==undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			this.comp("chooseSoleStatus").hide();
 		}
 		else{
-			this.showprompt("下架失败请重新提交请求");
+			this.showprompt(lang.showprompt[13]);
 			this.comp("chooseSoleStatus").hide();
 		}
 	};
@@ -289,7 +367,7 @@ define(function(require){
 			if (secondPassword) {
 				var is_success = getorders.sellProduction(sell_nestId,price,secondPassword);
 				if (is_success) {
-					this.showprompt("出售成功");
+					this.showprompt(lang.showprompt[14]);
 					this.comp("secondPassword").hide();
 					this.comp("transactionrecord").refreshData();
 					$(this.getElementByXid("password1")).val("");
@@ -301,15 +379,15 @@ define(function(require){
 					}
 					}
 					else if(is_success ==undefined){
-						this.showprompt("请重新登录");
+						this.showprompt(lang.showprompt[0]);
 						this.comp("windowDialog1").open();
 						return;
 					}
 					else{
-					this.showprompt("出售失败");
+					this.showprompt(lang.showprompt[15]);
 					}
 			}else{
-				this.showprompt("二级密码不能为空");
+				this.showprompt(lang.showprompt[2]);
 			}
 
 
@@ -317,7 +395,7 @@ define(function(require){
 	Model.prototype.button7Click = function(event){
 		var price = this.comp("price").val("price");
 		if(price==0){
-			if (confirm("确定售价为0吗")) {
+			if (confirm(lang.showprompt[16])) {
 			this.sell(price);
 			}
 		}
@@ -335,7 +413,7 @@ define(function(require){
 				});
 			}
 			else{
-				this.showprompt("暂无更多数据");
+				this.showprompt(lang.showprompt[17]);
 			}
 			setTimeout(function(){
 				$(this.getElementByXid("span42")).removeClass("icon-ios7-reloading");
@@ -343,23 +421,25 @@ define(function(require){
 				$(this.getElementByXid("span47")).html("加载完成");
 				is_loading=0;
 			}, 1000);
+		
 			
 	};
 	Model.prototype.refresh=function(){
 		$(this.getElementByXid("span49")).removeClass("icon-ios7-reloading");
 			$(this.getElementByXid("span49")).addClass("icon-ios7-reload");
-			$(this.getElementByXid("span48")).html("刷新完成");
+			$(this.getElementByXid("span48")).html(lang.market[10]);
 			$(this.getElementByXid("div13")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("div13")).removeClass("show");
 				is_refresh=0;
 			});
+			
 	};
 	Model.prototype.marketdataCustomRefresh = function(event){
 		if(complex_page==1&&datastatus==0){
 			event.source.clear();
 			var records = getorders.getorders(complex_page);
 			if (records==undefined) {
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				this.comp("windowDialog1").open();
 				return;
 			}
@@ -369,7 +449,7 @@ define(function(require){
 		else if(datastatus==0&&complex_page!=1){
 			var records = getorders.getorders(complex_page);
 			if (records==undefined) {
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				this.comp("windowDialog1").open();
 				return;
 			}
@@ -380,7 +460,7 @@ define(function(require){
 			event.source.clear();
 			var records = getorders.filterOrders(filter_page,this.comp("filterdata").val("min"),this.comp("filterdata").val("max"));
 			if (records==undefined) {
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				this.comp("windowDialog1").open();
 				return;
 			}
@@ -390,14 +470,14 @@ define(function(require){
 		else if(datastatus==1&&filter_page!=1){
 			var records = getorders.filterOrders(filter_page,this.comp("filterdata").val("min"),this.comp("filterdata").val("max"));
 			if (records==undefined) {
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				this.comp("windowDialog1").open();
 				return;
 			}
 			this.loading(records);
 			
 		}
-
+		
 	};
 
 	Model.prototype.modelModelConstructDone = function(event){
@@ -409,7 +489,7 @@ define(function(require){
 		var max = $.trim(this.comp("maxInput").val());
 		if (max) {
 			if (parseFloat(min)>parseFloat(max)) {
-				this.showprompt("价格区间错误");
+				this.showprompt(lang.showprompt[18]);
 			}
 		}
 	};
@@ -419,7 +499,7 @@ define(function(require){
 		var max = $.trim(this.comp("maxInput").val());
 		if (min) {
 			if (parseFloat(min)>parseFloat(max)) {
-				this.showprompt("价格区间错误");
+				this.showprompt(lang.showprompt[18]);
 			}
 		}
 	};
@@ -468,7 +548,7 @@ define(function(require){
 			if (starty-endy>100) {
 				$(this.getElementByXid("span42")).removeClass("icon-ios7-reload");
 				$(this.getElementByXid("span42")).addClass("icon-ios7-reloading");
-				$(this.getElementByXid("span47")).html("加载中");
+				$(this.getElementByXid("span47")).html(lang.market[11]);
 				is_loading=1;
 				if (datastatus==0) {
 					complex_page+=1;
@@ -489,7 +569,7 @@ define(function(require){
 				});
 				$(this.getElementByXid("span49")).removeClass("icon-ios7-reload");
 				$(this.getElementByXid("span49")).addClass("icon-ios7-reloading");
-				$(this.getElementByXid("span48")).html("刷新中");
+				$(this.getElementByXid("span48")).html(lang.market[39]);
 				is_refresh=1;
 				$(this.getElementByXid("div13")).animate({height:22}, "slow",function(){});
 				setTimeout(function(){
@@ -502,11 +582,15 @@ define(function(require){
 						filter_page=1;
 						this.comp("marketdata").refreshData();
 					}
+					this.comp("button1").set({
+						label:lang.market[9]
+					});
 				}, 1000);
 				
 			}
 		}
 		starty=0;endy=0;	
+		
 	};
 
 	Model.prototype.backBtnClick = function(event){
@@ -547,6 +631,18 @@ define(function(require){
 
 	Model.prototype.sortingBtnLoad = function(event){
 		console.log(123);
+	};
+
+	Model.prototype.conditionDataCustomRefresh = function(event){
+		event.source.clear();
+		for (var int = 0; int < 3; int++) {
+			var params =[{
+				id:int,
+				fName:lang.market[23+int],
+				fState:int==0?1:0
+			}];
+			event.source.newData({"defaultValues":params});
+		}
 	};
 
 	return Model;

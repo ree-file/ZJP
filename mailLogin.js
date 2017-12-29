@@ -57,7 +57,7 @@ define(function(require){
 			
 		}
 		else{
-			this.showprompt(lang.mailLogin[5]);
+			this.showprompt(lanh.showprompt[2]);
 			
 			loginable =false;
 		}
@@ -86,13 +86,13 @@ define(function(require){
 					this.owner.send({data:true,email:this.comp("input5").val()});
 				}
 				else{
-					this.showprompt(lang.mailLogin[7]);
+					this.showprompt(lang.mailLogin[3]);
 					loginable=false;
 					
 				}
 			}
 			else{
-				this.showprompt(lang.mailLogin[8]);
+				this.showprompt(lang.mailLogin[4]);
 				
 			}
 		}
@@ -109,7 +109,7 @@ define(function(require){
 		$(this.getElementByXid("h51")).html(lang.mailLogin[1]);
 		$(this.getElementByXid("h53")).html(lang.mailLogin[2]);
 		this.comp("button1").set({
-			label:lang.mailLogin[1],
+			label:lang.mailLogin[0],
 		});
 		this.comp("button2").set({
 			label:lang.mailLogin[4],

@@ -166,10 +166,10 @@ define(function(require) {
 			title:lang.community[0],
 		});
 		this.comp("SecondBtn").set({
-			lable:lang.community[1],
+			label:lang.community[1],
 		});
 		this.comp("ThirdBtn").set({
-			lable:lang.community[2],
+			label:lang.community[2],
 		});
 		$(this.getElementByXid("span22")).html(lang.community[3]);
 		$(this.getElementByXid("span23")).html(lang.community[4]);
@@ -181,13 +181,13 @@ define(function(require) {
 		$(this.getElementByXid("span28")).html(lang.community[7]);
 		$(this.getElementByXid("span27")).html(lang.community[8]);
 		this.comp("button9").set({
-			lable:lang.community[9],
+			label:lang.community[9],
 		});
 		this.comp("button7").set({
-			lable:lang.community[10],
+			label:lang.community[10],
 		});
 		this.comp("button8").set({
-			lable:lang.community[11],
+			label:lang.community[11],
 		});
 	};
 
