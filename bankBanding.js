@@ -3,16 +3,31 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var bank = require('./js/bank');
 	var base64 = require("$UI/system/lib/base/base64");
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
 	//登入页面，所有银行卡读取
 	Model.prototype.modelLoad = function(event){
+		this.comp("title").set({
+			title:lang.bankBanding[0],
+		});
+		$(this.getElementByXid("span6")).html(lang.bankBanding[1]);
+		this.comp("deletebutton").set({
+			label:lang.bankBanding[2]
+		});
 		var bankBandedData = this.comp("bankBandedData");
 		var bankBanded = bank.cardBanded();
 		if (bankBanded == undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		else if(bankBanded == true){
@@ -46,7 +61,7 @@ define(function(require){
 		var is_success = bank.cardDelete(card_id);
 		if (is_success == undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		else if(is_success == true){

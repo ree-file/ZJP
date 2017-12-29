@@ -75,7 +75,7 @@
 .load{
 	display:table;
 	height:auto;
-	background-color:#9D9996;
+	/* background-color:#9D9996; */
 	width:100%;
 	text-align:center;
 	verticle:middle;

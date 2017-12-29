@@ -3,6 +3,14 @@ define(function(require) {
 	var justep = require("$UI/system/lib/justep");
 	var communityjs = require("./js/community");
 	var base64 = require("$UI/system/lib/base/base64");
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function() {
 		this.callParent();
 	};
@@ -60,7 +68,7 @@ define(function(require) {
 		var mynest = communityjs.gaynumber(nest_id);
 		if (mynest == undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.shouprompt);
 			return;
 		}
 		else if(mynest == true){
@@ -151,6 +159,36 @@ define(function(require) {
 			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
 		this.modelParamsReceive(event);
+	};
+
+	Model.prototype.modelLoad = function(event){
+		this.comp("title").set({
+			title:lang.community[0],
+		});
+		this.comp("SecondBtn").set({
+			lable:lang.community[1],
+		});
+		this.comp("ThirdBtn").set({
+			lable:lang.community[2],
+		});
+		$(this.getElementByXid("span22")).html(lang.community[3]);
+		$(this.getElementByXid("span23")).html(lang.community[4]);
+		$(this.getElementByXid("span24")).html(lang.community[5]);
+		$(this.getElementByXid("span25")).html(lang.community[6]);
+		$(this.getElementByXid("span21")).html(lang.community[7]);
+		$(this.getElementByXid("span20")).html(lang.community[8]);
+		$(this.getElementByXid("span30")).html(lang.community[6]);
+		$(this.getElementByXid("span28")).html(lang.community[7]);
+		$(this.getElementByXid("span27")).html(lang.community[8]);
+		this.comp("button9").set({
+			lable:lang.community[9],
+		});
+		this.comp("button7").set({
+			lable:lang.community[10],
+		});
+		this.comp("button8").set({
+			lable:lang.community[11],
+		});
 	};
 
 	return Model;

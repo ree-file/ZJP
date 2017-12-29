@@ -7,31 +7,31 @@
     <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar1" style="background-color:#252932;color:#868687;">
      <div class="x-titlebar-left" xid="left1"></div>
      <div class="x-titlebar-title" xid="title1">
-      <span xid="span1" style="font-weight:normal;">登录</span></div> 
+      <span xid="span1" style="font-weight:normal;"><![CDATA[]]></span></div> 
      <div class="x-titlebar-right reverse" xid="right1"></div></div> </div> 
    <div class="x-panel-content background-color-black" xid="content1" style="height:100%;">
     <div xid="div3" style="padding:10px 10px 10px 10px;">
      
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
       <div class="x-col x-col-33 center-block " xid="col10">
-       <h5 xid="h51" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#FFFFFF;"><![CDATA[邮箱]]></h5></div> 
+       <h5 xid="h51" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#FFFFFF;"><![CDATA[]]></h5></div> 
       <div class="x-col" xid="col12">
-       <input component="$UI/system/components/justep/input/input" class="input-group-addon " xid="input5" placeHolder="请输入邮箱地址" onFocus="input5Focus" onBlur="input5Blur"></input></div> </div> 
+       <input component="$UI/system/components/justep/input/input" class="input-group-addon " xid="input5" onFocus="input5Focus" onBlur="input5Blur"></input></div> </div> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="padding-top:1px;">
       <div class="x-col x-col-33 center-block" xid="col13" style="vertical-align:middle;text-align:left;">
-       <h5 xid="h53" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#FFFFFF;">密码</h5></div> 
+       <h5 xid="h53" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#FFFFFF;"><![CDATA[]]></h5></div> 
       <div class="x-col" xid="col15" style="padding-bottom:0px;">
        <input component="$UI/system/components/justep/input/password" class="input-group-addon" xid="password1" bind-focus="password1Focus" bind-blur="password1Blur"></input></div> </div> </div> 
     <div xid="div1" style="padding:10px 10px 10px 10px;">
-     <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="登录" xid="button1" style="background-color:#5D92E2;" onClick="button1Click">
+     <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" xid="button1" style="background-color:#5D92E2;height:38px;" onClick="button1Click">
       <i xid="i1"></i>
-      <span xid="span2">登录</span></a> 
+      <span xid="span2"></span></a> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
       <div class="x-col" xid="col1">
        </div> 
-      <div class="x-col center-block text-center" xid="col2"><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="忘记密码" xid="button2" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;width:100%;" onClick="button2Click">
+      <div class="x-col center-block text-center" xid="col2"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button2" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;width:100%;" onClick="button2Click">
    <i xid="i2"></i>
-   <span xid="span3">忘记密码</span></a></div>
+   <span xid="span3"></span></a></div>
       <div class="x-col" xid="col3">
        </div> </div> 
      </div> </div> </div>

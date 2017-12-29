@@ -4,6 +4,14 @@ define(function(require){
 	var login = require("./js/login");
 	var jwt = require('./js/jwt');
 	var user = require('./js/users');
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var loginable =false;
 	var Model = function(){
 		this.callParent();
@@ -19,7 +27,7 @@ define(function(require){
 		$(this.getElementByXid("password1")).css("border-width","0px 0px 1px 0px");
 		var password = $.trim($(this.getElementByXid("password1")).val());
 		if (!password) {
-			this.showprompt("密码不能为空");
+			this.showprompt(lang.mailLogin[6]);
 			
 		}
 		else{
@@ -49,7 +57,7 @@ define(function(require){
 			
 		}
 		else{
-			this.showprompt("邮箱不能为空");
+			this.showprompt(lang.mailLogin[5]);
 			
 			loginable =false;
 		}
@@ -78,13 +86,13 @@ define(function(require){
 					this.owner.send({data:true,email:this.comp("input5").val()});
 				}
 				else{
-					this.showprompt("账号或者密码错误");
+					this.showprompt(lang.mailLogin[7]);
 					loginable=false;
 					
 				}
 			}
 			else{
-				this.showprompt("账号或者密码不能为空");
+				this.showprompt(lang.mailLogin[8]);
 				
 			}
 		}
@@ -97,6 +105,19 @@ define(function(require){
 		
 	};
 	Model.prototype.modelLoad = function(event){
+		$(this.getElementByXid("span1")).html(lang.mailLogin[0]);
+		$(this.getElementByXid("h51")).html(lang.mailLogin[1]);
+		$(this.getElementByXid("h53")).html(lang.mailLogin[2]);
+		this.comp("button1").set({
+			label:lang.mailLogin[1],
+		});
+		this.comp("button2").set({
+			label:lang.mailLogin[4],
+		
+		});
+		this.comp("input5").set({
+			placeHolder:lang.mailLogin[3]
+		});
 		if (localStorage.getItem("email")) {
 			this.comp("input5").val(localStorage.getItem("email"));
 		}

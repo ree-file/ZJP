@@ -9,8 +9,7 @@
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1" style="height:100%;width:100%;"> 
       <div class="x-panel-top" xid="top1"> 
-        <div component="$UI/system/components/justep/titleBar/titleBar" title="银行卡绑定"
-          class="x-titlebar" style="background-color:#252932;">
+        <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" style="background-color:#252932;" xid="title">
           <div class="x-titlebar-left"> 
             <a component="$UI/system/components/justep/button/button"
               label="" class="btn btn-link btn-only-icon" icon="icon-chevron-left"
@@ -19,7 +18,7 @@
               <span></span> 
             </a> 
           </div>  
-          <div class="x-titlebar-title">银行卡绑定</div>  
+          <div class="x-titlebar-title"></div>  
           <div class="x-titlebar-right reverse"> 
           </div>
         </div> 
@@ -30,7 +29,7 @@
      <i xid="i3" class="glyphicon glyphicon-plus" style="position:relative;top:12px;"></i>
      <span xid="span4"></span></a> </div> 
    <div class="x-col" xid="col4">
-    <span xid="span6" style="font-size:medium;position:relative;top:5px;color:#808080;">添加银行卡</span></div> 
+    <span xid="span6" style="font-size:medium;position:relative;top:5px;color:#808080;"><![CDATA[]]></span></div> 
    <div class="x-col x-col-10" xid="col5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <a component="$UI/system/components/justep/button/button" class="btn btn-only-icon btn-default;" label="button" xid="button3" icon="linear linear-chevronright" style="height:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;color:#FFFFFF;font-weight:bolder;">
      <i xid="i4" class="linear linear-chevronright" style="position:relative;top:12px;"></i>
@@ -43,9 +42,9 @@
    <div class="x-col x-col-10 imgcol" xid="col1" style="position:relative;background-color:#FFFFFF;"><img alt="" xid="bankImage" height="100%" style="position:relative;width:100%;" bind-attr-src="$model.getImageUrl($object)"></img></div>
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;"><div component="$UI/system/components/justep/output/output" class="x-output" xid="bankName" bind-ref='ref("bankname")' style="color:#FFFFFF;font-weight:normal;font-size:medium;margin:0px 0px 0px 5px;padding:5px 0px 0px 0px;"></div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="padding-top:0px;margin-top:0px;margin-bottom:10px;">
-   <div class="x-col x-col-25" xid="col7"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-xs" label="删除" xid="deletebutton" style="margin-top:17%;margin-left:11%;" onClick="deletebuttonClick">
+   <div class="x-col x-col-25" xid="col7"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-xs" xid="deletebutton" style="margin-top:17%;margin-left:11%;" onClick="deletebuttonClick">
    <i xid="i1"></i>
-   <span xid="span1">删除</span></a></div>
+   <span xid="span1"></span></a></div>
    <div class="x-col" xid="col9"><div component="$UI/system/components/justep/output/output" class="x-output numberOutput" xid="bankCardId" bind-ref='ref("number")' style="color:#FFFFFF;font-family:Leelawadee UI;font-size:large;"></div></div></div></div>
    </div></li></ul> </div>
   </div>

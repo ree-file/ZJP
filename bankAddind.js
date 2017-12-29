@@ -3,6 +3,14 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var bank = require('./js/bank');
 	var base64 = require("$UI/system/lib/base/base64");
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
@@ -17,7 +25,7 @@ define(function(require){
 		var is_success = bank.cardAdding(nameInput,number,bankname);
 		if (is_success == undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		else if (is_success == true) {
@@ -54,6 +62,19 @@ define(function(require){
 			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
 		});
 		$(".x-hint").find("button[class='close']").hide();
+	};
+
+	Model.prototype.modelLoad = function(event){
+		this.comp("title").set({
+			title:lang.bankAddind[0]
+		});
+		$(this.getElementByXid("span2")).html(lang.bankAddind[1]);
+		$(this.getElementByXid("span1")).html(lang.bankAddind[2]);
+		$(this.getElementByXid("span7")).html(lang.bankAddind[3]);
+		$(this.getElementByXid("span9")).html(lang.bankAddind[4]);
+		this.comp("button5").set({
+			label:lang.bankAddind[5],
+		});
 	};
 
 	return Model;

@@ -401,6 +401,7 @@ define(function(require){
 	};
 
 	Model.prototype.modelModelConstructDone = function(event){
+		
 	};
 
 	Model.prototype.minInputBlur = function(event){
@@ -537,6 +538,15 @@ define(function(require){
 			this.comp("windowDialog1").close();
 			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
+	};
+
+	Model.prototype.span24Load = function(event){
+		event.souce.html("123");
+		console.log(123);
+	};
+
+	Model.prototype.sortingBtnLoad = function(event){
+		console.log(123);
 	};
 
 	return Model;
