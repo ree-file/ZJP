@@ -48,6 +48,7 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
+		this.modelParamsReceive(event);
 	};
 
 	Model.prototype.backBtnClick = function(event){
@@ -77,6 +78,10 @@ define(function(require){
 			this.comp("windowDialog1").close();
 			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
+	};
+
+	Model.prototype.modelActive = function(event){
+		this.modelParamsReceive(event);
 	};
 
 	return Model;

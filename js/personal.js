@@ -200,6 +200,45 @@ define(function(require){
 			return is_success;
 		},
 
-	};
+		transRecord : function(money,type,card_number,message){
+			var record =false;
+			$.ajax({
+				url: config.site+"supplies",//php的api路径
+				async:false,
+				dataType:"json",
+				data:{money:money,type:type,card_number:card_number,message:message},//需要传递的数据
+				type:'post',//php获取类型
+        headers: {
+            "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
+        },
+				success:function(data){//请求成功返回值存在data里
+					record = data.data;
+					console.log(record);
+					showprompt('查询成功');
+				},
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
 
+						if(jwt.authRefresh()){
+							record =true;
+						}
+						else
+						{
+							record=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						record=undefined;
+					}
+					else{
+						record=undefined;
+					}
+	        }.bind(this),
+			});
+			return record;
+		},
+
+	};
 });
