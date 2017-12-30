@@ -76,7 +76,20 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button5" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
      <i xid="i5" class="dataControl dataControl-arrowrightl"></i>
      <span xid="span20"></span></a> </div> </div>
-  </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row1" style="background-color:#1C1F26;" bind-click="row1Click">
+   <div class="x-col" xid="col2">
+    <span xid="span1" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"></span></div> 
+   <div class="x-col x-col-10" xid="col1">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button2" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
+     <i xid="i3" class="dataControl dataControl-arrowrightl"></i>
+     <span xid="span5"></span></a> </div> </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row15" style="background-color:#1C1F26;" bind-click="row15Click">
+   <div class="x-col" xid="col6">
+    <span xid="span9" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"></span></div> 
+   <div class="x-col x-col-10" xid="col3">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button3" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
+     <i xid="i6" class="dataControl dataControl-arrowrightl"></i>
+     <span xid="span11"></span></a> </div> </div></div>
    </div>
   </div>
   </div> 

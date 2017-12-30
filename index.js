@@ -64,6 +64,12 @@ define(function(require) {
 				"ZJP_production" : {
 					url : require.toUrl('./ZJP_production.w')
 				},
+				"transferMymoney" : {
+					url : require.toUrl('./transferMymoney.w')
+				},
+				"transferGetmoney" : {
+					url : require.toUrl('./transferGetmoney.w')
+				},
 			}
 		})
 
@@ -72,7 +78,7 @@ define(function(require) {
 		if (!localStorage.getItem("jwt_token")) {
 			this.comp("windowDialog1").open();
 		}
-		
+
 	};
 
 	Model.prototype.windowDialog1Receive = function(event){
@@ -88,8 +94,8 @@ define(function(require) {
 			setTimeout(function(){
 				me.comp("windowDialog1").close();
 			}, 200);
-			
-			
+
+
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();

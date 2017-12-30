@@ -52,6 +52,8 @@ define(function(require){
 		$(this.getElementByXid("span15")).html(lang.wallet[7]);
 		$(this.getElementByXid("span16")).html(lang.wallet[8]);
 		$(this.getElementByXid("span19")).html(lang.wallet[9]);
+		$(this.getElementByXid("span1")).html(lang.wallet[10]);
+		$(this.getElementByXid("span9")).html(lang.wallet[11]);
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
 		var moneyspan2 = $(this.getElementByXid("marketMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
@@ -113,6 +115,14 @@ define(function(require){
 
 	Model.prototype.modelActive = function(event){
 		this.modelLoad(event);
+	};
+
+	Model.prototype.row15Click = function(event){
+		justep.Shell.showPage("transferMymoney");
+	};
+
+	Model.prototype.row1Click = function(event){
+		justep.Shell.showPage("transferGetmoney");
 	};
 
 	return Model;

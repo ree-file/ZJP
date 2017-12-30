@@ -3,6 +3,14 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var config = require("$UI/ZJP/js/config");
 	var jwt = require("$UI/ZJP/js/jwt");
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./en_us');
+	}
+	else{
+		lang = require('./zh_cn');
+	}
 
 	function showprompt(text){
 		justep.Util.hint(text,{
@@ -60,7 +68,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt(lang.personal[0]);
+					showprompt(lang.personaljs[0]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -136,7 +144,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt(lang.personal[1]);
+					showprompt(lang.personaljs[1]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -155,7 +163,7 @@ define(function(require){
 						is_success=undefined;
 					}
 					else{
-						showprompt(lang.personal[2]);
+						showprompt(lang.personaljs[2]);
 					}
 	        }.bind(this),
 			});
@@ -174,7 +182,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt(lang.personal[3]);
+					showprompt(lang.personaljs[3]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -214,7 +222,7 @@ define(function(require){
 				success:function(data){//请求成功返回值存在data里
 					record = data.data;
 					console.log(record);
-					showprompt(lang.personal[4]);
+					showprompt(lang.personaljs[4]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);

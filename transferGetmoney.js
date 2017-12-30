@@ -11,6 +11,7 @@ define(function(require){
 	else{
 		lang = require('./js/zh_cn');
 	}
+
 	var Model = function(){
 		this.callParent();
 	};
@@ -33,58 +34,44 @@ define(function(require){
 	};
 
 	Model.prototype.setupButtonClick = function(event){
-		var from = this.comp('fromSelect').val();
+		var to = this.comp('toSelect').val();
 		var cardnumber = this.getElementByXid("cardidInput").value;
 		var money = this.getElementByXid("moneyInput").value;
 		var otherbankInput = this.getElementByXid("otherbankInput").value;
-			if (from == lang.transfermoney[11]) {
-				var is_success5 = personaljs.supplies(money,"save",cardnumber,otherbankInput);
-				if (is_success5 == undefined) {
-					this.comp("windowDialog1").open();
-					this.showprompt(lang.showprompt[0]);
-					return;
-				}
-				else if (is_success5 == true) {
-					this.setupButtonClick(event);
-					return;
-				}
+		if (to == lang.transfermoney[11]) {
+			var is_success3 = personaljs.supplies(money,"get",cardnumber,otherbankInput);
+			if (is_success3 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
 			}
-			else {
-				var is_success6 = personaljs.supplies(money,"save",cardnumber,from);
-				if (is_success6 == undefined) {
-					this.comp("windowDialog1").open();
-					this.showprompt(lang.showprompt[0]);
-					return;
-				}
-				else if (is_success6 == true) {
-					this.setupButtonClick(event);
-					return;
-				}
+			else if (is_success3 == true) {
+				this.setupButtonClick(event);
+				return;
 			}
-
+		}
+		else {
+			var is_success4 = personaljs.supplies(money,"get",cardnumber,to);
+			if (is_success4 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
+			}
+			else if (is_success4 == true) {
+				this.setupButtonClick(event);
+				return;
+			}
+		}
 	};
 
-	//↓银行选择与其他银行的选取
-	Model.prototype.fromSelectChange = function(event){
-		var fromSelect = this.comp('fromSelect').val();
-		if (fromSelect == lang.transfermoney[11] ) {
+	Model.prototype.toSelectChange = function(event){
+		var toSelect = this.comp('toSelect').val();
+		if (toSelect == lang.transferGetmoney[11] ) {
 			$(this.getElementByXid("otherbankrow")).show();
 		}
 		else {
 			$(this.getElementByXid("otherbankrow")).hide();
 		}
-	};
-
-	//封装提示框--许鑫君
-	Model.prototype.showprompt = function(text){
-		justep.Util.hint(text,{
-						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
-					});
-					$(".x-hint").find("button[class='close']").hide();
-	};
-
-	Model.prototype.backBtnClick = function(event){
-		justep.Shell.closePage();
 	};
 
 	Model.prototype.windowDialog1Receive = function(event){
@@ -102,6 +89,14 @@ define(function(require){
 			this.comp("windowDialog1").close();
 			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
+	};
+
+	//封装提示框--许鑫君
+	Model.prototype.showprompt = function(text){
+		justep.Util.hint(text,{
+						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+					});
+					$(".x-hint").find("button[class='close']").hide();
 	};
 
 	return Model;
