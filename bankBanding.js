@@ -20,9 +20,6 @@ define(function(require){
 			title:lang.bankBanding[0],
 		});
 		$(this.getElementByXid("span6")).html(lang.bankBanding[1]);
-		this.comp("deletebutton").set({
-			label:lang.bankBanding[2]
-		});
 		var bankBandedData = this.comp("bankBandedData");
 		var bankBanded = bank.cardBanded();
 		if (bankBanded == undefined) {
@@ -40,7 +37,8 @@ define(function(require){
 				"username": bankBanded[i].username,
 				"number": bankBanded[i].number,
 				"bankname": bankBanded[i].bankname,
-				"image" : "images/bankimg/"+bankBanded[i].bankname+".png"
+				"image" : "images/bankimg/"+bankBanded[i].bankname+".png",
+				"lang" : lang.bankBanding[2]
 			});
 		}
 	};

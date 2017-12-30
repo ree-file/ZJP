@@ -6,7 +6,14 @@ define(function(require){
 	var ifhid = 0;
 	var pwState = false;
 	var base64 = require("$UI/system/lib/base/base64");
-
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
@@ -19,7 +26,7 @@ define(function(require){
 			var useremail = personaljs.getemail();
 			if (useremail == undefined) {
 				this.comp("windowDialog1").open();
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				return;
 			}
 			else if (useremail == true) {
@@ -39,6 +46,21 @@ define(function(require){
 
 	Model.prototype.modelLoad = function(event){
 		$(this.getElementByXid("hidRow")).hide();
+		$(this.getElementByXid("span2")).html(lang.personal[0]);
+		$(this.getElementByXid("span1")).html(lang.personal[1]);
+		$(this.getElementByXid("span6")).html(lang.personal[2]);
+		$(this.getElementByXid("span8")).html(lang.personal[3]);
+		$(this.getElementByXid("span14")).html(lang.personal[4]);
+		$(this.getElementByXid("span15")).html(lang.personal[5]);
+		$(this.getElementByXid("span7")).html(lang.personal[6]);
+		$(this.getElementByXid("span3")).html(lang.personal[7]);
+		$(this.getElementByXid("span10")).html(lang.personal[8]);
+		$(this.getElementByXid("span9")).html(lang.personal[9]);
+		$(this.getElementByXid("span13")).html(lang.personal[10]);
+		$(this.getElementByXid("span17")).html(lang.personal[11]);
+		$(this.getElementByXid("span19")).html(lang.personal[12]);
+		$(this.getElementByXid("span22")).html(lang.personal[13]);
+		$(this.getElementByXid("span21")).html(lang.personal[14]);
 	};
 
 	Model.prototype.showhidBtnClick = function(event){
@@ -82,7 +104,7 @@ define(function(require){
 				var is_success = personaljs.changePassword(oldpassword,pswInput1);
 				if (is_success == undefined) {
 					this.comp("windowDialog1").open();
-					this.showprompt("请重新登录");
+					this.showprompt(lang.showprompt);
 					return;
 				}
 				else if (is_success == true) {

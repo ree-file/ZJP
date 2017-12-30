@@ -5,7 +5,15 @@ define(function(require) {
 	var nest = require("./js/nests");
 	var config = require("./js/config");
 	var base64 = require("$UI/system/lib/base/base64");
-	var ids=[];
+	var mainInfo;
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function() {
 		this.callParent();
 	};
@@ -18,28 +26,51 @@ define(function(require) {
 					$(".x-hint").find("button[class='close']").hide();
 	};
 	Model.prototype.modelModelConstructDone = function(event){
+		mainInfo = nest.mainInfo();
+		if (mainInfo==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt("重新登录");
+			return;
+		}
 		//获得用户所有巢的信息
 		this.comp("NestsAccount").refreshData();
 		//把nestInfo填充到各个data数据和今日收益，和总投资里
 	};
 
 	Model.prototype.modelLoad = function(event){
+		this.comp("titleBar1").set({
+			title:lang.ZJP_main[0]
+		});
+		$(this.getElementByXid("span3")).html(lang.ZJP_main[1]);
+		$(this.getElementByXid("span5")).html(lang.ZJP_main[2]);
+		$(this.getElementByXid("span6")).html(lang.ZJP_main[3]);
+		$(this.getElementByXid("span12")).html(lang.ZJP_main[4]);
+		$(this.getElementByXid("span13")).html(lang.ZJP_main[5]);
+		$(this.getElementByXid("span14")).html(lang.ZJP_main[6]);
+		$(this.getElementByXid("span1")).html(lang.ZJP_main[7]);
+		$(this.getElementByXid("span15")).html(lang.ZJP_main[8]);
+		$(this.getElementByXid("span16")).html(lang.ZJP_main[9]);
+		$(this.getElementByXid("span39")).html(lang.ZJP_main[10]);
+		$(this.getElementByXid("span17")).html(lang.ZJP_main[11]);
+		$(this.getElementByXid("h51")).html(lang.ZJP_main[12]);
+		$(this.getElementByXid("h52")).html(lang.ZJP_main[13]);
+		$(this.getElementByXid("span35")).html(lang.ZJP_main[14]);
 		//计算三部分资金所占比重
 		var worthInfo =	user.getUserMessage();
 		if (worthInfo==undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		var rightRotate = 180-parseFloat(worthInfo['market'])/(parseFloat(worthInfo['all']))*360;
 		var leftRotate = 180-parseFloat(worthInfo['limit'])/(parseFloat(worthInfo['all']))*360;
 		if (rightRotate<0) {
-			$(this.getElementByXid("span24")).html("市场");
-			$(this.getElementByXid("span26")).html("活动");
+			$(this.getElementByXid("span24")).html(lang.ZJP_main[15]);
+			$(this.getElementByXid("span26")).html(lang.ZJP_main[16]);
 		}
 		else if(leftRotate<0){
-			$(this.getElementByXid("span24")).html("投资");
-			$(this.getElementByXid("span25")).html("活动");
+			$(this.getElementByXid("span24")).html(lang.ZJP_main[17]);
+			$(this.getElementByXid("span25")).html(lang.ZJP_main[16]);
 		}
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
@@ -51,12 +82,12 @@ define(function(require) {
 			var is_live = user.checksecondPassword();
 			if (is_live ==undefined) {
 				this.comp("windowDialog1").open();
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				return;
 			}
 			if (!is_live) {
 				//跳到设置二级密码页面
-				this.showprompt("你还没有二级密码请设置");
+				this.showprompt(lang.showprompt[26]);
 				this.comp("setSecondPassword").show();
 			}
 	};
@@ -64,7 +95,7 @@ define(function(require) {
 	Model.prototype.password1Blur = function(event){
 		var secondpassword = $.trim($(this.getElementByXid("password1")).val());
 		if (!secondpassword) {
-			this.showprompt("密码不能为空");
+			this.showprompt(lang.showprompt[2]);
 		}
 	};
 
@@ -72,7 +103,7 @@ define(function(require) {
 		var confirmpassword = $.trim($(this.getElementByXid("password2")).val());
 		var secondpassword = $.trim($(this.getElementByXid("password1")).val());
 		if (confirmpassword!=secondpassword) {
-			this.showprompt("密码不匹配");
+			this.showprompt(lang.showprompt[27]);
 		}
 	};
 
@@ -82,68 +113,50 @@ define(function(require) {
 		if (confirmpassword&&secondpassword&&(confirmpassword==secondpassword)) {
 			var is_success=user.setSecondPassword(secondpassword);
 			if (is_success) {
-				this.showprompt("设置成功");
+				this.showprompt(lang.showprompt[28]);
 				this.comp("setSecondPassword").hide();
 			}
 			else if(is_success==undefined){
 				this.comp("windowDialog1").open();
-				this.showprompt("设置失败，请重新登录");
+				this.showprompt(lang.showprompt[0]);
 			}
 		}
 		else{
-			this.showprompt("密码不匹配");
+			this.showprompt(lang.showprompt[27]);
 		}
 	};
 
 	Model.prototype.incomeAccountCustomRefresh = function(event){
-		var date = new Date();
-		var todayincome =0.00;
-		var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
-		var times = currentdate.getTime();
-		var eggval = config.configegg().egg_val;
-		var records = nest.incomeInfo(ids,ids.length,times);
-		var MyincomeInfo = [];
-		for (var i = 0; i < records.length; i++) {
-			if (records[i]!=undefined&&records[i].length!=0) {
-				for (var j = 0; j < records[i].length; j++){
-					MyincomeInfo[MyincomeInfo.length]={
-							contract_id:records[i][j].contract_id,
-							type:records[i][j].type=="invite_got"?"邀请获得":records[i][j].type=="week_got"?"日常获得":"家族获得",
-							income:parseFloat(parseFloat(records[i][j].eggs)*parseFloat(eggval)).toFixed(2),
-							date:records[i][j].created_at
-					};
-					todayincome+=parseFloat(records[i][j].eggs)*parseFloat(eggval);
-				}
-			}
+		if (mainInfo == undefined) {
+			return;
 		}
-		for (var i = 0; i < MyincomeInfo.length; i++) {
-			this.comp("NestsAccount").each(function(obj){
-				if (MyincomeInfo[i].contract_id==obj.row.val("id")) {
-					MyincomeInfo[i].name = obj.row.val("name");
+		var data = nest.incomeInfo(mainInfo);
+		for (var int = 0; int < data.MyincomeInfo.length; int++) {
+			var date1 = Date.parse(data.MyincomeInfo[int].date);  
+			for (var int2 = int; int2 < data.MyincomeInfo.length; int2++) {
+				var date2 = Date.parse(data.MyincomeInfo[int2].date);
+				if (date1<date2) {
+					var temp;
+					temp=data.MyincomeInfo[int];
+					data.MyincomeInfo[int]=data.MyincomeInfo[int2];
+					data.MyincomeInfo[int2]=temp;
+					date1 =date2;
+					
 				}
-			});
+			}	
 		}
-		event.source.loadData(MyincomeInfo);
-		ids=null;
-		$(this.getElementByXid("span4")).html("$"+todayincome);
+		event.source.loadData(data.MyincomeInfo);
+		$(this.getElementByXid("span4")).html("$"+data.todayincome);
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
-		ids =[];
-		var nestInfo = nest.nestInfo();
-		if (!nestInfo) {
-			this.comp("windowDialog1").open();
+		
+		if (mainInfo==undefined) {
 			return;
 		}
+		var nestInfo = nest.nestInfo(mainInfo);
 		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
 		event.source.loadData(nestInfo.contracts);
-		if (nestInfo.contracts.length!=0) {
-			for (var i = 0; i < nestInfo.contracts.length; i++) {
-				ids[i]=nestInfo.contracts[i].nest_id;
-			}
-		}
-
-
 		this.comp("incomeAccount").refreshData();
 	};
 
@@ -158,7 +171,7 @@ define(function(require) {
 	};
 
 	Model.prototype.button4Click = function(event){
-		justep.Shell.showPage("market");
+		
 	};
 
 	Model.prototype.modelActive = function(event){
@@ -193,6 +206,10 @@ define(function(require) {
 			}
 			this.comp("windowDialog1").close();
 		}
+	};
+
+	Model.prototype.button5Click = function(event){
+		justep.Shell.showPage("market");
 	};
 
 	return Model;

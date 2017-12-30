@@ -3,7 +3,14 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var config = require("$UI/ZJP/js/config");
 	var jwt = require("$UI/ZJP/js/jwt");
-
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./en_us');
+	}
+	else{
+		lang = require('./zh_cn');
+	}
 	function showprompt(text){
 		justep.Util.hint(text,{
 			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
@@ -64,7 +71,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt('删除成功');
+					showprompt(lang.showprompt[55]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -100,7 +107,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt('添加成功');
+					showprompt(lang.showprompt[56]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);

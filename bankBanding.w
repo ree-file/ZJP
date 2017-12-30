@@ -5,7 +5,8 @@
   <column name="username" type="String" xid="xid6"></column>
   <column name="number" type="Integer" xid="xid7"></column>
   <column name="bankname" type="String" xid="xid8"></column>
-  <column name="image" type="String" xid="xid1"></column></div></div>  
+  <column name="image" type="String" xid="xid1"></column>
+  <column name="lang" type="String" xid="xid2"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1" style="height:100%;width:100%;"> 
       <div class="x-panel-top" xid="top1"> 
@@ -44,7 +45,7 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="padding-top:0px;margin-top:0px;margin-bottom:10px;">
    <div class="x-col x-col-25" xid="col7"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-xs" xid="deletebutton" style="margin-top:17%;margin-left:11%;" onClick="deletebuttonClick">
    <i xid="i1"></i>
-   <span xid="span1"></span></a></div>
+   <span xid="span1" bind-text='val("lang")'></span></a></div>
    <div class="x-col" xid="col9"><div component="$UI/system/components/justep/output/output" class="x-output numberOutput" xid="bankCardId" bind-ref='ref("number")' style="color:#FFFFFF;font-family:Leelawadee UI;font-size:large;"></div></div></div></div>
    </div></li></ul> </div>
   </div>

@@ -12,7 +12,8 @@
   <column name="type" type="Integer" xid="xid19"></column>
   <column name="remainingeggs" type="Integer" xid="xid20"></column>
   <column name="freeseeggs" type="Integer" xid="xid21"></column>
-  <column name="orderid" type="Integer" xid="xid25"></column></div>
+  <column name="orderid" type="Integer" xid="xid25"></column>
+  <column name="lang" type="String" xid="xid26"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="conditionData" idColumn="id" confirmDelete="false" confirmRefresh="false" onCustomRefresh="conditionDataCustomRefresh"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>
@@ -98,7 +99,7 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;height:100%;" onClick="button1Click">
    <i xid="i5"></i>
-   <span xid="span8" style="position:relative;"></span></a></div></div></div></div>
+   <span xid="span8" style="position:relative;" bind-text='val("lang")'></span></a></div></div></div></div>
   </li></ul> </div>
   <div xid="div12" class="load"><span xid="span42" style="font-size:medium;"><![CDATA[]]></span>
   <span xid="span47"><![CDATA[]]></span></div></div>

@@ -2,7 +2,14 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var me;
-	
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 		me = this;
@@ -47,6 +54,17 @@ define(function(require){
 		list.refresh();
 
 
+	};
+
+
+
+	Model.prototype.modelLoad = function(event){
+		this.comp("titleBar1").set({
+			title:lang.selectNation[0]
+		});
+		this.comp("input1").set({
+			placeHolder:lang.selectNation[1]
+		});
 	};
 
 

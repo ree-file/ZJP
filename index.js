@@ -82,7 +82,6 @@ define(function(require) {
 			var id = JSON.parse(base64.decode(ids[1]));
 			if (id&&event.data.email) {
 				localStorage.setItem("thismyuserId", id.sub);
-				debugger;
 				localStorage.setItem("email", event.data.email);
 			}
 			this.comp("mainContainer").refresh();

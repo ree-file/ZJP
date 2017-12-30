@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:203px;left:329px;"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="number"><column name="number" type="String" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:203px;left:329px;" onLoad="modelLoad"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="number"><column name="number" type="String" xid="xid1"></column>
   <column name="nation" type="String" xid="xid2"></column>
   <column name="picture" type="String" xid="xid3"></column>
   <column name="englishName" type="String" xid="xid4"></column>
@@ -19,7 +19,7 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button1" icon="linear linear-chevronleft" onClick="button1Click">
      <i xid="i1" class="linear linear-chevronleft"></i>
      <span xid="span1"></span></a> </div> 
-   <div class="x-titlebar-title " xid="title1">选择国家</div>
+   <div class="x-titlebar-title " xid="title1"><![CDATA[]]></div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row " xid="row2" style="padding:5px 15px 5px 15px;">
    <div class="x-col x-col-10 row-buttom-border" xid="col4">
@@ -27,7 +27,7 @@
      <i xid="i2" class="e-commerce e-commerce-fangdajing"></i>
      <span xid="span2"></span></a> </div> 
    <div class="x-col row-buttom-border" xid="col6">
-    <input component="$UI/system/components/justep/input/input" class="input-group-addon" xid="input1" placeHolder="搜索" onChange="input1Change"></input></div> </div></div><div class="x-panel-content" xid="content1" style="background-color: rgb(28, 31, 38); bottom: 0px; background-size: cover;top:110px;height:100%;" _xid="C7C9D25FFEE00001841916631CC2D1E0">
+    <input component="$UI/system/components/justep/input/input" class="input-group-addon" xid="input1" onChange="input1Change" valueUpdateMode="keyup"></input></div> </div></div><div class="x-panel-content" xid="content1" style="background-color: rgb(28, 31, 38); bottom: 0px; background-size: cover;top:110px;height:100%;" _xid="C7C9D25FFEE00001841916631CC2D1E0">
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="data1" supportpulldown="true">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1" class="x-min-height">
@@ -35,9 +35,9 @@
       <div class="x-col x-col-20 col-buttom-border" xid="col1">
        <img alt="" xid="image2" bind-attr-src='$model.getImageUrl( val("picture"))' height="33px" style="width:50px;"></img></div> 
       <div class="x-col col-buttom-border" xid="col2">
-       <h5 xid="h51" bind-text=' val("nation")' style="color:#FFFFFF;">h5</h5></div> 
+       <h5 xid="h51" bind-text=' val("nation")' style="color:#FFFFFF;"><![CDATA[]]></h5></div> 
       <div class="x-col x-col-20 col-buttom-border" xid="col3">
-       <h5 xid="h52" class="text-center" bind-text=' val("number")' style="color:#C3C3C3;">h5</h5></div> </div> 
+       <h5 xid="h52" class="text-center" bind-text=' val("number")' style="color:#C3C3C3;"><![CDATA[]]></h5></div> </div> 
   </li> </ul> 
   </div></div>
    </div></div>

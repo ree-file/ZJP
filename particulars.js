@@ -4,7 +4,14 @@ define(function(require){
 	var nestParticulars = require('./js/marketparticulars');
 	var orderid;
 	var base64 = require("$UI/system/lib/base/base64");
-
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
@@ -24,7 +31,7 @@ define(function(require){
 		var orderparticulars = nestParticulars.orders(orderid);
 		if (orderparticulars == undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		else if (orderparticulars == true) {
@@ -48,7 +55,24 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
+		this.comp("titile").set({
+			title:lang.particulars[0]
+		});
+		$(this.getElementByXid("span1")).html(lang.particulers[1]);
+		$(this.getElementByXid("span5")).html(lang.particulers[2]);
+		$(this.getElementByXid("span7")).html(lang.particulers[3]);
+		$(this.getElementByXid("span9")).html(lang.particulers[4]);
+		$(this.getElementByXid("span4")).html(lang.particulers[5]);
+		$(this.getElementByXid("span12")).html(lang.particulers[6]);
+		$(this.getElementByXid("span14")).html(lang.particulers[7]);
+		$(this.getElementByXid("span20")).html(lang.particulers[8]);
+		$(this.getElementByXid("span22")).html(lang.particulers[9]);
+		$(this.getElementByXid("span24")).html(lang.particulers[10]);
+		$(this.getElementByXid("span16")).html(lang.particulers[11]);
+		$(this.getElementByXid("span19")).html(lang.particulers[12]);
+		$(this.getElementByXid("span3")).html(lang.particulers[13]);
 		this.modelParamsReceive(event);
+		
 	};
 
 	Model.prototype.backBtnClick = function(event){

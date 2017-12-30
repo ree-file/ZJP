@@ -3,6 +3,14 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var user = require("./js/users");
 	var base64 = require("$UI/system/lib/base/base64");
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
@@ -12,25 +20,25 @@ define(function(require){
 		if (email&&this.params.action=="resetpassword") {
 			var is_success = user.forgetpassword(email);
 			if (is_success) {
-				this.showprompt("邮件已经发送");
+				this.showprompt(lang.showprompt[54]);
 			}
 			else{
-				this.showprompt("邮件发送失败，请查看邮箱是否正确");
+				this.showprompt(lang.showprompt[53]);
 			}
 		}
 		else{
-			this.showprompt("邮箱不能为空");
+			this.showprompt(lang.showprompt[1]);
 		}
 		if (this.params.action=="resetsecondPassword") {
 			var is_success = user.forgetsecondpassword();
 			if (is_success) {
-				this.showprompt("发送成功");
+				this.showprompt(lang.showprompt[52]);
 			}
 			else if(is_success==undefined){
 				this.comp("windowDialog1").open();
 			}
 			else{
-				this.showprompt("发送失败");
+				this.showprompt(lang.showprompt[51]);
 			}
 		}
 	};
@@ -47,51 +55,54 @@ define(function(require){
 		var email = $.trim(this.comp("input1").val());
 		if (password && confirm) {
 			if (password != confirm) {
-				this.showprompt("前后两次密码不一样");
+				this.showprompt(lang.showprompt[27]);
 				return;
 			}
 		}
 		else{
-			this.showprompt("密码不能为空");
+			this.showprompt(lang.showprompt[2]);
 			return;
 		}
 		if (email&&code&&this.params.action=="resetpassword") {
 			var is_success = user.resetPassword(password,code,email);
 			if (is_success) {
-				this.showprompt("重置成功");
+				this.showprompt(lang.showprompt[50]);
 			}
 			else if(is_success==undefined){
 				this.comp("windowDialog1").open();
 			}
 			else{
-				this.showprompt("重置失败");
+				this.showprompt(lang.showprompt[48]);
 			}
 			return;
 		}
 		else{
-			this.showprompt("邮箱和验证码不能为空");
+			this.showprompt(lang.showprompt[49]);
 		}
 		if (code&&this.params.action=="resetsecondPassword") {
 			var is_success = user.resetsecondPassword(password,code);
 			if (is_success) {
-				this.showprompt("重置成功");
+				this.showprompt(lang.showprompt[50]);
 			}
 			else if(is_success==undefined){
 				this.comp("windowDialog1").open();
 			}
 			else{
-				this.showprompt("重置失败");
+				this.showprompt(lang.showprompt[48]);
 			}
 		}
 		else{
-			this.showprompt("验证码不能为空");
+			this.showprompt(lang.showprompt[47]);
 		}
 	};
 	Model.prototype.modelParamsReceive = function(event){
 		this.comp("windowDialog1").close();
 		if (this.params.action=="resetsecondPassword") {
 			$(this.getElementByXid("row1")).hide();
-			$(this.getElementByXid("p1")).text("重置流程；点击发送邮件获得验证码，并把其他选项补齐，点击重置按钮");
+			$(this.getElementByXid("p1")).text(lang.ZJP_resetPassword[8]);
+		}
+		else{
+			$(this.getElementByXid("p1")).text(lang.ZJP_resetPassword[7]);
 		}
 	};	
 	Model.prototype.backBtnClick = function(event){
@@ -109,6 +120,17 @@ define(function(require){
 			this.comp("windowDialog1").close();
 		}
 
+	};	
+	Model.prototype.modelUnLoad = function(event){
+		this.comp("title").set({
+			title:lang.ZJP_resetPassword[0]
+		});
+		$(this.getElementByXid("span1")).html(lang.ZJP_resetPassword[1]);
+		$(this.getElementByXid("span2")).html(lang.ZJP_resetPassword[2]);
+		$(this.getElementByXid("span3")).html(lang.ZJP_resetPassword[3]);
+		$(this.getElementByXid("span4")).html(lang.ZJP_resetPassword[4]);
+		$(this.getElementByXid("span5")).html(lang.ZJP_resetPassword[5]);
+		$(this.getElementByXid("span6")).html(lang.ZJP_resetPassword[6]);
 	};	
 	return Model;
 });

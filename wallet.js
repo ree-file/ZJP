@@ -7,7 +7,14 @@ define(function(require){
 	var moneyactive;
 	var moneylimit;
 	var base64 = require("$UI/system/lib/base/base64");
-
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
@@ -33,6 +40,18 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
+		this.comp("title").set({
+			title:lang.wallet[0]
+		});
+		$(this.getElementByXid("span3")).html(lang.wallet[1]);
+		$(this.getElementByXid("span7")).html(lang.wallet[2]);
+		$(this.getElementByXid("span6")).html(lang.wallet[3]);
+		$(this.getElementByXid("span8")).html(lang.wallet[4]);
+		$(this.getElementByXid("span10")).html(lang.wallet[5]);
+		$(this.getElementByXid("span13")).html(lang.wallet[6]);
+		$(this.getElementByXid("span15")).html(lang.wallet[7]);
+		$(this.getElementByXid("span16")).html(lang.wallet[8]);
+		$(this.getElementByXid("span19")).html(lang.wallet[9]);
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
 		var moneyspan2 = $(this.getElementByXid("marketMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
@@ -40,7 +59,7 @@ define(function(require){
 		var moneyall = personalMoney.money();
 		if (moneyall == undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		else if (moneyall == true) {

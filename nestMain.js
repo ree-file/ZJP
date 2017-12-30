@@ -9,6 +9,14 @@ define(function(require){
 	var eggval;
 	var withdrawData=[];
 	var historyData=[];
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
@@ -22,7 +30,10 @@ define(function(require){
 		return require.toUrl(url);
 		
 	};
-	
+	Model.prototype.fixtwo=function(float){
+		var data = float.toFixed(2);
+		return data;
+	};
 
 	Model.prototype.content3Active = function(event){
 		var button = $(this.getElementByXid("button5"));
@@ -80,7 +91,27 @@ define(function(require){
 	
 	
 	Model.prototype.modelLoad = function(event){
-	
+		this.comp("titleBar1").set({
+			title:lang.nestMain[0]
+		});
+		$(this.getElementByXid("h58")).html(lang.nestMain[1]);
+		$(this.getElementByXid("h57")).html(lang.nestMain[2]);
+		$(this.getElementByXid("h511")).html(lang.nestMain[3]);
+		$(this.getElementByXid("h512")).html(lang.nestMain[4]);
+		$(this.getElementByXid("h513")).html(lang.nestMain[5]);
+		$(this.getElementByXid("span5")).html(lang.nestMain[6]);
+		$(this.getElementByXid("span7")).html(lang.nestMain[7]);
+		$(this.getElementByXid("span8")).html(lang.nestMain[8]);
+		$(this.getElementByXid("span6")).html(lang.nestMain[9]);
+		$(this.getElementByXid("span31")).html(lang.nestMain[17]);
+		$(this.getElementByXid("span17")).html(lang.nestMain[18]);
+		$(this.getElementByXid("span18")).html(lang.nestMain[19]);
+		$(this.getElementByXid("span26")).html(lang.nestMain[20]);
+		$(this.getElementByXid("span27")).html(lang.nestMain[21]);
+		$(this.getElementByXid("h51")).html(lang.nestMain[22]);
+		$(this.getElementByXid("h53")).html(lang.nestMain[23]);
+		$(this.getElementByXid("span28")).html(lang.nestMain[24]);
+		$(this.getElementByXid("p1")).html(lang.nestMain[25]);
 	};
 	Model.prototype.modelParamsReceive = function(event){
 		var nest_id = this.params.nest_id;
@@ -88,7 +119,7 @@ define(function(require){
 		nestInfo = nest.singlenestInfo(nest_id);
 		if (nestInfo==undefined) {
 			this.comp("windowDialog1").open();
-			this.showprompt("请重新登录");
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		eggval = config.configegg().egg_val;
@@ -136,14 +167,14 @@ define(function(require){
 					id:i+1,
 					money:(parseFloat(nestInfo.nestinfo.contracts[i].eggs)*eggval).toFixed(2),
 					date:nestInfo.nestinfo.contracts[i].created_at,
-					message:"创建",
+					message:lang.nestMain[10],
 			}
 			withdrawData[i]={
 					id:i+1,
 					date:new Date(),
 					money:money.toFixed(2),
 					contract_id:nestInfo.nestinfo.contracts[i].id,
-					message:"点击提现",
+					message:lang.nestMain[16],
 					withdraw:capped
 			}
 		}
@@ -186,7 +217,7 @@ define(function(require){
 			for (var i = 0; i < nestInfo.nestrecords.contract_records.length; i++) {
 				for (var j = 0; j < historyData.length; j++) {
 					if (historyData[j].id==nestInfo.nestrecords.contract_records[i].contract_id) {
-						historyData[j].message="复投";
+						historyData[j].message=lang.nestMain[11];
 					}
 				}
 			}
@@ -213,7 +244,7 @@ define(function(require){
 					id:j,
 					date:nestInfo.nestrecords.extract_records[j].created_at,
 					money:parseFloat(nestInfo.nestrecords.extract_records[j].money).toFixed(2),
-					message:"提现",
+					message:lang.nestMain[12],
 					status:0
 				}
 					for (var i = 0; i < withdrawData.length; i++) {
@@ -232,13 +263,13 @@ define(function(require){
 				var message ="";
 				switch(nestInfo.nestrecords.got_records[j].type){
 					case "invite_got":
-						message="邀请加速";
+						message=lang.nestMain[13];
 						break;
 					case "week_got":
-						message="日常收益";
+						message=lang.nestMain[14];
 						break;
 					case "community_got":
-						message="社区加速";
+						message=lang.nestMain[15];
 						break;
 					default:
 					break;
@@ -309,13 +340,13 @@ define(function(require){
 		var password = $.trim($(this.getElementByXid("password1")).val());
 		var reg = new RegExp("^[0-9.]*$");
 		if (!money) {
-			this.showprompt("金额不能为空");
+			this.showprompt(lang.showprompt[19]);
 		}
 		else{
 			if (reg.test(money)) {
 				var current_worth =parseFloat(this.comp("withdrawData").val("money"));
 				if (parseFloat(money)>current_worth) {
-					this.showprompt("超出当前所拥有金额");
+					this.showprompt(lang.showprompt[20]);
 					return;
 				}
 				if (password) {
@@ -331,18 +362,18 @@ define(function(require){
 								money:parseFloat(money),
 								date:new Date(),
 								status:0,
-								message:"提现"
+								message:lang.nestMain[12]
 							}]
 						});
 					}
 				}
 				else{
-					this.showprompt("密码不能为空");
+					this.showprompt(lang.showprompt[2]);
 				}
 				
 			}
 			else{
-				this.showprompt("请输入整数");
+				this.showprompt(lang.showprompt[21]);
 			}
 		}
 	};
@@ -360,11 +391,11 @@ define(function(require){
 		var money = $.trim(this.comp("input1").val());
 		var reg = new RegExp("^[0-9.]*$");
 		if (!money) {
-			this.showprompt("金额不能为空");
+			this.showprompt(lang.showprompt[19]);
 			return;
 		}
 		if (!reg.test(money)) {
-			this.showprompt("填写错误金额");
+			this.showprompt(lang.showprompt[22]);
 		}
 	};
 	
@@ -372,7 +403,7 @@ define(function(require){
 	Model.prototype.button2Click = function(event){
 		var is_finished = this.comp("nest").val("is_finished");
 		if (is_finished==1) {
-			this.showprompt("产品已经结束，请重新复投");
+			this.showprompt(lang.showprompt[23]);
 		}
 		else if (is_finished==0) {
 			var eggs = this.comp("nest").val("type");
@@ -404,7 +435,7 @@ define(function(require){
 			});
 		}
 		else if(is_finished==0){
-			this.showprompt("产品尚未完成，不能复投");
+			this.showprompt(lang.showprompt[24]);
 		}
 	};
 	

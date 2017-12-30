@@ -94,13 +94,14 @@ define(function(require){
 				},
 				success:function(data){//请求成功返回值存在data里
 					var ordersData = data.data.data;
+					var eggval = config.configegg().egg_val;
 					for (var i = 0; i < ordersData.length; i++) {
 						if (ordersData[i].status!="selling") {
 							continue;
 						}
 						var contract_remaining=0;
 						var contract = ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1];
-						contract_remaining = parseInt(contract.eggs)-parseInt(contract.extracted);
+						contract_remaining = parseInt(contract.eggs)*3-parseInt(contract.extracted)/parseInt(eggval);
 						var num =0;
 						for (var j = 0; j < ordersData[i].nest.children.length; j++) {
 							num+=ordersData[i].nest.children[j].children.length;
@@ -117,7 +118,7 @@ define(function(require){
 						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
 						allorders[i].type=parseInt(contract.eggs);
 						allorders[i].remainingeggs = parseInt(contract_remaining);
-						allorders[i].freeseeggs = parseInt(contract.eggs)-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
+						allorders[i].freeseeggs =contract.is_finished=="1"?0: parseInt(contract.eggs)*3-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
 					}
 					status =200;
 				},
@@ -176,18 +177,20 @@ define(function(require){
 				},
 				success:function(data){//请求成功返回值存在data里
 					var ordersData = data.data.data;
+					var eggval = config.configegg().egg_val;
 					for (var i = 0; i < ordersData.length; i++) {
 						if (ordersData[i].status!="selling") {
 							continue;
 						}
 						var contract_remaining=0;
 						var contract = ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1];
-						contract_remaining = parseInt(contract.eggs)-parseInt(contract.extracted);
+						contract_remaining = parseInt(contract.eggs)*3-parseInt(contract.extracted)/parseInt(eggval);
 						var num =0;
 						for (var j = 0; j < ordersData[i].nest.children.length; j++) {
 							num+=ordersData[i].nest.children[j].children.length;
 						}
 						allorders[i]={};
+						allorders[i].orderid = i;
 						allorders[i].id=ordersData[i].id;
 						allorders[i].name=ordersData[i].nest.name,
 						allorders[i].nest_id = ordersData[i].nest_id,
@@ -198,7 +201,7 @@ define(function(require){
 						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
 						allorders[i].type=parseInt(contract.eggs);
 						allorders[i].remainingeggs = parseInt(contract_remaining);
-						allorders[i].freeseeggs = parseInt(contract.eggs)-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
+						allorders[i].freeseeggs =contract.is_finished=="1"?0: parseInt(contract.eggs)*3-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
 					}
 					status =200;
 				},

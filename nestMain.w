@@ -44,7 +44,7 @@
    <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button12" icon="icon-chevron-left" onClick="button12Click">
    <i xid="i12" class="icon-chevron-left"></i>
    <span xid="span29"></span></a></div>
-   <div class="x-titlebar-title" xid="title1"><![CDATA[小窝]]></div>
+   <div class="x-titlebar-title" xid="title1"><![CDATA[]]></div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>
    <div class="x-panel-content background-color-black" xid="content1" style="height:100%;"><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="height:10px;padding:0px 0px 0px 0px;">
    <div class="x-col" xid="col1">
@@ -68,11 +68,11 @@
    <div class="x-col" xid="col23"></div>
    <div class="x-col" xid="col24"></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="height:35px;">
-   <div class="x-col x-col-67" xid="col26"><h5 xid="h58" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[提现金额]]></h5></div>
+   <div class="x-col x-col-67" xid="col26"><h5 xid="h58" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[]]></h5></div>
    <div class="x-col" xid="col27"><h5 xid="h56" class="text-right font-white" bind-text="'$'+  $model.nest.val(&quot;withdraw&quot;)"><![CDATA[]]></h5></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row33" style="height:35px;">
    <div class="x-col x-col-67" xid="col89">
-    <h5 xid="h57" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[可提金额]]></h5></div> 
+    <h5 xid="h57" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[]]></h5></div> 
    <div class="x-col" xid="col33">
     <h5 xid="h54" class="text-right font-white"></h5></div> </div></div>
   </div>
@@ -90,7 +90,7 @@
     <h5 xid="h530" class="text-right font-white"><![CDATA[]]></h5></div> 
    <div class="x-col col-padding-left" xid="col68"><h5 xid="h529" class="font-white text-left"><![CDATA[]]></h5></div></div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-height" xid="row15">
-   <div class="x-col" xid="col44"><h5 xid="h511" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[成长速率]]></h5></div>
+   <div class="x-col" xid="col44"><h5 xid="h511" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
    <div class="x-col noMarginPadding " xid="col45">
   <div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row26">
    <div class="x-col x-col-offset-10 col-paddind-right" xid="col78"><h5 xid="h536" class="text-right font-white">$</h5></div>
@@ -101,11 +101,11 @@
    <div class="x-col noMarginPadding" xid="col46"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row20">
    <div class="x-col" xid="col61">
     </div> 
-   <div class="x-col  x-col-offset-10 col-paddind-right" xid="col60">
+   <div class="x-col col-paddind-right" xid="col60">
     <h5 xid="h524" class="text-right font-white"><![CDATA[￥]]></h5></div> 
-   <div class="x-col col-padding-left" xid="col59"><h5 xid="h523" class="font-white text-left" bind-text=' $model.nest.val("speed") * $model.nest.val("currentWorth") * $model.nest.val("globalValue")'><![CDATA[]]></h5></div></div></div></div>
+   <div class="x-col col-padding-left" xid="col59"><h5 xid="h523" class="font-white text-left" bind-text=' $model.fixtwo($model.nest.val("speed") * $model.nest.val("currentWorth") * $model.nest.val("globalValue"))'><![CDATA[]]></h5></div></div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-height" xid="row16">
-   <div class="x-col" xid="col47"><h5 xid="h512" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[总投资数]]></h5></div>
+   <div class="x-col" xid="col47"><h5 xid="h512" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
    <div class="x-col noMarginPadding" xid="col48"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row21">
    <div class="x-col x-col-offset-10 col-paddind-right" xid="col64">
     <h5 xid="h526" class="text-right font-white">$</h5></div> 
@@ -114,12 +114,12 @@
    <div class="x-col" xid="col62"></div></div></div>
    <div class="x-col noMarginPadding" xid="col49"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row24">
    <div class="x-col" xid="col72"></div>
-   <div class="x-col x-col-offset-10 col-paddind-right" xid="col73">
+   <div class="x-col col-paddind-right" xid="col73">
     <h5 xid="h532" class="text-right font-white"><![CDATA[￥]]></h5></div> 
    <div class="x-col col-padding-left" xid="col71">
     <h5 xid="h531" class="font-white text-left" bind-text=' $model.nest.val("investment") * $model.nest.val("globalValue")'><![CDATA[]]></h5></div> </div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row " xid="row17" style="height:40px;">
-   <div class="x-col" xid="col50"><h5 xid="h513" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[预期收益]]></h5></div>
+   <div class="x-col" xid="col50"><h5 xid="h513" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
    <div class="x-col noMarginPadding" xid="col51"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row22">
    <div class="x-col x-col-offset-10 col-paddind-right" xid="col67">
     <h5 xid="h528" class="text-right font-white">$</h5></div> 
@@ -128,24 +128,24 @@
    <div class="x-col" xid="col65"></div></div></div>
    <div class="x-col noMarginPadding" xid="col52"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row25">
    <div class="x-col" xid="col75"></div>
-   <div class="x-col  x-col-offset-10 col-paddind-right" xid="col76">
+   <div class="x-col col-paddind-right" xid="col76">
     <h5 xid="h534" class="text-right font-white"><![CDATA[￥]]></h5></div> 
    <div class="x-col col-padding-left" xid="col74">
     <h5 xid="h533" class="font-white text-left" bind-text='$model.nest.val("currentWorth") * $model.nest.val("globalValue") * $model.nest.val("expectReturn")'><![CDATA[]]></h5></div> </div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row3">
    <div class="x-col noMarginPadding" xid="col7"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group noMarginPadding" tabbed="true" xid="buttonGroup1" style="width:100%;" selected="button5">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm background-color-black checkbtn" label="小窝历史" xid="button5" style="width:25%;" target="content3">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm background-color-black checkbtn" xid="button5" style="width:25%;height:100%;" target="content3">
     <i xid="i5"></i>
-    <span xid="span5">小窝历史</span></a> 
+    <span xid="span5"></span></a> 
     
-  <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default btn-sm background-color-black" label="账单明细" xid="button7" style="width:25%;" target="content5">
+  <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default btn-sm background-color-black" xid="button7" style="width:25%;" target="content5">
    <i xid="i7"></i>
-   <span xid="span7">账单明细</span></a>
-  <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default btn-sm background-color-black" xid="button8" style="width:25%;" target="content6" label="激活金额">
+   <span xid="span7"></span></a>
+  <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default btn-sm background-color-black" xid="button8" style="width:25%;" target="content6">
    <i xid="i8"></i>
-   <span xid="span8">激活金额</span></a><a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default btn-sm background-color-black" label="进入社区" xid="button6" style="width:25%;" target="content4">
+   <span xid="span8"></span></a><a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default btn-sm background-color-black" xid="button6" style="width:25%;" target="content4">
     <i xid="i6"></i>
-    <span xid="span6">进入社区</span></a></div></div>
+    <span xid="span6"></span></a></div></div>
    </div>
   <div xid="div2">
   <div component="$UI/system/components/justep/contents/contents" class="x-contents" active="0" xid="contents2">
@@ -208,35 +208,35 @@
       <div class="x-col text-center" xid="col58">
        <span xid="span24" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("message")'>type</span></div> </div> </li> </ul> </div></div><div class="x-contents-content" xid="content4" onActive="content4Active" onInactive="content4Inactive" style="width:100%;height:auto;"><div xid="div8" style="width:100%;height:250px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row32" style="margin-top:100px;">
    <div class="x-col x-col-10" xid="col87"></div>
-   <div class="x-col" xid="col88"><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="进入社区" xid="button11" style="color:white;width:100%;border-radius:5px;border-style:solid solid solid solid;border-width:2px 2px 2px 2px;border-color:#6A64AD #6A64AD #6A64AD #6A64AD;" onClick="button11Click">
+   <div class="x-col" xid="col88"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button11" style="color:white;width:100%;border-radius:5px;border-style:solid solid solid solid;border-width:2px 2px 2px 2px;border-color:#6A64AD #6A64AD #6A64AD #6A64AD;" onClick="button11Click">
    <i xid="i11"></i>
-   <span xid="span31">进入社区</span></a></div>
+   <span xid="span31"></span></a></div>
   <div class="x-col x-col-10" xid="col93"></div></div></div></div></div></div>
   </div>
    <div class="x-panel-bottom" xid="bottom1"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified noMarginPadding background-color-black" tabbed="true" xid="buttonGroup2" style="width:100%;height:100%;">
-   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" label="升级小窝" xid="button2" style="width:25%;" onClick="button2Click">
+   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" xid="button2" style="width:25%;" onClick="button2Click">
     <i xid="i2"></i>
-    <span xid="span17">升级小窝</span></a> 
-   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" label="复投小窝" xid="button3" style="width:25%;" onClick="button3Click">
+    <span xid="span17"></span></a> 
+   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" xid="button3" style="width:25%;" onClick="button3Click">
     <i xid="i3"></i>
-    <span xid="span18">复投小窝</span></a> 
-   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" label="挂牌交易" xid="button4" style="width:25%;" onClick="button4Click">
+    <span xid="span18"></span></a> 
+   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" xid="button4" style="width:25%;" onClick="button4Click">
     <i xid="i4"></i>
-    <span xid="span26">挂牌交易</span></a> 
-   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" label="创建小窝" xid="button9" style="width:25%;" onClick="button9Click">
+    <span xid="span26"></span></a> 
+   <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" xid="button9" style="width:25%;" onClick="button9Click">
     <i xid="i9"></i>
-    <span xid="span27">创建小窝</span></a> </div></div></div>
+    <span xid="span27"></span></a> </div></div></div>
   <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0" style="top:17px;left:152px;">
    <div class="x-popOver-overlay" xid="div6"></div>
    <div class="x-popOver-content withDrawWindow" xid="div7"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row28">
-   <div class="x-col x-col-33" xid="col82"><h5 xid="h51" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[提取钱数：]]></h5></div>
+   <div class="x-col x-col-33" xid="col82"><h5 xid="h51" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[]]></h5></div>
    <div class="x-col" xid="col83"><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1" onBlur="input1Blur"></input></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11">
-   <div class="x-col x-col-33" xid="col34"><h5 xid="h53" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[安全密码：]]></h5></div>
+   <div class="x-col x-col-33" xid="col34"><h5 xid="h53" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[]]></h5></div>
    <div class="x-col" xid="col81"><input component="$UI/system/components/justep/input/password" class="form-control" xid="password1" style="border-radius:5px;"></input></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row29">
-   <div class="x-col" xid="col86"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="确定" xid="button10" onClick="button10Click">
+   <div class="x-col" xid="col86"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" xid="button10" onClick="button10Click">
    <i xid="i10"></i>
-   <span xid="span28">确定</span></a></div></div>
+   <span xid="span28"></span></a></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row31">
-   <div class="x-col" xid="col90"><p xid="p1" style="color:white;"><![CDATA[获得金额的80%将充入活动资金，20%将充入投资资金]]></p></div></div></div></div>
+   <div class="x-col" xid="col90"><p xid="p1" style="color:white;"><![CDATA[]]></p></div></div></div></div>
   <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive" style="top:17px;left:103px;"></span></div>

@@ -3,12 +3,31 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var personaljs = require("./js/personal");
 	var base64 = require("$UI/system/lib/base/base64");
-
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 	};
 
 	Model.prototype.modelLoad = function(event){
+		this.comp("title").set({
+			title:lang.transfermoney[0]
+		});
+		
+		$(this.getElementByXid("span2")).html(lang.transfermoney[1]);
+		$(this.getElementByXid("span7")).html(lang.transfermoney[2]);
+		$(this.getElementByXid("span3")).html(lang.transfermoney[3]);
+		$(this.getElementByXid("otherbankName")).html(lang.transfermoney[4]);
+		$(this.getElementByXid("span9")).html(lang.transfermoney[5]);
+		$(this.getElementByXid("span11")).html(lang.transfermoney[6]);
+		$(this.getElementByXid("span13")).html(lang.transfermoney[7]);
+		$(this.getElementByXid("span12")).html(lang.transfermoney[8]);
 		$(this.getElementByXid("otherbankrow")).hide();
 	};
 
@@ -20,16 +39,16 @@ define(function(require){
 		var otherbankInput = this.getElementByXid("otherbankInput").value;
 		var securityInput = this.getElementByXid("securityInput").value;
 		if (from == to) {
-			this.showprompt('\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
+			this.showprompt(lang.showprompt[25]);
 		}
-		else if(from != "钱包金额" && to != "钱包金额") {
-			this.showprompt('\"来源\"与\"去向\"有且只有一个\"钱包金额\"');
+		else if(from != lang.transfermoney[9]&& to !=lang.transfermoney[9]) {
+			this.showprompt(lang.showprompt[25]);
 		}
-		else if(from == "钱包金额" && to == "市场金额"){
+		else if(from == lang.transfermoney[9] && to == lang.transfermoney[10]){
 			var is_success1 = personaljs.transferMoney(money,"active-to-market",securityInput);
 			if (is_success1 == undefined) {
 				this.comp("windowDialog1").open();
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				return;
 			}
 			else if (is_success1 == true) {
@@ -37,11 +56,11 @@ define(function(require){
 				return;
 			}
 		}
-		else if(from == "市场金额" && to == "钱包金额"){
+		else if(from ==lang.transfermoney[10] && to ==lang.transfermoney[9]){
 			var is_success2 = personaljs.transferMoney(money,"market-to-active",securityInput);
 			if (is_success2 == undefined) {
 				this.comp("windowDialog1").open();
-				this.showprompt("请重新登录");
+				this.showprompt(lang.showprompt[0]);
 				return;
 			}
 			else if (is_success2 == true) {
@@ -49,12 +68,12 @@ define(function(require){
 				return;
 			}
 		}
-		else if(from == "钱包金额"){
-			if (to == "其他银行") {
+		else if(from == lang.transfermoney[9]){
+			if (to == lang.transfermoney[11]) {
 				var is_success3 = personaljs.supplies(money,"get",cardnumber,otherbankInput);
 				if (is_success3 == undefined) {
 					this.comp("windowDialog1").open();
-					this.showprompt("请重新登录");
+					this.showprompt(lang.showprompt[0]);
 					return;
 				}
 				else if (is_success3 == true) {
@@ -66,7 +85,7 @@ define(function(require){
 				var is_success4 = personaljs.supplies(money,"get",cardnumber,to);
 				if (is_success4 == undefined) {
 					this.comp("windowDialog1").open();
-					this.showprompt("请重新登录");
+					this.showprompt(lang.showprompt[0]);
 					return;
 				}
 				else if (is_success4 == true) {
@@ -75,12 +94,12 @@ define(function(require){
 				}
 			}
 		}
-		else if(to == "钱包金额"){
-			if (from == "其他银行") {
+		else if(to == lang.transfermoney[9]){
+			if (from == lang.transfermoney[11]) {
 				var is_success5 = personaljs.supplies(money,"save",cardnumber,otherbankInput);
 				if (is_success5 == undefined) {
 					this.comp("windowDialog1").open();
-					this.showprompt("请重新登录");
+					this.showprompt(lang.showprompt[0]);
 					return;
 				}
 				else if (is_success5 == true) {
@@ -92,7 +111,7 @@ define(function(require){
 				var is_success6 = personaljs.supplies(money,"save",cardnumber,from);
 				if (is_success6 == undefined) {
 					this.comp("windowDialog1").open();
-					this.showprompt("请重新登录");
+					this.showprompt(lang.showprompt[0]);
 					return;
 				}
 				else if (is_success6 == true) {
@@ -106,10 +125,10 @@ define(function(require){
 	Model.prototype.fromSelectChange = function(event){
 		var fromSelect = this.comp('fromSelect').val();
 		var toSelect = this.comp('toSelect').val();
-		if (fromSelect == "其他银行" ) {
+		if (fromSelect == lang.transfermoney[11] ) {
 			$(this.getElementByXid("otherbankrow")).show();
 		}
-		else if(toSelect != "其他银行"){
+		else if(toSelect != lang.transfermoney[11]){
 			$(this.getElementByXid("otherbankrow")).hide();
 		}
 	};
@@ -117,10 +136,10 @@ define(function(require){
 	Model.prototype.toSelectChange = function(event){
 		var fromSelect = this.comp('fromSelect').val();
 		var toSelect = this.comp('toSelect').val();
-		if (toSelect == "其他银行" ) {
+		if (toSelect == lang.transfermoney[11] ) {
 			$(this.getElementByXid("otherbankrow")).show();
 		}
-		else if(fromSelect != "其他银行"){
+		else if(fromSelect != lang.transfermoney[11]){
 			$(this.getElementByXid("otherbankrow")).hide();
 		}
 	};

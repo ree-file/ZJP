@@ -60,7 +60,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt('修改成功');
+					showprompt(lang.personal[0]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -136,7 +136,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt('转账成功');
+					showprompt(lang.personal[1]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -155,7 +155,7 @@ define(function(require){
 						is_success=undefined;
 					}
 					else{
-						showprompt('转账失败，请确认金额，来源，去向等');
+						showprompt(lang.personal[2]);
 					}
 	        }.bind(this),
 			});
@@ -174,7 +174,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					showprompt('提交成功');
+					showprompt(lang.personal[3]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -214,7 +214,7 @@ define(function(require){
 				success:function(data){//请求成功返回值存在data里
 					record = data.data;
 					console.log(record);
-					showprompt('查询成功');
+					showprompt(lang.personal[4]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);

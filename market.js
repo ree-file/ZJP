@@ -55,9 +55,7 @@ define(function(require){
 		$(this.getElementByXid("span13")).html(lang.market[6]);
 		$(this.getElementByXid("span15")).html(lang.market[7]);
 		$(this.getElementByXid("span23")).html(lang.market[8]);
-		this.comp("button1").set({
-			label:lang.market[9]
-		});
+		
 		$(this.getElementByXid("span47")).html(lang.market[10]);
 		$(this.getElementByXid("span48")).html(lang.market[11]);
 		$(this.getElementByXid("span21")).html(lang.market[12]);
@@ -171,9 +169,6 @@ define(function(require){
 		else{
 			this.showprompt(lang.showprompt[8]);
 		}
-		this.comp("button1").set({
-			label:lang.market[9]
-		});
 		this.comp("screeningPopOver").hide();
 	};
 	Model.prototype.orderby =function(objData,relation,type){
@@ -232,9 +227,6 @@ define(function(require){
 			this.orderby(this.comp("marketdata"),"orderid",1);
 		}
 		this.comp("sortingPopOver").hide();
-		this.comp("button1").set({
-			label:lang.market[9]
-		});
 	};
 	//重置按钮
 	Model.prototype.resetBtnClick = function(event){
@@ -434,6 +426,12 @@ define(function(require){
 			});
 			
 	};
+	Model.prototype.addlang=function(data){
+		for (var int = 0; int < data.length; int++) {
+			data[int].lang =lang.market[9];
+		}
+		return data;
+	};
 	Model.prototype.marketdataCustomRefresh = function(event){
 		if(complex_page==1&&datastatus==0){
 			event.source.clear();
@@ -443,6 +441,7 @@ define(function(require){
 				this.comp("windowDialog1").open();
 				return;
 			}
+			records=this.addlang(records);
 			event.source.loadData(records);
 			this.refresh();
 		}
@@ -453,6 +452,7 @@ define(function(require){
 				this.comp("windowDialog1").open();
 				return;
 			}
+			records=this.addlang(records);
 			this.loading(records);
 			
 		}
@@ -464,6 +464,7 @@ define(function(require){
 				this.comp("windowDialog1").open();
 				return;
 			}
+			records=this.addlang(records);
 			event.source.loadData(records);
 			this.refresh();
 		}
@@ -474,6 +475,7 @@ define(function(require){
 				this.comp("windowDialog1").open();
 				return;
 			}
+			records=this.addlang(records);
 			this.loading(records);
 			
 		}
@@ -582,9 +584,6 @@ define(function(require){
 						filter_page=1;
 						this.comp("marketdata").refreshData();
 					}
-					this.comp("button1").set({
-						label:lang.market[9]
-					});
 				}, 1000);
 				
 			}

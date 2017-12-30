@@ -72,9 +72,7 @@ define(function(require){
 		$(this.getElementByXid("span1")).html(lang.bankAddind[2]);
 		$(this.getElementByXid("span7")).html(lang.bankAddind[3]);
 		$(this.getElementByXid("span9")).html(lang.bankAddind[4]);
-		this.comp("button5").set({
-			label:lang.bankAddind[5],
-		});
+		$(this.getElementByXid("span12")).html(lang.bankAddind[5]);
 	};
 
 	return Model;

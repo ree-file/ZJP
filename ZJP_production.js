@@ -13,6 +13,14 @@ define(function(require){
 	var current_rank =-1 ;//通过页面传参数获得用于产品升级时做比较，另外一律为0；
 	var config_egg ;//通过向服务端请求获得产品的配置信息
 	var me;
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./js/en_us');
+	}
+	else{
+		lang = require('./js/zh_cn');
+	}
 	var Model = function(){
 		this.callParent();
 		me =this;
@@ -21,39 +29,39 @@ define(function(require){
 	Model.prototype.button2Click = function(event){
 		this.comp("popOver1").show();
 		if (action =="upgrade") {
-			$(this.getElementByXid("p2")).text("此选项表明你升级后猫窝的价值");
+			$(this.getElementByXid("p2")).text(lang.ZJP_production[25]);
 		}
 		else if(action =="invite"){
-			$(this.getElementByXid("p2")).text("此选项表明新建的邮箱用户获得的猫窝的价值");
+			$(this.getElementByXid("p2")).text(lang.ZJP_production[24]);
 			
 		}
 		else{
-			$(this.getElementByXid("p2")).text("此选项表明你将获得的猫窝的价值");
+			$(this.getElementByXid("p2")).text(lang.ZJP_production[23]);
 		}
 		
 	};
 //提示
 	Model.prototype.button4Click = function(event){
 		this.comp("popOver1").show();
-		$(this.getElementByXid("p2")).text("此选项将决定此猫窝的上级");
+		$(this.getElementByXid("p2")).text(lang.ZJP_production[22]);
 	};
 //提示
 	Model.prototype.button5Click = function(event){
 		this.comp("popOver1").show();
 		
-		$(this.getElementByXid("p2")).text("A社区：直接加速成长；B社区：直接加速和社区加速【每日最多加速现猫窝投资额的30%】；C社区：直线加速和社区加速【每日最多加速此猫窝累计投资额的30%】");
+		$(this.getElementByXid("p2")).text(lang.ZJP_production[21]);
 		
 	};
 //提示
 	Model.prototype.button3Click = function(event){
 		this.comp("popOver1").show();
-		$(this.getElementByXid("p2")).text("填入一个猫窝的编码，该编码的猫窝将会获得直线加速");
+		$(this.getElementByXid("p2")).text(lang.ZJP_production[20]);
 		
 	};
 //提示
 	Model.prototype.button1Click = function(event){
 		this.comp("popOver1").show();
-		$(this.getElementByXid("p2")).text("将会建立一个新的交易账户，猫窝的归属交易账户。");
+		$(this.getElementByXid("p2")).text(lang.ZJP_production[19]);
 	};
 //填写收益人时触发各种判断	
 	Model.prototype.input4Blur = function(event){
@@ -82,7 +90,7 @@ define(function(require){
 				this.comp("radio3").set({disabled:false});
 				break;
 			default:
-				this.showprompt("没有这个用户");
+				this.showprompt(lang.showprompt[46]);
 				this.comp("radio1").set({disabled:true,checked:false});
 				this.comp("radio2").set({disabled:true,checked:false});
 				this.comp("radio3").set({disabled:true,checked:false});
@@ -146,51 +154,51 @@ define(function(require){
 			nest_id = this.params.nest_id;
 			if (action=="upgrade") {
 					this.comp("titleBar1").set({
-						title:"猫窝升级"
+						title:lang.ZJP_production[18]
 					});
 					nest_id = this.params.nest_id;
 					current_rank = this.params.current_rank;
 					worth = this.params.current_worth;
-					$(this.getElementByXid("span21")).html("关于升级");
+					$(this.getElementByXid("span21")).html(lang.ZJP_production[17]);
 			}
 			else{
 					this.comp("titleBar1").set({
-						title:"猫窝复投"
+						title:lang.ZJP_production[16]
 					});
 					nest_id = this.params.nest_id;
 					worth = 0;
-					$(this.getElementByXid("span21")).html("关于升级");
+					$(this.getElementByXid("span21")).html(lang.ZJP_production[15]);
 				}
 			$(this.getElementByXid("production_worth")).html(worth);
 		}
 		else if (action == "create") {
 			
 			this.comp("titleBar1").set({
-				title:"猫窝创建"
+				title:lang.ZJP_production[14]
 			});
-			$(this.getElementByXid("span21")).html("关于创建");
+			$(this.getElementByXid("span21")).html(lang.ZJP_production[13]);
 //			创建的时候不需要邮箱地址也不需要邀请人，更不需要产品信息
-			$(this.getElementByXid("upgrade-message")).animate({height:0},function(){
+			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("upgrade-message")).addClass("common_show");
 			});
-			$(this.getElementByXid("row4")).animate({height:0},function(){
+			$(this.getElementByXid("row4")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("row4")).addClass("common_show");
 			});
-			$(this.getElementByXid("p1")).text("您将创建一个新的猫窝，该猫窝用有独立的家族结构和指定归属人");
+			$(this.getElementByXid("p1")).text(lang.ZJP_production[12]);
 		}
 		else if(action=="invite")
 		{
 			$(this.getElementByXid("upgrade-message")).addClass("common_show");
 			this.comp("titleBar1").set({
-				title:"猫窝邀请"
+				title:lang.ZJP_production[11]
 			});
-			$(this.getElementByXid("span21")).html("关于邀请");
+			$(this.getElementByXid("span21")).html(lang.ZJP_production[10]);
 		}
 	};
 	//不同的action不同的操作
 	Model.prototype.modelParamsReceive = function(event){
 		if(!this.params){
-			this.showprompt("请重新在产品界面进入");
+			this.showprompt(lang.showprompt[45]);
 			return;
 		}
 		action = this.params.action;
@@ -201,7 +209,7 @@ define(function(require){
 	Model.prototype.check_money=function(production,object){
 		var current_worth = current_rank==-1?0:Math.floor(config_egg.level_worth[current_rank]*config_egg.egg_val);
 		if (current_worth>=production) {
-				this.showprompt("不能选择比当前产品低或者一样的产品");
+				this.showprompt(lang.showprompt[44]);
 				object.val("");
 			}
 			else{
@@ -211,7 +219,7 @@ define(function(require){
 					$(this.getElementByXid("need_money")).html((parseFloat(production)-parseFloat(current_worth)).toFixed(2));
 				}
 				else{
-					this.showprompt("账户金额少于所需金额");
+					this.showprompt(lang.showprompt[43]);
 					$(this.getElementByXid("need_money")).html(0);
 					object.val("");
 				}
@@ -242,7 +250,7 @@ define(function(require){
 		var limit = parseFloat($(this.getElementByXid("investment")).html());
 		var need = parseFloat($(this.getElementByXid("need_money")).html());
 		if (active+limit<need) {
-			showprompt("金额不足");
+			showprompt(lang.showprompt[43]);
 		}else{
 			if (limit<need) {
 				 paylimit = limit;
@@ -284,7 +292,7 @@ define(function(require){
 			}
 		}
 		if (is_hascommunity==0&&(action=="create"||action=="invite")) {
-			this.showprompt("请选择家族,点击上级猫窝的输入框在点击其他地方");return;
+			this.showprompt(lang.showprompt[42]);return;
 		}
 		var invite_name = $.trim(this.comp("input2").val());
 		var parent_name = $.trim(this.comp("input4").val());
@@ -321,15 +329,16 @@ define(function(require){
 						if (is_success) {
 							this.success(params);
 							
-							this.showprompt("提升成功");
+							this.showprompt(lang.showprompt[41]);
 						}
 						else if(is_success==undefined){
+							this.showprompt(lang.showprompt[0]);
 							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 							
 						}
 						else{
-							this.showprompt("提升失败");
+							this.showprompt(lang.showprompt[40]);
 						}
 					}
 					
@@ -339,17 +348,18 @@ define(function(require){
 					if (params) {
 						var is_success = nest.createnest(params);
 						if (is_success) {
-							this.showprompt("创建成功");
+							this.showprompt(lang.showprompt[39]);
 							this.success(params);
 						
 						}
 						else if(is_success==undefined){
+							this.showprompt(lang.showprompt[0]);
 							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 							
 						}
 						else{
-							this.showprompt("创建失败");
+							this.showprompt(lang.showprompt[38]);
 						}
 					}
 					
@@ -359,24 +369,25 @@ define(function(require){
 					if (params) {
 						var is_success = nest.invitenest(params);
 						if (is_success) {
-							this.showprompt("创建成功");
+							this.showprompt(lang.showprompt[39]);
 							this.success(params);
 							
 						}
 						else if(is_success==undefined){
+							this.showprompt(lang.showprompt[0]);
 							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 						
 						}
 						else{
-							this.showprompt("创建失败");
+							this.showprompt(lang.showprompt[38]);
 						}
 					}
 					
 				}
 			}
 			else{
-				this.showprompt("二级密码错误");
+				this.showprompt(lang.showprompt[37]);
 			}
 		$(this.getElementByXid("password1")).val("");
 	};
@@ -403,18 +414,18 @@ define(function(require){
 			}
 		}
 		if (is_hascommunity==0&&(action=="create"||action=="invite")) {
-			this.showprompt("请选择社区");
+			this.showprompt(lang.showprompt[36]);
 			this.input4Blur(event);return;
 		}
 		if (!$.trim(this.comp("input2").val())&&(action=="create"||action=="invite")) {
-			this.showprompt("邀请猫窝不能为空");
+			this.showprompt(lang.showprompt[35]);
 		}
 		else if(!$.trim(this.comp("input4").val())&&(action=="create"||action=="invite")){
-			this.showprompt("上级猫窝不能为空");
+			this.showprompt(lang.showprompt[34]);
 		}
 		else if($.trim($(this.getElementByXid("need_money")).html())==0)
 		{
-			this.showprompt("产品类型必需选择");
+			this.showprompt(lang.showprompt[33]);
 		}
 		else{
 			this.comp("secondPassword").show();
@@ -425,11 +436,11 @@ define(function(require){
 		var name = $.trim(this.comp("input2").val());
 		if (name) {
 			if(nest.community_premission(name)==404){
-				this.showprompt("不存在巢");
+				this.showprompt(lang.showprompt[31]);
 			}
 		}
 		else{
-			this.showprompt("请输入一个巢名");
+			this.showprompt(lang.showprompt[32]);
 		}
 		
 	};
@@ -441,10 +452,10 @@ define(function(require){
 
 		if ($.trim(name)) {
 			if(!vdt.test(name)){
-			this.showprompt("请输入邮箱地址");
+			this.showprompt(lang.showprompt[30]);
 			}
 		}else{
-			this.showprompt("邮箱不能为空");
+			this.showprompt(lang.showprompt[1]);
 		}
 	};
 
@@ -488,6 +499,19 @@ define(function(require){
 			this.comp("windowDialog1").close();
 			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
+	};
+
+	Model.prototype.modelLoad = function(event){
+		$(this.getElementByXid("span20")).html(lang.ZJP_production[0]);
+		$(this.getElementByXid("span3")).html(lang.ZJP_production[1]);
+		$(this.getElementByXid("span4")).html(lang.ZJP_production[2]);
+		$(this.getElementByXid("span16")).html(lang.ZJP_production[3]);
+		$(this.getElementByXid("span8")).html(lang.ZJP_production[4]);
+		$(this.getElementByXid("span9")).html(lang.ZJP_production[5]);
+		$(this.getElementByXid("h55")).html(lang.ZJP_production[6]);
+		$(this.getElementByXid("h56")).html(lang.ZJP_production[7]);
+		$(this.getElementByXid("h57")).html(lang.ZJP_production[8]);
+		$(this.getElementByXid("span19")).html(lang.ZJP_production[9]);
 	};
 
 	return Model;
