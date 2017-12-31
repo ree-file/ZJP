@@ -70,6 +70,9 @@ define(function(require) {
 				"transferGetmoney" : {
 					url : require.toUrl('./transferGetmoney.w')
 				},
+				"transferRecord" : {
+					url : require.toUrl('./transferRecord.w')
+				},
 			}
 		})
 

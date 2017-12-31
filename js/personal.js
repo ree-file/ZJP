@@ -208,21 +208,19 @@ define(function(require){
 			return is_success;
 		},
 
-		transRecord : function(money,type,card_number,message){
+		transRecord : function(){
 			var record =false;
 			$.ajax({
-				url: config.site+"supplies",//php的api路径
+				url: config.site+"private/supplies",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{money:money,type:type,card_number:card_number,message:message},//需要传递的数据
-				type:'post',//php获取类型
+				data:{},//需要传递的数据
+				type:'get',//php获取类型
         headers: {
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
 					record = data.data;
-					console.log(record);
-					showprompt(lang.personaljs[4]);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -241,7 +239,7 @@ define(function(require){
 						record=undefined;
 					}
 					else{
-						record=undefined;
+						showprompt(lang.personaljs[5]);
 					}
 	        }.bind(this),
 			});

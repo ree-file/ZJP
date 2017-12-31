@@ -50,7 +50,7 @@ define(function(require){
       $(".totalspancenter").text(num);
       // 设置条件使停止计时
       if (num<total) {
-          var t = setTimeout(function(){timedCount(num,total)},10);
+          var t = setTimeout(function(){timedCount(num,total)},5);
       }
   }
 
@@ -58,7 +58,7 @@ define(function(require){
 		// var demo = new countUp.CountUp("totalSpan", 0, 94.62, 2, 2.5);
 		// demo.start();
     // 调用计时函数
-	
+
 		$(this.getElementByXid("hidRow")).hide();
 		$(this.getElementByXid("span2")).html(lang.personal[0]);
 		$(this.getElementByXid("span1")).html(lang.personal[1]);

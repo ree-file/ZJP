@@ -32,6 +32,9 @@ define(function(require){
 			return;
 		}
 		for (var i = 0; i <= bankBanded.length-1; i++) {
+			if (bankBanded[i].bankname) {
+
+			}
 			bankBandedData.add({
 				"id": bankBanded[i].id,
 				"username": bankBanded[i].username,

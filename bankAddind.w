@@ -2,8 +2,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="top:14px;left:107px;height:auto;" onActive="modelActive" onLoad="modelLoad"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bankData" idColumn="id" confirmRefresh="false"><column name="id" type="Integer" xid="xid1"></column>
-  <column label="银行名称" name="name" type="String" xid="xid2"></column>
-  <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;中国银行&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;中国工商银行&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;中国建设银行&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;中国农业银行&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;中国招商银行&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;中国交通银行&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;广东发展银行&quot;},{&quot;id&quot;:8,&quot;name&quot;:&quot;恒丰银行&quot;},{&quot;id&quot;:9,&quot;name&quot;:&quot;华夏银行&quot;},{&quot;id&quot;:10,&quot;name&quot;:&quot;上海浦东发展银行&quot;},{&quot;id&quot;:11,&quot;name&quot;:&quot;深圳发展银行&quot;},{&quot;id&quot;:12,&quot;name&quot;:&quot;兴业银行&quot;},{&quot;id&quot;:13,&quot;name&quot;:&quot;邮政储蓄银行&quot;},{&quot;id&quot;:14,&quot;name&quot;:&quot;浙商银行&quot;},{&quot;id&quot;:15,&quot;name&quot;:&quot;中国光大银行 &quot;},{&quot;id&quot;:16,&quot;name&quot;:&quot;中国民生银行&quot;},{&quot;id&quot;:17,&quot;name&quot;:&quot;中信银行&quot;},{&quot;id&quot;:18,&quot;name&quot;:&quot;其他银行&quot;}]</data></div></div>  
+  <column label="银行名称" name="name" type="String" xid="xid2"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -44,15 +43,20 @@
     <span xid="span9" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col12" style="padding:0px 0px 0px 0px;">
     
-  <select component="$UI/system/components/justep/select/select" class="form-control" xid="bankSelect" bind-ref='$model.bankData.ref("name")' bind-options="bankData" bind-optionsValue="name" bind-optionsLabel="name"></select></div> 
+  <select component="$UI/system/components/justep/select/select" class="form-control" xid="bankSelect" bind-options="bankData" bind-optionsValue="name" bind-optionsLabel="name" onChange="bankSelectChange" bind-optionsCaption="请选择..."></select></div> 
    <div class="x-col x-col-20 x-col-15" xid="col11">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button3" icon="glyphicon glyphicon-bitcoin" style="position:relative;left:45%;color:#A6A6A6;">
      <i xid="i3" class="glyphicon glyphicon-bitcoin"></i>
      <span xid="span8"></span></a> </div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="otherbankrow" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
+   <div class="x-col x-col-20" xid="col5">
+    <span xid="otherbankName" style="color:#A6A6A6;position:relative;"></span></div> 
+   <div class="x-col" xid="col3" style="padding:0px 5px 0px 0px;">
+    <input component="$UI/system/components/justep/input/input" type="text" class="form-control" xid="otherbankInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="String" maxLength="20" pattern="/(\d{4})(?=[^\s])/,'$1 '"></input></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
    <div class="x-col" xid="col18"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" xid="button5" style="background-color:#049FCC;" onClick="button5Click">
    <i xid="i5"></i>
    <span xid="span12" style="color:#FFFFFF;"></span></a></div>
-   </div></div>
+   </div>
+  </div>
   </div> 
 <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span></div>

@@ -19,7 +19,6 @@ define(function(require){
 		this.comp("title").set({
 			title:lang.transfermoney[0]
 		});
-
 		$(this.getElementByXid("span2")).html(lang.transfermoney[1]);
 		$(this.getElementByXid("span7")).html(lang.transfermoney[2]);
 		$(this.getElementByXid("span3")).html(lang.transfermoney[3]);
@@ -30,6 +29,12 @@ define(function(require){
 		$(this.getElementByXid("span12")).html(lang.transfermoney[8]);
 		$(this.getElementByXid("span4")).html(lang.transfermoney[9]);
 		$(this.getElementByXid("otherbankrow")).hide();
+		var bankfromData = this.comp("bankfromData");
+		for (var i = 0; i < 18; i++) {
+			bankfromData.add({
+				"name": lang.bank[i],
+			});
+		}
 	};
 
 	Model.prototype.setupButtonClick = function(event){

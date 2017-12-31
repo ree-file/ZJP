@@ -31,6 +31,12 @@ define(function(require){
 		$(this.getElementByXid("span12")).html(lang.transferGetmoney[8]);
 		$(this.getElementByXid("span4")).html(lang.transferGetmoney[9]);
 		$(this.getElementByXid("otherbankrow")).hide();
+		var bankfromData = this.comp("bankfromData");
+		for (var i = 0; i < 18; i++) {
+			bankfromData.add({
+				"name": lang.bank[i],
+			});
+		}
 	};
 
 	Model.prototype.setupButtonClick = function(event){

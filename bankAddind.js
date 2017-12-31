@@ -16,13 +16,20 @@ define(function(require){
 	};
 
 	Model.prototype.modelActive = function(event){
+		this.modelLoad(event);
 	};
 
 	Model.prototype.button5Click = function(event){
 		var nameInput = this.getElementByXid("nameInput").value;
 		var number = this.getElementByXid("cardidInput").value;
 		var bankname = this.comp('bankSelect').val();
-		var is_success = bank.cardAdding(nameInput,number,bankname);
+		var otherbankInput = this.getElementByXid("otherbankInput").value;
+		if (bankname == lang.bankAddind[6]) {
+			var is_success = bank.cardAdding(nameInput,number,otherbankInput);
+		}
+		else {
+			var is_success = bank.cardAdding(nameInput,number,bankname);
+		}
 		if (is_success == undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
@@ -65,6 +72,7 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
+		$(this.getElementByXid("otherbankrow")).hide();
 		this.comp("title").set({
 			title:lang.bankAddind[0]
 		});
@@ -73,6 +81,23 @@ define(function(require){
 		$(this.getElementByXid("span7")).html(lang.bankAddind[3]);
 		$(this.getElementByXid("span9")).html(lang.bankAddind[4]);
 		$(this.getElementByXid("span12")).html(lang.bankAddind[5]);
+		$(this.getElementByXid("otherbankName")).html(lang.bankAddind[6]);
+		var bankData = this.comp("bankData");
+		for (var i = 0; i < 18; i++) {
+			bankData.add({
+				"name": lang.bank[i],
+			});
+		}
+	};
+
+	Model.prototype.bankSelectChange = function(event){
+		var bankSelect = this.comp('bankSelect').val();
+		if (bankSelect == lang.bankAddind[6] ) {
+			$(this.getElementByXid("otherbankrow")).show();
+		}
+		else {
+			$(this.getElementByXid("otherbankrow")).hide();
+		}
 	};
 
 	return Model;

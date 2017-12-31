@@ -3,8 +3,7 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bankfromData" idColumn="id" confirmRefresh="false">
    <column name="id" type="Integer" xid="column1"></column>
-   <column label="银行名称" name="name" type="String" xid="column2"></column>
-   <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;中国银行&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;中国工商银行&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;中国建设银行&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;中国农业银行&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;中国招商银行&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;中国交通银行&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;广东发展银行&quot;},{&quot;id&quot;:8,&quot;name&quot;:&quot;恒丰银行&quot;},{&quot;id&quot;:9,&quot;name&quot;:&quot;华夏银行&quot;},{&quot;id&quot;:10,&quot;name&quot;:&quot;上海浦东发展银行&quot;},{&quot;id&quot;:11,&quot;name&quot;:&quot;深圳发展银行&quot;},{&quot;id&quot;:12,&quot;name&quot;:&quot;兴业银行&quot;},{&quot;id&quot;:13,&quot;name&quot;:&quot;邮政储蓄银行&quot;},{&quot;id&quot;:14,&quot;name&quot;:&quot;浙商银行&quot;},{&quot;id&quot;:15,&quot;name&quot;:&quot;中国光大银行&quot;},{&quot;id&quot;:16,&quot;name&quot;:&quot;中国民生银行&quot;},{&quot;id&quot;:17,&quot;name&quot;:&quot;中信银行&quot;},{&quot;id&quot;:18,&quot;name&quot;:&quot;其他银行&quot;}]</data></div></div>  
+  <column label="银行名称" name="name" type="String" xid="column2"></column></div></div>  
   <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span><div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 

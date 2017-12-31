@@ -126,7 +126,7 @@ define(function(require){
 						is_success=undefined;
 					}
 					else{
-						is_success=undefined;
+						showprompt(lang.showprompt[57]);
 					}
 	        }.bind(this),
 			});
