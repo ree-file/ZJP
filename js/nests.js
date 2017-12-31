@@ -116,12 +116,12 @@ define(function(require){
 				nest_Info.contracts[i].nest_id =  mainInfo[i].id;
 				nest_Info.contracts[i].income = Math.floor(parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_receivers)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_community)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_weeks));
 				nest_Info.contracts[i].time = mainInfo[i].created_at;
-				nest_Info.contracts[i].worth = Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs);
+				nest_Info.contracts[i].worth = Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*parseFloat(eggval);
 				nest_Info.contracts[i].rate="300%";
-				nest_Info.contracts[i].freese = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+				nest_Info.contracts[i].freese = (Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
 				nest_Info.contracts[i].name = mainInfo[i].name;
 				nest_Info.contracts[i].finished = mainInfo[i].contracts[mainInfo[i].contracts.length-1].is_finished;
-				nest_Info.contracts[i].excess = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+				nest_Info.contracts[i].excess = (Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
 				nest_Info.contracts[i].title=lang.nestjs[0];
 				nest_Info.contracts[i].info=lang.nestjs[1];
 				nest_Info.contracts[i].langrate=lang.nestjs[2];

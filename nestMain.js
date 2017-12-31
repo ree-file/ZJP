@@ -240,6 +240,7 @@ define(function(require){
 		var accountData=[];
 		var extracted_money=0;
 		var get_money = 0;
+		
 		if (nestInfo.nestrecords.extract_records.length!=0) {
 			for (var j = 0; j < nestInfo.nestrecords.extract_records.length; j++) {
 				accountData[j]={
@@ -257,8 +258,7 @@ define(function(require){
 							}
 						}
 					}
-					extracted_money=extracted_money+parseFloat(nestInfo.nestrecords.extract_records[j].money).toFixed(2);
-					debugger;
+					extracted_money=parseFloat(extracted_money)+parseFloat(nestInfo.nestrecords.extract_records[j].money);
 				}
 			
 		}
@@ -286,8 +286,7 @@ define(function(require){
 					message:message,
 					status:2
 				}
-				get_money=get_money+(parseFloat(nestInfo.nestrecords.got_records[j].eggs)*parseFloat(eggval)).toFixed(2);
-				debugger;
+				get_money=parseFloat(get_money)+(parseFloat(nestInfo.nestrecords.got_records[j].eggs)*parseFloat(eggval));
 			}
 			
 		}
@@ -307,7 +306,7 @@ define(function(require){
 			}
 		}
 		$(this.getElementByXid("span19")).html("Return:$"+extracted_money);
-		$(this.getElementByXid("span20")).html("Return:$"+get_money);
+		$(this.getElementByXid("span20")).html("Expend:$"+get_money);
 		event.source.loadData(accountData);
 		
 	};
@@ -327,6 +326,8 @@ define(function(require){
 			money+=parseFloat(withdrawData[int].money);
 		}
 		$(this.getElementByXid("h54")).html("$"+money);
+		$(this.getElementByXid("span21")).html("Invested:$"+money);
+		
 		event.source.loadData(withdrawData);
 		withdrawData=null;
 		nestInfo=undefined;
@@ -495,7 +496,7 @@ define(function(require){
 		}
 	else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 	};
 	

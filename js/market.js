@@ -9,6 +9,14 @@ define(function(require){
 		});
 		$(".x-hint").find("button[class='close']").hide();
 	}
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./en_us');
+	}
+	else{
+		lang = require('./zh_cn');
+	}
 	return{
 		buy:function(id,password){
 			var is_success = false;
@@ -328,7 +336,7 @@ define(function(require){
 			return is_success;
 		},
 		sellProductionajax:function(productionId,price,password){
-			var status = 404;
+			var status = 400;
 			$.ajax({
 				url:config.site+"orders",
 				async:false,
@@ -359,6 +367,10 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status = 404;
 					}
+					else if(responseText.message=="The order is on selling."){
+						status = 400;
+						showprompt(lang.marketjs[0]);
+					}
 				}
 			});
 			return status;
@@ -383,7 +395,7 @@ define(function(require){
 			return is_success;
 		},
 		notSoldajax:function(id){
-			var status =404;
+			var status =400;
 			$.ajax({
 				url:config.site+"orders/"+id+"/abandon",
 				async:false,

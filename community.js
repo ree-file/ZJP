@@ -156,7 +156,7 @@ define(function(require) {
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 		this.modelParamsReceive(event);
 	};

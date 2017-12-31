@@ -150,10 +150,10 @@
   <div xid="div2">
   <div component="$UI/system/components/justep/contents/contents" class="x-contents" active="0" xid="contents2">
    <div class="x-contents-content" xid="content3" onActive="content3Active" onInactive="content3Inactive"><div xid="div3"><div component="$UI/system/components/justep/row/row" class="x-row noTopButtomPadding" xid="row4">
-   <div class="x-col  noTopButtomPadding col-buttom-border" xid="col9"><span xid="span10" style="color:#36C4D2;font-size:xx-small;" bind-text='"TCA:$"'><![CDATA[TCA]]></span></div>
-   <div class="x-col col-buttom-border noTopButtomPadding" xid="col10"><span xid="span11" style="color:#D37CC1;font-size:xx-small;" bind-text="'TDA:$'">TDA:</span></div>
+   <div class="x-col  noTopButtomPadding col-buttom-border" xid="col9"><span xid="span10" style="color:#36C4D2;font-size:xx-small;"><![CDATA[TCA]]></span></div>
+   <div class="x-col col-buttom-border noTopButtomPadding" xid="col10"><span xid="span11" style="color:#D37CC1;font-size:xx-small;">TDA:</span></div>
    <div class="x-col col-buttom-border noTopButtomPadding" xid="col11"><![CDATA[]]>
-  <span xid="span12" style="color:#D0AD4F;font-size:xx-small;" bind-text="'TA:$'"><![CDATA[TA:]]></span></div>
+  <span xid="span12" style="color:#D0AD4F;font-size:xx-small;"><![CDATA[TA:]]></span></div>
   <div class="x-col col-buttom-border text-center" xid="col16"></div></div></div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="historyData">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row2">
@@ -189,7 +189,7 @@
   <div class="x-contents-content" xid="content6" onActive="content6Active" onInactive="content6Inactive"><div xid="div5">
    <div component="$UI/system/components/justep/row/row" class="x-row noTopButtomPadding" xid="row19">
     <div class="x-col  noTopButtomPadding col-buttom-border" xid="col31">
-     <span xid="span21" style="color:#36C4D2;font-size:xx-small;" bind-text='"Invested:$"'><![CDATA[Invested:]]></span></div> 
+     <span xid="span21" style="color:#36C4D2;font-size:xx-small;"><![CDATA[Invested:]]></span></div> 
     <div class="x-col col-buttom-border noTopButtomPadding" xid="col40">
      </div> 
     <div class="x-col col-buttom-border text-center" xid="col80"></div>

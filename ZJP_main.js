@@ -6,6 +6,7 @@ define(function(require) {
 	var config = require("./js/config");
 	var base64 = require("$UI/system/lib/base/base64");
 	var mainInfo;
+	var personalInvite;
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
 	{
@@ -32,6 +33,7 @@ define(function(require) {
 			this.showprompt("重新登录");
 			return;
 		}
+		personalInvite = 123;
 		//获得用户所有巢的信息
 		this.comp("NestsAccount").refreshData();
 		//把nestInfo填充到各个data数据和今日收益，和总投资里
@@ -196,7 +198,7 @@ define(function(require) {
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 	};
 
@@ -215,6 +217,16 @@ define(function(require) {
 		justep.Shell.showPage("market",{
 			page:"main"
 		});
+	};
+
+	Model.prototype.windowContainer1Load = function(event){
+		
+	};
+
+	Model.prototype.contents1ActiveChange = function(event){
+		if (event.to==2) {
+			this.comp("windowContainer1").load("$UI/ZJP/personal.w",{personal:personalInvite});
+		}
 	};
 
 	return Model;

@@ -102,7 +102,8 @@
    <span xid="span8" style="position:relative;" bind-text='val("lang")'></span></a></div></div></div></div>
   </li></ul> </div>
   <div xid="div12" class="load"><span xid="span42" style="font-size:medium;"><![CDATA[]]></span>
-  <span xid="span47"><![CDATA[]]></span></div></div>
+  <span xid="span47"><![CDATA[]]></span></div>
+  <div xid="div15" style="height:100px;"></div></div>
   <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
    <div class="x-col x-col-33" xid="col39"><span xid="span21"><![CDATA[]]></span></div>
    <div class="x-col" xid="col43"><span xid="span22"><![CDATA[]]></span></div>
@@ -116,7 +117,7 @@
   </div>
    <div class="x-col" xid="col48" style="text-align:center;white-space:nowrap;"><span xid="span35" bind-text='val("status")' style="color:#FFDE63;" bind-css="{'getmoney':  val(&quot;status&quot;)==&quot;Sell&quot;,'paymoney':  val(&quot;status&quot;)==&quot;Bought&quot;}"></span></div>
   <div class="x-col x-col-33" xid="col50" style="text-align:center;white-space:nowrap;"><span xid="span36" bind-text='val("date")'></span></div></div></li></ul> </div>
-  </div>
+  <div xid="div14" style="height:100px;"></div></div>
   <div class="x-contents-content" xid="sellcontent"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="padding-right:20px;padding-left:20px;margin-top:20%;">
    <div class="x-col" xid="col38" style="margin-right:0px;padding-right:0px;border-bottom-style:groove;border-bottom-width:thin;position:relative;">
     <span xid="span26" class="pull-right center-block" style="color:#FFFFFF;margin-right:8px;position:relative;top:10px;"><![CDATA[]]></span></div> 

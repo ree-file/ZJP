@@ -127,6 +127,7 @@ define(function(require){
 				this.comp("popOver1").hide();
 			}
 			else if (is_success==undefined) {
+					this.comp("popOver1").hide();
 					this.comp("windowDialog1").open();
 					this.showprompt(lang.showprompt[0]);
 					return;
@@ -216,11 +217,11 @@ define(function(require){
 		data.setValue("fState","1",row);
 		this.comp("sortingBtn").set("label",data.getValue("fName",row));
 		var rank = data.getValue("fName",row);
-		if (rank==lang.market[24]) {
+		if (rank==lang.market[25]) {
 			this.orderby(this.comp("marketdata"),"worth",1);
 			this.comp("list1").refresh(false);
 		}
-		else if(rank==lang.market[25])	{
+		else if(rank==lang.market[24])	{
 			this.orderby(this.comp("marketdata"),"worth",0);
 		}
 		else{
@@ -289,7 +290,7 @@ define(function(require){
 				this.comp("windowDialog1").open();
 				return;
 			}
-			if (!this.belongtouser(simpleinfo, name)) {
+			if (!this.belongtouser(simpleinfo.nests, name)) {
 				this.showprompt(lang.showprompt[10]);
 			}
 		}
@@ -335,13 +336,15 @@ define(function(require){
 			}
 		}
 		else if (is_success==undefined) {
+			this.comp("chooseSoleStatus").hide();
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
-			this.comp("chooseSoleStatus").hide();
+			
 		}
 		else{
-			this.showprompt(lang.showprompt[13]);
 			this.comp("chooseSoleStatus").hide();
+			this.showprompt(lang.showprompt[13]);
+			
 		}
 	};
 //点击后hide提示窗口--许鑫君
@@ -371,6 +374,7 @@ define(function(require){
 					}
 					}
 					else if(is_success ==undefined){
+						this.comp("secondPassword").hide();
 						this.showprompt(lang.showprompt[0]);
 						this.comp("windowDialog1").open();
 						return;
@@ -408,9 +412,9 @@ define(function(require){
 				this.showprompt(lang.showprompt[17]);
 			}
 			setTimeout(function(){
-				$(this.getElementByXid("span42")).removeClass("icon-ios7-reloading");
-				$(this.getElementByXid("span42")).addClass("icon-ios7-reload");
-				$(this.getElementByXid("span47")).html("加载完成");
+				$(me.getElementByXid("span42")).removeClass("icon-ios7-reloading");
+				$(me.getElementByXid("span42")).addClass("icon-ios7-reload");
+				$(me.getElementByXid("span47")).html("加载完成");
 				is_loading=0;
 			}, 1000);
 		
@@ -593,6 +597,14 @@ define(function(require){
 	};
 
 	Model.prototype.backBtnClick = function(event){
+			complex_page=1;
+			filter_page=1;
+			datastatus=0;
+			starty=0;
+			endy =0;
+			is_append=0;
+			is_loading=0;
+			is_refresh = 0;
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
 		}
@@ -624,7 +636,7 @@ define(function(require){
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 	};
 
@@ -648,6 +660,7 @@ define(function(require){
 			event.source.newData({"defaultValues":params});
 		}
 	};
+
 
 	return Model;
 });

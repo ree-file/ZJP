@@ -96,7 +96,6 @@ define(function(require){
 		}
 	};
 	Model.prototype.modelParamsReceive = function(event){
-		this.comp("windowDialog1").close();
 		if (this.params.action=="resetsecondPassword") {
 			$(this.getElementByXid("row1")).hide();
 			$(this.getElementByXid("p1")).text(lang.ZJP_resetPassword[8]);
@@ -106,7 +105,12 @@ define(function(require){
 		}
 	};	
 	Model.prototype.backBtnClick = function(event){
-		justep.Shell.closePage();
+		if (this.params.page) {
+			justep.Shell.showPage(this.params.page);
+		}
+		else{
+			justep.Shell.closePage();
+		}
 	};	
 	Model.prototype.windowDialog1Receive = function(event){
 		if(event.data.data){
@@ -121,7 +125,8 @@ define(function(require){
 		}
 
 	};	
-	Model.prototype.modelUnLoad = function(event){
+
+	Model.prototype.modelLoad = function(event){
 		this.comp("title").set({
 			title:lang.ZJP_resetPassword[0]
 		});
@@ -131,6 +136,9 @@ define(function(require){
 		$(this.getElementByXid("span4")).html(lang.ZJP_resetPassword[4]);
 		$(this.getElementByXid("span5")).html(lang.ZJP_resetPassword[5]);
 		$(this.getElementByXid("span6")).html(lang.ZJP_resetPassword[6]);
+	};	
+	Model.prototype.modelUnLoad = function(event){
+
 	};	
 	return Model;
 });

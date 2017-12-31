@@ -18,18 +18,18 @@ define(function(require){
 
 	Model.prototype.modelLoad = function(event){
 		this.comp("title").set({
-			title:lang.transfermoney[0]
+			title:lang.transferGetmoney[0]
 		});
 
-		$(this.getElementByXid("span2")).html(lang.transfermoney[1]);
-		$(this.getElementByXid("span7")).html(lang.transfermoney[2]);
-		$(this.getElementByXid("span3")).html(lang.transfermoney[3]);
-		$(this.getElementByXid("otherbankName")).html(lang.transfermoney[4]);
-		$(this.getElementByXid("span9")).html(lang.transfermoney[5]);
-		$(this.getElementByXid("span11")).html(lang.transfermoney[6]);
-		$(this.getElementByXid("span13")).html(lang.transfermoney[7]);
-		$(this.getElementByXid("span12")).html(lang.transfermoney[8]);
-		$(this.getElementByXid("span4")).html(lang.transfermoney[9]);
+		$(this.getElementByXid("span2")).html(lang.transferGetmoney[1]);
+		$(this.getElementByXid("span7")).html(lang.transferGetmoney[2]);
+		$(this.getElementByXid("span3")).html(lang.transferGetmoney[3]);
+		$(this.getElementByXid("otherbankName")).html(lang.transferGetmoney[4]);
+		$(this.getElementByXid("span9")).html(lang.transferGetmoney[5]);
+		$(this.getElementByXid("span11")).html(lang.transferGetmoney[6]);
+		$(this.getElementByXid("span13")).html(lang.transferGetmoney[7]);
+		$(this.getElementByXid("span12")).html(lang.transferGetmoney[8]);
+		$(this.getElementByXid("span4")).html(lang.transferGetmoney[9]);
 		$(this.getElementByXid("otherbankrow")).hide();
 	};
 
@@ -87,7 +87,7 @@ define(function(require){
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 	};
 

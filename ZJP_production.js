@@ -148,9 +148,15 @@ define(function(require){
 		if (action=="upgrade"||action=="Re-investment") {
 			
 			//不需要邀请人和邮箱地址和收益人（默认为之前的受益人）
-			this.comp("row4").addClass("common_show");
-			this.comp("row5").addClass("common_show");
-			$(this.getElementByXid("create_benefit")).addClass("common_show");
+			$(this.getElementByXid("row4")).animate({height:0},"slow",function(){
+				$(me.getElementByXid("row4")).addClass("common_show");
+			});
+			$(this.getElementByXid("row5")).animate({height:0},"slow",function(){
+				$(me.getElementByXid("row5")).addClass("common_show");
+			});
+			$(this.getElementByXid("create_benefit")).animate({height:0},"slow",function(){
+				$(me.getElementByXid("create_benefit")).addClass("common_show");
+			});
 			nest_id = this.params.nest_id;
 			if (action=="upgrade") {
 					this.comp("titleBar1").set({
@@ -193,7 +199,9 @@ define(function(require){
 		{
 			current_rank = -1;
 			worth = 0
-			$(this.getElementByXid("upgrade-message")).addClass("common_show");
+			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
+				$(me.getElementByXid("upgrade-message")).addClass("common_show");
+			});
 			this.comp("titleBar1").set({
 				title:lang.ZJP_production[11]
 			});
@@ -516,7 +524,7 @@ define(function(require){
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 	};
 

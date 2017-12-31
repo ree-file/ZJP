@@ -58,19 +58,19 @@ define(function(require){
 		this.comp("titile").set({
 			title:lang.particulars[0]
 		});
-		$(this.getElementByXid("span1")).html(lang.particulers[1]);
-		$(this.getElementByXid("span5")).html(lang.particulers[2]);
-		$(this.getElementByXid("span7")).html(lang.particulers[3]);
-		$(this.getElementByXid("span9")).html(lang.particulers[4]);
-		$(this.getElementByXid("span4")).html(lang.particulers[5]);
-		$(this.getElementByXid("span12")).html(lang.particulers[6]);
-		$(this.getElementByXid("span14")).html(lang.particulers[7]);
-		$(this.getElementByXid("span20")).html(lang.particulers[8]);
-		$(this.getElementByXid("span22")).html(lang.particulers[9]);
-		$(this.getElementByXid("span24")).html(lang.particulers[10]);
-		$(this.getElementByXid("span16")).html(lang.particulers[11]);
-		$(this.getElementByXid("span19")).html(lang.particulers[12]);
-		$(this.getElementByXid("span3")).html(lang.particulers[13]);
+		$(this.getElementByXid("span1")).html(lang.particulars[1]);
+		$(this.getElementByXid("span5")).html(lang.particulars[2]);
+		$(this.getElementByXid("span7")).html(lang.particulars[3]);
+		$(this.getElementByXid("span9")).html(lang.particulars[4]);
+		$(this.getElementByXid("span4")).html(lang.particulars[5]);
+		$(this.getElementByXid("span12")).html(lang.particulars[6]);
+		$(this.getElementByXid("span14")).html(lang.particulars[7]);
+		$(this.getElementByXid("span20")).html(lang.particulars[8]);
+		$(this.getElementByXid("span22")).html(lang.particulars[9]);
+		$(this.getElementByXid("span24")).html(lang.particulars[10]);
+		$(this.getElementByXid("span16")).html(lang.particulars[11]);
+		$(this.getElementByXid("span19")).html(lang.particulars[12]);
+		$(this.getElementByXid("span3")).html(lang.particulars[13]);
 		this.modelParamsReceive(event);
 		
 	};
@@ -100,7 +100,7 @@ define(function(require){
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 	};
 

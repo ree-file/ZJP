@@ -58,10 +58,7 @@ define(function(require){
 		// var demo = new countUp.CountUp("totalSpan", 0, 94.62, 2, 2.5);
 		// demo.start();
     // 调用计时函数
-		var totalSpan = $(this.getElementByXid("totalSpan"));
-		var num = 0;
-		var x = 111;  //传值赋值
-    var t = setTimeout(timedCount(num,x));
+	
 		$(this.getElementByXid("hidRow")).hide();
 		$(this.getElementByXid("span2")).html(lang.personal[0]);
 		$(this.getElementByXid("span1")).html(lang.personal[1]);
@@ -166,7 +163,19 @@ define(function(require){
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
-			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
+		}
+	};
+
+	Model.prototype.modelParamsReceive = function(event){
+		if (this.params.personal) {
+				var totalSpan = $(this.getElementByXid("totalSpan"));
+				var num = 0;
+				var x = this.params.personal;  //传值赋值
+				var t = setTimeout(timedCount(num,x));
+		}
+		else{
+			$(this.getElementsByXid("totalSpan")).html(0);
 		}
 	};
 

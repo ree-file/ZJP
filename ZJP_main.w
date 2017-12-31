@@ -33,7 +33,7 @@
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>  
     <div class="x-panel-content" xid="content1" style="background:#1C1F26;height:100%;">
   
-  <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
+  <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" onActiveChange="contents1ActiveChange">
    <div class="x-contents-content" xid="content2"><div xid="main1" style="position:absolute;width:100%;height:50%;">
     
    <div xid="circle" class="circle" style="top:30px;">
@@ -125,7 +125,7 @@
   </div></div></div>
    </div></li></ul> </div></div>
   <div xid="div8" style="height:100px;"></div></div>
-  <div class="x-contents-content" xid="content4"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="$UI/ZJP/personal.w" onReceive="windowContainer1Receive"></div></div>
+  <div class="x-contents-content" xid="content4"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="windowContainer1" src="$UI/ZJP/personal.w" onReceive="windowContainer1Receive" autoLoad="false"></div></div>
   </div></div>
   <div class="x-panel-bottom" xid="bottom2"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;position:absolute;height:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link index" xid="button1" target="content2" style="font-size:medium;border-color:#282B32;">
