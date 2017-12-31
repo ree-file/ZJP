@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmDelete="false" confirmRefresh="false"><column label="id" name="id" type="String" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive" onActive="modelActive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmDelete="false" confirmRefresh="false"><column label="id" name="id" type="String" xid="xid1"></column>
   <column label="图片" name="picture" type="String" xid="xid2"></column>
   <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/Germany.jpg&quot;}]</data></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="accelerate" idColumn="id" confirmDelete="false" confirmRefresh="false"><column name="id" type="String" xid="xid3"></column>
@@ -168,9 +168,9 @@
   <div class="x-contents-content" xid="content5" onActive="content5Active" onInactive="content5Inactive"><div xid="div4">
    <div component="$UI/system/components/justep/row/row" class="x-row noTopButtomPadding" xid="row6">
     <div class="x-col  noTopButtomPadding col-buttom-border" xid="col18">
-     <span xid="span19" style="color:#36C4D2;font-size:xx-small;" bind-text='"Return:$"'><![CDATA[Return:]]></span></div> 
+     <span xid="span19" style="color:#36C4D2;font-size:xx-small;"><![CDATA[Return:]]></span></div> 
     <div class="x-col col-buttom-border noTopButtomPadding" xid="col25">
-     <span xid="span20" style="color:#D37CC1;font-size:xx-small;" bind-text="'Expend:$'"><![CDATA[Expend:]]></span></div> 
+     <span xid="span20" style="color:#D37CC1;font-size:xx-small;"><![CDATA[Expend:]]></span></div> 
     <div class="x-col col-buttom-border text-center" xid="col20"></div>
     <div class="x-col col-buttom-border text-center" xid="col17"></div></div> </div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list3" data="accountData">
    <ul class="x-list-template" xid="listTemplateUl3">

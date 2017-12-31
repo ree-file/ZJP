@@ -238,6 +238,8 @@ define(function(require){
 		var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
 		var times = currentdate.getTime();
 		var accountData=[];
+		var extracted_money=0;
+		var get_money = 0;
 		if (nestInfo.nestrecords.extract_records.length!=0) {
 			for (var j = 0; j < nestInfo.nestrecords.extract_records.length; j++) {
 				accountData[j]={
@@ -255,6 +257,8 @@ define(function(require){
 							}
 						}
 					}
+					extracted_money=extracted_money+parseFloat(nestInfo.nestrecords.extract_records[j].money).toFixed(2);
+					debugger;
 				}
 			
 		}
@@ -278,11 +282,14 @@ define(function(require){
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:nestInfo.nestrecords.got_records[j].created_at,
-					money:nestInfo.nestrecords.got_records[j].eggs*eggval,
+					money:parseFloat(nestInfo.nestrecords.got_records[j].eggs)*eggval,
 					message:message,
 					status:2
 				}
+				get_money=get_money+(parseFloat(nestInfo.nestrecords.got_records[j].eggs)*parseFloat(eggval)).toFixed(2);
+				debugger;
 			}
+			
 		}
 		if (accountData.length!=0) {
 			for (var int = 0; int < accountData.length; int++) {
@@ -299,6 +306,8 @@ define(function(require){
 				}
 			}
 		}
+		$(this.getElementByXid("span19")).html("Return:$"+extracted_money);
+		$(this.getElementByXid("span20")).html("Return:$"+get_money);
 		event.source.loadData(accountData);
 		
 	};
@@ -419,6 +428,7 @@ define(function(require){
 				nest_id:this.comp("nest").val("id"),
 				current_rank:current_rank,
 				current_worth:this.comp("nest").val("currentWorth"),
+				page:"nestMain"
 			});
 		}
 	};
@@ -431,7 +441,8 @@ define(function(require){
 				action:"Re-investment",
 				nest_id:this.comp("nest").val("id"),
 				current_worth:0,
-				current_rank:-1
+				current_rank:-1,
+				page:"nestMain"
 			});
 		}
 		else if(is_finished==0){
@@ -445,6 +456,7 @@ define(function(require){
 				action:"sell",
 				nest_id:this.comp("nest").val("id"),
 				name:this.comp("nest").val("name"),
+				page:"nestMain"
 			});
 	};
 	
@@ -489,7 +501,17 @@ define(function(require){
 	
 	
 	Model.prototype.button12Click = function(event){
-		justep.Shell.closePage();
+		if (this.params.page=="main") {
+			justep.Shell.showPage("main");
+		}
+		else{
+			justep.Shell.closePage();
+		}
+	};
+	
+	
+	Model.prototype.modelActive = function(event){
+		this.modelParamsReceive(event);
 	};
 	
 	

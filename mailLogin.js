@@ -27,7 +27,7 @@ define(function(require){
 		$(this.getElementByXid("password1")).css("border-width","0px 0px 1px 0px");
 		var password = $.trim($(this.getElementByXid("password1")).val());
 		if (!password) {
-			this.showprompt(lang.mailLogin[6]);
+			this.showprompt(lang.showprompt[2]);
 			
 		}
 		else{
@@ -86,13 +86,13 @@ define(function(require){
 					this.owner.send({data:true,email:this.comp("input5").val()});
 				}
 				else{
-					this.showprompt(lang.mailLogin[3]);
+					this.showprompt(lang.showprompt[3]);
 					loginable=false;
 					
 				}
 			}
 			else{
-				this.showprompt(lang.mailLogin[4]);
+				this.showprompt(lang.showprompt[4]);
 				
 			}
 		}

@@ -31,7 +31,7 @@ define(function(require){
 				else{
 					premission=undefined;
 				}
-				debugger;
+				
 			}while(result1==500);
 			return premission;
 		},
@@ -114,9 +114,9 @@ define(function(require){
 				nest_Info.contracts[i] = {};
 				nest_Info.contracts[i].id = mainInfo[i].contracts[mainInfo[i].contracts.length-1].id;
 				nest_Info.contracts[i].nest_id =  mainInfo[i].id;
-				nest_Info.contracts[i].income = Math.floor(parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_receivers)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_community)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_weeks))*parseFloat(eggval);
+				nest_Info.contracts[i].income = Math.floor(parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_receivers)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_community)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_weeks));
 				nest_Info.contracts[i].time = mainInfo[i].created_at;
-				nest_Info.contracts[i].worth = Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs*eggval);
+				nest_Info.contracts[i].worth = Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs);
 				nest_Info.contracts[i].rate="300%";
 				nest_Info.contracts[i].freese = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
 				nest_Info.contracts[i].name = mainInfo[i].name;
@@ -151,9 +151,9 @@ define(function(require){
 						nest_Info.contracts[i] = {};
 						nest_Info.contracts[i].id = data.data[i].contracts[data.data[i].contracts.length-1].id;
 						nest_Info.contracts[i].nest_id =  data.data[i].id;
-						nest_Info.contracts[i].income = Math.floor(parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_receivers)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_community)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_weeks))*parseFloat(eggval);
+						nest_Info.contracts[i].income = Math.floor(parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_receivers)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_community)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_weeks));
 						nest_Info.contracts[i].time = data.data[i].created_at;
-						nest_Info.contracts[i].worth = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs*eggval);
+						nest_Info.contracts[i].worth = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs);
 						nest_Info.contracts[i].rate="300%";
 						nest_Info.contracts[i].freese = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
 						nest_Info.contracts[i].name = data.data[i].name;
@@ -486,15 +486,16 @@ define(function(require){
 								todayincome+=parseFloat(mainInfo[int].records[int1].eggs)*parseFloat(eggval);
 							}
 						}
-						MyincomeInfo[MyincomeInfo.length]={
-								contract_id:mainInfo[int].records[int1].contract_id,
-								type:lang.nestjs[6],
-								income:parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2),
-								date:new Date(),
-								name:mainInfo[int].name
-						};
-						todayincome+=parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2);
+						
 					}
+					MyincomeInfo[MyincomeInfo.length]={
+							contract_id:mainInfo[int].contracts[mainInfo[int].contracts.length-1].id,
+							type:lang.nestjs[6],
+							income:parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2),
+							date:new Date(),
+							name:mainInfo[int].name
+					};
+					todayincome+=parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2);
 				}
 			}
 			var data={
@@ -623,6 +624,7 @@ define(function(require){
 				}
 				
 			}while(result1==500);
+			
 			return mainInfo;
 		},
 		mainInfoajax:function(){
@@ -640,8 +642,9 @@ define(function(require){
 					mainInfo=data.data;
 					status = 200;
 				},
-				erorr:function(ero){
+				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
+					
 					if (responseText.message=="Token expired.") {
 						
 						if(jwt.authRefresh()){

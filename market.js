@@ -593,7 +593,12 @@ define(function(require){
 	};
 
 	Model.prototype.backBtnClick = function(event){
-		justep.Shell.closePage();
+		if (this.params.page=="main") {
+			justep.Shell.showPage("main");
+		}
+		else{
+			justep.Shell.closePage();
+		}
 	};
 
 	Model.prototype.windowDialog1Receive = function(event){

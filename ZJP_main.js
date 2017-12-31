@@ -130,7 +130,7 @@ define(function(require) {
 		if (mainInfo == undefined) {
 			return;
 		}
-		var data = nest.incomeInfo(mainInfo);
+		var data = nest.incomeInfo(mainInfo.nests);
 		for (var int = 0; int < data.MyincomeInfo.length; int++) {
 			var date1 = Date.parse(data.MyincomeInfo[int].date);  
 			for (var int2 = int; int2 < data.MyincomeInfo.length; int2++) {
@@ -147,6 +147,7 @@ define(function(require) {
 		}
 		event.source.loadData(data.MyincomeInfo);
 		$(this.getElementByXid("span4")).html("$"+data.todayincome);
+		mainInfo=undefined;
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
@@ -154,7 +155,7 @@ define(function(require) {
 		if (mainInfo==undefined) {
 			return;
 		}
-		var nestInfo = nest.nestInfo(mainInfo);
+		var nestInfo = nest.nestInfo(mainInfo.nests);
 		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
 		event.source.loadData(nestInfo.contracts);
 		this.comp("incomeAccount").refreshData();
@@ -165,7 +166,7 @@ define(function(require) {
 		var params = {
 				nest_id:row.val("nest_id"),
 				contract_id:row.val("id"),
-				page:"ZJP_main"
+				page:"main"
 		};
 		justep.Shell.showPage("nestMain", params);
 	};
@@ -181,10 +182,21 @@ define(function(require) {
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
+			var token=localStorage.getItem("jwt_token");
+			var ids = token.split(".");
+			var id = JSON.parse(base64.decode(ids[1]));
+			if (id&&event.data.email) {
+				localStorage.setItem("thismyuserId", id.sub);
+				localStorage.setItem("email", event.data.email);
+			}
 			this.comp("windowDialog1").close();
 			this.comp("contents1").next();
 			this.modelModelConstructDone(event);
 			this.modelLoad(event);
+		}
+		else if(event.data.reset){
+			this.comp("windowDialog1").close();
+			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword"});
 		}
 	};
 
@@ -196,20 +208,13 @@ define(function(require) {
 	};
 
 	Model.prototype.windowDialog1Received = function(event){
-		if (event.data.data) {
-			var token=localStorage.getItem("jwt_token");
-			var ids = token.split(".");
-			var id = JSON.parse(base64.decode(ids[1]));
-			if (id&&event.data.email) {
-				localStorage.setItem("thismyuserId", id.sub);
-				localStorage.setItem("email", event.data.email);
-			}
-			this.comp("windowDialog1").close();
-		}
+		
 	};
 
 	Model.prototype.button5Click = function(event){
-		justep.Shell.showPage("market");
+		justep.Shell.showPage("market",{
+			page:"main"
+		});
 	};
 
 	return Model;

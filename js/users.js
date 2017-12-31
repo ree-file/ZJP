@@ -169,8 +169,9 @@ define(function(require){
 				else{
 					worthInfo=undefined;
 				}
+
+			}while(result1==500);
 				
-			}while(result1==500)
 			return worthInfo;
 		},
 		getUserMessageajax:function(){
@@ -196,6 +197,7 @@ define(function(require){
 					status =200;
 				},
 				error:function(ero){
+					
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 

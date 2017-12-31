@@ -96,7 +96,8 @@
    <div class="x-col" xid="col48" style="border-color:#282B32;"><span xid="span19"><![CDATA[$]]></span><span xid="span28" bind-text='val("income")'></span>
   </div>
    <div class="x-col" xid="col49"><span xid="span29" bind-text='val("name")'></span></div>
-  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div></div></li></ul> </div></div></div></div>
+  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div></div></li></ul> </div>
+  <div xid="div10" style="height:100px;"></div></div></div></div>
   <div class="x-contents-content content-nest" xid="content3" style="background:#1C1F26"><div xid="div2">
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="NestsAccount">
    <ul class="x-list-template" xid="listTemplateUl1">

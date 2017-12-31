@@ -10,7 +10,7 @@ define(function(require){
 	var worth ;//后期用页面数据传递得到用于产品升级和复投的显示
 	var nest_id;//后期通过页面数据传递获得用于产品升级和复投的传参数
 	var contract_id;//后期通过页面数据传递获得用于产品复投的传参数
-	var current_rank =-1 ;//通过页面传参数获得用于产品升级时做比较，另外一律为0；
+	var current_rank =-1 ;//通过页面传参数获得用于产品升级时做比较，另外一律为-1；
 	var config_egg ;//通过向服务端请求获得产品的配置信息
 	var me;
 	var lang;
@@ -176,6 +176,9 @@ define(function(require){
 			this.comp("titleBar1").set({
 				title:lang.ZJP_production[14]
 			});
+			nest_id = this.params.nest_id;
+			current_rank = this.params.current_rank;
+			worth = this.params.current_worth;
 			$(this.getElementByXid("span21")).html(lang.ZJP_production[13]);
 //			创建的时候不需要邮箱地址也不需要邀请人，更不需要产品信息
 			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
@@ -188,6 +191,8 @@ define(function(require){
 		}
 		else if(action=="invite")
 		{
+			current_rank = -1;
+			worth = 0
 			$(this.getElementByXid("upgrade-message")).addClass("common_show");
 			this.comp("titleBar1").set({
 				title:lang.ZJP_production[11]
@@ -481,7 +486,21 @@ define(function(require){
 	};
 
 	Model.prototype.button11Click = function(event){
-		justep.Shell.closePage();
+		action ="";//用于判断页面需要执行什么操作
+		worth ;//后期用页面数据传递得到用于产品升级和复投的显示
+		nest_id;//后期通过页面数据传递获得用于产品升级和复投的传参数
+		contract_id;//后期通过页面数据传递获得用于产品复投的传参数
+		current_rank =-1 ;//通过页面传参数获得用于产品升级时做比较，另外一律为-1；
+		config_egg ;//通过向服务端请求获得产品的配置信息
+		if (this.params.page=="main") {
+			justep.Shell.showPage("main");
+		}
+		else if(this.params.page=="nestMain"){
+			justep.Shell.showPage("nestMain");
+		}
+		else{
+			justep.Shell.closePage();
+		}
 	};
 
 	Model.prototype.windowDialog1Received = function(event){
