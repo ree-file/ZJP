@@ -43,9 +43,9 @@
    <div class="x-col x-col-25" xid="col13" style="text-decoration:underline;">
     <span xid="span9" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col12" style="padding:5px 5px 0px 0px;">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block" label="钱包金额" xid="button1">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block" xid="button1">
    <i xid="i1"></i>
-   <span xid="span4"><![CDATA[]]></span></a></div> 
+   <span xid="span4"></span></a></div> 
   <div class="x-col" xid="col1"></div></div>
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">

@@ -36,7 +36,14 @@
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
      <div class="x-col" xid="col29" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
       <span xid="span15" style="font-size:x-small;color:#C3C3C3;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;"><![CDATA[]]></span></div> </div> </div> </div></div>
-   </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="inviteRow" style="margin-top:25px;background-color:#1C1F26;" bind-click="inviteRowClick">
+   </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="margin-top:25px;background-color:#1C1F26;">
+   <div class="x-col" xid="col27"><span xid="span18" style="color:#FFFFFF;width:100%;position:relative;font-size:large;" class="center-block spancenter"><![CDATA[所邀猫窝总价值已达]]></span></div>
+   </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row18" style="margin-top:0px;background-color:#1C1F26;height:55px;">
+   <div class="x-col" xid="col38"></div>
+   <div class="x-col x-col-50" xid="col39" style="background-color:#1C1F26;border-style:groove groove groove groove;border-width:thin thin thin thin;"><span xid="span27" class="center-block spancenter" style="color:#FFFFFF;position:relative;font-size:x-large;height:100%;width:10%;"><![CDATA[$]]></span><span xid="totalSpan" class="center-block totalspancenter" style="color:#FFFFFF;position:relative;font-size:x-large;height:100%;width:89%;"><![CDATA[]]></span>
+  </div>
+   <div class="x-col" xid="col40"></div></div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="inviteRow" style="background-color:#1C1F26;" bind-click="inviteRowClick">
    <div class="x-col" xid="col24">
     <span xid="span7" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[]]></span></div> 
    <div class="x-col x-col-10" xid="col25">

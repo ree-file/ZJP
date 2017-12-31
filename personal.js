@@ -3,6 +3,7 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var personaljs = require('./js/personal');
 	var jwt = require('./js/jwt');
+	// var countUp = require('./js/countUp/countUp')
 	var ifhid = 0;
 	var pwState = false;
 	var base64 = require("$UI/system/lib/base/base64");
@@ -44,7 +45,23 @@ define(function(require){
 	Model.prototype.modelActive = function(event){
 	};
 
+	function timedCount(num,total){
+      num++;
+      $(".totalspancenter").text(num);
+      // 设置条件使停止计时
+      if (num<total) {
+          var t = setTimeout(function(){timedCount(num,total)},10);
+      }
+  }
+
 	Model.prototype.modelLoad = function(event){
+		// var demo = new countUp.CountUp("totalSpan", 0, 94.62, 2, 2.5);
+		// demo.start();
+    // 调用计时函数
+		var totalSpan = $(this.getElementByXid("totalSpan"));
+		var num = 0;
+		var x = 111;  //传值赋值
+    var t = setTimeout(timedCount(num,x));
 		$(this.getElementByXid("hidRow")).hide();
 		$(this.getElementByXid("span2")).html(lang.personal[0]);
 		$(this.getElementByXid("span1")).html(lang.personal[1]);
