@@ -92,37 +92,75 @@ define(function(require){
             }
             return new Blob([u8arr], {type:mime});
         }
+    Model.prototype.uploadmessage=function(formdata){
+        var from = this.comp('fromSelect').val();
+			var cardnumber = this.getElementByXid("cardidInput").value;
+			var money = this.getElementByXid("moneyInput").value;
+			var otherbankInput = this.getElementByXid("otherbankInput").value;
+			var security_code = $.trim(this.comp("securityInput").val());
+			if (from == lang.transfermoney[11]) {
+				formdata.append("money",money);
+				formdata.append("type","save");
+				formdata.append("card_number",cardnumber);
+				formdata.append("message",otherbankInput);
+				formdata.append("security_code",security_code);
+				var is_success5 = personaljs.supplies(formdata);
+				if (is_success5 == undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt(lang.showprompt[0]);
+					return;
+				}
+				else if (is_success5 == true) {
+					this.setupButtonClick(event);
+					return;
+				}
+			}
+			else {
+				formdata.append("money",money);
+				formdata.append("type","save");
+				formdata.append("card_number",cardnumber);
+				formdata.append("message",from);
+				formdata.append("security_code",security_code);
+				var is_success6 = personaljs.supplies(formdata);
+				if (is_success6 == undefined) {
+					this.comp("windowDialog1").open();
+					this.showprompt(lang.showprompt[0]);
+					return;
+				}
+				else if (is_success6 == true) {
+					this.setupButtonClick(event);
+					return;
+				}
+			}
+    };
 	Model.prototype.setupButtonClick = function(event){
 		var fileObj = $(this.getElementByXid("file2")).prop("files")[0];
 		 var formdata = new FormData();
-		if(fileObj.size > 1025) { //大于1M，进行压缩上传
+		if(fileObj.size/1024 > 1025) { //大于1M，进行压缩上传
                 photoCompress(fileObj, {
                     quality: 0.2
                 }, function(base64Codes){
                     //console.log("压缩后：" + base.length / 1024 + " " + base);
                   bl = convertBase64UrlToBlob(base64Codes);
-                  ;
-                  formdata.append("image", bl, "file_"+Date.parse(new Date())+".jpg");
-                  debugger
-                  var from = me.comp('fromSelect').val();
-                  var cardnumber = me.getElementByXid("cardidInput").value;
-                  var money = me.getElementByXid("moneyInput").value;
-                  var otherbankInput = me.getElementByXid("otherbankInput").value;
-                  var security_code = me.comp("securityInput").val();
-                  formdata.append("money",money);
-                  formdata.append("type","save");
-                  formdata.append("card_number",cardnumber);
-                  formdata.append("message",from);
-                  formdata.append("security_code",security_code);
                   debugger;
-                  var is_success5 = personaljs.supplies(formdata);
+                  formdata.append("image", bl, "file_"+Date.parse(new Date())+".jpg");
+                 me.uploadmessage(formdata);
          });}
+         else{
+        	 formdata.append("image", fileObj);
+        	 me.uploadmessage(formdata);
+         }
 //			var from = this.comp('fromSelect').val();
 //			var cardnumber = this.getElementByXid("cardidInput").value;
 //			var money = this.getElementByXid("moneyInput").value;
 //			var otherbankInput = this.getElementByXid("otherbankInput").value;
 //			if (from == lang.transfermoney[11]) {
-//				var is_success5 = personaljs.supplies(money,"save",cardnumber,otherbankInput,bl);
+//				formdata.append("money",money);
+//				formdata.append("type","save");
+//				formdata.append("card_number",cardnumber);
+//				formdata.append("message",from);
+//				formdata.append("security_code",security_code);
+//				var is_success5 = personaljs.supplies(formdata);
 //				if (is_success5 == undefined) {
 //					this.comp("windowDialog1").open();
 //					this.showprompt(lang.showprompt[0]);

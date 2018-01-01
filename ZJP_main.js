@@ -186,6 +186,7 @@ define(function(require) {
 		if (event.data.data) {
 			var token=localStorage.getItem("jwt_token");
 			var ids = token.split(".");
+			debugger;
 			var id = JSON.parse(base64.decode(ids[1]));
 			if (id&&event.data.email) {
 				localStorage.setItem("thismyuserId", id.sub);
