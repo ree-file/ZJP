@@ -59,51 +59,64 @@
    <i xid="i4"></i>
    <span xid="span4"></span></a></div>
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" style="position:relative;top:40px;">
-   <div class="x-contents-content" xid="marketcontent" bind-touchstart="marketcontentTouchstart" bind-touchend="marketcontentTouchend"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup2" style="height:40px;">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="sortingBtn" icon="icon-arrow-down-b" onClick="sortingBtnClick" style="width:30%;">
-    <i xid="i13" class="icon-arrow-down-b text-danger" style="color:#24A3EE;"></i>
-    <span class="text-primary" xid="span24" bind-load="span24Load"></span></a> 
-   
-   <input component="$UI/system/components/justep/input/input" class="form-control" xid="input3" bind-keyup="input3Keyup"></input><a component="$UI/system/components/justep/button/button" class="btn btn-link" icon="icon-arrow-down-b" xid="screeningBtn" style="width:30%;" onClick="screeningBtnClick">
-    <i xid="i10" class="icon-arrow-down-b"></i>
-    <span xid="span17"></span></a> 
-  </div>
-  <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata">
+   <div class="x-contents-content" xid="marketcontent" bind-touchstart="marketcontentTouchstart" bind-touchend="marketcontentTouchend"><div component="$UI/system/components/justep/row/row" class="x-row" xid="hidRow" style="background-color:#1C1F26;">
+   <div class="x-col" xid="col58"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
+   <div class="x-col x-col-20" xid="col71" style="padding-left:0px;margin-left:0px;"><span class="pull-left" xid="span28" style="font-size:small;color:#FFFFFF;padding-top:5px;margin-right:0px;margin-left:0px;padding-right:0px;padding-left:0px;"></span></div>
+  <div class="x-col" xid="col72"><input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="minInput" style="width:45%;" onBlur="minInputBlur"></input><span class="pull-left" xid="span51" style="font-size:large;color:#FFFFFF;">－</span><input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="maxInput" style="width:45%;" onBlur="maxInputBlur"></input></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row26" style="padding-right:20px;">
+   <div class="x-col" xid="col64"></div>
+   <div class="x-col x-col-25" xid="col65"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm btn-block tb-resetBtn x-flex1" xid="resetBtn" onClick="resetBtnClick">
+     <i xid="i17"></i>
+     <span xid="span31"></span></a></div>
+   <div class="x-col x-col-25" xid="col67"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm btn-block tb-okBtn" xid="betweenbutton" onClick="betweenbuttonClick">
+    <i xid="i11"></i>
+    <span xid="span27" class="text-white"></span></a></div>
+  </div></div>
+   </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row28" style="padding:0px 0px 0px 0px;margin:0px 0px -17px 0px;">
+   <div class="x-col" xid="col73" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div>
+   <div class="x-col" xid="col74" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" bind-click="row27Click"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block" xid="button12" icon="linear linear-chevronup">
+   <i xid="i20" class="linear linear-chevronup"></i>
+   <span xid="span55"><![CDATA[]]></span></a></div>
+   <div class="x-col" xid="col75" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="sortingBtn" icon="icon-arrow-down-b" onClick="sortingBtnClick" style="width:90%;margin:0px 0px 0px 0px;">
+   <i xid="i18" class="icon-arrow-down-b text-danger" style="color:#24A3EE;"></i>
+   <span class="text-primary" xid="span24" bind-load="span24Load"></span></a></div></div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="marketdata">
    <ul class="x-list-template" xid="listTemplateUl1">
     <div xid="div13" class="refresh"><span xid="span49" style="font-size:medium;"></span>
-  <span xid="span48"><![CDATA[]]></span></div><li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="border-top-style:groove;border-bottom-style:groove;border-top-width:thin;border-bottom-width:thin;margin-top:0px;">
-   <div class="x-col x-col-20" xid="col1" style="position:relative;" bind-click="col1Click"><span xid="typeSpan" style="color:#FFFFFF;font-size:x-small;width:100%;font-variant:normal;height:100%;position:relative;margin-top:23%;" bind-text='val("name")' class="center-block moneycenter"></span></div>
-   <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;" bind-click="col1Click">
+  <span xid="span48"><![CDATA[]]></span></div><li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row1" style="margin-top:17px;border-width:thin thin thin thin;border-style:groove groove groove groove;position:relative;width:96%;left:2%;height:100px;">
+   <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;margin-top:15px;" bind-click="col1Click">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-   <div class="x-col x-col-25" xid="col10" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span13" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[]]></span></div>
-   <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;text-align:center"><span xid="span44" bind-text='val("contract_remaining")'></span>
-  <span xid="span45"><![CDATA[/]]></span>
-  <span xid="span46" bind-text='val("contract_worth")'></span></div>
+   <div class="x-col x-col-25" xid="col10" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><span xid="span13" class="pull-right moneycenterright" style="font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;" bind-text="$model.showspantext(6)"><![CDATA[]]></span></div>
+   <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;text-align:center"><span xid="span44" bind-text='val("contract_remaining")' style="font-size:medium;color:#FFFFFF;"></span>
+  <span xid="span45" style="font-size:medium;color:#FFFFFF;"><![CDATA[/]]></span>
+  <span xid="span46" bind-text='val("contract_worth")' style="font-size:medium;color:#FFFFFF;"></span></div>
    </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-style:groove;border-top-width:thin;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-width:thin;">
    <div class="x-col x-col-25" xid="col18" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span15" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[]]></span></div> 
+    <span xid="span15" class="pull-right moneycenterright" style="font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;" bind-text="$model.showspantext(7)"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col17" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output1" bind-ref='ref("childrenNum")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-style:groove;border-top-width:thin;">
+    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output1" bind-ref='ref("childrenNum")' style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;"></div></div> </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-width:thin;">
    <div class="x-col x-col-25" xid="col30" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span23" class="pull-right moneycenterright" style="font-size:small;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><![CDATA[]]></span></div> 
+    <span xid="span23" class="pull-right moneycenterright" style="font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;" bind-text="$model.showspantext(8)"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col31" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("grandChildrenNum")' style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"></div></div> </div></div>
+    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("grandChildrenNum")' style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;"></div></div> </div></div>
    <div class="x-col x-col-33 center-block" xid="col16" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15" style="margin-top:0px;padding-top:0px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15" style="margin-top:15px;padding-top:0px;">
    <div class="x-col" xid="col35"><span xid="span20" style="width:5%;color:#FFFFFF;font-size:large;padding-top:0px;margin-top:-1px;font-family:Cambria Math;" class="pull-left"><![CDATA[$]]></span><span xid="moneySpan" style="color:#FFFFFF;font-size:large;font-family:Impact;position:relative;width:92%;" bind-text='val("worth")' class="pull-left center-block moneycenter"></span>
   </div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17">
    <div class="x-col" xid="col3" style="padding:0px 0px 0px 0px;position:relative;"><a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block center-block" xid="button1" style="color:#FFFFFF;padding:0px 0px 0px 0px;position:relative;font-size:small;width:100%;margin-right:0px;margin-bottom:0px;margin-left:0px;height:100%;" onClick="button1Click">
    <i xid="i5"></i>
-   <span xid="span8" style="position:relative;" bind-text='val("lang")'></span></a></div></div></div></div>
+   <span xid="span8" style="position:relative;" bind-text='val("lang")'></span></a></div></div></div>
+  <div xid="col57" style="position:absolute;left:10px;z-index:auto;margin-top:5px;margin-left:5px;padding-right:10px;padding-left:10px;margin-right:5px;top:-15px;background-color:#252932;">
+   <span xid="span29" class="center-block" style="color:#FFFFFF;font-size:medium;" bind-text='val("name")'><![CDATA[]]></span></div></div>
   </li></ul> </div>
   <div xid="div12" class="load"><span xid="span42" style="font-size:medium;"><![CDATA[]]></span>
   <span xid="span47"><![CDATA[]]></span></div>
-  <div xid="div15" style="height:100px;"></div></div>
+  <div xid="div15" style="height:100px;"></div>
+  </div>
   <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
    <div class="x-col x-col-33" xid="col39"><span xid="span21"><![CDATA[]]></span></div>
    <div class="x-col" xid="col43"><span xid="span22"><![CDATA[]]></span></div>
@@ -146,20 +159,20 @@
    <div class="x-popOver-overlay" xid="div5"></div>
    <div class="x-popOver-content tb-sorting" xid="div6"><div xid="div7">
    <div class="list-group-item" xid="div26">
-    <span class="pull-left" xid="span28"><![CDATA[]]></span>
-    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="minInput" style="width:30%;" onBlur="minInputBlur"></input>
-    <span class="pull-left" xid="span27">－</span>
-    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="maxInput" style="width:30%;" onBlur="maxInputBlur"></input>
+    <span class="pull-left" xid="span281"><![CDATA[]]></span>
+    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="minInput1" style="width:30%;" onBlur="minInputBlur"></input>
+    <span class="pull-left" xid="span2711">－</span>
+    <input component="$UI/system/components/justep/input/input" class="form-control input-sm pull-left center-block" xid="maxInput1" style="width:30%;" onBlur="maxInputBlur"></input>
     <div class="clearfix" xid="div27"></div></div> 
    
    
    <div class="text-center panel-body" xid="div33">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm tb-resetBtn x-flex1" xid="resetBtn" onClick="resetBtnClick">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm tb-resetBtn x-flex1" xid="resetBtn1" onClick="resetBtnClick">
      <i xid="i9"></i>
-     <span xid="span31"></span></a> </div> 
-   <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-lg btn-block tb-okBtn" xid="betweenbutton" style="width:80%;left:10%;position:relative;margin-bottom:5px;" onClick="betweenbuttonClick">
+     <span xid="span311"></span></a> </div> 
+   <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-lg btn-block tb-okBtn" xid="betweenbutton1" style="width:80%;left:10%;position:relative;margin-bottom:5px;" onClick="betweenbuttonClick">
     <i xid="i14"></i>
-    <span xid="span27" class="text-white"></span></a> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="left-bottom" xid="sortingPopOver" opacity="0" anchor="sortingBtn" style="top:97px;left:25px;">
+    <span xid="span271" class="text-white"></span></a> </div></div></div><div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="left-bottom" xid="sortingPopOver" opacity="0" anchor="sortingBtn" style="top:97px;left:25px;">
    <div class="x-popOver-overlay" xid="div3"></div>
    <div class="x-popOver-content tb-sorting" xid="div4"><div component="$UI/system/components/justep/list/list" class="x-list" data="conditionData" bind-click="sortingListClick" xid="conditionList" dataItemAlias="conditionRow">
    <ul class="x-list-template" xid="ul1">

@@ -13,6 +13,7 @@ define(function(require){
 	var is_append=0;
 	var is_loading=0;
 	var is_refresh = 0;
+	var ifhid = -1;
 	var me;
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -34,6 +35,7 @@ define(function(require){
 					$(".x-hint").find("button[class='close']").hide();
 	};
 	Model.prototype.modelLoad = function(event){
+		$(this.getElementByXid("hidRow")).hide();
 		this.comp("titile").set({
 			title:lang.market[0]
 		});
@@ -49,13 +51,7 @@ define(function(require){
 		this.comp("sortingBtn").set({
 			label:lang.market[4]
 		});
-		this.comp("screeningBtn").set({
-			label:lang.market[5]
-		});
-		$(this.getElementByXid("span13")).html(lang.market[6]);
-		$(this.getElementByXid("span15")).html(lang.market[7]);
-		$(this.getElementByXid("span23")).html(lang.market[8]);
-		
+
 		$(this.getElementByXid("span47")).html(lang.market[10]);
 		$(this.getElementByXid("span48")).html(lang.market[11]);
 		$(this.getElementByXid("span21")).html(lang.market[12]);
@@ -65,6 +61,7 @@ define(function(require){
 		$(this.getElementByXid("span26")).html(lang.market[16]);
 		$(this.getElementByXid("span9")).html(lang.market[17]);
 		$(this.getElementByXid("span18")).html(lang.market[18]);
+		$(this.getElementByXid("span55")).html(lang.market[20]);
 		this.comp("button2").set({
 			label:lang.market[19]
 		});
@@ -99,6 +96,12 @@ define(function(require){
 			label:lang.market[38]
 		});
 	};
+
+	//list里面的固定span值
+	Model.prototype.showspantext = function(x){
+		return lang.market[x];
+	};
+
 	//"X"按钮
 	Model.prototype.button4Click = function(event){
 		$(this.getElementByXid("popOver1")).hide();
@@ -147,10 +150,6 @@ define(function(require){
 		} else {
 			this.comp("sortingPopOver").show();
 		}
-
-		if($(this.comp("screeningPopOver").$domNode).css("display")=="block") {
-			this.comp("screeningPopOver").hide();
-		}
 	};
 	//筛选价值的确认按钮
 	Model.prototype.betweenbuttonClick = function(event){
@@ -170,13 +169,12 @@ define(function(require){
 		else{
 			this.showprompt(lang.showprompt[8]);
 		}
-		this.comp("screeningPopOver").hide();
 	};
 	Model.prototype.orderby =function(objData,relation,type){
             var lRow = objData.getLastRow();
             var len = objData.count();
             var row1,row2;
-            for (var i = 0;i<len;i++) {                   
+            for (var i = 0;i<len;i++) {
                     objData.first(); //获取第一行位置，一次比较均是从第一行开始
                     do {
                         row1 = objData.getCurrentRow();
@@ -193,9 +191,9 @@ define(function(require){
                                     if (row1.val(relation) < row2.val(relation)) {
                                         objData.exchangeRow(row1,row2);
                                 }
-                            }        
+                            }
                     } while (lRow != row2);
-                    
+
                     //获取比较的最后的位置，循环一次，往前推一个
                     objData.last();
                     for (var j = 0; j < i; j++) {
@@ -204,7 +202,7 @@ define(function(require){
                     lRow= objData.getCurrentRow();
 
             }// end for
-  
+
 	}
 	//排序下的按钮
 	// 1、排序点击事件
@@ -234,17 +232,6 @@ define(function(require){
 		$(this.getElementByXid("minInput")).val(0);
 		$(this.getElementByXid("maxInput")).val(0);
 		datastatus =0;
-	};
-	//筛选按钮
-	Model.prototype.screeningBtnClick = function(event){
-		if($(this.comp("screeningPopOver").$domNode).css("display")=="block") {
-			this.comp("screeningPopOver").hide();
-		} else {
-			this.comp("screeningPopOver").show();
-		}
-		if($(this.comp("sortingPopOver").$domNode).css("display")=="block") {
-			this.comp("sortingPopOver").hide();
-		}
 	};
 
 	Model.prototype.input3Keyup = function(event){
@@ -339,12 +326,12 @@ define(function(require){
 			this.comp("chooseSoleStatus").hide();
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
-			
+
 		}
 		else{
 			this.comp("chooseSoleStatus").hide();
 			this.showprompt(lang.showprompt[13]);
-			
+
 		}
 	};
 //点击后hide提示窗口--许鑫君
@@ -417,8 +404,8 @@ define(function(require){
 				$(me.getElementByXid("span47")).html("加载完成");
 				is_loading=0;
 			}, 1000);
-		
-			
+
+
 	};
 	Model.prototype.refresh=function(){
 		$(this.getElementByXid("span49")).removeClass("icon-ios7-reloading");
@@ -428,7 +415,7 @@ define(function(require){
 				$(me.getElementByXid("div13")).removeClass("show");
 				is_refresh=0;
 			});
-			
+
 	};
 	Model.prototype.addlang=function(data){
 		for (var int = 0; int < data.length; int++) {
@@ -458,7 +445,7 @@ define(function(require){
 			}
 			records=this.addlang(records);
 			this.loading(records);
-			
+
 		}
 		if (filter_page==1&&datastatus==1) {
 			event.source.clear();
@@ -481,13 +468,13 @@ define(function(require){
 			}
 			records=this.addlang(records);
 			this.loading(records);
-			
+
 		}
-		
+
 	};
 
 	Model.prototype.modelModelConstructDone = function(event){
-		
+
 	};
 
 	Model.prototype.minInputBlur = function(event){
@@ -546,7 +533,7 @@ define(function(require){
 	};
 
 	Model.prototype.marketcontentTouchend = function(event){
-		endy = event.originalEvent.changedTouches[0].pageY;	
+		endy = event.originalEvent.changedTouches[0].pageY;
 		 var scrollTop = document.documentElement.scrollTop;
 		 var height = document.documentElement.scrollHeight;
 		 var screen = document.documentElement.clientHeight;
@@ -589,11 +576,11 @@ define(function(require){
 						this.comp("marketdata").refreshData();
 					}
 				}, 1000);
-				
+
 			}
 		}
-		starty=0;endy=0;	
-		
+		starty=0;endy=0;
+
 	};
 
 	Model.prototype.backBtnClick = function(event){
@@ -658,6 +645,17 @@ define(function(require){
 				fState:int==0?1:0
 			}];
 			event.source.newData({"defaultValues":params});
+		}
+	};
+
+
+	Model.prototype.row27Click = function(event){
+		ifhid = -ifhid;
+		if (ifhid == -1) {
+			$(this.getElementByXid("hidRow")).hide();
+		}
+		else if (ifhid == 1) {
+			$(this.getElementByXid("hidRow")).show();
 		}
 	};
 
