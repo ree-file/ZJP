@@ -50,7 +50,7 @@ define(function(require){
 		priceSpan.text(orderparticulars.price);//价格
 		nestIDSpan.text(orderparticulars.nest.id);//巢id
 		nestNameSpan.text(orderparticulars.nest.name);//巢姓名
-		nestChildrenLengthSpan.text(orderparticulars.nest.children.length);//子数
+		nestChildrenLengthSpan.text(orderparticulars.analyse.children_count);//子数
 		communitySpan.text(orderparticulars.nest.community);//子数
 	};
 
@@ -72,7 +72,7 @@ define(function(require){
 		$(this.getElementByXid("span19")).html(lang.particulars[12]);
 		$(this.getElementByXid("span3")).html(lang.particulars[13]);
 		this.modelParamsReceive(event);
-		
+
 	};
 
 	Model.prototype.backBtnClick = function(event){

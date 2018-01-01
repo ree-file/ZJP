@@ -72,6 +72,8 @@ define(function(require){
 						});
 						$(".x-hint").find("button[class='close']").hide();
 		};
+		
+		//list里面的固定span值
 		Model.prototype.showtransferRecord = function(x){
 			return lang.transferRecord[x];
 		};

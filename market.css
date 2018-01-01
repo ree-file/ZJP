@@ -6,6 +6,8 @@
         text-decoration: none;
 }*/
 
+.bigrow{border-radius:5px;}
+.bigdiv{background-color:#252932;}
 
 .x-popOver-overlay{top:88px; background-color:#000;}
 .tb-sorting{width:100%; background-color:#fff; border-top:1px solid #e1e1e1;}

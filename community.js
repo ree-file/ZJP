@@ -75,10 +75,10 @@ define(function(require) {
 			this.modelParamsReceive(event);
 			return;
 		}
-		var childrenlength = mynest.children.length;
+		var childrenlength = Number(mynest.analyse.childrenA_count)+Number(mynest.analyse.childrenB_count)+Number(mynest.analyse.childrenC_count);
 		var grandchildrenlength = "0";
 		if (mynest.grandchildren) {
-			grandchildrenlength = mynest.grandchildren.length;
+			grandchildrenlength = Number(mynest.analyse.grandchildrenA_count)+Number(mynest.analyse.grandchildrenB_count)+Number(mynest.analyse.grandchildrenC_count);
 		}
 		var contractslength = count(mynest.contracts);
 		// 二级ABC社区人数、三级ABC社区人数、总人数=二+三、
@@ -171,24 +171,18 @@ define(function(require) {
 		this.comp("ThirdBtn").set({
 			label:lang.community[2],
 		});
-		$(this.getElementByXid("span22")).html(lang.community[3]);
-		$(this.getElementByXid("span23")).html(lang.community[4]);
-		$(this.getElementByXid("span24")).html(lang.community[5]);
-		$(this.getElementByXid("span25")).html(lang.community[6]);
-		$(this.getElementByXid("span21")).html(lang.community[7]);
-		$(this.getElementByXid("span20")).html(lang.community[8]);
-		$(this.getElementByXid("span30")).html(lang.community[6]);
-		$(this.getElementByXid("span28")).html(lang.community[7]);
-		$(this.getElementByXid("span27")).html(lang.community[8]);
-		this.comp("button9").set({
-			label:lang.community[9],
-		});
-		this.comp("button7").set({
-			label:lang.community[10],
-		});
-		this.comp("button8").set({
-			label:lang.community[11],
-		});
+		$(this.getElementByXid("span16")).html(lang.community[3]);
+		$(this.getElementByXid("span18")).html(lang.community[4]);
+		$(this.getElementByXid("span17")).html(lang.community[5]);
+		$(this.getElementByXid("span48")).html(lang.community[6]);
+		$(this.getElementByXid("span36")).html(lang.community[7]);
+		$(this.getElementByXid("span37")).html(lang.community[8]);
+		$(this.getElementByXid("span43")).html(lang.community[6]);
+		$(this.getElementByXid("span50")).html(lang.community[7]);
+		$(this.getElementByXid("span44")).html(lang.community[8]);
+		$(this.getElementByXid("span3")).html(lang.community[9]);
+		$(this.getElementByXid("span32")).html(lang.community[10]);
+		$(this.getElementByXid("span41")).html(lang.community[11]);
 	};
 
 	return Model;
