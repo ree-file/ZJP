@@ -162,6 +162,10 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
 					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 					else{
 						showprompt(lang.personaljs[2]);
 					}
@@ -202,6 +206,10 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
 					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 					else{
 						is_success=undefined;
 					}
@@ -239,6 +247,10 @@ define(function(require){
 					}
 					else if(responseText.message=="No token provided."){
 						record=undefined;
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
 					}
 					else{
 						showprompt(lang.personaljs[5]);

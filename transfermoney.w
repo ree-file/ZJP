@@ -64,7 +64,7 @@
    <div class="x-col bgim" xid="col14"><input type="file" value="" xid="file2" style="height:100%;opacity:0;" bind-change="file2Change"></input>
   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="上传图片" xid="button2" style="margin-top:-40px;width:100%;" icon="glyphicon glyphicon-cloud">
    <i xid="i2" class="glyphicon glyphicon-cloud"></i>
-   <span xid="span5">上传图片</span></a></div>
+   <span xid="span5"><![CDATA[]]></span></a></div>
    <div class="x-col" xid="col17"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
    <div class="x-col" xid="col18">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" xid="setupButton" style="background-color:#049FCC;" onClick="setupButtonClick">
