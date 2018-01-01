@@ -95,6 +95,7 @@ define(function(require){
 		this.comp("button9").set({
 			label:lang.market[38]
 		});
+	$(this.getElementByXid("contents1")).css("display","block");
 	};
 
 	//list里面的固定span值

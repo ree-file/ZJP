@@ -64,6 +64,8 @@ define(function(require){
 		else {
 		this.showprompt(lang.transferRecord[0]);
 		}
+		
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 		//封装提示框--许鑫君
 		Model.prototype.showprompt = function(text){
@@ -72,8 +74,6 @@ define(function(require){
 						});
 						$(".x-hint").find("button[class='close']").hide();
 		};
-		
-		//list里面的固定span值
 		Model.prototype.showtransferRecord = function(x){
 			return lang.transferRecord[x];
 		};

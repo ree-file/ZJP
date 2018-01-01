@@ -136,6 +136,7 @@ define(function(require){
 		$(this.getElementByXid("span4")).html(lang.ZJP_resetPassword[4]);
 		$(this.getElementByXid("span5")).html(lang.ZJP_resetPassword[5]);
 		$(this.getElementByXid("span6")).html(lang.ZJP_resetPassword[6]);
+		$(this.getElementByXid("content1")).css("display","block");
 	};	
 	Model.prototype.modelUnLoad = function(event){
 

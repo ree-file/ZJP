@@ -3,7 +3,7 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad"> 
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+    class="x-panel x-full" xid="panel1" style="background-color:#252932;"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="title" style="background-color:#252932;">
           <div class="x-titlebar-left"> 
@@ -20,7 +20,7 @@
         </div> 
       </div>  
     
-  <div class="x-panel-content" xid="content1" style="background-color:#252932;height:100%;">
+  <div class="x-panel-content" xid="content1" style="display:none;height:100%;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;margin-bottom:8px;">
    <div class="x-col" xid="col5"><span xid="span2"></span></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">

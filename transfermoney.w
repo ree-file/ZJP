@@ -8,7 +8,7 @@
   <column name="img" type="String" xid="xid2"></column>
   <data xid="default1">[{&quot;id&quot;:1,&quot;img&quot;:&quot;&quot;}]</data></div></div>  
   <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span><div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+    class="x-panel x-full" xid="panel1" style="background-color:#252932;"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" style="background-color:#252932;" xid="title">
           <div class="x-titlebar-left"> 
@@ -24,7 +24,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#252932;height:100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
+    <div class="x-panel-content" xid="content1" style="display:none;height:100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
    <div class="x-col" xid="col4">
     <span xid="span2"><![CDATA[]]></span></div> </div>
   

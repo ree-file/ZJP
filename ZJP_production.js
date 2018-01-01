@@ -148,15 +148,15 @@ define(function(require){
 		if (action=="upgrade"||action=="Re-investment") {
 			
 			//不需要邀请人和邮箱地址和收益人（默认为之前的受益人）
-			$(this.getElementByXid("row4")).animate({height:0},"slow",function(){
+//			$(this.getElementByXid("row4")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("row4")).addClass("common_show");
-			});
-			$(this.getElementByXid("row5")).animate({height:0},"slow",function(){
+//			});
+//			$(this.getElementByXid("row5")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("row5")).addClass("common_show");
-			});
-			$(this.getElementByXid("create_benefit")).animate({height:0},"slow",function(){
+//			});
+//			$(this.getElementByXid("create_benefit")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("create_benefit")).addClass("common_show");
-			});
+//			});
 			nest_id = this.params.nest_id;
 			if (action=="upgrade") {
 					this.comp("titleBar1").set({
@@ -176,6 +176,7 @@ define(function(require){
 					$(this.getElementByXid("span21")).html(lang.ZJP_production[15]);
 				}
 			$(this.getElementByXid("production_worth")).html(worth);
+			
 		}
 		else if (action == "create") {
 			
@@ -187,26 +188,28 @@ define(function(require){
 			worth = this.params.current_worth;
 			$(this.getElementByXid("span21")).html(lang.ZJP_production[13]);
 //			创建的时候不需要邮箱地址也不需要邀请人，更不需要产品信息
-			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
+//			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("upgrade-message")).addClass("common_show");
-			});
-			$(this.getElementByXid("row4")).animate({height:0},"slow",function(){
+//			});
+//			$(this.getElementByXid("row4")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("row4")).addClass("common_show");
-			});
+//			});
 			$(this.getElementByXid("p1")).text(lang.ZJP_production[12]);
+			
 		}
 		else if(action=="invite")
 		{
 			current_rank = -1;
 			worth = 0
-			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
+//			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
 				$(me.getElementByXid("upgrade-message")).addClass("common_show");
-			});
+//			});
 			this.comp("titleBar1").set({
 				title:lang.ZJP_production[11]
 			});
 			$(this.getElementByXid("span21")).html(lang.ZJP_production[10]);
 		}
+		$(this.getElementByXid("div1")).css("display","block");
 	};
 	//不同的action不同的操作
 	Model.prototype.modelParamsReceive = function(event){

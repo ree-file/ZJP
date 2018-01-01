@@ -9,7 +9,7 @@
   <column name="status" type="String" xid="xid6"></column>
   <column name="updated_at" type="String" xid="xid7"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+    class="x-panel x-full" xid="panel1" style="background-color:#1C1F26;"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" style="background-color:#252932;" xid="title">
           <div class="x-titlebar-left"> 
@@ -25,7 +25,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#1C1F26;height:100%;width:100%;position:relative;padding-left:2%;padding-right:2%;"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="recordData">
+    <div class="x-panel-content" xid="content1" style="display:none;height:100%;width:100%;position:relative;padding-left:2%;padding-right:2%;"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="recordData">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row1" style="background-color:#252932;margin-top:15px;">
    <div class="x-col" xid="col1">

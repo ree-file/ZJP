@@ -39,6 +39,7 @@ define(function(require){
 				"name": lang.bank[i],
 			});
 		}
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 	function photoCompress(file,w,objDiv){
             var ready=new FileReader();

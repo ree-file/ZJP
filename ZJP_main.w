@@ -39,20 +39,20 @@
    <div xid="circle" class="circle" style="top:30px;">
     <div xid="remark" class="remark">
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
-    <div class="x-col" xid="col11">
+    <div class="x-col x-col-33" xid="col11">
      <div xid="div4" class="sign"></div></div> 
-    <div class="x-col" xid="col16">
-     <span xid="span24">活动</span></div> </div> 
+    <div class="x-col" xid="col16" style="text-align:left;">
+     <span xid="span24" style="font-size:medium;">活动</span></div> </div> 
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
-    <div class="x-col" xid="col17">
+    <div class="x-col x-col-33" xid="col17">
      <div xid="div5" class="sign" style="background-color:#EA2229;"></div></div> 
-    <div class="x-col" xid="col25">
-     <span xid="span25">投资</span></div> </div> 
+    <div class="x-col" xid="col25" style="text-align:left;">
+     <span xid="span25" style="font-size:medium;">投资</span></div> </div> 
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row16">
-    <div class="x-col" xid="col26">
+    <div class="x-col x-col-33" xid="col26">
      <div xid="div6" class="sign" style="background-color:#EFA433;"></div></div> 
-    <div class="x-col" xid="col28">
-     <span xid="span26">市场</span></div> </div> </div><div xid="circle-box" class="circle-box">
+    <div class="x-col" xid="col28" style="text-align:left;">
+     <span xid="span26" style="font-size:medium;">市场</span></div> </div> </div><div xid="circle-box" class="circle-box">
      <div xid="circle-left" class="circle-left">
       <div xid="left" class="left"></div></div> 
      <div xid="circle-right" class="circle-right">
@@ -119,9 +119,9 @@
   </div>
    <div class="x-col" xid="col23" style="text-align:center;"><span xid="span20"><![CDATA[$]]></span><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("worth")'><![CDATA[]]></span>
   </div>
-   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span37"><![CDATA[$]]></span><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'><![CDATA[]]></span>
+   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span37"><![CDATA[]]></span><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'><![CDATA[]]></span>
   </div>
-  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span38"><![CDATA[$]]></span><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'><![CDATA[]]></span>
+  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span38"><![CDATA[]]></span><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'><![CDATA[]]></span>
   </div></div></div>
    </div></li></ul> </div></div>
   <div xid="div8" style="height:100px;"></div></div>

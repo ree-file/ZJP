@@ -4,7 +4,7 @@
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bankData" idColumn="id" confirmRefresh="false"><column name="id" type="Integer" xid="xid1"></column>
   <column label="银行名称" name="name" type="String" xid="xid2"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+    class="x-panel x-full" xid="panel1" style="background-color:#252932;"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" style="background-color:#252932;" xid="title">
           <div class="x-titlebar-left"> 
@@ -20,7 +20,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#252932;height:100%;">
+    <div class="x-panel-content" xid="content1" style="display:none;background-color:#252932;height:100%;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
    <div class="x-col" xid="col4"><span xid="span2"><![CDATA[]]></span></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:#252932;padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;height:50px;">

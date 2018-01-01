@@ -93,9 +93,11 @@
 .refresh{
 	display:none;
 	height:auto;
-	background-color:#9D9996;
 	width:100%;
 	text-align:center;
 	verticle:middle;
 	z-index:9999;
+}
+.my .x-row .x-col span{
+	color:black;
 }

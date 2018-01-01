@@ -53,7 +53,7 @@ define(function(require) {
 					url : require.toUrl('./transfermoney.w')
 				},
 				"versioninformation" : {
-					url : require.toUrl('./transfermoney.w')
+					url : require.toUrl('./versioninformation.w')
 				},
 				"wallet" : {
 					url : require.toUrl('./wallet.w')

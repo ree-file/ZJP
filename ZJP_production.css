@@ -3,7 +3,9 @@
 	background:#252932;
 	text-align:center;
 }
-
+.introduction{
+	display:none;
+}
 .row-title span{
 	color:white;
 	font-size:1.5em;
@@ -27,8 +29,7 @@
 }
 
 p{
-	padding:0 2px 0 5px;
-	text-indent:2em;
+	padding:10px;
 	font-size:1.1em;
 	color:red;
 }
@@ -77,7 +78,7 @@ select {
 	/* box-shadow:5px 5px 5px #868687; */
 	border-with:1px;
 	border-style:solid;
-	border-color:#3BBFFF;
+	border-color:rgb(93, 146, 226);
 }
 .x-popOver-content{
 	display:table;

@@ -41,7 +41,7 @@
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row18" style="margin-top:0px;background-color:#1C1F26;height:55px;">
    <div class="x-col" xid="col38"></div>
-   <div class="x-col x-col-50" xid="col39" style="background-color:#1C1F26;border-style:groove groove groove groove;border-width:thin thin thin thin;"><span xid="span27" class="center-block spancenter" style="color:#FFFFFF;position:relative;font-size:x-large;height:100%;width:10%;"><![CDATA[$]]></span><span xid="totalSpan" class="center-block totalspancenter" style="color:#FFFFFF;position:relative;font-size:x-large;height:100%;width:89%;"><![CDATA[]]></span>
+   <div class="x-col x-col-50" xid="col39" style="border-radius:5px;text-align:center;background-color:#1C1F26;border-style:groove groove groove groove;border-width:thin thin thin thin;"><span xid="totalSpan" class="center-block" style="border-radius:5px;color:#FFFFFF;position:relative;font-size:x-large;height:100%;width:89%;"><![CDATA[]]></span>
   </div>
    <div class="x-col" xid="col40"></div></div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="inviteRow" style="background-color:#1C1F26;" bind-click="inviteRowClick">
    <div class="x-col" xid="col24">
