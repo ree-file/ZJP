@@ -62,6 +62,7 @@
    <div class="x-col" xid="col7"><a component="$UI/system/components/justep/button/button" class="btn btn-warning btn-block" xid="button1">
    <i xid="i1"></i>
    <span xid="span1" bind-text='val("status")'></span></a></div>
-   </div></div></div></li></ul> </div></div>
+   </div></div></div></li></ul> </div>
+  <div xid="div10" style="height:100px;"></div></div>
   </div> 
 <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span></div>

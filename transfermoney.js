@@ -30,7 +30,9 @@ define(function(require){
 		$(this.getElementByXid("span13")).html(lang.transfermoney[7]);
 		$(this.getElementByXid("span12")).html(lang.transfermoney[8]);
 		$(this.getElementByXid("span4")).html(lang.transfermoney[9]);
+		$(this.getElementByXid("span1")).html(lang.transfermoney[12]);
 		$(this.getElementByXid("otherbankrow")).hide();
+		$(this.getElementByXid("span5")).html(lang.transfermoney[13]);
 		var bankfromData = this.comp("bankfromData");
 		for (var i = 0; i < 18; i++) {
 			bankfromData.add({
@@ -42,10 +44,8 @@ define(function(require){
             var ready=new FileReader();
                 /*开始读取指定的Blob对象或File对象中的内容. 当读取操作完成时,readyState属性的值会成为DONE,如果设置了onloadend事件处理程序,则调用之.同时,result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容.*/
                 ready.readAsDataURL(file);
-                 debugger;
                 ready.onload=function(){
                     var re=this.result;
-                    debugger;
                     canvasDataURL(re,w,objDiv);
                    
                 }
@@ -140,49 +140,16 @@ define(function(require){
                 photoCompress(fileObj, {
                     quality: 0.2
                 }, function(base64Codes){
-                    //console.log("压缩后：" + base.length / 1024 + " " + base);
-                  bl = convertBase64UrlToBlob(base64Codes);
-                  debugger;
-                  formdata.append("image", bl, "file_"+Date.parse(new Date())+".jpg");
+//                    console.log("压缩后：" + base.length / 1024 + " " + base);
+                 var bl = convertBase64UrlToBlob(base64Codes);
+                 formdata.append("image", bl,"file_"+Date.parse(new Date())+".jpg");
                  me.uploadmessage(formdata);
-         });}
+         });
+         }
          else{
         	 formdata.append("image", fileObj);
         	 me.uploadmessage(formdata);
          }
-//			var from = this.comp('fromSelect').val();
-//			var cardnumber = this.getElementByXid("cardidInput").value;
-//			var money = this.getElementByXid("moneyInput").value;
-//			var otherbankInput = this.getElementByXid("otherbankInput").value;
-//			if (from == lang.transfermoney[11]) {
-//				formdata.append("money",money);
-//				formdata.append("type","save");
-//				formdata.append("card_number",cardnumber);
-//				formdata.append("message",from);
-//				formdata.append("security_code",security_code);
-//				var is_success5 = personaljs.supplies(formdata);
-//				if (is_success5 == undefined) {
-//					this.comp("windowDialog1").open();
-//					this.showprompt(lang.showprompt[0]);
-//					return;
-//				}
-//				else if (is_success5 == true) {
-//					this.setupButtonClick(event);
-//					return;
-//				}
-//			}
-//			else {
-//				var is_success6 = personaljs.supplies(money,"save",cardnumber,from);
-//				if (is_success6 == undefined) {
-//					this.comp("windowDialog1").open();
-//					this.showprompt(lang.showprompt[0]);
-//					return;
-//				}
-//				else if (is_success6 == true) {
-//					this.setupButtonClick(event);
-//					return;
-//				}
-//			}
 
 	};
 
@@ -223,6 +190,18 @@ define(function(require){
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
 			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
+		}
+	};
+
+
+
+	Model.prototype.file2Change = function(event){
+		var fileObj = $(this.getElementByXid("file2")).prop("files")[0];
+		if (fileObj) {
+			$(this.getElementByXid("span5")).html(lang.transfermoney[14]);
+		}
+		else{
+			$(this.getElementByXid("span5")).html(lang.transfermoney[13]);
 		}
 	};
 

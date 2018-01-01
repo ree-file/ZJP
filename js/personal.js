@@ -171,7 +171,6 @@ define(function(require){
 		},
 
 		supplies : function(formdata){
-			debugger;
 			var is_success =false;
 			$.ajax({
 				url: config.site+"supplies",//php的api路径
@@ -188,7 +187,6 @@ define(function(require){
 					showprompt(lang.personaljs[3]);
 				},
 				error:function(ero){
-					debugger;
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 

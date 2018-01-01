@@ -3,6 +3,12 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var config = require("./config");
 	var jwt = require("./jwt");
+	function showprompt(text){
+		justep.Util.hint(text,{
+			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
+		});
+		$(".x-hint").find("button[class='close']").hide();
+	}
 	return {
 		phoneNumberIsLive:function(number){
 			var is_live;
@@ -56,7 +62,7 @@ define(function(require){
 			return is_live;
 		},
 		emaillogin:function(email,password){
-			var is_success;
+			var is_success=false;
 			$.ajax({
 				url:config.site+"login",
 				async:false,
@@ -67,9 +73,16 @@ define(function(require){
 					is_success=true;
 					jwt.setToken(data.data.jwt_token);
 				},
-				error:function(){
-					is_success=false;
+				error:function(ero){
+					is_success=undefined;
+					responseText = JSON.parse(ero.responseText);
+					
+					 if(responseText.message=="Freezed."){
+						showprompt("账号已冻结（Freezed）");
+					}
+					
 				}
+				
 			});
 			return is_success;
 		}

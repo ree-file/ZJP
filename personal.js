@@ -47,10 +47,11 @@ define(function(require){
 
 	function timedCount(num,total){
       num++;
+      num++;
       $(".totalspancenter").text(num);
       // 设置条件使停止计时
       if (num<total) {
-          var t = setTimeout(function(){timedCount(num,total)},5);
+          var t = setTimeout(function(){timedCount(num,total)},0.1);
       }
   }
 

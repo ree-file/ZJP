@@ -3,7 +3,7 @@ define(function(require){
 	var $ =require('jquery');
 
 	return{
-		site: "http://www.bottsm.com/api/v1/",
+		site: "http://47.96.154.21/api/v1/",
 		configegg : function(){
 			var config_egg = {};
 			config_egg.level_worth=[];

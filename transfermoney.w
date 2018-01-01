@@ -47,7 +47,7 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block" xid="button1">
    <i xid="i1"></i>
    <span xid="span4"></span></a></div> 
-  <div class="x-col" xid="col1"><input type="file" value="" xid="file2"></input></div></div>
+  <div class="x-col" xid="col1"></div></div>
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col16">
@@ -59,7 +59,13 @@
     <span xid="span13" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col5" style="padding:0px 5px 0px 0px;">
     <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:40px;background-color:#252932;">
+   <div class="x-col x-col-25" xid="col2"><span xid="span1" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div>
+   <div class="x-col bgim" xid="col14"><input type="file" value="" xid="file2" style="height:100%;opacity:0;" bind-change="file2Change"></input>
+  <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="上传图片" xid="button2" style="margin-top:-40px;width:100%;" icon="glyphicon glyphicon-cloud">
+   <i xid="i2" class="glyphicon glyphicon-cloud"></i>
+   <span xid="span5">上传图片</span></a></div>
+   <div class="x-col" xid="col17"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
    <div class="x-col" xid="col18">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" xid="setupButton" style="background-color:#049FCC;" onClick="setupButtonClick">
      <i xid="i5"></i>
