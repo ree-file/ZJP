@@ -33,7 +33,7 @@ define(function(require) {
 			this.showprompt("重新登录");
 			return;
 		}
-		personalInvite = 123;
+		personalInvite = mainInfo.receivers_eggs;
 		//获得用户所有巢的信息
 		this.comp("NestsAccount").refreshData();
 		//把nestInfo填充到各个data数据和今日收益，和总投资里

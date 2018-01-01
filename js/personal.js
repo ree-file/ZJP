@@ -170,21 +170,25 @@ define(function(require){
 			return is_success;
 		},
 
-		supplies : function(money,type,card_number,message){
+		supplies : function(formdata){
+			debugger;
 			var is_success =false;
 			$.ajax({
 				url: config.site+"supplies",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{money:money,type:type,card_number:card_number,message:message},//需要传递的数据
+				data:formdata,//需要传递的数据
 				type:'post',//php获取类型
         headers: {
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
+        processData: false,  // 告诉jQuery不要去处理发送的数据
+        contentType: false,
 				success:function(data){//请求成功返回值存在data里
 					showprompt(lang.personaljs[3]);
 				},
 				error:function(ero){
+					debugger;
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 

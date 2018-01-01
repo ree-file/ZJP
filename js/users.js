@@ -31,7 +31,7 @@ define(function(require){
 			return is_success;
 		},
 		resetsecondPasswordajax:function(password,code){
-			var status =404;
+			var status =400;
 			$.ajax({
 				url:config.site+"private/reset-security-code",
 				async:false,
@@ -85,7 +85,7 @@ define(function(require){
 			return is_success;
 		},
 		forgetsecondpasswordajax:function(){
-			var status =404;
+			var status =400;
 			$.ajax({
 				url:config.site+"private/forget-security-code",
 				async:false,
@@ -176,7 +176,7 @@ define(function(require){
 		},
 		getUserMessageajax:function(){
 			var worthInfo=[];
-			var status =404;
+			var status =400;
 			$.ajax({
 				url:config.site+"private",
 				async:false,
@@ -242,7 +242,7 @@ define(function(require){
 			return is_success;
 		},
 		checksecondPasswordajax:function(){
-			var status =404;
+			var status =400;
 			$.ajax({
 				url:config.site+"private",
 				async:false,
@@ -296,7 +296,7 @@ define(function(require){
 			return is_success;
 		},
 		setSecondPasswordajax:function(password){
-			var status =404;
+			var status =400;
 			$.ajax({
 				url:config.site+"private/store-security-code",
 				async:false,

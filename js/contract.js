@@ -9,6 +9,14 @@ define(function(require){
 		});
 		$(".x-hint").find("button[class='close']").hide();
 	}
+	var lang;
+	if(localStorage.getItem("lang")=="en_us")
+	{
+		lang = require('./en_us');
+	}
+	else{
+		lang = require('./zh_cn');
+	}
 	return{
 		withdrawFromcontract:function(money,id,password){
 			var is_success = false;
@@ -29,7 +37,7 @@ define(function(require){
 			return is_success;
 		},
 		withdrawFromcontractajax:function(money,id,password){
-			var status;
+			var status=400;
 			$.ajax({
 				url:config.site+"contracts/"+id+"/extract",
 				async:false,
@@ -59,6 +67,14 @@ define(function(require){
 					}
 					else if(responseText.message=="No token provided."){
 						status = 404;
+					}
+					else if(responseText.message=="This action is unauthorized.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
 					}
 				}
 			});

@@ -11,10 +11,12 @@ define(function(require){
 	else{
 		lang = require('./js/zh_cn');
 	}
+	var me;
 	var Model = function(){
 		this.callParent();
+		me = this;
 	};
-
+	
 	Model.prototype.modelLoad = function(event){
 		this.comp("title").set({
 			title:lang.transfermoney[0]
@@ -36,36 +38,113 @@ define(function(require){
 			});
 		}
 	};
-
+	function photoCompress(file,w,objDiv){
+            var ready=new FileReader();
+                /*开始读取指定的Blob对象或File对象中的内容. 当读取操作完成时,readyState属性的值会成为DONE,如果设置了onloadend事件处理程序,则调用之.同时,result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容.*/
+                ready.readAsDataURL(file);
+                 debugger;
+                ready.onload=function(){
+                    var re=this.result;
+                    debugger;
+                    canvasDataURL(re,w,objDiv);
+                   
+                }
+                
+        }
+        function canvasDataURL(path, obj, callback){
+             var img = new Image();
+             img.src = path;
+             img.onload = function(){
+              var that = this;
+              // 默认按比例压缩
+              var w = that.width,
+               h = that.height,
+               scale = w / h;
+               w = obj.width || w;
+               h = obj.height || (w / scale);
+              var quality = 0.7;  // 默认图片质量为0.7
+              //生成canvas
+              var canvas = document.createElement('canvas');
+              var ctx = canvas.getContext('2d');
+              // 创建属性节点
+              var anw = document.createAttribute("width");
+              anw.nodeValue = w;
+              var anh = document.createAttribute("height");
+              anh.nodeValue = h;
+              canvas.setAttributeNode(anw);
+              canvas.setAttributeNode(anh);
+              ctx.drawImage(that, 0, 0, w, h);
+              // 图像质量
+              if(obj.quality && obj.quality <= 1 && obj.quality > 0){
+               quality = obj.quality;
+              }
+              // quality值越小，所绘制出的图像越模糊
+              var base64 = canvas.toDataURL('image/jpeg', quality);
+              // 回调函数返回base64的值
+              callback(base64);
+            }
+        }
+        function convertBase64UrlToBlob(urlData){
+            var arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while(n--){
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new Blob([u8arr], {type:mime});
+        }
 	Model.prototype.setupButtonClick = function(event){
-		var from = this.comp('fromSelect').val();
-		var cardnumber = this.getElementByXid("cardidInput").value;
-		var money = this.getElementByXid("moneyInput").value;
-		var otherbankInput = this.getElementByXid("otherbankInput").value;
-			if (from == lang.transfermoney[11]) {
-				var is_success5 = personaljs.supplies(money,"save",cardnumber,otherbankInput);
-				if (is_success5 == undefined) {
-					this.comp("windowDialog1").open();
-					this.showprompt(lang.showprompt[0]);
-					return;
-				}
-				else if (is_success5 == true) {
-					this.setupButtonClick(event);
-					return;
-				}
-			}
-			else {
-				var is_success6 = personaljs.supplies(money,"save",cardnumber,from);
-				if (is_success6 == undefined) {
-					this.comp("windowDialog1").open();
-					this.showprompt(lang.showprompt[0]);
-					return;
-				}
-				else if (is_success6 == true) {
-					this.setupButtonClick(event);
-					return;
-				}
-			}
+		var fileObj = $(this.getElementByXid("file2")).prop("files")[0];
+		 var formdata = new FormData();
+		if(fileObj.size > 1025) { //大于1M，进行压缩上传
+                photoCompress(fileObj, {
+                    quality: 0.2
+                }, function(base64Codes){
+                    //console.log("压缩后：" + base.length / 1024 + " " + base);
+                  bl = convertBase64UrlToBlob(base64Codes);
+                  ;
+                  formdata.append("image", bl, "file_"+Date.parse(new Date())+".jpg");
+                  debugger
+                  var from = me.comp('fromSelect').val();
+                  var cardnumber = me.getElementByXid("cardidInput").value;
+                  var money = me.getElementByXid("moneyInput").value;
+                  var otherbankInput = me.getElementByXid("otherbankInput").value;
+                  var security_code = me.comp("securityInput").val();
+                  formdata.append("money",money);
+                  formdata.append("type","save");
+                  formdata.append("card_number",cardnumber);
+                  formdata.append("message",from);
+                  formdata.append("security_code",security_code);
+                  debugger;
+                  var is_success5 = personaljs.supplies(formdata);
+         });}
+//			var from = this.comp('fromSelect').val();
+//			var cardnumber = this.getElementByXid("cardidInput").value;
+//			var money = this.getElementByXid("moneyInput").value;
+//			var otherbankInput = this.getElementByXid("otherbankInput").value;
+//			if (from == lang.transfermoney[11]) {
+//				var is_success5 = personaljs.supplies(money,"save",cardnumber,otherbankInput,bl);
+//				if (is_success5 == undefined) {
+//					this.comp("windowDialog1").open();
+//					this.showprompt(lang.showprompt[0]);
+//					return;
+//				}
+//				else if (is_success5 == true) {
+//					this.setupButtonClick(event);
+//					return;
+//				}
+//			}
+//			else {
+//				var is_success6 = personaljs.supplies(money,"save",cardnumber,from);
+//				if (is_success6 == undefined) {
+//					this.comp("windowDialog1").open();
+//					this.showprompt(lang.showprompt[0]);
+//					return;
+//				}
+//				else if (is_success6 == true) {
+//					this.setupButtonClick(event);
+//					return;
+//				}
+//			}
 
 	};
 
@@ -108,6 +187,8 @@ define(function(require){
 			justep.Shell.showPage("ZJP_resetPassword",{action:"resetpassword",page:"main"});
 		}
 	};
+
+
 
 	return Model;
 });

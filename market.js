@@ -290,7 +290,7 @@ define(function(require){
 				this.comp("windowDialog1").open();
 				return;
 			}
-			if (!this.belongtouser(simpleinfo.nests, name)) {
+			if (!this.belongtouser(simpleinfo, name)) {
 				this.showprompt(lang.showprompt[10]);
 			}
 		}

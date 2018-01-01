@@ -37,7 +37,7 @@ define(function(require){
 			return is_success;
 		},
 		buyajax:function(id,password){
-			var status =404;
+			var status =400;
 			$.ajax({
 				url: config.site+"orders/"+id+"/buy",//php的api路径
 				async:false,
@@ -68,6 +68,14 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status = 404;
 					}
+					else if(responseText.message=="Can not buy own order.")
+					{
+						showprompt(lang.showprompt[61]);
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 				}
 			});
 			return status;
@@ -90,12 +98,12 @@ define(function(require){
 		getordersajax : function(page){
 			var allorders=[];
 			var eggval = parseFloat(config.configegg().egg_val);
-			var status =404;
+			var status =400;
 			$.ajax({
 				url: config.site+"orders",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{page:page},//需要传递的数据
+				data:{page:page,orderBy:"desc"},//需要传递的数据
 				type:'GET',//php获取类型
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
@@ -173,12 +181,12 @@ define(function(require){
 		filterOrdersajax:function(page,min,max){
 			var allorders=[];
 			var eggval = parseFloat(config.configegg().egg_val);
-			var status=404;
+			var status=400;
 			$.ajax({
 				url: config.site+"orders",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{page:page,min:min,max:max},//需要传递的数据
+				data:{page:page,min:min,max:max,orderBy:"desc"},//需要传递的数据
 				type:'GET',//php获取类型
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
@@ -256,7 +264,7 @@ define(function(require){
 		//获得交易记录--许鑫君
 		getTransactionRecordajax:function(){
 			var record=[];
-			var status = 404;
+			var status = 400;
 			$.ajax({
 				url:config.site+"private/orders",
 				async:false,
@@ -368,8 +376,11 @@ define(function(require){
 						status = 404;
 					}
 					else if(responseText.message=="The order is on selling."){
-						status = 400;
 						showprompt(lang.marketjs[0]);
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
 					}
 				}
 			});
@@ -425,6 +436,9 @@ define(function(require){
 					}
 					else if(responseText.message=="No token provided."){
 						status = 404;
+					}
+					else if(responseText.message=="Not on selling."){
+						showprompt(lang.showprompt[62]);
 					}
 				}
 			});

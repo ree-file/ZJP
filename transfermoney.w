@@ -4,7 +4,9 @@
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bankfromData" idColumn="id" confirmRefresh="false">
    <column name="id" type="Integer" xid="column1"></column>
   <column label="银行名称" name="name" type="String" xid="column2"></column></div>
-  </div>  
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="img" idColumn="id"><column name="id" type="Integer" xid="xid1"></column>
+  <column name="img" type="String" xid="xid2"></column>
+  <data xid="default1">[{&quot;id&quot;:1,&quot;img&quot;:&quot;&quot;}]</data></div></div>  
   <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive"></span><div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -45,7 +47,7 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-danger btn-block" xid="button1">
    <i xid="i1"></i>
    <span xid="span4"></span></a></div> 
-  <div class="x-col" xid="col1"></div></div>
+  <div class="x-col" xid="col1"><input type="file" value="" xid="file2"></input></div></div>
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col16">

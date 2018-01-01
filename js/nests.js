@@ -37,7 +37,7 @@ define(function(require){
 		},
 		community_premissionajax : function(nest_name){
 			var b =0;
-			var status =404;
+			var status =400;
 			$.ajax({
 				url:config.site+"nests",//php的api路径
 				async:false,
@@ -207,9 +207,9 @@ define(function(require){
 		},
 		nestsimpleinfoajax:function(){
 			var nestdata={};
-			var status =404;
+			var status =400;
 			$.ajax({
-				url:config.site+"private/nests",
+				url:config.site+"private/simple-nests",
 				async:false,
 				dataType:"json",
 				type:"GET",
@@ -265,7 +265,7 @@ define(function(require){
 			return is_success;
 		},
 		createnestajax:function(params){
-			var status =404
+			var status =400;
 			$.ajax({
 				url:config.site+"nests",
 				async:false,
@@ -296,6 +296,14 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status = 404;
 					}
+					else if(responseText.message=="This action is unauthorized.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 				}
 			});
 			return status;
@@ -319,7 +327,7 @@ define(function(require){
 			return is_success;
 		},
 		upgradenestajax:function(params){
-			var status = 404;
+			var status = 400;
 			$.ajax({
 				url:config.site+"nests/"+params.nest_id+"/upgrade",
 				async:false,
@@ -350,6 +358,14 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status = 404;
 					}
+					else if(responseText.message=="This action is unauthorized.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 				}
 			});
 			return status;
@@ -373,7 +389,7 @@ define(function(require){
 			return is_success;
 		},
 		reinvestmentajax:function(params){
-			var status = 404;
+			var status = 400;
 			$.ajax({
 				url:config.site+"nests/"+params.nest_id+"/reinvest",
 				async:false,
@@ -404,6 +420,14 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status = 404;
 					}
+					else if(responseText.message=="This action is unauthorized.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 				}
 			});
 			return status;
@@ -427,7 +451,7 @@ define(function(require){
 			return is_success;
 		},
 		invitenestajax:function(params){
-			var status = 404;
+			var status = 400;
 			$.ajax({
 				url:config.site+"users",
 				async:false,
@@ -458,6 +482,14 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status = 404;
 					}
+					else if(responseText.message=="This action is unauthorized.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 				}
 			});
 			return status;
@@ -478,7 +510,7 @@ define(function(require){
 							if (mainInfo[int].records[int1].type=="invite_got"||mainInfo[int].records[int1].type=="community_got") {
 								MyincomeInfo[MyincomeInfo.length]={
 										contract_id:mainInfo[int].records[int1].contract_id,
-										type:mainInfo[int].records[int1].type=="invite_got"?lang.nestjs[7]:lang.nest[8],
+										type:mainInfo[int].records[int1].type=="invite_got"?lang.nestjs[7]:lang.nestjs[8],
 										income:parseFloat(parseFloat(mainInfo[int].records[int1].eggs)*parseFloat(eggval)).toFixed(2),
 										date:mainInfo[int].records[int1].created_at,
 										name:mainInfo[int].name
@@ -530,7 +562,7 @@ define(function(require){
 			return nestInfo;
 		},
 		nestrecordsajax:function(nest_id){
-			var status = 404;
+			var status = 400;
 			var nestrecords;
 			$.ajax({
 				url:config.site+"nests/"+nest_id+"/records",
@@ -628,7 +660,7 @@ define(function(require){
 			return mainInfo;
 		},
 		mainInfoajax:function(){
-			var status = 404;
+			var status = 400;
 			var mainInfo;
 			$.ajax({
 				url:config.site+"private/nests",
