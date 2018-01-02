@@ -76,6 +76,7 @@ define(function(require){
 		moneymarket = moneyall.money_market;
 		moneylimit = moneyall.money_limit;
 		moneyspan4.text((Number(moneyall.money_market)+Number(moneyall.money_active)+Number(moneyall.money_limit)).toFixed(2));
+		$(this.getElementByXid("panel2")).css("display","block");
 	};
 
 	Model.prototype.row14Click = function(event){

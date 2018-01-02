@@ -47,10 +47,11 @@ define(function(require){
 
 	function timedCount(num,total){
       num++;
+      num++;
       $(".totalspancenter").text(num);
       // 设置条件使停止计时
       if (num<total) {
-          var t = setTimeout(function(){timedCount(num,total)},5);
+          var t = setTimeout(function(){timedCount(num,total)},0.1);
       }
   }
 
@@ -169,13 +170,10 @@ define(function(require){
 
 	Model.prototype.modelParamsReceive = function(event){
 		if (this.params.personal) {
-				var totalSpan = $(this.getElementByXid("totalSpan"));
-				var num = 0;
-				var x = this.params.personal;  //传值赋值
-				var t = setTimeout(timedCount(num,x));
+				$(this.getElementsByXid("totalSpan")).html("$"+this.params.personal);
 		}
 		else{
-			$(this.getElementsByXid("totalSpan")).html(0);
+			$(this.getElementsByXid("totalSpan")).html("$"+0);
 		}
 	};
 

@@ -49,10 +49,10 @@
    <div class="x-panel-content background-color-black" xid="content1" style="height:100%;"><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="height:10px;padding:0px 0px 0px 0px;">
    <div class="x-col" xid="col1">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13">
-   <div class="x-col" xid="col38" style="padding:0px 0px 0px 0px;"><h5 xid="h52" class="gary-font-small" bind-text=' $model.nest.val("name")'><![CDATA[600U的小窝]]></h5></div>
+   <div class="x-col" xid="col38" style="padding:0px 0px 0px 0px;"><h5 xid="h52" class="gary-font-small" bind-text=' $model.nest.val("name")'><![CDATA[]]></h5></div>
    </div></div>
    <div class="x-col" xid="col2"></div>
-   <div class="x-col pull-right text-right" xid="col3"><img alt="" xid="image2" height="26px" style="width:40px;" src="$UI/ZJP/res/img/Germany.jpg"></img></div></div></div>
+   <div class="x-col pull-right text-right" xid="col3"><img alt="" xid="image2" height="26px" style="width:40px;" src="$UI/ZJP/res/img/china.gif"></img></div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="padding:0px 0px 0px 0px;height:85px;">
    <div class="x-col" xid="col19">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="padding:0px 0px 0px 0px;height:54px;">
@@ -151,9 +151,9 @@
   <div component="$UI/system/components/justep/contents/contents" class="x-contents" active="0" xid="contents2">
    <div class="x-contents-content" xid="content3" onActive="content3Active" onInactive="content3Inactive"><div xid="div3"><div component="$UI/system/components/justep/row/row" class="x-row noTopButtomPadding" xid="row4">
    <div class="x-col  noTopButtomPadding col-buttom-border" xid="col9"><span xid="span10" style="color:#36C4D2;font-size:xx-small;"><![CDATA[TCA]]></span></div>
-   <div class="x-col col-buttom-border noTopButtomPadding" xid="col10"><span xid="span11" style="color:#D37CC1;font-size:xx-small;">TDA:</span></div>
+   <div class="x-col col-buttom-border noTopButtomPadding" xid="col10"><span xid="span11" style="color:#D37CC1;font-size:xx-small;"><![CDATA[]]></span></div>
    <div class="x-col col-buttom-border noTopButtomPadding" xid="col11"><![CDATA[]]>
-  <span xid="span12" style="color:#D0AD4F;font-size:xx-small;"><![CDATA[TA:]]></span></div>
+  <span xid="span12" style="color:#D0AD4F;font-size:xx-small;"><![CDATA[]]></span></div>
   <div class="x-col col-buttom-border text-center" xid="col16"></div></div></div><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="historyData">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row2">

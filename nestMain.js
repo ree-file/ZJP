@@ -141,6 +141,7 @@ define(function(require){
 		var released =0;
 		var withdraw = 0;
 		var investment = 0;
+		var allmoney = 0;
 		historyData =[];
 		withdrawData=[];
 		var available =0;
@@ -169,6 +170,7 @@ define(function(require){
 					date:nestInfo.nestinfo.contracts[i].created_at,
 					message:lang.nestMain[10],
 			}
+			allmoney+=parseFloat(nestInfo.nestinfo.contracts[i].eggs)*eggval;
 			withdrawData[i]={
 					id:i+1,
 					date:new Date(),
@@ -178,7 +180,7 @@ define(function(require){
 					withdraw:capped
 			}
 		}
-		
+		$(this.getElementByXid("span10")).html("TAC:$"+allmoney);
 		
 		var nestvalues = [{
 			id:nestInfo.nestinfo.id,

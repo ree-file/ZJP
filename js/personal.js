@@ -162,6 +162,10 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
 					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
+					}
 					else{
 						showprompt(lang.personaljs[2]);
 					}
@@ -171,7 +175,6 @@ define(function(require){
 		},
 
 		supplies : function(formdata){
-			debugger;
 			var is_success =false;
 			$.ajax({
 				url: config.site+"supplies",//php的api路径
@@ -188,7 +191,6 @@ define(function(require){
 					showprompt(lang.personaljs[3]);
 				},
 				error:function(ero){
-					debugger;
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 
@@ -203,6 +205,10 @@ define(function(require){
 					}
 					else if(responseText.message=="No token provided."){
 						is_success=undefined;
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
 					}
 					else{
 						is_success=undefined;
@@ -241,6 +247,10 @@ define(function(require){
 					}
 					else if(responseText.message=="No token provided."){
 						record=undefined;
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[60]);
 					}
 					else{
 						showprompt(lang.personaljs[5]);

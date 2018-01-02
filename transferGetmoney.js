@@ -37,6 +37,7 @@ define(function(require){
 				"name": lang.bank[i],
 			});
 		}
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 
 	Model.prototype.setupButtonClick = function(event){

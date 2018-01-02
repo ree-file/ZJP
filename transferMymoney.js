@@ -87,6 +87,7 @@ define(function(require){
 		$(this.getElementByXid("span11")).html(lang.transferMymoney[4]);
 		$(this.getElementByXid("span5")).html(lang.transferMymoney[5]);
 		$(this.getElementByXid("span12")).html(lang.transferMymoney[6]);
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 
 	//封装提示框--许鑫君

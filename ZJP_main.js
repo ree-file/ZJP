@@ -33,7 +33,7 @@ define(function(require) {
 			this.showprompt("重新登录");
 			return;
 		}
-		personalInvite = mainInfo.receivers_eggs;
+		personalInvite = mainInfo.receivers_eggs*parseFloat(config.configegg().egg_val);
 		//获得用户所有巢的信息
 		this.comp("NestsAccount").refreshData();
 		//把nestInfo填充到各个data数据和今日收益，和总投资里
@@ -186,7 +186,6 @@ define(function(require) {
 		if (event.data.data) {
 			var token=localStorage.getItem("jwt_token");
 			var ids = token.split(".");
-			debugger;
 			var id = JSON.parse(base64.decode(ids[1]));
 			if (id&&event.data.email) {
 				localStorage.setItem("thismyuserId", id.sub);
