@@ -44,12 +44,12 @@
     <span xid="span8" style="color:#FFFFFF;font-size:small;" bind-text='val("card_number")'><![CDATA[]]></span></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7">
    <div class="x-col x-col-20" xid="col22">
-    <span xid="span9" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(4)"><![CDATA[]]></span></div> 
+    <span xid="span9" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(5)"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col21">
     <span xid="span10" style="color:#FFFFFF;font-size:medium;" bind-text='val("money")'><![CDATA[]]></span></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8">
    <div class="x-col x-col-20" xid="col24">
-    <span xid="span11" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(5)"><![CDATA[]]></span></div> 
+    <span xid="span11" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(6)"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col23">
     <span xid="span12" style="color:#FFFFFF;font-size:x-small;" bind-text='val("updated_at")'><![CDATA[]]></span></div> </div></div>
    <div class="x-col x-col-25" xid="col3" style="padding-top:40px;padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
