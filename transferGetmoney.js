@@ -111,5 +111,11 @@ define(function(require){
 		justep.Shell.closePage();
 	};
 
+	Model.prototype.button3Click = function(event){
+		var moneyInput = this.getElementByXid("moneyInput").value;
+		var changemoney = 7; //主动变换值 后台获取美元汇率
+		$(this.getElementByXid("yuanspan")).text("￥"+(moneyInput*changemoney).toFixed(2));
+	};
+
 	return Model;
 });

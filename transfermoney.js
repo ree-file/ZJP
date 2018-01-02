@@ -16,7 +16,7 @@ define(function(require){
 		this.callParent();
 		me = this;
 	};
-	
+
 	Model.prototype.modelLoad = function(event){
 		this.comp("title").set({
 			title:lang.transfermoney[0]
@@ -48,9 +48,9 @@ define(function(require){
                 ready.onload=function(){
                     var re=this.result;
                     canvasDataURL(re,w,objDiv);
-                   
+
                 }
-                
+
         }
         function canvasDataURL(path, obj, callback){
              var img = new Image();
@@ -194,8 +194,6 @@ define(function(require){
 		}
 	};
 
-
-
 	Model.prototype.file2Change = function(event){
 		var fileObj = $(this.getElementByXid("file2")).prop("files")[0];
 		if (fileObj) {
@@ -206,7 +204,11 @@ define(function(require){
 		}
 	};
 
-
+	Model.prototype.button3Click = function(event){
+		var moneyInput = this.getElementByXid("moneyInput").value;
+		var changemoney = 7;
+		$(this.getElementByXid("daospan")).text("￥"+(moneyInput*changemoney).toFixed(2));
+	};
 
 	return Model;
 });
