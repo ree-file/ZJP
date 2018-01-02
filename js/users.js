@@ -227,7 +227,15 @@ define(function(require){
 			var is_success = false;
 			var status = 0;
 			do{
-				status = this.checksecondPasswordajax(password);
+				var aaa = this.checksecondPasswordajax(password);
+				if(typeof(aaa)=="boolean"){
+					status = 0;
+					
+				}
+				else{
+					status=aaa;
+				}
+				
 				switch (status) {
 				case 200:
 					is_success = true;
@@ -243,6 +251,7 @@ define(function(require){
 		},
 		checksecondPasswordajax:function(){
 			var status =400;
+			var is_live = false;
 			$.ajax({
 				url:config.site+"private",
 				async:false,
@@ -253,7 +262,13 @@ define(function(require){
 				},
 				success:function(data){
 					if (data.status=="success") {
-						status = 200;
+						if (data.data.has_security_code) {
+							is_live = true;
+							status = 200;
+						}
+						else{
+							status =201;
+						}
 					}
 				},
 				error:function(ero){
@@ -274,7 +289,12 @@ define(function(require){
 					}
 				}
 			});
-			return status;
+			if (status==201) {
+				return is_live;
+			}
+			else{
+				return status;
+			}
 
 		},
 		setSecondPassword:function(password){

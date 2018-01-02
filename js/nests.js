@@ -298,11 +298,11 @@ define(function(require){
 					}
 					else if(responseText.message=="This action is unauthorized.")
 					{
-						showprompt(lang.showprompt[59]);
+						showprompt(lang.showprompt[58]);
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 				}
 			});
@@ -360,11 +360,11 @@ define(function(require){
 					}
 					else if(responseText.message=="This action is unauthorized.")
 					{
-						showprompt(lang.showprompt[59]);
+						showprompt(lang.showprompt[58]);
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 				}
 			});
@@ -422,11 +422,11 @@ define(function(require){
 					}
 					else if(responseText.message=="This action is unauthorized.")
 					{
-						showprompt(lang.showprompt[59]);
+						showprompt(lang.showprompt[58]);
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 				}
 			});
@@ -484,11 +484,11 @@ define(function(require){
 					}
 					else if(responseText.message=="This action is unauthorized.")
 					{
-						showprompt(lang.showprompt[59]);
+						showprompt(lang.showprompt[58]);
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 				}
 			});

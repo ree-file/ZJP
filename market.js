@@ -595,6 +595,7 @@ define(function(require){
 			is_refresh = 0;
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
+			this.close();
 		}
 		else{
 			justep.Shell.closePage();

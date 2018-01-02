@@ -506,6 +506,7 @@ define(function(require){
 	Model.prototype.button12Click = function(event){
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
+			this.close();
 		}
 		else{
 			justep.Shell.closePage();
@@ -515,6 +516,10 @@ define(function(require){
 	
 	Model.prototype.modelActive = function(event){
 		this.modelParamsReceive(event);
+	};
+	
+	
+	Model.prototype.modelUnLoad = function(event){
 	};
 	
 	

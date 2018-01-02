@@ -99,5 +99,9 @@ define(function(require){
 		this.modelLoad(event);
 	};
 
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
+	};
+
 	return Model;
 });

@@ -45,8 +45,9 @@ define(function(require){
 		var cardnumber = this.getElementByXid("cardidInput").value;
 		var money = this.getElementByXid("moneyInput").value;
 		var otherbankInput = this.getElementByXid("otherbankInput").value;
+		var security_code = $.trim(this.comp("securityInput").val());
 		if (to == lang.transfermoney[11]) {
-			var is_success3 = personaljs.supplies(money,"get",cardnumber,otherbankInput);
+			var is_success3 = personaljs.suppliesget(money,"get",cardnumber,otherbankInput,security_code);
 			if (is_success3 == undefined) {
 				this.comp("windowDialog1").open();
 				this.showprompt(lang.showprompt[0]);
@@ -58,7 +59,7 @@ define(function(require){
 			}
 		}
 		else {
-			var is_success4 = personaljs.supplies(money,"get",cardnumber,to);
+			var is_success4 = personaljs.suppliesget(money,"get",cardnumber,to,security_code);
 			if (is_success4 == undefined) {
 				this.comp("windowDialog1").open();
 				this.showprompt(lang.showprompt[0]);
@@ -104,6 +105,10 @@ define(function(require){
 						"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
 					});
 					$(".x-hint").find("button[class='close']").hide();
+	};
+
+	Model.prototype.backBtnClick = function(event){
+		justep.Shell.closePage();
 	};
 
 	return Model;

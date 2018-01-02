@@ -119,9 +119,9 @@
   </div>
    <div class="x-col" xid="col23" style="text-align:center;"><span xid="span20"><![CDATA[$]]></span><span xid="span22" style="color:#D37CC1;font-size:small;position:relative;" bind-text='val("worth")'><![CDATA[]]></span>
   </div>
-   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span37"><![CDATA[]]></span><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text='val("income")'><![CDATA[]]></span>
+   <div class="x-col" xid="col42" style="text-align:center;"><span xid="span37"><![CDATA[]]></span><span xid="span33" style="color:#D0AD4F;font-size:small;position:relative;" bind-text=' val("freese") +val("income")'><![CDATA[]]></span>
   </div>
-  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span38"><![CDATA[]]></span><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("freese")'><![CDATA[]]></span>
+  <div class="x-col" xid="col43" style="text-align:center;"><span xid="span38"><![CDATA[]]></span><span xid="span34" style="color:#2BD0A3;font-size:small;position:relative;" bind-text='val("income")'><![CDATA[]]></span>
   </div></div></div>
    </div></li></ul> </div></div>
   <div xid="div8" style="height:100px;"></div></div>

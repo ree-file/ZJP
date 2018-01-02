@@ -70,11 +70,11 @@ define(function(require){
 					}
 					else if(responseText.message=="Can not buy own order.")
 					{
-						showprompt(lang.showprompt[61]);
+						showprompt(lang.showprompt[60]);
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 				}
 			});
@@ -380,7 +380,7 @@ define(function(require){
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 				}
 			});

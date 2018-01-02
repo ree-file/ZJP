@@ -164,7 +164,7 @@ define(function(require){
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 					else{
 						showprompt(lang.personaljs[2]);
@@ -174,6 +174,47 @@ define(function(require){
 			return is_success;
 		},
 
+		suppliesget : function(money,type,card_number,message,security_code){
+			var is_success =false;
+			$.ajax({
+				url: config.site+"supplies",//php的api路径
+				async:false,
+				dataType:"json",
+				data:{money:money,type:type,card_number:card_number,message:message,security_code:security_code},//需要传递的数据
+				type:'post',//php获取类型
+        headers: {
+            "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
+        },
+				success:function(data){//请求成功返回值存在data里
+					showprompt(lang.personaljs[3]);
+				},
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							is_success =true;
+						}
+						else
+						{
+							is_success=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						is_success=undefined;
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else{
+						is_success=undefined;
+					}
+	        }.bind(this),
+			});
+			return is_success;
+		},
 		supplies : function(formdata){
 			var is_success =false;
 			$.ajax({
@@ -208,7 +249,7 @@ define(function(require){
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 					else{
 						is_success=undefined;
@@ -217,7 +258,6 @@ define(function(require){
 			});
 			return is_success;
 		},
-
 		transRecord : function(){
 			var record =false;
 			$.ajax({
@@ -250,7 +290,7 @@ define(function(require){
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
-						showprompt(lang.showprompt[60]);
+						showprompt(lang.showprompt[59]);
 					}
 					else{
 						showprompt(lang.personaljs[5]);

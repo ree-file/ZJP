@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive" onActive="modelActive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmDelete="false" confirmRefresh="false"><column label="id" name="id" type="String" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive" onActive="modelActive" onunLoad="modelUnLoad"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmDelete="false" confirmRefresh="false"><column label="id" name="id" type="String" xid="xid1"></column>
   <column label="图片" name="picture" type="String" xid="xid2"></column>
   <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/Germany.jpg&quot;}]</data></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="accelerate" idColumn="id" confirmDelete="false" confirmRefresh="false"><column name="id" type="String" xid="xid3"></column>
@@ -179,7 +179,7 @@
       <div class="x-col text-center" xid="col14">
        <span xid="span13" bind-text="$index()+1">time</span></div> 
       <div class="x-col text-center" xid="col15">
-       <span xid="span33"><![CDATA[$]]></span><span xid="span14" bind-text='val("money")'>number</span>
+       <span xid="span33"><![CDATA[$]]></span><span xid="span14" bind-text='val("money")' bind-css="{'color:#D37CC1': val(&quot;message&quot;)=='提现'}">number</span>
   </div> 
       <div class="x-col text-center" xid="col13">
        <span xid="span15" bind-text='val("message")'>people</span></div> 
@@ -226,7 +226,7 @@
    <a component="$UI/system/components/justep/button/button" class="btn checkbtn btn-default background-color-black" xid="button9" style="width:25%;" onClick="button9Click">
     <i xid="i9"></i>
     <span xid="span27"></span></a> </div></div></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0" style="top:17px;left:152px;">
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="withDrawWindow" opacity="0" style="top:23px;left:308px;">
    <div class="x-popOver-overlay" xid="div6"></div>
    <div class="x-popOver-content withDrawWindow" xid="div7"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row28">
    <div class="x-col x-col-33" xid="col82"><h5 xid="h51" style="text-align:center;color:white;white-space:nowrap;"><![CDATA[]]></h5></div>

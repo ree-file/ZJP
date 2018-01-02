@@ -505,9 +505,11 @@ define(function(require){
 		config_egg ;//通过向服务端请求获得产品的配置信息
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
+			this.close();
 		}
 		else if(this.params.page=="nestMain"){
 			justep.Shell.showPage("nestMain");
+			this.close();
 		}
 		else{
 			justep.Shell.closePage();

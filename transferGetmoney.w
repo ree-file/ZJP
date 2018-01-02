@@ -11,7 +11,7 @@
           <div class="x-titlebar-left"> 
             <a component="$UI/system/components/justep/button/button"
               label="" class="btn btn-link btn-only-icon" icon="icon-chevron-left"
-              onClick="{operation:'window.close'}" xid="backBtn"> 
+              onClick="backBtnClick" xid="backBtn"> 
               <i class="icon-chevron-left"/>  
               <span></span> 
             </a> 

@@ -58,7 +58,7 @@
   <a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="sellbutton" style="position:relative;color:#808080;width:33%;" target="sellcontent">
    <i xid="i4"></i>
    <span xid="span4"></span></a></div>
-  <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="2" xid="contents1" style="display:none;position:relative;top:40px;">
+  <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" style="display:none;position:relative;top:40px;">
    <div class="x-contents-content" xid="marketcontent" bind-touchstart="marketcontentTouchstart" bind-touchend="marketcontentTouchend"><div component="$UI/system/components/justep/row/row" class="x-row" xid="hidRow" style="background-color:#1C1F26;">
    <div class="x-col" xid="col58"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
    <div class="x-col x-col-20" xid="col71" style="padding-left:0px;margin-left:0px;"><span class="pull-left" xid="span28" style="font-size:small;color:#FFFFFF;padding-top:5px;margin-right:0px;margin-left:0px;padding-right:0px;padding-left:0px;"></span></div>
