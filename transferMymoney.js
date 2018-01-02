@@ -47,7 +47,7 @@ define(function(require){
 	Model.prototype.setupButtonClick = function(event){
 		var money = this.getElementByXid("moneyInput").value;
 		var securityInput = this.getElementByXid("securityInput").value;
-		if (type = 1) {
+		if (type == 1) {
 			var is_success1 = personaljs.transferMoney(money,"active-to-market",securityInput);
 			if (is_success1 == undefined) {
 				this.comp("windowDialog1").open();
@@ -60,7 +60,7 @@ define(function(require){
 			}
 
 		}
-		else if (type = -1) {
+		else if (type == -1) {
 			var is_success2 = personaljs.transferMoney(money,"market-to-active",securityInput);
 			if (is_success2 == undefined) {
 				this.comp("windowDialog1").open();
