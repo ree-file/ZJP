@@ -3,7 +3,9 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var personaljs = require("./js/personal");
 	var base64 = require("$UI/system/lib/base/base64");
+	var bank = require("./js/bank");
 	var lang;
+	var USDrate;
 	if(localStorage.getItem("lang")=="en_us")
 	{
 		lang = require('./js/en_us');
@@ -33,6 +35,8 @@ define(function(require){
 		$(this.getElementByXid("span1")).html(lang.transfermoney[12]);
 		$(this.getElementByXid("otherbankrow")).hide();
 		$(this.getElementByXid("span5")).html(lang.transfermoney[13]);
+		$(this.getElementByXid("span6")).html(lang.transfermoney[15]);
+		$(this.getElementByXid("span8")).html(lang.transfermoney[16]);
 		var bankfromData = this.comp("bankfromData");
 		for (var i = 0; i < 18; i++) {
 			bankfromData.add({
@@ -40,6 +44,10 @@ define(function(require){
 			});
 		}
 		$(this.getElementByXid("content1")).css("display","block");
+		USDrate = bank.getCNYrate();
+		if (USDrate==undefined) {
+			this.showprompt(lang.showprompt[63]);
+		}
 	};
 	function photoCompress(file,w,objDiv){
             var ready=new FileReader();
@@ -97,13 +105,11 @@ define(function(require){
         var from = this.comp('fromSelect').val();
 			var cardnumber = this.getElementByXid("cardidInput").value;
 			var money = this.getElementByXid("moneyInput").value;
-			var otherbankInput = this.getElementByXid("otherbankInput").value;
 			var security_code = $.trim(this.comp("securityInput").val());
 			if (from == lang.transfermoney[11]) {
 				formdata.append("money",money);
 				formdata.append("type","save");
 				formdata.append("card_number",cardnumber);
-				formdata.append("message",otherbankInput);
 				formdata.append("security_code",security_code);
 				var is_success5 = personaljs.supplies(formdata);
 				if (is_success5 == undefined) {
@@ -120,7 +126,6 @@ define(function(require){
 				formdata.append("money",money);
 				formdata.append("type","save");
 				formdata.append("card_number",cardnumber);
-				formdata.append("message",from);
 				formdata.append("security_code",security_code);
 				var is_success6 = personaljs.supplies(formdata);
 				if (is_success6 == undefined) {
@@ -208,6 +213,19 @@ define(function(require){
 		var moneyInput = this.getElementByXid("moneyInput").value;
 		var changemoney = 7;
 		$(this.getElementByXid("daospan")).text("￥"+(moneyInput*changemoney).toFixed(2));
+	};
+
+	Model.prototype.input1Blur = function(event){
+		if ($.trim(this.comp("input1").val())) {
+			this.comp("moneyInput").val((parseFloat(this.comp("input1").val())/USDrate).toFixed(2));
+		}
+		
+	};
+
+	Model.prototype.moneyInputBlur = function(event){
+	if ($.trim(this.comp("moneyInput").val())) {
+		this.comp("input1").val((parseFloat(this.comp("moneyInput").val())*USDrate).toFixed(2));
+	}
 	};
 
 	return Model;

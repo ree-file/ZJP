@@ -47,17 +47,17 @@
    <div class="x-col x-col-25" xid="col16">
     <span xid="span11" style="color:#A6A6A6;position:relative;top:5px;"></span></div> 
    <div class="x-col" xid="col15" style="padding:0px 5px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" class="form-control" xid="moneyInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> 
+    <input component="$UI/system/components/justep/input/input" class="form-control" xid="moneyInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Float" onChange="moneyInputChange"></input></div> 
   <div class="x-col" xid="col19" style="padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm pull-left" xid="button3" style="margin-right:3px;margin-left:0px;font-weight:bold;" onClick="button3Click" icon="glyphicon glyphicon-yen">
-    <i xid="i3" class="glyphicon glyphicon-yen"></i>
-    <span xid="span10"></span></a> 
-   <span xid="yuanspan" style="font-size:medium;color:#FFFFFF;margin-top:3px;" class="daospan"></span></div></div>
+   <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm pull-left" xid="button3" style="margin-right:3px;margin-left:0px;font-weight:bolder;" icon="glyphicon glyphicon-yen" onClick="button3Click">
+   <i xid="i3" class="glyphicon glyphicon-yen"></i>
+   <span xid="span10"></span></a>
+  <span xid="daospan" style="font-size:medium;color:#FFFFFF;margin-top:3px;" class="daospan"></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:40px;">
    <div class="x-col x-col-25" xid="col13">
     <span xid="span13" style="color:#A6A6A6;position:relative;top:5px;"></span></div> 
    <div class="x-col" xid="col12" style="padding:0px 5px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> </div>
+    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="String"></input></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:13px;">
    <div class="x-col" xid="col18">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" xid="setupButton" style="background-color:#049FCC;" onClick="setupButtonClick">

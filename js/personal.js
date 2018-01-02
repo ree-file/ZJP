@@ -174,13 +174,13 @@ define(function(require){
 			return is_success;
 		},
 
-		suppliesget : function(money,type,card_number,message,security_code){
+		suppliesget : function(money,type,card_number,security_code){
 			var is_success =false;
 			$.ajax({
 				url: config.site+"supplies",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{money:money,type:type,card_number:card_number,message:message,security_code:security_code},//需要传递的数据
+				data:{money:money,type:type,card_number:card_number,security_code:security_code},//需要传递的数据
 				type:'post',//php获取类型
         headers: {
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部

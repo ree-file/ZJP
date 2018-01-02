@@ -25,18 +25,13 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="display:none;height:100%;width:100%;position:relative;padding-left:2%;padding-right:2%;"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="recordData">
+    <div class="x-panel-content" xid="content1" style="display:;height:100%;width:100%;position:relative;padding-left:2%;padding-right:2%;"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="recordData">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row1" style="background-color:#252932;margin-top:15px;">
    <div class="x-col" xid="col1">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4">
    <div class="x-col x-col-20" xid="col10"><span xid="span4" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(2)"><![CDATA[]]></span></div>
    <div class="x-col" xid="col16"><span xid="span3" style="color:#FFFFFF;font-size:medium;" bind-text='val("id")'><![CDATA[]]></span></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
-   <div class="x-col x-col-20" xid="col17">
-   <span xid="span5" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(3)"><![CDATA[]]></span></div>
-  <div class="x-col" xid="col18">
-   <span xid="span6" style="color:#FFFFFF;font-size:small;" bind-text='val("bankname")'><![CDATA[]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
    <div class="x-col x-col-20" xid="col20">
     <span xid="span7" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(4)"><![CDATA[]]></span></div> 

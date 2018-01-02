@@ -131,6 +131,24 @@ define(function(require){
 	        }.bind(this),
 			});
 			return is_success;
+		},
+		getCNYrate:function(){
+			var CNY;
+			$.ajax({
+				url:"https://api.fixer.io/latest?base=USD",
+				async:false,
+				dataType:"json",
+				type:"get",
+				data:{},
+				success:function(data){
+					CNY=data.rates.CNY;
+				},
+				error:function(ero){
+					
+				}
+				
+			});
+			return CNY;
 		}
 
 	};

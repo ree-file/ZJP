@@ -2,8 +2,10 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var personaljs = require("./js/personal");
+	var bank = require("./js/bank");
 	var base64 = require("$UI/system/lib/base/base64");
 	var lang;
+	var USDrate;
 	if(localStorage.getItem("lang")=="en_us")
 	{
 		lang = require('./js/en_us');
@@ -38,16 +40,19 @@ define(function(require){
 			});
 		}
 		$(this.getElementByXid("content1")).css("display","block");
+		USDrate = bank.getCNYrate();
+		if (USDrate==undefined) {
+			this.showprompt(lang.showprompt[63]);
+		}
 	};
 
 	Model.prototype.setupButtonClick = function(event){
 		var to = this.comp('toSelect').val();
 		var cardnumber = this.getElementByXid("cardidInput").value;
 		var money = this.getElementByXid("moneyInput").value;
-		var otherbankInput = this.getElementByXid("otherbankInput").value;
 		var security_code = $.trim(this.comp("securityInput").val());
 		if (to == lang.transfermoney[11]) {
-			var is_success3 = personaljs.suppliesget(money,"get",cardnumber,otherbankInput,security_code);
+			var is_success3 = personaljs.suppliesget(money,"get",cardnumber,security_code);
 			if (is_success3 == undefined) {
 				this.comp("windowDialog1").open();
 				this.showprompt(lang.showprompt[0]);
@@ -59,7 +64,7 @@ define(function(require){
 			}
 		}
 		else {
-			var is_success4 = personaljs.suppliesget(money,"get",cardnumber,to,security_code);
+			var is_success4 = personaljs.suppliesget(money,"get",cardnumber,security_code);
 			if (is_success4 == undefined) {
 				this.comp("windowDialog1").open();
 				this.showprompt(lang.showprompt[0]);
@@ -113,8 +118,12 @@ define(function(require){
 
 	Model.prototype.button3Click = function(event){
 		var moneyInput = this.getElementByXid("moneyInput").value;
-		var changemoney = 7; //主动变换值 后台获取美元汇率
-		$(this.getElementByXid("yuanspan")).text("￥"+(moneyInput*changemoney).toFixed(2));
+		var changemoney = USDrate; //主动变换值 后台获取美元汇率
+		$(this.getElementByXid("daospan")).text("￥"+(moneyInput*changemoney).toFixed(2));
+	};
+
+	Model.prototype.moneyInputChange = function(event){
+
 	};
 
 	return Model;

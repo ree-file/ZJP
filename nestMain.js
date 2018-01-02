@@ -7,6 +7,8 @@ define(function(require){
 	var contract = require("./js/contract");
 	var nestInfo;
 	var eggval;
+	var bank = require("./js/bank");
+	var USDrate;
 	var withdrawData=[];
 	var historyData=[];
 	var lang;
@@ -112,6 +114,7 @@ define(function(require){
 		$(this.getElementByXid("h53")).html(lang.nestMain[23]);
 		$(this.getElementByXid("span28")).html(lang.nestMain[24]);
 		$(this.getElementByXid("p1")).html(lang.nestMain[25]);
+		USDrate = bank.getCNYrate();
 	};
 	Model.prototype.modelParamsReceive = function(event){
 		var nest_id = this.params.nest_id;
@@ -192,7 +195,7 @@ define(function(require){
 			investment:investment,
 			contract_id:nestInfo.nestinfo.contracts[0].id,
 			speed:0.01,
-			globalValue:6.7,
+			globalValue:USDrate==undefined?6.5:USDrate,
 			currentWorth:parseFloat(nestInfo.nestinfo.contracts[0].eggs*eggval),
 			expectReturn:3.00,
 			available:available,
@@ -340,6 +343,11 @@ define(function(require){
 	
 	Model.prototype.li2Click = function(event){
 		var row = event.bindingContext.$object;
+		var withdrawMoney = row.val("money");
+		if (parseFloat(withdrawMoney)<100) {
+			this.showprompt(lang.showprompt[62]);
+			return;
+		}
 		this.comp("withdrawData").to(row);
 		this.comp("withDrawWindow").show();
 	};
@@ -362,7 +370,7 @@ define(function(require){
 					return;
 				}
 				if (password) {
-					var is_success=contract.withdrawFromcontract(parseInt(money),this.comp("withdrawData").val("contract_id"),password);
+					var is_success=contract.withdrawFromcontract(parseFloat(money),this.comp("withdrawData").val("contract_id"),password);
 					if (is_success) {
 						this.comp("input1").val("");
 						this.comp("withDrawWindow").hide();

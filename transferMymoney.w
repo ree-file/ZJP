@@ -40,7 +40,7 @@
    <div class="x-col x-col-25" xid="col17">
     <span xid="span5" style="color:#A6A6A6;position:relative;top:7px;margin-left:8px;"></span></div> 
    <div class="x-col" xid="col16">
-    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> </div>
+    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="String"></input></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="position:relative;top:20px;">
    <div class="x-col" xid="col20"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block submitbtn" xid="setupButton" style="background-color:#049FCC;" onClick="setupButtonClick">
    <i xid="i5"></i>

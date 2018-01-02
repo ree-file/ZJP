@@ -662,5 +662,11 @@ define(function(require){
 	};
 
 
+	Model.prototype.modelActive = function(event){
+		this.comp("transactionrecord").refreshData();
+		this.comp("marketdata").refreshData();
+	};
+
+
 	return Model;
 });

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:96px;left:107px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:96px;left:107px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onActive="modelActive"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="marketdata" idColumn="id" onCustomRefresh="marketdataCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid1"></column>
   <column name="name" type="String" xid="xid2"></column>
   <column name="childrenNum" type="Integer" xid="xid3"></column>

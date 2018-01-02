@@ -24,7 +24,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="display:none;height:100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
+    <div class="x-panel-content" xid="content1" style="display:;height:100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
    <div class="x-col" xid="col4">
     <span xid="span2"><![CDATA[]]></span></div> </div>
   
@@ -49,19 +49,20 @@
    <span xid="span4"></span></a></div> 
   <div class="x-col" xid="col1"></div></div>
   
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
+   <div class="x-col x-col-25" xid="col20"><span xid="span6" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div>
+   <div class="x-col" xid="col21"><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1" dataType="Float" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" onBlur="input1Blur"></input></div>
+   <div class="x-col" xid="col22" style="text-align:center"><span xid="span8" style="color:red"></span></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col16">
     <span xid="span11" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col15" style="padding:0px 5px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" class="form-control" xid="moneyInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> 
-  <div class="x-col" xid="col19" style="padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm pull-left" xid="button3" style="margin-right:3px;margin-left:0px;font-weight:bolder;" onClick="button3Click" icon="glyphicon glyphicon-yen">
-   <i xid="i3" class="glyphicon glyphicon-yen"></i>
-   <span xid="span10"></span></a><span xid="daospan" style="font-size:medium;color:#FFFFFF;margin-top:3px;" class="daospan"><![CDATA[]]></span></div></div>
+    <input component="$UI/system/components/justep/input/input" class="form-control" xid="moneyInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Float" onBlur="moneyInputBlur"></input></div> 
+  <div class="x-col" xid="col19" style="padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;"></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:40px;">
    <div class="x-col x-col-25" xid="col3">
     <span xid="span13" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col5" style="padding:0px 5px 0px 0px;">
-    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="Integer"></input></div> </div>
+    <input component="$UI/system/components/justep/input/input" type="password" class="form-control" xid="securityInput" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;background-color:#1C1F26;color:#FFFFFF;border-color:#2F363E" dataType="String"></input></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:40px;background-color:#252932;">
    <div class="x-col x-col-25" xid="col2"><span xid="span1" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div>
    <div class="x-col bgim" xid="col14"><input type="file" value="" xid="file2" style="height:100%;opacity:0;" bind-change="file2Change"></input>
