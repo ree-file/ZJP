@@ -253,7 +253,7 @@ define(function(require){
 			var status =400;
 			var is_live = false;
 			$.ajax({
-				url:config.site+"private",
+				url:config.site+"private/user",
 				async:false,
 				dataType:"json",
 				type:"GET",
@@ -356,7 +356,7 @@ define(function(require){
 			var incomeAnalyse;
 			do{
 				incomeAnalyse={};
-				var result1 = this.getUserIncomeAnalyse();
+				var result1 = this.getUserIncomeAnalyseajax();
 				if (typeof(result1)!="number") {
 					
 					incomeAnalyse=result1;
@@ -370,7 +370,7 @@ define(function(require){
 				
 			return incomeAnalyse;
 		},
-		getUserIncomeajax:function(){
+		getUserIncomeAnalyseajax:function(){
 			var incomeAnalyse={};
 			var status =400;
 			$.ajax({
@@ -382,8 +382,7 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					
-					income = data.data.analyse_today;
+					incomeAnalyse = data.data;
 					status =200;
 				},
 				error:function(ero){

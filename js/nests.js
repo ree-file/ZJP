@@ -103,92 +103,92 @@ define(function(require){
 			
 		},
 		//巢的详细信息--许鑫君
-		nestInfo:function(mainInfo){
-			var eggval=config.configegg().egg_val;
-			var nest_Info = {
-					assets:0,
-					contracts:[]
-			};
-			for (var i = 0; i < mainInfo.length; i++) {
-				nest_Info.assets+=Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs*eggval);
-				nest_Info.contracts[i] = {};
-				nest_Info.contracts[i].id = mainInfo[i].contracts[mainInfo[i].contracts.length-1].id;
-				nest_Info.contracts[i].nest_id =  mainInfo[i].id;
-				nest_Info.contracts[i].income = Math.floor(parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_receivers)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_community)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_weeks));
-				nest_Info.contracts[i].time = mainInfo[i].created_at;
-				nest_Info.contracts[i].worth = Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*parseFloat(eggval);
-				nest_Info.contracts[i].rate="300%";
-				nest_Info.contracts[i].freese = (Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
-				nest_Info.contracts[i].name = mainInfo[i].name;
-				nest_Info.contracts[i].finished = mainInfo[i].contracts[mainInfo[i].contracts.length-1].is_finished;
-				nest_Info.contracts[i].excess = (Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
-				nest_Info.contracts[i].title=lang.nestjs[0];
-				nest_Info.contracts[i].info=lang.nestjs[1];
-				nest_Info.contracts[i].langrate=lang.nestjs[2];
-				nest_Info.contracts[i].langinvestment=lang.nestjs[3];
-				nest_Info.contracts[i].langfreed=lang.nestjs[4];
-				nest_Info.contracts[i].langfreeze=lang.nestjs[5];
-			}
-			return nest_Info;
-		},
-		nestInfoajax:function(){
-			var nest_Info={};
-				nest_Info.contracts=[];
-				nest_Info.assets=0;
-				var status =404;
-				eggval=config.configegg().egg_val;
-			$.ajax({
-				url:config.site+"private/nests",
-				async:false,
-				dataType:"json",
-				type:"GET",
-				beforeSend:function(request){
-					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
-				},
-				success:function(data){
-					for (var i = 0; i < data.data.length; i++) {
-						nest_Info.assets+=Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs*eggval);
-						nest_Info.contracts[i] = {};
-						nest_Info.contracts[i].id = data.data[i].contracts[data.data[i].contracts.length-1].id;
-						nest_Info.contracts[i].nest_id =  data.data[i].id;
-						nest_Info.contracts[i].income = Math.floor(parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_receivers)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_community)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_weeks));
-						nest_Info.contracts[i].time = data.data[i].created_at;
-						nest_Info.contracts[i].worth = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs);
-						nest_Info.contracts[i].rate="300%";
-						nest_Info.contracts[i].freese = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
-						nest_Info.contracts[i].name = data.data[i].name;
-						nest_Info.contracts[i].finished = data.data[i].contracts[data.data[i].contracts.length-1].is_finished;
-						nest_Info.contracts[i].excess = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
-					}
-					//对data做处理
-					status =200;
-				},
-				error:function(ero){
-					responseText = JSON.parse(ero.responseText);
-					if (responseText.message=="Token expired.") {
-						
-						if(jwt.authRefresh()){
-							status =500;
-						}
-						else
-						{
-							status =404;
-						}
-						
-					}
-					else if(responseText.message=="No token provided."){
-						status =404;
-					}
-				}
-			});
-			if (status==200) {
-				return nest_Info;
-			}
-			else{
-				return status;
-			}
-			//nest_Info模型=nest_Info['Investment'],nest_Info['today'],nest_Info['incomedata']=[{time:time,income:income,name:name,type:type(收益来源)}],nest_Info['nestdata']=[{id:nest_id,name:name,income:income(总的收益),freese:freese,time:time(创建日期),type:contractType*config.rate}]
-		},
+//		nestInfo:function(mainInfo){
+//			var eggval=config.configegg().egg_val;
+//			var nest_Info = {
+//					assets:0,
+//					contracts:[]
+//			};
+//			for (var i = 0; i < mainInfo.length; i++) {
+//				nest_Info.assets+=Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs*eggval);
+//				nest_Info.contracts[i] = {};
+//				nest_Info.contracts[i].id = mainInfo[i].contracts[mainInfo[i].contracts.length-1].id;
+//				nest_Info.contracts[i].nest_id =  mainInfo[i].id;
+//				nest_Info.contracts[i].income = Math.floor(parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_receivers)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_community)+parseInt(mainInfo[i].contracts[mainInfo[i].contracts.length-1].from_weeks));
+//				nest_Info.contracts[i].time = mainInfo[i].created_at;
+//				nest_Info.contracts[i].worth = Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*parseFloat(eggval);
+//				nest_Info.contracts[i].rate="300%";
+//				nest_Info.contracts[i].freese = (Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+//				nest_Info.contracts[i].name = mainInfo[i].name;
+//				nest_Info.contracts[i].finished = mainInfo[i].contracts[mainInfo[i].contracts.length-1].is_finished;
+//				nest_Info.contracts[i].excess = (Math.floor(mainInfo[i].contracts[mainInfo[i].contracts.length-1].eggs)*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+//				nest_Info.contracts[i].title=lang.nestjs[0];
+//				nest_Info.contracts[i].info=lang.nestjs[1];
+//				nest_Info.contracts[i].langrate=lang.nestjs[2];
+//				nest_Info.contracts[i].langinvestment=lang.nestjs[3];
+//				nest_Info.contracts[i].langfreed=lang.nestjs[4];
+//				nest_Info.contracts[i].langfreeze=lang.nestjs[5];
+//			}
+//			return nest_Info;
+//		},
+//		nestInfoajax:function(){
+//			var nest_Info={};
+//				nest_Info.contracts=[];
+//				nest_Info.assets=0;
+//				var status =404;
+//				eggval=config.configegg().egg_val;
+//			$.ajax({
+//				url:config.site+"private/nests",
+//				async:false,
+//				dataType:"json",
+//				type:"GET",
+//				beforeSend:function(request){
+//					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
+//				},
+//				success:function(data){
+//					for (var i = 0; i < data.data.length; i++) {
+//						nest_Info.assets+=Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs*eggval);
+//						nest_Info.contracts[i] = {};
+//						nest_Info.contracts[i].id = data.data[i].contracts[data.data[i].contracts.length-1].id;
+//						nest_Info.contracts[i].nest_id =  data.data[i].id;
+//						nest_Info.contracts[i].income = Math.floor(parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_receivers)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_community)+parseInt(data.data[i].contracts[data.data[i].contracts.length-1].from_weeks));
+//						nest_Info.contracts[i].time = data.data[i].created_at;
+//						nest_Info.contracts[i].worth = Math.floor(data.data[i].contracts[data.data[i].contracts.length-1].eggs);
+//						nest_Info.contracts[i].rate="300%";
+//						nest_Info.contracts[i].freese = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)<=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+//						nest_Info.contracts[i].name = data.data[i].name;
+//						nest_Info.contracts[i].finished = data.data[i].contracts[data.data[i].contracts.length-1].is_finished;
+//						nest_Info.contracts[i].excess = (nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income)>=0?0:nest_Info.contracts[i].worth*3-nest_Info.contracts[i].income;
+//					}
+//					//对data做处理
+//					status =200;
+//				},
+//				error:function(ero){
+//					responseText = JSON.parse(ero.responseText);
+//					if (responseText.message=="Token expired.") {
+//						
+//						if(jwt.authRefresh()){
+//							status =500;
+//						}
+//						else
+//						{
+//							status =404;
+//						}
+//						
+//					}
+//					else if(responseText.message=="No token provided."){
+//						status =404;
+//					}
+//				}
+//			});
+//			if (status==200) {
+//				return nest_Info;
+//			}
+//			else{
+//				return status;
+//			}
+//			//nest_Info模型=nest_Info['Investment'],nest_Info['today'],nest_Info['incomedata']=[{time:time,income:income,name:name,type:type(收益来源)}],nest_Info['nestdata']=[{id:nest_id,name:name,income:income(总的收益),freese:freese,time:time(创建日期),type:contractType*config.rate}]
+//		},
 		//巢的简略信息--许鑫君
 		nestsimpleinfo:function(){
 			var nestInfo;
@@ -495,47 +495,47 @@ define(function(require){
 			return status;
 		},
 	
-		incomeInfo:function(mainInfo){
-			var eggval = config.configegg().egg_val;
-			var MyincomeInfo = [];
-			var date = new Date();
-			var todayincome =0.00;
-			var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
-			var times = currentdate.getTime();
-			for (var int = 0; int < mainInfo.length; int++) {
-				if (mainInfo[int]!=undefined&&mainInfo[int].length!=0) {
-					for (var int1 = 0; int1 < mainInfo[int].records.length; int1++) {
-						var date = Date.parse(mainInfo[int].records[int1].created_at);
-						if (date>times) {
-							if (mainInfo[int].records[int1].type=="invite_got"||mainInfo[int].records[int1].type=="community_got") {
-								MyincomeInfo[MyincomeInfo.length]={
-										contract_id:mainInfo[int].records[int1].contract_id,
-										type:mainInfo[int].records[int1].type=="invite_got"?lang.nestjs[7]:lang.nestjs[8],
-										income:parseFloat(parseFloat(mainInfo[int].records[int1].eggs)*parseFloat(eggval)).toFixed(2),
-										date:mainInfo[int].records[int1].created_at,
-										name:mainInfo[int].name
-								};
-								todayincome+=parseFloat(mainInfo[int].records[int1].eggs)*parseFloat(eggval);
-							}
-						}
-						
-					}
-					MyincomeInfo[MyincomeInfo.length]={
-							contract_id:mainInfo[int].contracts[mainInfo[int].contracts.length-1].id,
-							type:lang.nestjs[6],
-							income:parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2),
-							date:new Date(),
-							name:mainInfo[int].name
-					};
-					todayincome+=parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2);
-				}
-			}
-			var data={
-					MyincomeInfo:MyincomeInfo,
-					todayincome:todayincome
-			}
-			return  data;
-		},
+//		incomeInfo:function(mainInfo){
+//			var eggval = config.configegg().egg_val;
+//			var MyincomeInfo = [];
+//			var date = new Date();
+//			var todayincome =0.00;
+//			var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
+//			var times = currentdate.getTime();
+//			for (var int = 0; int < mainInfo.length; int++) {
+//				if (mainInfo[int]!=undefined&&mainInfo[int].length!=0) {
+//					for (var int1 = 0; int1 < mainInfo[int].records.length; int1++) {
+//						var date = Date.parse(mainInfo[int].records[int1].created_at);
+//						if (date>times) {
+//							if (mainInfo[int].records[int1].type=="invite_got"||mainInfo[int].records[int1].type=="community_got") {
+//								MyincomeInfo[MyincomeInfo.length]={
+//										contract_id:mainInfo[int].records[int1].contract_id,
+//										type:mainInfo[int].records[int1].type=="invite_got"?lang.nestjs[7]:lang.nestjs[8],
+//										income:parseFloat(parseFloat(mainInfo[int].records[int1].eggs)*parseFloat(eggval)).toFixed(2),
+//										date:mainInfo[int].records[int1].created_at,
+//										name:mainInfo[int].name
+//								};
+//								todayincome+=parseFloat(mainInfo[int].records[int1].eggs)*parseFloat(eggval);
+//							}
+//						}
+//						
+//					}
+//					MyincomeInfo[MyincomeInfo.length]={
+//							contract_id:mainInfo[int].contracts[mainInfo[int].contracts.length-1].id,
+//							type:lang.nestjs[6],
+//							income:parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2),
+//							date:new Date(),
+//							name:mainInfo[int].name
+//					};
+//					todayincome+=parseFloat(mainInfo[int].contracts[mainInfo[int].contracts.length-1].eggs)*parseFloat(eggval)*0.01.toFixed(2);
+//				}
+//			}
+//			var data={
+//					MyincomeInfo:MyincomeInfo,
+//					todayincome:todayincome
+//			}
+//			return  data;
+//		},
 		singlenestInfo:function(nest_id){
 			var nestInfo;
 			do{
@@ -646,7 +646,7 @@ define(function(require){
 		mainInfo:function(){
 			var mainInfo;
 			do{
-				mainInfo={};
+				mainInfo=[];
 				var result1 = this.mainInfoajax();
 				if (typeof(result1)!="number") {
 					mainInfo=result1;
@@ -661,7 +661,7 @@ define(function(require){
 		},
 		mainInfoajax:function(){
 			var status = 400;
-			var mainInfo;
+			var mainInfo=[];
 			$.ajax({
 				url:config.site+"private/nests",
 				async:false,

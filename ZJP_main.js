@@ -27,11 +27,9 @@ define(function(require) {
 					$(".x-hint").find("button[class='close']").hide();
 	};
 	Model.prototype.modelModelConstructDone = function(event){
-		
-		personalInvite = mainInfo.receivers_eggs*parseFloat(config.configegg().egg_val);
-		//获得用户所有巢的信息
+		this.comp("incomeAccount").refreshData();
 		this.comp("NestsAccount").refreshData();
-		//把nestInfo填充到各个data数据和今日收益，和总投资里
+	
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -59,9 +57,9 @@ define(function(require) {
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
-		var coins = incomeAnalyse.coins;
-		var money_active_sum = incomeAnalyse.money_active_sum;
-		var money_limit_sum = incomeAnalyse.money_limit_sum;
+		var coins = incomeAnalyse.analyse_today.coins;
+		var money_active_sum = incomeAnalyse.analyse_today.money_active_sum;
+		var money_limit_sum = incomeAnalyse.analyse_today.money_limit_sum;
 		var all = coins+money_active_sum+money_limit_sum;
 		var rightRotate = 180-parseFloat(coins/all)*360;
 		var leftRotate = 180-parseFloat(money_limit_sum/all)*360;
@@ -83,6 +81,7 @@ define(function(require) {
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
+		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit_sum+incomeAnalyse.analyse.money_active_sum).toFixed(2));
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){	
@@ -135,32 +134,49 @@ define(function(require) {
 	};
 
 	Model.prototype.incomeAccountCustomRefresh = function(event){
-		if (mainInfo == undefined) {
+		var income = user.getUserIncome();
+		if (income==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
 			return;
 		}
-		var data = nest.incomeInfo(mainInfo.nests);
-		for (var int = 0; int < data.MyincomeInfo.length; int++) {
-			var date1 = Date.parse(data.MyincomeInfo[int].date);  
-			for (var int2 = int; int2 < data.MyincomeInfo.length; int2++) {
-				var date2 = Date.parse(data.MyincomeInfo[int2].date);
-				if (date1<date2) {
-					var temp;
-					temp=data.MyincomeInfo[int];
-					data.MyincomeInfo[int]=data.MyincomeInfo[int2];
-					data.MyincomeInfo[int2]=temp;
-					date1 =date2;
-					
-				}
-			}	
+		if (income.length!=0) {
+			
 		}
-		event.source.loadData(data.MyincomeInfo);
-		$(this.getElementByXid("span4")).html("$"+data.todayincome);
-		mainInfo=undefined;
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
-		
-		
+		var nestinfo = nest.mainInfo();
+		var params = [];
+		var money = 0;
+		if (nestinfo==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		for (var int = 0; int < nestinfo.length; int++) {
+			money+= nestinfo[int].val;
+			params[int]={
+				id : int,
+				nest_id :  nestinfo[int].id,
+				income :nestinfo[int].hatches_sum,
+				time : nestinfo[int].created_at,
+				worth :nestinfo[int].val,
+				rate:"300%",
+				freese : parseFloat(nestinfo[int].eggs_sum),
+				name : nestinfo[int].name,
+				finished : 0,
+				excess :0,
+				title:lang.nestjs[0],
+				info:lang.nestjs[1],
+				langrate:lang.nestjs[2],
+				langinvestment:lang.nestjs[3],
+				langfreed:lang.nestjs[4],
+				langfreeze:lang.nestjs[5],
+			}
+		}
+		$(this.getElementByXid("span8")).html("$"+parseFloat(money).toFixed(2));
+		event.source.loadData(params);
 	};
 
 	Model.prototype.button8Click = function(event){
