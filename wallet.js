@@ -21,20 +21,17 @@ define(function(require){
 
 	Model.prototype.showhidBtnClick = function(event){
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
-		var moneyspan2 = $(this.getElementByXid("marketMSpan"));
+		var moneyspan2 = $(this.getElementByXid("allMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
-		var moneyspan4 = $(this.getElementByXid("allMSpan"));
 		if (!pwState) {
 			moneyspan1.text("******");
 			moneyspan2.text("******");
 			moneyspan3.text("******");
-			moneyspan4.text("******");
       pwState = true;
     } else {
       moneyspan1.text(moneyactive);//moneyactive
       moneyspan2.text(catcoins);//catcoins
       moneyspan3.text(moneylimit);//money_limit
-      moneyspan4.text((Number(moneyactive)+Number(catcoins)+Number(moneylimit)).toFixed(2));//money_market+money_active+money_limit
       pwState = false;
     }
 	};
@@ -55,8 +52,8 @@ define(function(require){
 		$(this.getElementByXid("span9")).html(lang.wallet[12]);
 		$(this.getElementByXid("span12")).html(lang.wallet[13]);
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
+		var moneyspan2 = $(this.getElementByXid("allMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
-		var moneyspan4 = $(this.getElementByXid("allMSpan"));
 		var moneyall = personalMoney.money();
 		if (moneyall == undefined) {
 			this.comp("windowDialog1").open();
@@ -68,7 +65,7 @@ define(function(require){
 			return;
 		}
 		moneyspan1.text(moneyall.money_active);
-		moneyspan4.text(moneyall.coins);
+		moneyspan2.text(moneyall.coins);
 		moneyspan3.text(moneyall.money_limit);
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;

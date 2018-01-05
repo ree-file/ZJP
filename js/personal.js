@@ -253,7 +253,7 @@ define(function(require){
 						showprompt(lang.showprompt[59]);
 					}
 					else{
-						is_success=undefined;
+						// is_success=undefined;
 					}
 	        }.bind(this),
 			});
