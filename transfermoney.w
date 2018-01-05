@@ -32,7 +32,7 @@
    <div class="x-col x-col-25" xid="col6" style="text-decoration:underline;">
     <span xid="span3" style="color:#A6A6A6;position:relative;top:5px;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col7" style="padding:0px 5px 0px 0px;">
-    <select component="$UI/system/components/justep/select/select" class="form-control" xid="fromSelect" bind-options="bankfromData" bind-optionsValue="name" bind-optionsLabel="name" bind-optionsCaption="请选择..." onChange="fromSelectChange"></select></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="otherbankrow" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
+    <select component="$UI/system/components/justep/select/select" class="form-control" xid="fromSelect" bind-options="bankfromData" bind-optionsValue="name" bind-optionsLabel="name" onChange="fromSelectChange"></select></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="otherbankrow" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col11">
     <span xid="otherbankName" style="color:#A6A6A6;position:relative;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col8" style="padding:0px 5px 0px 0px;">

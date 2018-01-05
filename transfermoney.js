@@ -144,22 +144,34 @@ define(function(require){
   };
 
 	Model.prototype.setupButtonClick = function(event){
+		var fromSelect = this.comp('fromSelect').val();
+		if (!fromSelect) {
+			this.showprompt(lang.showprompt[65]);
+			return;
+		}
+		var formdata = new FormData();
 		var fileObj = $(this.getElementByXid("file2")).prop("files")[0];
-		 var formdata = new FormData();
-		if(fileObj.size/1024 > 1025) { //大于1M，进行压缩上传
-                photoCompress(fileObj, {
-                    quality: 0.2
-                }, function(base64Codes){
-//                    console.log("压缩后：" + base.length / 1024 + " " + base);
-                 var bl = convertBase64UrlToBlob(base64Codes);
-                 formdata.append("image", bl,"file_"+Date.parse(new Date())+".jpg");
-                 me.uploadmessage(formdata);
-         });
-         }
-         else{
-        	 formdata.append("image", fileObj);
-        	 me.uploadmessage(formdata);
-         }
+		var size = 0;
+		if (fileObj) {
+			size = fileObj.size;
+			if(size/1024 > 1025) { //大于1M，进行压缩上传
+				photoCompress(fileObj, {
+					quality: 0.2
+				}, function(base64Codes){
+					//                    console.log("压缩后：" + base.length / 1024 + " " + base);
+					var bl = convertBase64UrlToBlob(base64Codes);
+					formdata.append("image", bl,"file_"+Date.parse(new Date())+".jpg");
+					me.uploadmessage(formdata);
+				});
+			}
+			else{
+				formdata.append("image", fileObj);
+				me.uploadmessage(formdata);
+			}
+		}
+		else {
+			me.uploadmessage(formdata);
+		}
 
 	};
 

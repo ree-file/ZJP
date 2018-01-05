@@ -17,22 +17,17 @@ define(function(require){
 	};
 
 	Model.prototype.setupButtonClick = function(event){
-		var user_id = this.getElementByXid("useridInput").value;
+		this.comp("popOver1").show(999);
+		$(this.getElementByXid("span5")).text(lang.transferGetmoney[14]);
+		$(this.getElementByXid("span1")).text(lang.transferGetmoney[15]);
+		$(this.getElementByXid("span14")).text(lang.transferGetmoney[16]);
+		$(this.getElementByXid("span16")).text(lang.transferGetmoney[17]);
+		$(this.getElementByXid("span17")).text(lang.transferGetmoney[18]);
+		$(this.getElementByXid("span19")).text(lang.transferGetmoney[19]);
 		var money = this.getElementByXid("moneyInput").value;
-		var securityInput = this.getElementByXid("securityInput").value;
-			var is_success = personaljs.transferMoney(money,user_id,securityInput);
-			if (is_success == -1) {
-				this.comp("windowDialog1").open();
-				this.showprompt(lang.showprompt[0]);
-				return;
-			}
-			else if (is_success == 1) {
-				this.setupButtonClick(event);
-				return;
-			}
-			else if (is_success == 2) {
-				this.close();
-			}
+		$(this.getElementByXid("walletspan")).text("$"+(money*0.7).toFixed(2));
+		$(this.getElementByXid("limitspan")).text("$"+(money*0.2).toFixed(2));
+		$(this.getElementByXid("coinspan")).text("$"+(money*0.1).toFixed(2));
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -74,6 +69,33 @@ define(function(require){
 
 	Model.prototype.backBtnClick = function(event){
 		justep.Shell.closePage();
+	};
+
+	Model.prototype.button2Click = function(event){
+		var user_id = this.getElementByXid("useridInput").value;
+		var money = this.getElementByXid("moneyInput").value;
+		var securityInput = this.getElementByXid("securityInput").value;
+		if (!user_id || !money || !securityInput) {
+			this.showprompt(lang.showprompt[68]);
+			return;
+		}
+			var is_success = personaljs.transferMoney(money,user_id,securityInput);
+			if (is_success == -1) {
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
+			}
+			else if (is_success == 1) {
+				this.setupButtonClick(event);
+				return;
+			}
+			else if (is_success == 2) {
+				this.close();
+			}
+	};
+
+	Model.prototype.button1Click = function(event){
+		this.comp("popOver1").hide(999);
 	};
 
 	return Model;

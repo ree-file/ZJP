@@ -209,7 +209,7 @@ define(function(require){
 						showprompt(lang.showprompt[59]);
 					}
 					else{
-						is_success=undefined;
+						showprompt(lang.showprompt[67]);
 					}
 	        }.bind(this),
 			});
@@ -251,6 +251,10 @@ define(function(require){
 					else if(responseText.message=="Wrong security code.")
 					{
 						showprompt(lang.showprompt[59]);
+					}
+					else if(responseText.message=="The card number field is required.")
+					{
+						showprompt(lang.showprompt[66]);
 					}
 					else{
 						// is_success=undefined;

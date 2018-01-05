@@ -1,0 +1,28 @@
+
+.daospan{
+	text-align:center; float:left;word-wrap: break-word;
+}
+
+
+.x-popOver-content{
+	width:60%;
+	height:25%;
+	background:#282B32;
+	border-radius:5px;
+	/* box-shadow:5px 5px 5px #868687; */
+	border-with:1px;
+	border-style:solid;
+	border-color:rgb(93, 146, 226);
+}
+.x-popOver-content{
+	display:table;
+	
+}
+
+.popspan {
+	color:#C0C0C0;
+}
+
+.popspanout{
+	color:#FFFFFF;
+}
