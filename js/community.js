@@ -25,7 +25,6 @@ define(function(require){
         },
 				success:function(data){//请求成功返回值存在data里
 					usernest=data.data;
-					console.log(usernest);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);

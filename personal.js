@@ -21,23 +21,25 @@ define(function(require){
 
 	Model.prototype.row1Click = function(event){
 		if(ifhid == 0){
-			$(this.getElementByXid("hidRow")).show();
+			$(this.getElementByXid("hidRow")).show(199);
 			ifhid = 1;
 			var emailSpan = $(this.getElementByXid("emailSpan"));
-			var useremail = personaljs.getemail();
-			if (useremail == undefined) {
+			var IDspan = $(this.getElementByXid("IDspan"));
+			var user = personaljs.getemail();
+			if (user == undefined) {
 				this.comp("windowDialog1").open();
 				this.showprompt(lang.showprompt[0]);
 				return;
 			}
-			else if (useremail == true) {
+			else if (user == true) {
 				this.row1Click(event);
 				return;
 			}
-			emailSpan.text(useremail);
+			emailSpan.text(user.email);
+			IDspan.text(user.id);
 		}
 		else {
-			$(this.getElementByXid("hidRow")).hide();
+			$(this.getElementByXid("hidRow")).hide(199);
 			ifhid = 0;
 		}
 	};
@@ -70,6 +72,7 @@ define(function(require){
 		$(this.getElementByXid("span7")).html(lang.personal[6]);
 		$(this.getElementByXid("span3")).html(lang.personal[7]);
 		$(this.getElementByXid("span10")).html(lang.personal[8]);
+		$(this.getElementByXid("span27")).html(lang.personal[15]);
 		$(this.getElementByXid("span9")).html(lang.personal[9]);
 		$(this.getElementByXid("span13")).html(lang.personal[10]);
 		$(this.getElementByXid("span17")).html(lang.personal[11]);

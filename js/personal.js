@@ -21,9 +21,9 @@ define(function(require){
 
 	return{
 		getemail : function(){
-			var useremail;
+			var user;
 			$.ajax({
-				url: config.site+"private",//php的api路径
+				url: config.site+"private/user",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{},//需要传递的数据
@@ -32,28 +32,28 @@ define(function(require){
 		            "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
 		        },
 				success:function(data){//请求成功返回值存在data里
-					useremail = data.data.email;
+					user = data.data;
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						if(jwt.authRefresh()){
-							useremail =true;
+							user =true;
 						}
 						else
 						{
-							useremail=undefined;
+							user=undefined;
 						}
 					}
 					else if(responseText.message=="No token provided."){
-						useremail=undefined;
+						user=undefined;
 					}
 					else{
-						useremail=undefined;
+						user=undefined;
 					}
 	        }.bind(this),
 			});
-			return useremail;
+			return user;
 		},
 
 		changePassword : function(password,new_password){
@@ -97,7 +97,7 @@ define(function(require){
 		money : function(){
 			var moneyall;
 			$.ajax({
-				url: config.site+"private",//php的api路径
+				url: config.site+"private/user",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{},//需要传递的数据
@@ -132,35 +132,35 @@ define(function(require){
 			return moneyall;
 		},
 
-		transferMoney : function(pay,type,security_code){
-			var is_success =false;
+		transferMoney : function(money,user_id,security_code){
+			var is_success =0;
 			$.ajax({
-				url: config.site+"private/transfer-money",//php的api路径
+				url: config.site+"transfer",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{pay:pay,type:type,security_code:security_code},//需要传递的数据
+				data:{money:money,user_id:user_id,security_code:security_code},//需要传递的数据
 				type:'post',//php获取类型
         headers: {
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
 					showprompt(lang.personaljs[1]);
+					is_success = 2;
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 
 						if(jwt.authRefresh()){
-							is_success =true;
+							is_success = 1;
 						}
 						else
 						{
-							is_success=undefined;
+							is_success = -1;
 						}
-
 					}
 					else if(responseText.message=="No token provided."){
-						is_success=undefined;
+						is_success = -1;
 					}
 					else if(responseText.message=="Wrong security code.")
 					{
@@ -173,14 +173,14 @@ define(function(require){
 			});
 			return is_success;
 		},
-
-		suppliesget : function(money,type,card_number,security_code){
+		//提现
+		suppliesget : function(money,card_number,security_code,message){
 			var is_success =false;
 			$.ajax({
-				url: config.site+"supplies",//php的api路径
+				url: config.site+"withdraw",//php的api路径
 				async:false,
 				dataType:"json",
-				data:{money:money,type:type,card_number:card_number,security_code:security_code},//需要传递的数据
+				data:{money:money,card_number:card_number,security_code:security_code,message:message},//需要传递的数据
 				type:'post',//php获取类型
         headers: {
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
@@ -215,10 +215,11 @@ define(function(require){
 			});
 			return is_success;
 		},
+		//充值
 		supplies : function(formdata){
 			var is_success =false;
 			$.ajax({
-				url: config.site+"supplies",//php的api路径
+				url: config.site+"recharge",//php的api路径
 				async:false,
 				dataType:"json",
 				data:formdata,//需要传递的数据
@@ -258,10 +259,11 @@ define(function(require){
 			});
 			return is_success;
 		},
+
 		transRecord : function(){
 			var record =false;
 			$.ajax({
-				url: config.site+"private/supplies",//php的api路径
+				url: config.site+"private/transfer-records",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{},//需要传递的数据

@@ -25,7 +25,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="display:;height:100%;width:100%;position:relative;padding-left:2%;padding-right:2%;"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="recordData">
+    <div class="x-panel-content" xid="content1" style="height:100%;width:100%;position:relative;padding-left:2%;padding-right:2%;"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="recordData">
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1"><div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row1" style="background-color:#252932;margin-top:15px;">
    <div class="x-col" xid="col1">
@@ -47,7 +47,7 @@
     <span xid="span11" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(6)"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col23">
     <span xid="span12" style="color:#FFFFFF;font-size:x-small;" bind-text='val("updated_at")'><![CDATA[]]></span></div> </div></div>
-   <div class="x-col x-col-25" xid="col3" style="padding-top:40px;padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
+   <div class="x-col x-col-25" xid="col3" style="padding-top:30px;padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
    <div class="x-col" xid="col4"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" xid="button2">
    <i xid="i2"></i>

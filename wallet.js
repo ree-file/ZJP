@@ -3,7 +3,7 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var personalMoney = require('./js/personal');
 	var pwState = true;
-	var moneymarket;
+	var catcoins;
 	var moneyactive;
 	var moneylimit;
 	var base64 = require("$UI/system/lib/base/base64");
@@ -32,9 +32,9 @@ define(function(require){
       pwState = true;
     } else {
       moneyspan1.text(moneyactive);//moneyactive
-      moneyspan2.text(moneymarket);//moneymarket
+      moneyspan2.text(catcoins);//catcoins
       moneyspan3.text(moneylimit);//money_limit
-      moneyspan4.text((Number(moneyactive)+Number(moneymarket)+Number(moneylimit)).toFixed(2));//money_market+money_active+money_limit
+      moneyspan4.text((Number(moneyactive)+Number(catcoins)+Number(moneylimit)).toFixed(2));//money_market+money_active+money_limit
       pwState = false;
     }
 	};
@@ -45,18 +45,16 @@ define(function(require){
 		});
 		$(this.getElementByXid("span3")).html(lang.wallet[1]);
 		$(this.getElementByXid("span7")).html(lang.wallet[2]);
-		$(this.getElementByXid("span6")).html(lang.wallet[3]);
 		$(this.getElementByXid("span8")).html(lang.wallet[4]);
 		$(this.getElementByXid("span10")).html(lang.wallet[5]);
 		$(this.getElementByXid("span13")).html(lang.wallet[6]);
-		$(this.getElementByXid("span15")).html(lang.wallet[7]);
 		$(this.getElementByXid("span16")).html(lang.wallet[8]);
-		$(this.getElementByXid("span19")).html(lang.wallet[9]);
-		$(this.getElementByXid("span1")).html(lang.wallet[10]);
-		$(this.getElementByXid("span9")).html(lang.wallet[11]);
-		$(this.getElementByXid("span12")).html(lang.wallet[12]);
+		$(this.getElementByXid("span17")).html(lang.wallet[9]);
+		$(this.getElementByXid("span19")).html(lang.wallet[10]);
+		$(this.getElementByXid("span1")).html(lang.wallet[11]);
+		$(this.getElementByXid("span9")).html(lang.wallet[12]);
+		$(this.getElementByXid("span12")).html(lang.wallet[13]);
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
-		var moneyspan2 = $(this.getElementByXid("marketMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
 		var moneyspan4 = $(this.getElementByXid("allMSpan"));
 		var moneyall = personalMoney.money();
@@ -70,13 +68,12 @@ define(function(require){
 			return;
 		}
 		moneyspan1.text(moneyall.money_active);
-		moneyspan2.text(moneyall.money_market);
+		moneyspan4.text(moneyall.coins);
 		moneyspan3.text(moneyall.money_limit);
 		moneyactive = moneyall.money_active;
-		moneymarket = moneyall.money_market;
+		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;
-		moneyspan4.text((Number(moneyall.money_market)+Number(moneyall.money_active)+Number(moneyall.money_limit)).toFixed(2));
-		$(this.getElementByXid("panel2")).css("display","block");
+		$(this.getElementByXid("content2")).css("display","block");
 	};
 
 	Model.prototype.row14Click = function(event){
@@ -124,7 +121,7 @@ define(function(require){
 	};
 
 	Model.prototype.row1Click = function(event){
-		justep.Shell.showPage("transferGetmoney");
+		justep.Shell.showPage("transferGetmoney", {walletMoney:$(this.getElementByXid("activeMSpan")).html()});
 	};
 
 	Model.prototype.row16Click = function(event){

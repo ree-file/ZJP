@@ -59,12 +59,17 @@
    
   <div class="x-col" xid="col12" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:30px;position:relative;top:5px;">
    <div class="x-col x-col-20 center-block" xid="col6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span10" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;top:5px;right:20px;" class="pull-right center-block"><![CDATA[]]></span></div> 
-   <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
+    <span xid="span10" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;top:5px;right:20px;" class="pull-right center-block"><![CDATA[]]></span></div> 
+   <div class="x-col" xid="col2" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding:3px 0px 0px 0px;">
     <span xid="emailSpan" style="font-size:large;color:#FFFFFF;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;position:relative;top:1px;"><![CDATA[]]></span></div> 
    <div class="x-col x-col-20" xid="col5">
     </div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:6px 0px 0px 0px;height:30px;position:relative;top:5px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row19" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:30px;position:relative;top:5px;">
+   <div class="x-col x-col-20 center-block" xid="col28" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
+    <span xid="span27" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;text-transform:lowercase;font-style:inherit;top:5px;right:20px;font-variant:normal;" class="pull-right center-block"></span></div> 
+   <div class="x-col" xid="col41" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding:3px 0px 0px 0px;">
+    <span xid="IDspan" style="font-size:large;color:#FFFFFF;font-family:微软雅黑 Light;text-transform:lowercase;font-style:inherit;position:relative;top:1px;"></span></div> 
+   <div class="x-col x-col-20" xid="col35"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:6px 0px 0px 0px;height:30px;position:relative;top:5px;">
    <div class="x-col x-col-20 center-block" xid="col9" style="margin:0px 0px 0px 0px;padding:12px 0px 0px 0px;">
     <span xid="span9" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;right:20px;" class="pull-right center-block"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
