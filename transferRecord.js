@@ -36,19 +36,19 @@ define(function(require){
 				var type;
 				var status;
 				if (record[i].type == "save") {
-					type = "充值";
+					type = lang.transferRecord[7];
 				}
 				else if (record[i].type == "get") {
-					type = "提现";
+					type = lang.transferRecord[8];
 				}
 				if (record[i].status == "processing") {
-					status = "处理中";
+					status = lang.transferRecord[9];
 				}
 				else if (record[i].status == "accepted") {
-					status = "成功";
+					status = lang.transferRecord[10];
 				}
 				else if (record[i].status == "rejected") {
-					status = "失败";
+					status = lang.transferRecord[11];
 				}
 				recordData.add({
 					"id": record[i].id,
@@ -64,7 +64,7 @@ define(function(require){
 		else {
 		this.showprompt(lang.transferRecord[0]);
 		}
-		
+
 		$(this.getElementByXid("content1")).css("display","block");
 	};
 		//封装提示框--许鑫君

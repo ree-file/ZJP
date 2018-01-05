@@ -13,7 +13,6 @@ define(function(require){
 	var is_append=0;
 	var is_loading=0;
 	var is_refresh = 0;
-	var ifhid = -1;
 	var me;
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -147,9 +146,9 @@ define(function(require){
 	//排序按钮
 	Model.prototype.sortingBtnClick = function(event){
 		if($(this.comp("sortingPopOver").$domNode).css("display")=="block"){
-			this.comp("sortingPopOver").hide();
+			this.comp("sortingPopOver").hide(999);
 		} else {
-			this.comp("sortingPopOver").show();
+			this.comp("sortingPopOver").show(999);
 		}
 	};
 	//筛选价值的确认按钮
@@ -652,13 +651,8 @@ define(function(require){
 
 
 	Model.prototype.row27Click = function(event){
-		ifhid = -ifhid;
-		if (ifhid == -1) {
-			$(this.getElementByXid("hidRow")).hide();
-		}
-		else if (ifhid == 1) {
-			$(this.getElementByXid("hidRow")).show();
-		}
+			$(this.getElementByXid("hidRow")).toggle(99);
+
 	};
 
 

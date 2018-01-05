@@ -21,8 +21,8 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#282F37;height:100%;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2" style="display:none">
-   <div class="x-panel-content" xid="content2"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
+    <div class="x-panel-content" xid="content1" style="background-color:#282F37;height:100%;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
+   <div class="x-panel-content" xid="content2" style="margin-bottom:15%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
    <div class="x-col x-col-10" xid="col4" style="position:relative;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block" label="button" xid="button1" icon="glyphicon glyphicon-usd" style="color:#FFFFFF;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:100%;width:100%;font-size:xx-large;top:10px;">
    <i xid="i1" class="glyphicon-usd glyphicon" style="position:relative;left:15%;top:15%;"></i>
    <span xid="span2"></span></a></div>
@@ -45,18 +45,13 @@
    <i xid="i4"></i>
    <span xid="span7"><![CDATA[]]></span></a></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="background-color:#1C1F26;border-top-style:groove;border-top-width:thin;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
-   <div class="x-col x-col-33" xid="col20" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="span6" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[]]></span></div>
-   <div class="x-col" xid="col23" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="marketMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[]]></span></div></div>
+   <div class="x-col x-col-33" xid="col20" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="span10" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[]]></span></div>
+   <div class="x-col" xid="col23" style="padding:0px 0px 0px 0px;margin:20px 0px 0px 0px;position:relative;"><span xid="allMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col x-col-33" xid="col25" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="span8" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col24" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="limitMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[]]></span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
-   <div class="x-col x-col-33" xid="col26" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
-    <span xid="span10" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[]]></span></div> 
-   <div class="x-col" xid="col27" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
-    <span xid="allMSpan" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;font-weight:bolder;"><![CDATA[]]></span></div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10" style="background-color:#1C1F26;padding:0px 20px 0px 20px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col" xid="col28" style="border-bottom-style:solid;border-bottom-width:thin;"></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
@@ -66,10 +61,12 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col" xid="col33" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="span15" style="font-size:small;color:#808080;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[]]></span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="background-color:#1C1F26;padding:0px 0px 20px 0px;margin:0px 0px 0px 0px;position:relative;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="background-color:#1C1F26;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
    <div class="x-col" xid="col34" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
     <span xid="span16" style="font-size:small;color:#808080;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"><![CDATA[]]></span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;" bind-click="row14Click">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="background-color:#1C1F26;padding:0px 0px 20px 0px;margin:0px 0px 0px 0px;position:relative;">
+   <div class="x-col" xid="col12" style="padding:0px 0px 0px 0px;margin:5px 0px 0px 0px;position:relative;">
+    <span xid="span17" style="font-size:small;color:#808080;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:20px;"></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row14" style="margin-top:25px;background-color:#1C1F26;" bind-click="row14Click">
    <div class="x-col" xid="col35">
     <span xid="span19" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[]]></span></div> 
    <div class="x-col x-col-10" xid="col36">
@@ -77,9 +74,9 @@
      <i xid="i5" class="dataControl dataControl-arrowrightl"></i>
      <span xid="span20"></span></a> </div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row1" style="background-color:#1C1F26;" bind-click="row1Click">
+    
    <div class="x-col" xid="col2">
-    <span xid="span1" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"></span></div> 
-   <div class="x-col x-col-10" xid="col1">
+    <span xid="span1" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"></span></div><div class="x-col x-col-10" xid="col1">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button2" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
      <i xid="i3" class="dataControl dataControl-arrowrightl"></i>
      <span xid="span5"></span></a> </div> </div>
@@ -90,13 +87,14 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button3" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
      <i xid="i6" class="dataControl dataControl-arrowrightl"></i>
      <span xid="span11"></span></a> </div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row16" style="background-color:#1C1F26;" bind-click="row16Click">
+  <div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="row16" style="background-color:#1C1F26;margin-bottom:20px;" bind-click="row16Click">
    <div class="x-col" xid="col8">
     <span xid="span12" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"></span></div> 
    <div class="x-col x-col-10" xid="col9">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon middlebtn" label="button" xid="button4" icon="dataControl dataControl-arrowrightl" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#FFFFFF;width:18px;font-size:medium;font-weight:bolder;position:relative;top:2px;">
      <i xid="i7" class="dataControl dataControl-arrowrightl"></i>
-     <span xid="span14"></span></a> </div> </div></div>
+     <span xid="span14"></span></a> </div> </div>
+  </div>
    </div>
   </div>
   </div> 

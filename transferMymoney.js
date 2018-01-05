@@ -4,7 +4,6 @@ define(function(require){
 	var personaljs = require("./js/personal");
 	var base64 = require("$UI/system/lib/base/base64");
 	var lang;
-	var type = 1;
 	if(localStorage.getItem("lang")=="en_us")
 	{
 		lang = require('./js/en_us');
@@ -17,64 +16,23 @@ define(function(require){
 		this.callParent();
 	};
 
-	Model.prototype.changeClick = function(event){
-		var button1 = $(this.getElementByXid("button1"));
-		var button2 = $(this.getElementByXid("button2"));
-		if ($(this.getElementByXid("span1")).html() == lang.transferMymoney[2]) {
-			$(this.getElementByXid("span1")).html(lang.transferMymoney[3]);
-			$(this.getElementByXid("span3")).html(lang.transferMymoney[2]);
-			$(button1).css({
-				"background-color":"#049FCC"
-			});
-			$(button2).css({
-				"background-color":"#C71C22"
-			});
-			type = -type;
-		}
-		else if ($(this.getElementByXid("span1")).html() == lang.transferMymoney[3]) {
-			$(this.getElementByXid("span1")).html(lang.transferMymoney[2]);
-			$(this.getElementByXid("span3")).html(lang.transferMymoney[3]);
-			$(button1).css({
-				"background-color":"#C71C22"
-			});
-			$(button2).css({
-				"background-color":"#049FCC"
-			});
-			type = -type;
-		}
-	};
-
 	Model.prototype.setupButtonClick = function(event){
+		var user_id = this.getElementByXid("useridInput").value;
 		var money = this.getElementByXid("moneyInput").value;
 		var securityInput = this.getElementByXid("securityInput").value;
-		if (type == 1) {
-			var is_success1 = personaljs.transferMoney(money,"active-to-market",securityInput);
-			if (is_success1 == undefined) {
+			var is_success = personaljs.transferMoney(money,user_id,securityInput);
+			if (is_success == -1) {
 				this.comp("windowDialog1").open();
 				this.showprompt(lang.showprompt[0]);
 				return;
 			}
-			else if (is_success1 == true) {
+			else if (is_success == 1) {
 				this.setupButtonClick(event);
 				return;
 			}
-
-		}
-		else if (type == -1) {
-			var is_success2 = personaljs.transferMoney(money,"market-to-active",securityInput);
-			if (is_success2 == undefined) {
-				this.comp("windowDialog1").open();
-				this.showprompt(lang.showprompt[0]);
-				return;
+			else if (is_success == 2) {
+				this.close();
 			}
-			else if (is_success2 == true) {
-				this.setupButtonClick(event);
-				return;
-			}
-		}
-		else {
-			this.showprompt("转账失败，请检查网络情况");
-		}
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -82,11 +40,10 @@ define(function(require){
 			title:lang.transferMymoney[0]
 		});
 		$(this.getElementByXid("span2")).html(lang.transferMymoney[1]);
-		$(this.getElementByXid("span1")).html(lang.transferMymoney[2]);
-		$(this.getElementByXid("span3")).html(lang.transferMymoney[3]);
-		$(this.getElementByXid("span11")).html(lang.transferMymoney[4]);
-		$(this.getElementByXid("span5")).html(lang.transferMymoney[5]);
-		$(this.getElementByXid("span12")).html(lang.transferMymoney[6]);
+		$(this.getElementByXid("span6")).html(lang.transferMymoney[2]);
+		$(this.getElementByXid("span8")).html(lang.transferMymoney[3]);
+		$(this.getElementByXid("span9")).html(lang.transferMymoney[4]);
+		$(this.getElementByXid("span10")).html(lang.transferMymoney[5]);
 		$(this.getElementByXid("content1")).css("display","block");
 	};
 

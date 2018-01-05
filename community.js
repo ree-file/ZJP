@@ -15,14 +15,6 @@ define(function(require) {
 		this.callParent();
 	};
 
-	Model.prototype.content1Active = function(event){
-		var allBtn = $(this.getElementByXid("allBtn"));
-		$(allBtn).css({
-			"color": "#757575",
-			"background-color":"#5D92E2"
-		});
-	};
-
 	Model.prototype.content2Active = function(event){
 		var SecondBtn = $(this.getElementByXid("SecondBtn"));
 		$(SecondBtn).css({
@@ -36,14 +28,6 @@ define(function(require) {
 		$(ThirdBtn).css({
 			"color": "#757575",
 			"background-color":"#5D92E2"
-		});
-	};
-
-	Model.prototype.content1Inactive = function(event){
-		var allBtn = $(this.getElementByXid("allBtn"));
-		$(allBtn).css({
-			"color": "#FFFFFF",
-			"background-color":"#282D40"
 		});
 	};
 
