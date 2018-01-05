@@ -27,12 +27,7 @@ define(function(require) {
 					$(".x-hint").find("button[class='close']").hide();
 	};
 	Model.prototype.modelModelConstructDone = function(event){
-		mainInfo = nest.mainInfo();
-		if (mainInfo==undefined) {
-			this.comp("windowDialog1").open();
-			this.showprompt("重新登录");
-			return;
-		}
+		
 		personalInvite = mainInfo.receivers_eggs*parseFloat(config.configegg().egg_val);
 		//获得用户所有巢的信息
 		this.comp("NestsAccount").refreshData();
@@ -57,26 +52,37 @@ define(function(require) {
 		$(this.getElementByXid("h51")).html(lang.ZJP_main[12]);
 		$(this.getElementByXid("h52")).html(lang.ZJP_main[13]);
 		$(this.getElementByXid("span35")).html(lang.ZJP_main[14]);
-		//计算三部分资金所占比重
-		var worthInfo =	user.getUserMessage();
-		if (worthInfo==undefined) {
+		//获得今日收益比例
+		var incomeAnalyse =	user.getUserIncomeAnalyse();
+		if (incomeAnalyse==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
-		var rightRotate = 180-parseFloat(worthInfo['market'])/(parseFloat(worthInfo['all']))*360;
-		var leftRotate = 180-parseFloat(worthInfo['limit'])/(parseFloat(worthInfo['all']))*360;
+		var coins = incomeAnalyse.coins;
+		var money_active_sum = incomeAnalyse.money_active_sum;
+		var money_limit_sum = incomeAnalyse.money_limit_sum;
+		var all = coins+money_active_sum+money_limit_sum;
+		var rightRotate = 180-parseFloat(coins/all)*360;
+		var leftRotate = 180-parseFloat(money_limit_sum/all)*360;
 		if (rightRotate<0) {
-			$(this.getElementByXid("span24")).html(lang.ZJP_main[15]);
-			$(this.getElementByXid("span26")).html(lang.ZJP_main[16]);
+			$(this.getElementByXid("span24")).html(lang.ZJP_main[16]);
+			$(this.getElementByXid("span25")).html(lang.ZJP_main[17]);
+			$(this.getElementByXid("span26")).html(lang.ZJP_main[15]);
 		}
 		else if(leftRotate<0){
 			$(this.getElementByXid("span24")).html(lang.ZJP_main[17]);
-			$(this.getElementByXid("span25")).html(lang.ZJP_main[16]);
+			$(this.getElementByXid("span25")).html(lang.ZJP_main[15]);
+			$(this.getElementByXid("span26")).html(lang.ZJP_main[16]);
+		}else{
+			$(this.getElementByXid("span24")).html(lang.ZJP_main[15]);
+			$(this.getElementByXid("span25")).html(lang.ZJP_main[17]);
+			$(this.getElementByXid("span26")).html(lang.ZJP_main[16]);
 		}
+		
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
-		$(this.getElementByXid("span7")).html("$"+worthInfo['all'])
+		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){	
@@ -154,13 +160,7 @@ define(function(require) {
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
 		
-		if (mainInfo==undefined) {
-			return;
-		}
-		var nestInfo = nest.nestInfo(mainInfo.nests);
-		$(this.getElementByXid("span8")).html("$"+nestInfo.assets);
-		event.source.loadData(nestInfo.contracts);
-		this.comp("incomeAccount").refreshData();
+		
 	};
 
 	Model.prototype.button8Click = function(event){

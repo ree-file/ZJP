@@ -351,7 +351,131 @@ define(function(require){
 			});
 			return status;
 		},
+		//获得的个人收益比例
+		getUserIncomeAnalyse:function(){
+			var incomeAnalyse;
+			do{
+				incomeAnalyse={};
+				var result1 = this.getUserIncomeAnalyse();
+				if (typeof(result1)!="number") {
+					
+					incomeAnalyse=result1;
+					
+				}
+				else{
+					incomeAnalyse=undefined;
+				}
 
+			}while(result1==500);
+				
+			return incomeAnalyse;
+		},
+		getUserIncomeajax:function(){
+			var incomeAnalyse={};
+			var status =400;
+			$.ajax({
+				url:config.site+"private/income-analyse",
+				async:false,
+				dataType:"json",
+				type:"GET",
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					
+					income = data.data.analyse_today;
+					status =200;
+				},
+				error:function(ero){
+					
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							status =500;
+						}
+						else
+						{
+							status =404;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						status =404;
+					}
+					
+				}
+			});
+			if (status ==200) {
+				return incomeAnalyse;
+			}
+			else{
+				return status;
+			}
+		},
+		//获得个人今日收益
+		getUserIncome:function(page){
+			var income;
+			do{
+				income=[];
+				var result1 = this.getUserIncomeajax(page);
+				if (typeof(result1)!="number") {
+					
+					income=result1;
+					
+				}
+				else{
+					income=undefined;
+				}
+
+			}while(result1==500);
+				
+			return income;
+		},
+		getUserIncomeajax:function(page){
+			var income=[];
+			var status =400;
+			$.ajax({
+				url:config.site+"private/income",
+				async:false,
+				dataType:"json",
+				type:"GET",
+				data:{page:page,tab:'today'},
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					
+					income = data.data.data;
+					status =200;
+				},
+				error:function(ero){
+					
+					responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							status =500;
+						}
+						else
+						{
+							status =404;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						status =404;
+					}
+					
+				}
+			});
+			if (status ==200) {
+				return income;
+			}
+			else{
+				return status;
+			}
+		},
 
 	};
 });

@@ -42,17 +42,17 @@
     <div class="x-col x-col-33" xid="col11">
      <div xid="div4" class="sign"></div></div> 
     <div class="x-col" xid="col16" style="text-align:left;">
-     <span xid="span24" style="font-size:medium;">活动</span></div> </div> 
+     <span xid="span24" style="font-size:medium;"><![CDATA[可提]]></span></div> </div> 
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
     <div class="x-col x-col-33" xid="col17">
      <div xid="div5" class="sign" style="background-color:#EA2229;"></div></div> 
     <div class="x-col" xid="col25" style="text-align:left;">
-     <span xid="span25" style="font-size:medium;">投资</span></div> </div> 
+     <span xid="span25" style="font-size:medium;"><![CDATA[限制]]></span></div> </div> 
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row16">
     <div class="x-col x-col-33" xid="col26">
      <div xid="div6" class="sign" style="background-color:#EFA433;"></div></div> 
     <div class="x-col" xid="col28" style="text-align:left;">
-     <span xid="span26" style="font-size:medium;">市场</span></div> </div> </div><div xid="circle-box" class="circle-box">
+     <span xid="span26" style="font-size:medium;"><![CDATA[猫币]]></span></div> </div> </div><div xid="circle-box" class="circle-box">
      <div xid="circle-left" class="circle-left">
       <div xid="left" class="left"></div></div> 
      <div xid="circle-right" class="circle-right">
