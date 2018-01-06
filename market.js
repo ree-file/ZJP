@@ -514,7 +514,6 @@ define(function(require){
 		var nest_id = row.val("nest_id");
 		var seller_id = row.val("seller_id");
 		justep.Shell.showPage("particulars",{order_id:order_id,nest_id:nest_id,seller_id:seller_id,});
-debugger;
 	};
 
 //	Model.prototype.col2Click = function(event){

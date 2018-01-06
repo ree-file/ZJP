@@ -35,7 +35,7 @@
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" onActiveChange="contents1ActiveChange">
    <div class="x-contents-content" xid="content2"><div xid="main1" style="position:absolute;width:100%;height:50%;">
     
-   <div xid="circle" class="circle" style="top:30px;">
+   <div xid="div11" class="code" style="text-align:center"><span xid="span18"></span></div><div xid="circle" class="circle" style="top:30px;">
     <div xid="remark" class="remark">
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
     <div class="x-col x-col-33" xid="col11">

@@ -248,6 +248,13 @@
 	display:inline;
 	
 }
+.code{
+	width:15%;
+	height:20px;
+	float:left;
+	display:inline-block;
+	
+}
 .remark .x-row{
 	padding:0;
 }
