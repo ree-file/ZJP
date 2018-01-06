@@ -39,7 +39,7 @@
    <div class="x-col" xid="col14" style="padding-top:6px;">
     <span xid="priceSpan" style="font-size:medium;" class="moneyspan"><![CDATA[]]></span></div> </div></div>
    <div xid="div1" style="position:absolute;background-color:#1C1F26;left:10%;top:-8%;padding-right:10px;padding-left:10px;"><span xid="span4" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[]]></span></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row8" style="position:relative;border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;top:9%;height:285px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row8" style="position:relative;border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;top:9%;height:260px;">
    <div class="x-col" xid="col22" style="padding-top:9px;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
      <div class="x-col x-col-33" xid="col20">
@@ -59,11 +59,7 @@
    <div class="x-col x-col-33" xid="col28">
     <span xid="span22" style="color:#C0C0C0;font-size:medium;"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col27" style="padding-top:6px;">
-    <span xid="eggsrestspan" style="font-size:medium;" class="redspan"><![CDATA[]]></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
-   <div class="x-col x-col-33" xid="col30">
-    <span xid="span24" style="color:#C0C0C0;font-size:medium;"><![CDATA[]]></span></div> 
-   <div class="x-col" xid="col29" style="padding-top:6px;">
-    <span xid="eggscasespan" style="font-size:medium;" class="redspan"><![CDATA[]]></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row7">
+    <span xid="eggsrestspan" style="font-size:medium;" class="redspan"><![CDATA[]]></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row7">
      <div class="x-col x-col-33" xid="col16">
       <span xid="span16" style="color:#C0C0C0;font-size:medium;"><![CDATA[]]></span></div> 
      <div class="x-col" xid="col17" style="padding-top:6px;">
@@ -75,11 +71,11 @@
     <span xid="nestGrandchildrenLengthSpan" style="font-size:medium;" class="redspan"><![CDATA[]]></span></div> </div>
   
   
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
-   <div class="x-col x-col-33" xid="col2">
-    <span xid="span3" style="color:#C0C0C0;font-size:medium;"><![CDATA[]]></span></div> 
-   <div class="x-col" xid="col4" style="padding-top:6px;">
-    <span xid="communitySpan" style="font-size:medium;" class="redspan"></span></div> </div></div> 
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
+   <div class="x-col x-col-33" xid="col6">
+    <span xid="span6" style="color:#C0C0C0;font-size:medium;"></span></div> 
+   <div class="x-col" xid="col5" style="padding-top:6px;">
+    <span xid="nestGrandGrandchildrenLengthSpan" style="font-size:medium;" class="redspan"></span></div> </div></div> 
    <div xid="div2" style="position:absolute;background-color:#1C1F26;left:10%;padding-right:10px;padding-left:10px;top:-4%;">
     <span xid="span11" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[]]></span></div> </div></div>
   </div> 
