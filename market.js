@@ -510,13 +510,11 @@ define(function(require){
 
 	Model.prototype.col1Click = function(event){
 		var row = event.bindingContext.$object;
-		var type = row.val("type");
-		var remaining = row.val("remainingeggs");
-		var id = row.val("id");
-		var grandchildren = row.val("grandChildrenNum");
-		var freeseeggs = row.val("freeseeggs");
-		justep.Shell.showPage("particulars",{type:type,remaing:remaining,id:id,grandchildren:grandchildren,freeseeggs:freeseeggs});
-
+		var order_id = row.val("id");
+		var nest_id = row.val("nest_id");
+		var seller_id = row.val("seller_id");
+		justep.Shell.showPage("particulars",{order_id:order_id,nest_id:nest_id,seller_id:seller_id,});
+debugger;
 	};
 
 //	Model.prototype.col2Click = function(event){

@@ -8,7 +8,8 @@
   <column name="type" type="Integer" xid="xid19"></column>
   <column name="orderid" type="Integer" xid="xid25"></column>
   <column name="lang" type="String" xid="xid26"></column>
-  <column name="useremail" type="String" xid="xid3"></column></div>
+  <column name="useremail" type="String" xid="xid3"></column>
+  <column name="seller_id" type="Integer" xid="xid4"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="conditionData" idColumn="id" confirmDelete="false" confirmRefresh="false" onCustomRefresh="conditionDataCustomRefresh"><column name="id" type="String" xid="xid7"></column>
   <column name="fName" type="String" xid="xid8"></column>
   <column name="fState" type="Integer" xid="xid9"></column>
@@ -80,11 +81,11 @@
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;margin-top:15px;" bind-click="col1Click">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4">
-   <div class="x-col" xid="col1"></div>
+   <div class="x-col" xid="col1"><span xid="span23" class="pull-right moneycenterright" style="text-align:left;font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;"><![CDATA[卖家邮箱]]></span></div>
    <div class="x-col" xid="col10"></div>
    <div class="x-col" xid="col11"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-width:thin;">
    <div class="x-col x-col-25" xid="col30" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span23" class="pull-right moneycenterright" style="text-align:left;font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;"><![CDATA[卖家邮箱]]></span></div> 
+    </div> 
    <div class="x-col" xid="col31" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("useremail")' style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;"></div></div> </div>
   </div>

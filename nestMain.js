@@ -171,7 +171,7 @@ define(function(require){
 		
 		var nestvalues = [{
 			id:this.params.nest_id,
-			name:this.params.name,
+			name:this.params.nest_name,
 			date:nestInfo[0].created_at,
 			released:released.toFixed(2),
 			investment:investment.toFixed(2),
