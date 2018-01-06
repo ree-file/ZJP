@@ -277,6 +277,7 @@ define(function(require){
         },
 				success:function(data){//请求成功返回值存在data里
 					record = data.data;
+					console.log(record);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
