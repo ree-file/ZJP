@@ -11,41 +11,42 @@ define(function(require){
 		$(".x-hint").find("button[class='close']").hide();
 	}
 
-	return{
-		gaynumber : function(nest_id){//使用界面：community
-			var usernest;
+	return{          //订单详情页面
+		nests : function(nest_id){
+			var nestparticulars;
 			$.ajax({
-				url: config.site+"nests/"+nest_id,//php的api路径
+				url:config.site+"nests/"+nest_id,//php的api路径
 				async:false,
 				dataType:"json",
 				data:{},//需要传递的数据
-				type:'GET',//php获取类型
+				type:'get',//php获取类型
         headers: {
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					usernest=data.data;
+					nestparticulars = data.data;
+					console.log(nestparticulars);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 						if(jwt.authRefresh()){
-							usernest = true;
+							nestparticulars =true;
 						}
 						else
 						{
-							usernest=undefined;
+							nestparticulars=undefined;
 						}
 					}
 					else if(responseText.message=="No token provided."){
-						usernest=undefined;
+						nestparticulars=undefined;
 					}
 					else{
-						usernest=undefined;
+						nestparticulars=undefined;
 					}
 	        }.bind(this),
 			});
-			return usernest;
+			return nestparticulars;
 		},
 
 

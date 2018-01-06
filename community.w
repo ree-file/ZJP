@@ -28,29 +28,18 @@
   <a component="$UI/system/components/justep/button/button" class="btn btn-default;rb;" xid="ThirdBtn" style="width:50%;color:#C0C0C0;margin:0px 0px 0px 0px;background-color:#282D40;" target="content3">
    <i xid="i3"></i>
    <span xid="span5" style="color:#FFFFFF;"></span></a></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
-   <div class="x-contents-content" xid="content2" onActive="content2Active" onInactive="content2Inactive" style="color:#C0C0C0;"><div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row10" style="border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;position:relative;height:150px;top:75px;">
+   <div class="x-contents-content" xid="content2" onActive="content2Active" onInactive="content2Inactive" style="color:#C0C0C0;"><div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row10" style="border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;position:relative;top:135px;height:80px;">
    
    <div class="x-col" xid="col21">
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="margin-top:15px;">
-    <div class="x-col x-col-33" xid="col17" style="margin-left:0px;padding-left:0px;margin-top:0px;padding-top:0px;">
+    <div class="x-col x-col-33" xid="col17" style="margin-left:0px;padding-left:0px;margin-top:0px;padding-top:0px;padding-right:0px;">
      <span xid="span16" style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;top:-5px;left:-3px;font-size:medium;" class="spancenter"><![CDATA[]]></span></div> 
-    <div class="x-col" xid="col25" style="margin-left:-5px;padding-top:0px;padding-left:0px;">
+    <div class="x-col" xid="col25" style="margin-left:5px;padding-top:0px;padding-left:0px;">
      <span xid="allpeople" style="color:#FFFFFF;position:relative;width:100%;" class="spancenter"><![CDATA[]]></span></div> </div> 
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13" style="padding:0px 0px 0px 0px;border-top-style:groove;border-top-width:thin;"></div>
-   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15" style="padding-left:0px;margin-left:0px;">
-    <div class="x-col" xid="col19" style="margin-left:0px;padding-left:0px;padding-right:0px;margin-right:0px;">
-     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14" style="padding-left:0px;margin-left:0px;">
-      <div class="x-col x-col-33" xid="col20" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-       <span xid="span18" style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;" class="spancenter"></span></div> 
-      <div class="x-col" xid="col23">
-       <span xid="receiversspan" style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" class="spancenter"></span></div> </div> 
-     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row16" style="margin-left:0px;padding-left:0px;">
-      <div class="x-col x-col-33" xid="col22" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-       <span xid="span17" style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;" class="spancenter"></span></div> 
-      <div class="x-col" xid="col24">
-       <span xid="communityspan" style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" class="spancenter"></span></div> </div> </div> </div> </div><div xid="div1" style="position:absolute;background-color:#1C1F26;left:10%;top:-8%;padding-right:10px;padding-left:10px;">
+   </div><div xid="div1" style="position:absolute;background-color:#1C1F26;top:-8%;padding-right:10px;padding-left:10px;left:39%;">
     <span xid="span3" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[]]></span></div> 
-  </div><div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row18" style="border-width:thin thin thin thin;margin-left:7%;width:86%;position:relative;border-right-style:groove;border-bottom-style:groove;border-left-style:groove;height:130px;top:78px;">
+  </div><div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row18" style="border-width:thin thin thin thin;margin-left:7%;width:86%;position:relative;border-right-style:groove;border-bottom-style:groove;border-left-style:groove;height:120px;top:138px;">
    <div class="x-col" xid="col34" style="padding:15px 0px 0px 0px;margin:0px 0px 0px 0px;">
      
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row49" style="padding-left:0px;margin-left:0px;">
@@ -67,28 +56,9 @@
        <div class="x-col" xid="col28">
         <span xid="Cnumber1Span" style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" class="spancenter"></span></div> </div>
   </div> 
-   <div xid="col33" style="position:absolute;background-color:#1C1F26;left:10%;top:-8%;padding-right:10px;padding-left:10px;">
+   <div xid="col33" style="position:absolute;background-color:#1C1F26;top:-8%;padding-right:10px;padding-left:10px;left:37%;">
     <span xid="span32" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[]]></span></div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row24" style="border-width:thin thin thin thin;margin-left:7%;width:86%;position:relative;border-right-style:groove;border-bottom-style:groove;border-left-style:groove;height:120px;margin-bottom:55px;top:81px;">
-   <div class="x-col" xid="col50" style="padding:12px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row45" style="padding-left:0px;margin-left:0px;">
-   <div class="x-col x-col-33" xid="col51" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-    <span xid="span43" style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;" class="spancenter"></span></div> 
-   <div class="x-col" xid="col46">
-    <span xid="Anumber2Span" style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" class="spancenter"></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row48" style="padding-left:0px;margin-left:0px;">
-   <div class="x-col x-col-33" xid="col55" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-    <span xid="span50" style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;" class="spancenter"></span></div> 
-   <div class="x-col" xid="col54">
-    <span xid="Bnumber2Span" style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" class="spancenter"></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row43" style="margin-left:0px;padding-left:0px;">
-       <div class="x-col x-col-33" xid="col47" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-        <span xid="span44" style="color:#C0C0C0;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;" class="spancenter"></span></div> 
-       <div class="x-col" xid="col42">
-        <span xid="Cnumber2Span" style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;" class="spancenter"></span></div> </div>
-  
-  </div> 
-   <div xid="col49" style="position:absolute;background-color:#1C1F26;left:10%;top:-8%;padding-right:10px;padding-left:10px;">
-    <span xid="span41" class="center-block" style="color:#FFFFFF;font-size:small;"><![CDATA[]]></span></div> </div></div><div class="x-contents-content" xid="content3" onActive="content3Active" onInactive="content3Inactive" style="color:#C0C0C0;position:relative;height:100%;">
+  </div><div class="x-contents-content" xid="content3" onActive="content3Active" onInactive="content3Inactive" style="color:#C0C0C0;position:relative;height:100%;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="position:relative;top:13%;margin-top:15%;">
    
    <div class="x-col" xid="col4">

@@ -514,8 +514,8 @@ define(function(require){
 		var nest_id = row.val("nest_id");
 		var seller_id = row.val("seller_id");
 		var email = row.val("useremail");
-		debugger;
-		justep.Shell.showPage("particulars",{order_id:order_id,nest_id:nest_id,seller_id:seller_id,email:email});
+		var worth = row.val("worth");
+		justep.Shell.showPage("particulars",{order_id:order_id,nest_id:nest_id,seller_id:seller_id,email:email,worth:worth});
 	};
 
 //	Model.prototype.col2Click = function(event){
@@ -593,7 +593,7 @@ define(function(require){
 			is_refresh = 0;
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
-			
+
 		}
 		else{
 			justep.Shell.closePage();
