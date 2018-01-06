@@ -513,7 +513,9 @@ define(function(require){
 		var order_id = row.val("id");
 		var nest_id = row.val("nest_id");
 		var seller_id = row.val("seller_id");
-		justep.Shell.showPage("particulars",{order_id:order_id,nest_id:nest_id,seller_id:seller_id,});
+		var email = row.val("useremail");
+		debugger;
+		justep.Shell.showPage("particulars",{order_id:order_id,nest_id:nest_id,seller_id:seller_id,email:email});
 	};
 
 //	Model.prototype.col2Click = function(event){
