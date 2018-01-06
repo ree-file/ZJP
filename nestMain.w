@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive" onActive="modelActive" onunLoad="modelUnLoad"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmDelete="false" confirmRefresh="false"><column label="id" name="id" type="String" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:380px;left:313px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive" onActive="modelActive" onInactive="modelInactive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmDelete="false" confirmRefresh="false"><column label="id" name="id" type="String" xid="xid1"></column>
   <column label="图片" name="picture" type="String" xid="xid2"></column>
   <data xid="default1">[{&quot;id&quot;:&quot;1&quot;,&quot;picture&quot;:&quot;$UI/ZJP/res/img/Germany.jpg&quot;}]</data></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="accelerate" idColumn="id" confirmDelete="false" confirmRefresh="false"><column name="id" type="String" xid="xid3"></column>
@@ -59,7 +59,7 @@
    <div class="x-col" xid="col35"><h2 xid="h23" class="font-white" bind-text="'$'+ $model.nest.val(&quot;currentWorth&quot;)"><![CDATA[]]></h2></div>
    <div class="x-col" xid="col36"></div>
    <div class="x-col" xid="col37"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row10" style="padding:0px 0px 0px 0px;">
-   <div class="x-col" xid="col28"><h5 xid="h55" class="font-white" bind-text="'￥'+ $model.nest.val(&quot;currentWorth&quot;) * $model.nest.val(&quot;globalValue&quot;)"><![CDATA[]]></h5></div>
+   <div class="x-col" xid="col28"><h5 xid="h55" class="font-white" bind-text="'￥'+  $model.fixtwo($model.nest.val(&quot;currentWorth&quot;) * $model.nest.val(&quot;globalValue&quot;))"><![CDATA[]]></h5></div>
    <div class="x-col" xid="col29"></div>
    <div class="x-col" xid="col30"></div></div>
   </div>
@@ -67,14 +67,7 @@
    <div class="x-col" xid="col22"></div>
    <div class="x-col" xid="col23"></div>
    <div class="x-col" xid="col24"></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="height:35px;">
-   <div class="x-col x-col-67" xid="col26"><h5 xid="h58" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[]]></h5></div>
-   <div class="x-col" xid="col27"><h5 xid="h56" class="text-right font-white" bind-text="'$'+  $model.nest.val(&quot;withdraw&quot;)"><![CDATA[]]></h5></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row33" style="height:35px;">
-   <div class="x-col x-col-67" xid="col89">
-    <h5 xid="h57" class="gary-font-xsmall text-center" style="font-size:x-small;font-weight:300;"><![CDATA[]]></h5></div> 
-   <div class="x-col" xid="col33">
-    <h5 xid="h54" class="text-right font-white"></h5></div> </div></div>
+  </div>
   </div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-height" xid="row14">
    <div class="x-col " xid="col41"><h5 xid="h510" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
@@ -99,11 +92,11 @@
    <div class="x-col " xid="col77">
     </div> </div></div>
    <div class="x-col noMarginPadding" xid="col46"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row20">
-   <div class="x-col" xid="col61">
+   <div class="x-col x-col-10" xid="col61">
     </div> 
    <div class="x-col col-paddind-right" xid="col60">
     <h5 xid="h524" class="text-right font-white"><![CDATA[￥]]></h5></div> 
-   <div class="x-col col-padding-left" xid="col59"><h5 xid="h523" class="font-white text-left" bind-text=' $model.fixtwo($model.nest.val("speed") * $model.nest.val("currentWorth") * $model.nest.val("globalValue"))'><![CDATA[]]></h5></div></div></div></div>
+   <div class="x-col col-padding-left" xid="col59"><h5 xid="h523" class="font-white text-left" bind-text='$model.fixtwo($model.nest.val("speed") * $model.nest.val("currentWorth") * $model.nest.val("globalValue"))' style="text-align:left;"><![CDATA[]]></h5></div></div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-height" xid="row16">
    <div class="x-col" xid="col47"><h5 xid="h512" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
    <div class="x-col noMarginPadding" xid="col48"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row21">
@@ -113,11 +106,11 @@
     <h5 xid="h525" class="font-white text-left" bind-text=' $model.nest.val("investment")'><![CDATA[]]></h5></div> 
    <div class="x-col" xid="col62"></div></div></div>
    <div class="x-col noMarginPadding" xid="col49"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row24">
-   <div class="x-col" xid="col72"></div>
+   <div class="x-col x-col-10" xid="col72"></div>
    <div class="x-col col-paddind-right" xid="col73">
     <h5 xid="h532" class="text-right font-white"><![CDATA[￥]]></h5></div> 
    <div class="x-col col-padding-left" xid="col71">
-    <h5 xid="h531" class="font-white text-left" bind-text=' $model.nest.val("investment") * $model.nest.val("globalValue")'><![CDATA[]]></h5></div> </div></div></div>
+    <h5 xid="h531" class="font-white text-left" bind-text=' $model.fixtwo($model.nest.val("investment") * $model.nest.val("globalValue"))' style="text-align:left;"><![CDATA[]]></h5></div> </div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row " xid="row17" style="height:40px;">
    <div class="x-col" xid="col50"><h5 xid="h513" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
    <div class="x-col noMarginPadding" xid="col51"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row22">
@@ -127,11 +120,11 @@
     <h5 xid="h527" class="font-white text-left" bind-text='$model.nest.val("currentWorth") * $model.nest.val("expectReturn")'><![CDATA[]]></h5></div> 
    <div class="x-col" xid="col65"></div></div></div>
    <div class="x-col noMarginPadding" xid="col52"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row25">
-   <div class="x-col" xid="col75"></div>
+   <div class="x-col x-col-10" xid="col75"></div>
    <div class="x-col col-paddind-right" xid="col76">
     <h5 xid="h534" class="text-right font-white"><![CDATA[￥]]></h5></div> 
    <div class="x-col col-padding-left" xid="col74">
-    <h5 xid="h533" class="font-white text-left" bind-text='$model.nest.val("currentWorth") * $model.nest.val("globalValue") * $model.nest.val("expectReturn")'><![CDATA[]]></h5></div> </div></div></div>
+    <h5 xid="h533" class="font-white text-left" bind-text='$model.nest.val("currentWorth") * $model.nest.val("globalValue") * $model.nest.val("expectReturn")' style="text-align:left;"><![CDATA[]]></h5></div> </div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row3">
    <div class="x-col noMarginPadding" xid="col7"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group noMarginPadding" tabbed="true" xid="buttonGroup1" style="width:100%;" selected="button5">
    <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm background-color-black checkbtn" xid="button5" style="width:25%;height:100%;" target="content3">
@@ -196,15 +189,15 @@
     <div class="x-col col-buttom-border text-center" xid="col32"></div></div> </div>
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="withdrawData">
    <ul class="x-list-template" xid="listTemplateUl2">
-    <li xid="li2" bind-click="li2Click">
+    <li xid="li2">
      <div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row27">
       <div class="x-col x-col-20 text-center" xid="col56">
-       <span xid="span23" bind-text='val("id")'>time</span></div> 
+       <span xid="span25" bind-text='val("id")'>people</span></div> 
       <div class="x-col text-center" xid="col39">
-       <span xid="span34"><![CDATA[$]]></span><span xid="span22" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("money")'>number</span>
-  </div> 
+       <span xid="span34"><![CDATA[$]]></span>
+  <span xid="span22" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("money")'>number</span></div> 
       <div class="x-col text-center" xid="col57" style="white-space:nowrap;padding-left:0;padding-right:0;">
-       <span xid="span25" bind-text='"当天可提$"+val("withdraw")'>people</span></div> 
+       <span xid="span23" bind-text='val("date")'>time</span></div> 
       <div class="x-col text-center" xid="col58">
        <span xid="span24" bind-style="{color:  val(&quot;type&quot;)  =='购入小窝' || val(&quot;type&quot;) =='复投'?'#FF565A':'#0EAA7D'}" bind-text='val("message")'>type</span></div> </div> </li> </ul> </div></div><div class="x-contents-content" xid="content4" onActive="content4Active" onInactive="content4Inactive" style="width:100%;height:auto;"><div xid="div8" style="width:100%;height:250px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row32" style="margin-top:100px;">
    <div class="x-col x-col-10" xid="col87"></div>
@@ -239,4 +232,24 @@
    <span xid="span28"></span></a></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row31">
    <div class="x-col" xid="col90"><p xid="p1" style="color:white;"><![CDATA[]]></p></div></div></div></div>
-  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive" style="top:17px;left:103px;"></span></div>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive" style="top:17px;left:103px;"></span>
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="secondPassword" style="top:15px;left:120px;">
+   <div class="x-popOver-overlay" xid="div11"></div>
+   <div class="x-popOver-content setSecondPassword chooseSoleStatus" xid="div10" style="height:auto;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row33">
+   <div class="x-col x-col-33" xid="col85"><h5 xid="price" style="color:#FFF8F3;"><![CDATA[价格]]></h5></div>
+   <div class="x-col" xid="col91"><input component="$UI/system/components/justep/input/input" class="form-control input-sm" xid="input2"></input></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row9">
+     <div class="x-col x-col-33" xid="col33">
+      <h5 xid="second" style="color:#FFF8F3;"><![CDATA[二级密码]]></h5></div> 
+     <div class="x-col" xid="col27">
+      <input component="$UI/system/components/justep/input/password" class="form-control input-sm" xid="password2"></input></div> </div> 
+    <div component="$UI/system/components/justep/row/row" class="x-row secondcheck" xid="row30">
+     <div class="x-col" xid="col84">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" xid="button13" style="color:#8E8E8E;width:100%;height:100%;" onClick="button13Click" label="确定">
+       <i xid="i15"></i>
+       <span xid="span40">确定</span></a> </div> 
+     <div class="x-col" xid="col26">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" xid="button1" style="color:#8E8E8E;height:100%;width:100%;" onClick="button1Click" label="取消">
+       <i xid="i16"></i>
+       <span xid="span41">取消</span></a> </div> </div> 
+  </div> </div></div>

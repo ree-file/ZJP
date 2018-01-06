@@ -4,6 +4,7 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var config = require("./js/config");
 	var nest = require("./js/nests");
+	var market = require("./js/market");
 	var contract = require("./js/contract");
 	var nestInfo;
 	var eggval;
@@ -119,7 +120,7 @@ define(function(require){
 	Model.prototype.modelParamsReceive = function(event){
 		var nest_id = this.params.nest_id;
 		var contract_id = this.params.contract_id;
-		nestInfo = nest.singlenestInfo(nest_id);
+		nestInfo = contract.contractInfo(nest_id);
 		if (nestInfo==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
@@ -128,7 +129,6 @@ define(function(require){
 		eggval = config.configegg().egg_val;
 		this.comp("nest").refreshData();
 		this.comp("historyData").refreshData();
-		
 		this.comp("accountData").refreshData();
 		this.comp("withdrawData").refreshData();
 	};
@@ -149,58 +149,39 @@ define(function(require){
 		withdrawData=[];
 		var available =0;
 		
-		for (var i = 0; i < nestInfo.nestinfo.contracts.length; i++) {
-			var money =0;
-			var cpped=0;
-			if (nestInfo.nestinfo.contracts[i].is_finished=="1") {
-				money=parseFloat(nestInfo.nestinfo.contracts[i].eggs)*parseFloat(eggval)*3-parseFloat(nestInfo.nestinfo.contracts[i].extracted);
-				capped = parseFloat(nestInfo.nestinfo.contracts[i].eggs)*parseFloat(eggval)*3;
-				released+=capped;
-				available+=money;
-				withdraw+=parseFloat(nestInfo.nestinfo.contracts[i].extracted);
-			}
-			else{
-				capped=(parseFloat(nestInfo.nestinfo.contracts[i].from_weeks)+parseFloat(nestInfo.nestinfo.contracts[i].from_receivers)+parseFloat(nestInfo.nestinfo.contracts[i].from_community))*parseFloat(eggval);
-				money=(parseFloat(nestInfo.nestinfo.contracts[i].from_weeks)+parseFloat(nestInfo.nestinfo.contracts[i].from_receivers)+parseFloat(nestInfo.nestinfo.contracts[i].from_community))*parseFloat(eggval)-parseFloat(nestInfo.nestinfo.contracts[i].extracted);
-				released+=capped;
-				available+=money;
-				withdraw+=parseFloat(nestInfo.nestinfo.contracts[i].extracted);
-			}
-			investment+=parseFloat(nestInfo.nestinfo.contracts[i].eggs)*eggval;
+		for (var i = 0; i < nestInfo.length; i++) {
+			released+=nestInfo[i].hatches*eggval;
+			investment+=parseFloat(nestInfo[i].val);
 			historyData[historyData.length]={
 					id:i+1,
-					money:(parseFloat(nestInfo.nestinfo.contracts[i].eggs)*eggval).toFixed(2),
-					date:nestInfo.nestinfo.contracts[i].created_at,
+					money:parseFloat(nestInfo[i].val).toFixed(2),
+					date:nestInfo[i].created_at,
 					message:lang.nestMain[10],
 			}
-			allmoney+=parseFloat(nestInfo.nestinfo.contracts[i].eggs)*eggval;
+			allmoney+=parseFloat(nestInfo[i].val);
 			withdrawData[i]={
 					id:i+1,
 					date:new Date(),
-					money:money.toFixed(2),
-					contract_id:nestInfo.nestinfo.contracts[i].id,
+					money:nestInfo[i].hatches*eggval,
+					contract_id:nestInfo[i].id,
 					message:lang.nestMain[16],
-					withdraw:capped
 			}
 		}
 		$(this.getElementByXid("span10")).html("TAC:$"+allmoney);
 		
 		var nestvalues = [{
-			id:nestInfo.nestinfo.id,
-			name:nestInfo.nestinfo.name,
-			community:nestInfo.nestinfo.community,
-			date:nestInfo.nestinfo.created_at,
+			id:this.params.nest_id,
+			name:this.params.name,
+			date:nestInfo[0].created_at,
 			released:released.toFixed(2),
-			withdraw:withdraw.toFixed(2),
-			investment:investment,
-			contract_id:nestInfo.nestinfo.contracts[0].id,
+			investment:investment.toFixed(2),
+			contract_id:this.params.id,
 			speed:0.01,
 			globalValue:USDrate==undefined?6.5:USDrate,
-			currentWorth:parseFloat(nestInfo.nestinfo.contracts[0].eggs*eggval),
+			currentWorth:parseFloat(nestInfo[0].val),
 			expectReturn:3.00,
-			available:available,
-			is_finished:nestInfo.nestinfo.contracts[0].is_finished,
-			type:nestInfo.nestinfo.contracts[0].eggs,
+			is_finished:nestInfo[0].is_finished,
+			type:nestInfo[0].eggs,
 		}];
 		event.source.loadData(nestvalues);
 	};
@@ -218,15 +199,6 @@ define(function(require){
 			return;
 		
 			}
-		if (nestInfo.nestrecords.contract_records.length!=0) {
-			for (var i = 0; i < nestInfo.nestrecords.contract_records.length; i++) {
-				for (var j = 0; j < historyData.length; j++) {
-					if (historyData[j].id==nestInfo.nestrecords.contract_records[i].contract_id) {
-						historyData[j].message=lang.nestMain[11];
-					}
-				}
-			}
-		}
 		event.source.loadData(historyData);
 		historyData=null;
 	};
@@ -235,65 +207,28 @@ define(function(require){
 	
 	
 	Model.prototype.accountDataCustomRefresh = function(event){
-		if (nestInfo==undefined) {
-			return;
-			}
-			event.source.clear();
+		event.source.clear();
 		var date = new Date();
 		var currentdate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
 		var times = currentdate.getTime();
 		var accountData=[];
 		var extracted_money=0;
 		var get_money = 0;
-		
-		if (nestInfo.nestrecords.extract_records.length!=0) {
-			for (var j = 0; j < nestInfo.nestrecords.extract_records.length; j++) {
-				accountData[j]={
-					id:j,
-					date:nestInfo.nestrecords.extract_records[j].created_at,
-					money:parseFloat(nestInfo.nestrecords.extract_records[j].money).toFixed(2),
-					message:lang.nestMain[12],
-					status:0
-				}
-					for (var i = 0; i < withdrawData.length; i++) {
-						if (nestInfo.nestrecords.extract_records[j].contract_id==withdrawData[i].contract_id) {
-					
-							if(Date.parse(nestInfo.nestrecords.extract_records[j].created_at)<times){
-								withdrawData[i].withdraw=withdrawData[i].withdraw-parseFloat(nestInfo.nestrecords.extract_records[j].money);
-							}
-						}
-					}
-					extracted_money=parseFloat(extracted_money)+parseFloat(nestInfo.nestrecords.extract_records[j].money);
-				}
-			
+		if (!this.params.nest_id) {
+			return;
 		}
-		if (nestInfo.nestrecords.got_records.length!=0) {
-			for (var j = 0; j < nestInfo.nestrecords.got_records.length; j++) {
-				var message ="";
-				switch(nestInfo.nestrecords.got_records[j].type){
-					case "invite_got":
-						message=lang.nestMain[13];
-						break;
-					case "week_got":
-						message=lang.nestMain[14];
-						break;
-					case "community_got":
-						message=lang.nestMain[15];
-						break;
-					default:
-					break;
-						
-				}
+		var account = nest.income(this.params.nest_id);
+		if (account.length!=0) {
+			for (var int = 0; int < account.length; int++) {
 				accountData[accountData.length]={
 					id:	accountData.length,
-					date:nestInfo.nestrecords.got_records[j].created_at,
-					money:parseFloat(nestInfo.nestrecords.got_records[j].eggs)*eggval,
-					message:message,
+					date:account[int].created_at,
+					money:account[int].money_active,
+					message:account[int].type=="bonus"?"邀请":"日常",
 					status:2
 				}
-				get_money=parseFloat(get_money)+(parseFloat(nestInfo.nestrecords.got_records[j].eggs)*parseFloat(eggval));
-			}
-			
+				get_money=account[int].money_active;
+			}					
 		}
 		if (accountData.length!=0) {
 			for (var int = 0; int < accountData.length; int++) {
@@ -310,7 +245,6 @@ define(function(require){
 				}
 			}
 		}
-		$(this.getElementByXid("span19")).html("Return:$"+extracted_money);
 		$(this.getElementByXid("span20")).html("Expend:$"+get_money);
 		event.source.loadData(accountData);
 		
@@ -327,7 +261,6 @@ define(function(require){
 		var money=0;
 		event.source.clear();
 		for (var int = 0; int < withdrawData.length; int++) {
-			withdrawData[int].withdraw = (withdrawData[int].withdraw*0.06).toFixed(2);
 			money+=parseFloat(withdrawData[int].money);
 		}
 		$(this.getElementByXid("h54")).html("$"+money);
@@ -463,12 +396,7 @@ define(function(require){
 	
 	//创建小窝
 	Model.prototype.button4Click = function(event){
-		justep.Shell.showPage("market", {
-				action:"sell",
-				nest_id:this.comp("nest").val("id"),
-				name:this.comp("nest").val("name"),
-				page:"nestMain"
-			});
+		this.comp("secondPassword").show();
 	};
 	
 	
@@ -514,7 +442,7 @@ define(function(require){
 	Model.prototype.button12Click = function(event){
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
-			this.close();
+		
 		}
 		else{
 			justep.Shell.closePage();
@@ -528,8 +456,50 @@ define(function(require){
 	
 	
 	Model.prototype.modelUnLoad = function(event){
+		
 	};
 	
+	
+	Model.prototype.button13Click = function(event){
+		var price = this.comp("input2").val();
+		if(price==0){
+			if (confirm(lang.showprompt[16])) {
+			this.sell(price);
+			}
+		}
+		else{
+			this.sell(price);
+		}
+	};
+	Model.prototype.sell=function(price){
+			var secondPassword = $.trim($(this.getElementByXid("password2")).val());
+			if (secondPassword) {
+				var is_success = market.sellProduction(this.params.nest_id,price,secondPassword);
+				if (is_success) {
+					this.showprompt(lang.showprompt[14]);
+					this.comp("secondPassword").hide();
+					$(this.getElementByXid("password2")).val("");
+					
+					}
+					else if(is_success ==undefined){
+						this.comp("secondPassword").hide();
+						this.showprompt(lang.showprompt[0]);
+						this.comp("windowDialog1").open();
+						return;
+					}
+					else{
+					this.showprompt(lang.showprompt[15]);
+					}
+			}else{
+				this.showprompt(lang.showprompt[2]);
+			}
+
+
+	};
+	
+	Model.prototype.modelInactive = function(event){
+		this.close();
+	};
 	
 	return Model;
 });

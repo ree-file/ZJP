@@ -270,13 +270,14 @@ define(function(require){
 				url:config.site+"nests",
 				async:false,
 				dataType:"json",
-				type:"POST",
+				type:"post",
 				data:params,
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
 					if (data.status=="success") {
+						showprompt(lang.showprompt[39]);
 						status = 200;
 					}
 				},
@@ -303,6 +304,9 @@ define(function(require){
 					else if(responseText.message=="Wrong security code.")
 					{
 						showprompt(lang.showprompt[59]);
+					}
+					else if("Parent not found."){
+						showprompt(lang.showprompt[69]);
 					}
 				}
 			});
@@ -332,13 +336,14 @@ define(function(require){
 				url:config.site+"nests/"+params.nest_id+"/upgrade",
 				async:false,
 				dataType:"json",
-				type:"patch",
+				type:"post",
 				data:params,
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
 					if (data.status=="success") {
+						showprompt(lang.showprompt[39]);
 						status = 200;
 					}
 				},
@@ -394,13 +399,14 @@ define(function(require){
 				url:config.site+"nests/"+params.nest_id+"/reinvest",
 				async:false,
 				dataType:"json",
-				type:"patch",
+				type:"post",
 				data:params,
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
 					if (data.status=="success") {
+						showprompt(lang.showprompt[39]);
 						status = 200;
 					}
 				},
@@ -464,6 +470,7 @@ define(function(require){
 				success:function(data){
 					if (data.status=="success") {
 						status = 200;
+						showprompt(lang.showprompt[39]);
 					}
 				},
 				error:function(ero){
@@ -490,11 +497,69 @@ define(function(require){
 					{
 						showprompt(lang.showprompt[59]);
 					}
+					else if("Parent not found."){
+						shoprompt(lang.showprompt[69]);
+					}
 				}
 			});
 			return status;
 		},
-	
+	income:function(nest_id){
+		var nestincome=[];
+		do{
+			nestInfo={};
+			var result1 = this.incomeajax(nest_id);
+			if (typeof(result1)!="number") {
+				nestincome=result1;
+			}
+			else{
+				nestincome=undefined;
+			}
+			
+		}while(result1==500);
+		return nestincome;
+	},
+	incomeajax:function(nest_id){
+		var nestdata=[];
+		var status =400;
+		$.ajax({
+			url:config.site+"nests/"+nest_id+"/income-records",
+			async:false,
+			dataType:"json",
+			type:"GET",
+			beforeSend:function(request){
+				request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
+			},
+			success:function(data){
+				nestdata = data.data;
+				status =200;
+			//对data做处理
+		},
+		error:function(ero){
+			responseText = JSON.parse(ero.responseText);
+			if (responseText.message=="Token expired.") {
+				
+				if(jwt.authRefresh()){
+					status =500;
+				}
+				else
+				{
+					status = 404
+				}
+				
+			}
+			else if(responseText.message=="No token provided."){
+				status = 404
+			}
+		}
+	});
+		if (status==200) {
+			return nestdata;
+		}
+		else{
+			return status;
+		}
+},
 //		incomeInfo:function(mainInfo){
 //			var eggval = config.configegg().egg_val;
 //			var MyincomeInfo = [];

@@ -4,7 +4,7 @@
 	text-align:center;
 }
 .introduction{
-	display:none;
+	/* display:none */;
 }
 .row-title span{
 	color:white;

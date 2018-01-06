@@ -6,6 +6,7 @@ define(function(require) {
 	var config = require("./js/config");
 	var base64 = require("$UI/system/lib/base/base64");
 	var mainInfo;
+	var page = 1;
 	var personalInvite;
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -58,11 +59,11 @@ define(function(require) {
 			return;
 		}
 		var coins = incomeAnalyse.analyse_today.coins;
-		var money_active_sum = incomeAnalyse.analyse_today.money_active_sum;
-		var money_limit_sum = incomeAnalyse.analyse_today.money_limit_sum;
-		var all = coins+money_active_sum+money_limit_sum;
+		var money_active = incomeAnalyse.analyse_today.money_active;
+		var money_limit= incomeAnalyse.analyse_today.money_limit;
+		var all = coins+money_active+money_limit;
 		var rightRotate = 180-parseFloat(coins/all)*360;
-		var leftRotate = 180-parseFloat(money_limit_sum/all)*360;
+		var leftRotate = 180-parseFloat(money_limit/all)*360;
 		if (rightRotate<0) {
 			$(this.getElementByXid("span24")).html(lang.ZJP_main[16]);
 			$(this.getElementByXid("span25")).html(lang.ZJP_main[17]);
@@ -81,7 +82,7 @@ define(function(require) {
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
-		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit_sum+incomeAnalyse.analyse.money_active_sum).toFixed(2));
+		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit+incomeAnalyse.analyse.money_active).toFixed(2));
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){	
@@ -134,15 +135,47 @@ define(function(require) {
 	};
 
 	Model.prototype.incomeAccountCustomRefresh = function(event){
-		var income = user.getUserIncome();
+		var income = user.getUserIncome(page);
+		var params = [];
 		if (income==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		if (income.length!=0) {
-			
+			for (var int = 0; int < income.length; int++) {
+				if (income[int].coins) {
+					params[params.length]={
+						id:params.length+1,
+						name:"",
+						date:income[int].created_at,
+						income:income[int].coins+"猫币",
+						type:income[int].type=="bonus"?"邀请":"转帐"
+					}
+				}
+				else if(income[int].money_limit)
+				{
+					params[params.length]={
+						id:params.length+1,
+						name:"",
+						date:income[int].created_at,
+						income:income[int].money_limit+"限制币",
+						type:income[int].type=="bonus"?"邀请":"转帐"
+					}
+				}
+				else if (income[int].money_active) {
+					params[params.length]={
+						id:params.length+1,
+						name:"",
+						date:income[int].created_at,
+						income:income[int].money_active+"可提",
+						type:income[int].type=="bonus"?"邀请":"转帐"
+					}
+				}
+				
+			}
 		}
+		event.source.loadData(params);
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
@@ -184,7 +217,8 @@ define(function(require) {
 		var params = {
 				nest_id:row.val("nest_id"),
 				contract_id:row.val("id"),
-				page:"main"
+				page:"main",
+				nest_name:row.val("name")
 		};
 		justep.Shell.showPage("nestMain", params);
 	};
