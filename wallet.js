@@ -6,6 +6,7 @@ define(function(require){
 	var catcoins;
 	var moneyactive;
 	var moneylimit;
+	var userid;
 	var base64 = require("$UI/system/lib/base/base64");
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -55,6 +56,7 @@ define(function(require){
 		var moneyspan2 = $(this.getElementByXid("allMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
 		var moneyall = personalMoney.money();
+		userid = moneyall.id;
 		if (moneyall == undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
@@ -122,7 +124,7 @@ define(function(require){
 	};
 
 	Model.prototype.row16Click = function(event){
-		justep.Shell.showPage("transferRecord");
+		justep.Shell.showPage("transferRecord",{user_id:userid});
 	};
 
 	return Model;

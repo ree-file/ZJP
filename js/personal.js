@@ -276,7 +276,7 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					record = data.data;
+					record = data.data.data;
 					console.log(record);
 				},
 				error:function(ero){
