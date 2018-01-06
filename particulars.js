@@ -2,7 +2,8 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var nestParticulars = require('./js/marketparticulars');
-	var orderid;
+	var nest_id;
+	var seller_id;
 	var base64 = require("$UI/system/lib/base/base64");
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -22,22 +23,6 @@ define(function(require){
 		var eggsrestspan = $(this.getElementByXid("eggsrestspan"));
 		var eggscasespan = $(this.getElementByXid("eggscasespan"));
 		var nestGrandchildrenLengthSpan = $(this.getElementByXid("nestGrandchildrenLengthSpan"));
-		orderid = this.params.id;
-		orderIDSpan.text(orderid);//订单id
-		eggstotalspan.text(this.params.type);//总蛋数
-		eggsrestspan.text(this.params.remaing);//剩余蛋数
-		eggscasespan.text(this.params.freeseeggs);//蛋的孵化情况
-		nestGrandchildrenLengthSpan.text(this.params.grandchildren);//孙子数
-		var orderparticulars = nestParticulars.orders(orderid);
-		if (orderparticulars == undefined) {
-			this.comp("windowDialog1").open();
-			this.showprompt(lang.showprompt[0]);
-			return;
-		}
-		else if (orderparticulars == true) {
-			this.modelParamsReceive(event);
-			return;
-		}
 		var sellerIDSpan = $(this.getElementByXid("sellerIDSpan"));
 		var sellerEmailSpan = $(this.getElementByXid("sellerEmailSpan"));
 		var priceSpan = $(this.getElementByXid("priceSpan"));
@@ -45,13 +30,30 @@ define(function(require){
 		var nestNameSpan = $(this.getElementByXid("nestNameSpan"));
 		var nestChildrenLengthSpan = $(this.getElementByXid("nestChildrenLengthSpan"));
 		var communitySpan = $(this.getElementByXid("communitySpan"));
-		sellerIDSpan.text(orderparticulars.seller.id);//卖家id
-		sellerEmailSpan.text(orderparticulars.seller.email);//卖家邮箱
-		priceSpan.text(orderparticulars.price);//价格
-		nestIDSpan.text(orderparticulars.nest.id);//巢id
-		nestNameSpan.text(orderparticulars.nest.name);//巢姓名
-		nestChildrenLengthSpan.text(orderparticulars.analyse.children_count);//子数
-		communitySpan.text(orderparticulars.nest.community);//所在社区
+		nest_id = this.params.nest_id;
+		seller_id = this.params.seller_id;
+		orderIDSpan.text(this.params.order_id);//订单id
+		sellerIDSpan.text(seller_id);//卖家id
+		sellerEmailSpan.text(this.params.email);//卖家邮箱
+		// eggstotalspan.text(this.params.type);//总蛋数
+		// eggsrestspan.text(this.params.remaing);//剩余蛋数
+		// eggscasespan.text(this.params.freeseeggs);//蛋的孵化情况
+		// nestGrandchildrenLengthSpan.text(this.params.grandchildren);//孙子数
+		var nestparticulars = nestParticulars.nests(nest_id);
+		if (nestparticulars == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		else if (nestparticulars == true) {
+			this.modelParamsReceive(event);
+			return;
+		}
+		priceSpan.text(nestparticulars.price);//价格
+		nestIDSpan.text(nestparticulars.nest.id);//巢id
+		nestNameSpan.text(nestparticulars.nest.name);//巢姓名
+		nestChildrenLengthSpan.text(nestparticulars.analyse.children_count);//子数
+		communitySpan.text(nestparticulars.nest.community);//所在社区
 	};
 
 	Model.prototype.modelLoad = function(event){
