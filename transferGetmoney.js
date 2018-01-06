@@ -21,7 +21,7 @@ define(function(require){
 	//可提现金额参数接收并录入
 	Model.prototype.modelParamsReceive = function(event){
 		couldget = this.params.walletMoney;
-		this.getElementByXid("moneyInput").setAttribute("placeHolder",lang.transferGetmoney[13]+(couldget*0.06).toFixed(2));
+		// this.getElementByXid("moneyInput").setAttribute("placeHolder",lang.transferGetmoney[13]+(couldget*0.06).toFixed(2));//以当前钱包金额计算6%输出提醒用户当前可提金额
 	};
 
 	Model.prototype.modelLoad = function(event){

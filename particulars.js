@@ -51,7 +51,7 @@ define(function(require){
 		nestIDSpan.text(orderparticulars.nest.id);//巢id
 		nestNameSpan.text(orderparticulars.nest.name);//巢姓名
 		nestChildrenLengthSpan.text(orderparticulars.analyse.children_count);//子数
-		communitySpan.text(orderparticulars.nest.community);//子数
+		communitySpan.text(orderparticulars.nest.community);//所在社区
 	};
 
 	Model.prototype.modelLoad = function(event){

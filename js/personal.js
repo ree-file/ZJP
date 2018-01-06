@@ -276,8 +276,91 @@ define(function(require){
             "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
         },
 				success:function(data){//请求成功返回值存在data里
-					record = data.data.data;
-					console.log(record);
+					record = data.data;
+				},
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							record =true;
+						}
+						else
+						{
+							record=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						record=undefined;
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else{
+						showprompt(lang.personaljs[5]);
+					}
+	        }.bind(this),
+			});
+			return record;
+		},
+
+		rechargeRecord : function(){
+			var record =false;
+			$.ajax({
+				url: config.site+"private/recharge-applications",//php的api路径
+				async:false,
+				dataType:"json",
+				data:{},//需要传递的数据
+				type:'get',//php获取类型
+        headers: {
+            "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
+        },
+				success:function(data){//请求成功返回值存在data里
+					record = data.data;
+				},
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					if (responseText.message=="Token expired.") {
+
+						if(jwt.authRefresh()){
+							record =true;
+						}
+						else
+						{
+							record=undefined;
+						}
+
+					}
+					else if(responseText.message=="No token provided."){
+						record=undefined;
+					}
+					else if(responseText.message=="Wrong security code.")
+					{
+						showprompt(lang.showprompt[59]);
+					}
+					else{
+						showprompt(lang.personaljs[5]);
+					}
+	        }.bind(this),
+			});
+			return record;
+		},
+
+		withdrawalRecord : function(){
+			var record =false;
+			$.ajax({
+				url: config.site+"private/withdrawal-applications",//php的api路径
+				async:false,
+				dataType:"json",
+				data:{},//需要传递的数据
+				type:'get',//php获取类型
+        headers: {
+            "Authorization" : "Bearer " + jwt.getToken() // 带入验证头部
+        },
+				success:function(data){//请求成功返回值存在data里
+					record = data.data;
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);

@@ -18,49 +18,13 @@ define(function(require){
 	};
 
 	Model.prototype.modelLoad = function(event){
+		userid = this.params.user_id;
 		this.comp("title").set({
 			title:lang.transferRecord[1]
 		});
-		$(this.getElementByXid("span1")).text(lang.transferRecord[15]);
-		var recordData = this.comp("recordData");
-		var record = personaljs.transRecord();
-		if (record == undefined) {
-			this.comp("windowDialog1").open();
-			this.showprompt(lang.showprompt[0]);
-			return;
-		}
-		else if (record == true) {
-			this.modelLoad(event);
-			return;
-		}				//静态数据库录入，数据获取，列设置
-		if (record) {
-			for (var i = 0; i <= record.length-1; i++) {
-				var type;
-				var another;
-				if (record[i].payer_id == userid) {
-					type = lang.transferRecord[8];
-					another = record[i].receiver_id;
-				}
-				else if (record[i].receiver_id == userid) {
-					type = lang.transferRecord[9];
-					another = record[i].payer_id;
-				}
-				recordData.add({
-					"id": record[i].id,
-					"type": type,
-					"money": record[i].money,
-					"money_active": record[i].money_active,
-					"money_limit": record[i].money_limit,
-					"coins": record[i].coins,
-					"another": record[i].another,
-					"updated_at": record[i].updated_at,
-				});
-			}
-		}
-		else {
-		this.showprompt(lang.transferRecord[0]);
-		}
-
+		$(this.getElementByXid("span1")).text(lang.transferRecord[11]);
+		$(this.getElementByXid("span9")).text(lang.transferRecord[12]);
+		$(this.getElementByXid("span10")).text(lang.transferRecord[13]);
 		$(this.getElementByXid("content1")).css("display","block");
 	};
 		//封装提示框--许鑫君
@@ -99,8 +63,136 @@ define(function(require){
 		justep.Shell.closePage();
 	};
 
-	Model.prototype.modelParamsReceive = function(event){
-		userid = this.params.user_id;
+	Model.prototype.content2Active = function(event){
+		var recordData = this.comp("recordData");
+		var record = personaljs.transRecord();
+		if (record == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		else if (record == true) {
+			this.modelLoad(event);
+			return;
+		}				//静态数据库录入，数据获取，列设置
+		if (record) {
+			for (var i = 0; i <= record.length-1; i++) {
+				var type;
+				var another;
+				if (record[i].payer_id == userid) {
+					type = lang.transferRecord[8];
+					another = record[i].receiver_id;
+				}
+				else if (record[i].receiver_id == userid) {
+					type = lang.transferRecord[9];
+					another = record[i].payer_id;
+				}
+				recordData.add({
+					"id": record[i].id,
+					"type": type,
+					"money": record[i].money,
+					// "money_active": record[i].money_active,
+					// "money_limit": record[i].money_limit,
+					// "coins": record[i].coins,
+					"another": another,
+					"updated_at": record[i].updated_at,
+				});
+			}
+		}
+		else {
+		this.showprompt(lang.transferRecord[0]);
+		}
+	};
+
+	Model.prototype.content3Active = function(event){
+		var rechargeData = this.comp("rechargeData");
+		var record = personaljs.rechargeRecord();
+		if (record == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		else if (record == true) {
+			this.modelLoad(event);
+			return;
+		}				//静态数据库录入，数据获取，列设置
+		if (record) {
+			for (var i = 0; i <= record.length-1; i++) {
+				var status;
+				if (record[i].status == "processing") {
+					status = lang.transferRecord[14];
+				}
+				else if (record[i].status == "rejected") {
+					status = lang.transferRecord[15];
+				}
+				else if (record[i].status == "accepted") {
+					status = lang.transferRecord[16];
+				}
+				rechargeData.add({
+					"id": record[i].id,
+					"money": record[i].money,
+					"card_number": record[i].card_number,
+					"status": status,
+					"updated_at": record[i].updated_at,
+				});
+			}
+		}
+		else {
+		this.showprompt(lang.transferRecord[0]);
+		}
+	};
+
+	Model.prototype.content4Active = function(event){
+		var withdrawalData = this.comp("withdrawalData");
+		var record = personaljs.withdrawalRecord();
+		if (record == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		else if (record == true) {
+			this.modelLoad(event);
+			return;
+		}				//静态数据库录入，数据获取，列设置
+		if (record) {
+			for (var i = 0; i <= record.length-1; i++) {
+				var status;
+				if (record[i].status == "processing") {
+					status = lang.transferRecord[14];
+				}
+				else if (record[i].status == "rejected") {
+					status = lang.transferRecord[15];
+				}
+				else if (record[i].status == "accepted") {
+					status = lang.transferRecord[16];
+				}
+				withdrawalData.add({
+					"id": record[i].id,
+					"money": record[i].money,
+					"card_number": record[i].card_number,
+					"status": status,
+					"updated_at": record[i].updated_at,
+				});
+			}
+		}
+		else {
+		this.showprompt(lang.transferRecord[0]);
+		}
+	};
+
+	Model.prototype.content2Inactive = function(event){
+		var recordData = this.comp("recordData");
+		recordData.clear();
+	};
+
+	Model.prototype.content3Inactive = function(event){
+		var rechargeData = this.comp("rechargeData");
+		rechargeData.clear();
+	};
+
+	Model.prototype.content4Inactive = function(event){
+		var withdrawalData = this.comp("withdrawalData");
+		withdrawalData.clear();
 	};
 
 	return Model;
