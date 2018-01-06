@@ -306,7 +306,7 @@ define(function(require){
 						showprompt(lang.showprompt[59]);
 					}
 					else if("Parent not found."){
-						showprompt(lang.showprompt[64]);
+						showprompt(lang.showprompt[69]);
 					}
 				}
 			});
@@ -498,7 +498,7 @@ define(function(require){
 						showprompt(lang.showprompt[59]);
 					}
 					else if("Parent not found."){
-						shoprompt(lang.showprompt[64]);
+						shoprompt(lang.showprompt[69]);
 					}
 				}
 			});
