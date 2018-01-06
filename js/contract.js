@@ -79,7 +79,62 @@ define(function(require){
 				}
 			});
 			return status;
-		}
-		
+		},
+		contractInfo:function(nest_id){
+			var contractinfo;
+			do{
+				contractinfo=[];
+				var result1 = this.contractInfoajax(nest_id);
+				if (typeof(result1)!="number") {
+					contractinfo=result1;
+				}
+				else{
+					contractinfo=undefined;
+				}
+				
+			}while(result1==500);
+			return contractinfo;
+		},
+		contractInfoajax:function(nest_id){
+			var nestdata=[];
+			var status =400;
+			$.ajax({
+				url:config.site+"nests/"+nest_id+"/contracts",
+				async:false,
+				dataType:"json",
+				type:"GET",
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					nestdata = data.data;
+					status =200;
+				//对data做处理
+			},
+			error:function(ero){
+				responseText = JSON.parse(ero.responseText);
+				if (responseText.message=="Token expired.") {
+					
+					if(jwt.authRefresh()){
+						status =500;
+					}
+					else
+					{
+						status = 404
+					}
+					
+				}
+				else if(responseText.message=="No token provided."){
+					status = 404
+				}
+			}
+		});
+			if (status==200) {
+				return nestdata;
+			}
+			else{
+				return status;
+			}
+	},
 	}
 });

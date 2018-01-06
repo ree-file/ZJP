@@ -66,7 +66,16 @@
 	border-color:#3BBFFF;;
 	color:white;
 }
-
+.chooseSoleStatus{
+	width:60%;
+	height:25%;
+	background:#282B32;
+	border-radius:5px;
+	/* box-shadow:5px 5px 5px #868687; */
+	border-with:1px;
+	border-style:solid;
+	border-color:#3BBFFF;
+}
 
 
 

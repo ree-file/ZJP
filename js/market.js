@@ -110,31 +110,18 @@ define(function(require){
 				},
 				success:function(data){//请求成功返回值存在data里
 					var ordersData = data.data.data;
-					var eggval = config.configegg().egg_val;
 					for (var i = 0; i < ordersData.length; i++) {
 						if (ordersData[i].status!="selling") {
 							continue;
-						}
-						var contract_remaining=0;
-						var contract = ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1];
-						contract_remaining = parseInt(contract.eggs)*3-parseInt(contract.extracted)/parseInt(eggval);
-						var num =0;
-						for (var j = 0; j < ordersData[i].nest.children.length; j++) {
-							num+=ordersData[i].nest.children[j].children.length;
 						}
 						allorders[i]={};
 						allorders[i].orderid = i;
 						allorders[i].id=ordersData[i].id;
 						allorders[i].name=ordersData[i].nest.name,
 						allorders[i].nest_id = ordersData[i].nest_id,
-						allorders[i].childrenNum = ordersData[i].nest.children.length;
-						allorders[i].grandChildrenNum = num;
 						allorders[i].worth = ordersData[i].price;
-						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
-						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
-						allorders[i].type=parseInt(contract.eggs);
-						allorders[i].remainingeggs = parseInt(contract_remaining);
-						allorders[i].freeseeggs =contract.is_finished=="1"?0: parseInt(contract.eggs)*3-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
+						allorders[i].useremail = ordersData[i].seller.email;
+						
 					}
 					status =200;
 				},
@@ -193,32 +180,20 @@ define(function(require){
 				},
 				success:function(data){//请求成功返回值存在data里
 					var ordersData = data.data.data;
-					var eggval = config.configegg().egg_val;
 					for (var i = 0; i < ordersData.length; i++) {
 						if (ordersData[i].status!="selling") {
 							continue;
-						}
-						var contract_remaining=0;
-						var contract = ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1];
-						contract_remaining = parseInt(contract.eggs)*3-parseInt(contract.extracted)/parseInt(eggval);
-						var num =0;
-						for (var j = 0; j < ordersData[i].nest.children.length; j++) {
-							num+=ordersData[i].nest.children[j].children.length;
 						}
 						allorders[i]={};
 						allorders[i].orderid = i;
 						allorders[i].id=ordersData[i].id;
 						allorders[i].name=ordersData[i].nest.name,
 						allorders[i].nest_id = ordersData[i].nest_id,
-						allorders[i].childrenNum = ordersData[i].nest.children.length;
-						allorders[i].grandChildrenNum = num;
 						allorders[i].worth = ordersData[i].price;
-						allorders[i].contract_worth=parseFloat(ordersData[i].nest.contracts[ordersData[i].nest.contracts.length-1].eggs)*3*eggval;
-						allorders[i].contract_remaining = parseFloat(contract_remaining)*eggval*3;
-						allorders[i].type=parseInt(contract.eggs);
-						allorders[i].remainingeggs = parseInt(contract_remaining);
-						allorders[i].freeseeggs =contract.is_finished=="1"?0: parseInt(contract.eggs)*3-parseInt(contract.from_weeks)-parseInt(contract.from_receivers)-parseInt(contract.from_community);
+						allorders[i].useremail = ordersData[i].seller.email;
+						
 					}
+						
 					status =200;
 				},
 				error:function(ero){//请求失败错误信息在ero里
@@ -346,7 +321,7 @@ define(function(require){
 		sellProductionajax:function(productionId,price,password){
 			var status = 400;
 			$.ajax({
-				url:config.site+"orders",
+				url:config.site+"nests/"+productionId+"/sell",
 				async:false,
 				dataType:"json",
 				type:"post",
@@ -411,7 +386,7 @@ define(function(require){
 				url:config.site+"orders/"+id+"/abandon",
 				async:false,
 				dataType:"json",
-				type:"patch",
+				type:"post",
 				data:{},
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());

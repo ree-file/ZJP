@@ -178,7 +178,7 @@ define(function(require){
 			var worthInfo=[];
 			var status =400;
 			$.ajax({
-				url:config.site+"private",
+				url:config.site+"private/user",
 				async:false,
 				dataType:"json",
 				type:"GET",
@@ -188,7 +188,7 @@ define(function(require){
 				success:function(data){
 					//对data进行处理得到三部分钱包金额，
 					if (data.status=="success") {
-						worthInfo['market'] = parseFloat(data.data.money_market);
+						worthInfo['market'] = parseFloat(data.data.coins);
 						worthInfo['limit'] = parseFloat(data.data.money_limit);
 						worthInfo['active'] =  parseFloat(data.data.money_active);
 						worthInfo['all'] = worthInfo['market']+worthInfo['limit']+parseFloat(data.data.money_active);

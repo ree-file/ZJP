@@ -64,53 +64,53 @@ define(function(require){
 		$(this.getElementByXid("p2")).text(lang.ZJP_production[19]);
 	};
 //填写收益人时触发各种判断	
-	Model.prototype.input4Blur = function(event){
-		var benefit_name = $.trim(this.comp("input4").val());
-		var communitys =$(this.getElementByXid("community"));
-		if (benefit_name) {
-			//还要拿benefit_name去数据查看他社区开通了哪些
-			var premission=nest.community_premission(benefit_name);
-			if (premission==undefined) {
-				this.comp("popOver1").hide();
-				this.comp("windowDialog1").open();
-				
-				return;
-			}
-			switch (premission) {
-			case 1:
-				this.comp("radio1").set({disabled:false});
-				break;
-			case 2:
-				this.comp("radio1").set({disabled:false});
-				this.comp("radio2").set({disabled:false});
-				break;
-			case 3:
-				this.comp("radio1").set({disabled:false});
-				this.comp("radio2").set({disabled:false});
-				this.comp("radio3").set({disabled:false});
-				break;
-			default:
-				this.showprompt(lang.showprompt[46]);
-				this.comp("radio1").set({disabled:true,checked:false});
-				this.comp("radio2").set({disabled:true,checked:false});
-				this.comp("radio3").set({disabled:true,checked:false});
-				break;
-			}
-			if (premission!=404) {
-				communitys.css("height",0);
-				communitys.removeClass("community_show");
-				communitys.animate({height:42});
-			}
-			
-			
-		}
-		else{
-			communitys.animate({height:0},function(){
-				communitys.addClass("community_show");
-			});
-			
-		}
-	};
+//	Model.prototype.input4Blur = function(event){
+//		var benefit_name = $.trim(this.comp("input4").val());
+//		var communitys =$(this.getElementByXid("community"));
+//		if (benefit_name) {
+//			//还要拿benefit_name去数据查看他社区开通了哪些
+//			var premission=nest.community_premission(benefit_name);
+//			if (premission==undefined) {
+//				this.comp("popOver1").hide();
+//				this.comp("windowDialog1").open();
+//				
+//				return;
+//			}
+//			switch (premission) {
+//			case 1:
+//				this.comp("radio1").set({disabled:false});
+//				break;
+//			case 2:
+//				this.comp("radio1").set({disabled:false});
+//				this.comp("radio2").set({disabled:false});
+//				break;
+//			case 3:
+//				this.comp("radio1").set({disabled:false});
+//				this.comp("radio2").set({disabled:false});
+//				this.comp("radio3").set({disabled:false});
+//				break;
+//			default:
+//				this.showprompt(lang.showprompt[46]);
+//				this.comp("radio1").set({disabled:true,checked:false});
+//				this.comp("radio2").set({disabled:true,checked:false});
+//				this.comp("radio3").set({disabled:true,checked:false});
+//				break;
+//			}
+//			if (premission!=404) {
+//				communitys.css("height",0);
+//				communitys.removeClass("community_show");
+//				communitys.animate({height:42});
+//			}
+//			
+//			
+//		}
+//		else{
+//			communitys.animate({height:0},function(){
+//				communitys.addClass("community_show");
+//			});
+//			
+//		}
+//	};
 	function staticnum(){
 		staticnum.num=++staticnum.num||1;
 		return staticnum.num;
@@ -141,7 +141,6 @@ define(function(require){
 		$(this.getElementByXid("investment")).html(my_money['limit'].toFixed(2));
 		if (this.params.name) {
 			this.comp("input2").val(this.params.name);
-			this.comp("input4").val(this.params.name);
 		}
 		
 //		根据不同action执行相应操作
@@ -158,6 +157,7 @@ define(function(require){
 				$(me.getElementByXid("create_benefit")).addClass("common_show");
 //			});
 			nest_id = this.params.nest_id;
+//nest_id=1;
 			if (action=="upgrade") {
 					this.comp("titleBar1").set({
 						title:lang.ZJP_production[18]
@@ -165,13 +165,15 @@ define(function(require){
 					nest_id = this.params.nest_id;
 					current_rank = this.params.current_rank;
 					worth = this.params.current_worth;
+//					worth = 1400;
+//					current_rank = 1;
 					$(this.getElementByXid("span21")).html(lang.ZJP_production[17]);
 			}
 			else{
 					this.comp("titleBar1").set({
 						title:lang.ZJP_production[16]
 					});
-					nest_id = this.params.nest_id;
+//					nest_id = this.params.nest_id;
 					worth = 0;
 					$(this.getElementByXid("span21")).html(lang.ZJP_production[15]);
 				}
@@ -186,6 +188,8 @@ define(function(require){
 			nest_id = this.params.nest_id;
 			current_rank = this.params.current_rank;
 			worth = this.params.current_worth;
+//			worth = 0;
+//			current_rank = -1;
 			$(this.getElementByXid("span21")).html(lang.ZJP_production[13]);
 //			创建的时候不需要邮箱地址也不需要邀请人，更不需要产品信息
 //			$(this.getElementByXid("upgrade-message")).animate({height:0},"slow",function(){
@@ -218,7 +222,7 @@ define(function(require){
 			return;
 		}
 		action = this.params.action;
-//		action = "invite";
+		action = "create";
 		this.actionOption(action);
 	};
 	//下拉框内容变动时做出的改变
@@ -286,34 +290,10 @@ define(function(require){
 		var current_worth = current_rank==-1?0:config_egg.level_worth[current_rank];
 		var eggs = config_egg.level_worth[choose_rank]-current_worth;
 		var email = $.trim(this.comp("input1").val());
-		var radios = $("[name='community_radio']");
-		var community = "";
-		var is_hascommunity=0;
-		for (var i = 0; i < radios.length; i++) {
-			if (radios[i].checked) {
-				switch (i) {
-				case 1:
-					community = "A";is_hascommunity=1
-					break;
-				case 3:
-					community = "B";is_hascommunity=1
-					break;
-				case 5:
-					community = "C";is_hascommunity=1
-					break;
-				default:
-					
-					break;
-				}
-			}
-		}
-		if (is_hascommunity==0&&(action=="create"||action=="invite")) {
-			this.showprompt(lang.showprompt[42]);return;
-		}
 		var invite_name = $.trim(this.comp("input2").val());
-		var parent_name = $.trim(this.comp("input4").val());
 		var secondPassword = $.trim($(this.getElementByXid("password1")).val());
-		var params ={nest_id:nest_id,email:email,contract_id:contract_id,inviter_name:invite_name,parent_name:parent_name,security_code:secondPassword,pay_active:paymoney.activepay,pay_limit:paymoney.limitpay,eggs:eggs,community:community};
+		var params ={nest_id:nest_id,email:email,contract_id:contract_id,inviter_name:invite_name,parent_name:invite_name,security_code:secondPassword,pay_active:paymoney.activepay,pay_limit:paymoney.limitpay,eggs:eggs};
+		debugger;
 		return params;
 	};
 	Model.prototype.success=function(params){
@@ -364,7 +344,6 @@ define(function(require){
 					if (params) {
 						var is_success = nest.createnest(params);
 						if (is_success) {
-							this.showprompt(lang.showprompt[39]);
 							this.success(params);
 						
 						}
@@ -373,9 +352,6 @@ define(function(require){
 							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 							
-						}
-						else{
-							this.showprompt(lang.showprompt[38]);
 						}
 					}
 					
@@ -385,7 +361,6 @@ define(function(require){
 					if (params) {
 						var is_success = nest.invitenest(params);
 						if (is_success) {
-							this.showprompt(lang.showprompt[39]);
 							this.success(params);
 							
 						}
@@ -394,9 +369,6 @@ define(function(require){
 							this.comp("secondPassword").hide();
 							this.comp("windowDialog1").open();
 						
-						}
-						else{
-							this.showprompt(lang.showprompt[38]);
 						}
 					}
 					
@@ -409,35 +381,8 @@ define(function(require){
 	};
 	//提交数据
 	Model.prototype.button6Click = function(event){
-		var is_hascommunity=0;
-		var radios = $("[name='community_radio']");
-		for (var i = 0; i < radios.length; i++) {
-			if (radios[i].checked) {
-				switch (i) {
-				case 1:
-					is_hascommunity=1;
-					break;
-				case 3:
-					is_hascommunity=1
-					break;
-				case 5:
-					is_hascommunity=1
-					break;
-				default:
-					
-					break;
-				}
-			}
-		}
-		if (is_hascommunity==0&&(action=="create"||action=="invite")) {
-			this.showprompt(lang.showprompt[36]);
-			this.input4Blur(event);return;
-		}
 		if (!$.trim(this.comp("input2").val())&&(action=="create"||action=="invite")) {
 			this.showprompt(lang.showprompt[35]);
-		}
-		else if(!$.trim(this.comp("input4").val())&&(action=="create"||action=="invite")){
-			this.showprompt(lang.showprompt[34]);
 		}
 		else if($.trim($(this.getElementByXid("need_money")).html())==0)
 		{
@@ -450,15 +395,17 @@ define(function(require){
 //检查邀请人是否存在
 	Model.prototype.input2Blur = function(event){
 		var name = $.trim(this.comp("input2").val());
-		if (name) {
-			if(nest.community_premission(name)==404){
-				this.showprompt(lang.showprompt[31]);
+		var nests = nest.mainInfo();
+		if (nests===undefined) {
+			this.showprompt(lang.showprompt[0]);
+			this.comp("windowDialog1").open();
+		} 
+		for (var int = 0; int < nests.length; int++) {
+			if (nests[int],name==name) {
+				return;
 			}
 		}
-		else{
-			this.showprompt(lang.showprompt[32]);
-		}
-		
+		this.showprompt(lang.showprompt[31]);
 	};
 
 	Model.prototype.input1Blur = function(event){

@@ -20,9 +20,8 @@
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="incomeAccount" idColumn="id" onCustomRefresh="incomeAccountCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid6"></column>
   <column name="name" type="String" xid="xid8"></column>
   <column name="date" type="Date" xid="xid9"></column>
-  <column name="income" type="Float" xid="xid11"></column>
-  <column name="type" type="String" xid="xid15"></column>
-  <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;qweasd123&quot;,&quot;date&quot;:&quot;2017-11-11&quot;,&quot;income&quot;:600,&quot;type&quot;:&quot;社区&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;qweasd123&quot;,&quot;date&quot;:&quot;2017-11-11&quot;,&quot;income&quot;:600,&quot;type&quot;:&quot;直线&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;qweasd123&quot;,&quot;date&quot;:&quot;2017-11-11&quot;,&quot;income&quot;:600,&quot;type&quot;:&quot;日常&quot;}]</data></div>
+  <column name="income" type="String" xid="xid11"></column>
+  <column name="type" type="String" xid="xid15"></column></div>
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
@@ -92,11 +91,11 @@
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="incomeAccount">
    <ul class="x-list-template" xid="listTemplateUl2">
     <li xid="li2"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row21" style="padding-left:0px;margin-left:0px;text-align:center;">
-   <div class="x-col" xid="col47"><span xid="span27" bind-text='val("date")'></span></div>
-   <div class="x-col" xid="col48" style="border-color:#282B32;"><span xid="span19"><![CDATA[$]]></span><span xid="span28" bind-text='val("income")'></span>
-  </div>
-   <div class="x-col" xid="col49"><span xid="span29" bind-text='val("name")'></span></div>
-  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div></div></li></ul> </div>
+   
+   <div class="x-col" xid="col48" style="border-color:#282B32;">
+  <span xid="span29" bind-text='val("id")'></span></div>
+   <div class="x-col" xid="col49"><span xid="span19"><![CDATA[$]]></span><span xid="span28" bind-text='val("income")'></span></div>
+  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div><div class="x-col" xid="col47"><span xid="span27" bind-text='val("date")'></span></div></div></li></ul> </div>
   <div xid="div10" style="height:100px;"></div></div></div></div>
   <div class="x-contents-content content-nest" xid="content3" style="background:#1C1F26"><div xid="div2">
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="NestsAccount">

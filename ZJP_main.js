@@ -6,6 +6,7 @@ define(function(require) {
 	var config = require("./js/config");
 	var base64 = require("$UI/system/lib/base/base64");
 	var mainInfo;
+	var page = 1;
 	var personalInvite;
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -134,15 +135,47 @@ define(function(require) {
 	};
 
 	Model.prototype.incomeAccountCustomRefresh = function(event){
-		var income = user.getUserIncome();
+		var income = user.getUserIncome(page);
+		var params = [];
 		if (income==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
 		if (income.length!=0) {
-			
+			for (var int = 0; int < income.length; int++) {
+				if (income[int].coins) {
+					params[params.length]={
+						id:params.length+1,
+						name:"",
+						date:income[int].created_at,
+						income:income[int].coins+"猫币",
+						type:income[int].type=="bonus"?"邀请":"转帐"
+					}
+				}
+				else if(income[int].money_limit)
+				{
+					params[params.length]={
+						id:params.length+1,
+						name:"",
+						date:income[int].created_at,
+						income:income[int].money_limit+"限制币",
+						type:income[int].type=="bonus"?"邀请":"转帐"
+					}
+				}
+				else if (income[int].money_active) {
+					params[params.length]={
+						id:params.length+1,
+						name:"",
+						date:income[int].created_at,
+						income:income[int].money_active+"可提",
+						type:income[int].type=="bonus"?"邀请":"转帐"
+					}
+				}
+				
+			}
 		}
+		event.source.loadData(params);
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
@@ -184,7 +217,8 @@ define(function(require) {
 		var params = {
 				nest_id:row.val("nest_id"),
 				contract_id:row.val("id"),
-				page:"main"
+				page:"main",
+				nest_name:row.val("name")
 		};
 		justep.Shell.showPage("nestMain", params);
 	};

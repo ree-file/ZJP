@@ -28,7 +28,7 @@
    <span xid="span12">帮助</span></a></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row normalRow creat_interval" xid="row5">
    <div class="x-col x-col-20" xid="col19"><span xid="span16" class="leftspan"><![CDATA[]]></span></div>
-   <div class="x-col nopadding" xid="col23"><input component="$UI/system/components/justep/input/input" class="form-control inputAndSelect" xid="input2" onBlur="input2Blur"></input></div>
+   <div class="x-col nopadding" xid="col23"><input component="$UI/system/components/justep/input/input" class="form-control inputAndSelect" xid="input2"></input></div>
    <div class="x-col x-col-20 nopadding" xid="col25"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button3" icon="icon-alert" onClick="button3Click" style="position:relative;left:45%;color:#A6A6A6;">
    <i xid="i5" class="icon-alert"></i>
    <span xid="span17"></span></a></div></div><div component="$UI/system/components/justep/row/row" class="x-row normalRow  creat_email" xid="row4">
@@ -36,20 +36,7 @@
    <div class="x-col nopadding" xid="col15"><input component="$UI/system/components/justep/input/input" class="form-control inputAndSelect" xid="input1" onBlur="input1Blur"></input></div>
    <div class="x-col x-col-20 nopadding " xid="col17"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button1" icon="icon-alert" onClick="button1Click" style="position:relative;left:45%;color:#A6A6A6;">
    <i xid="i2" class="icon-alert"></i>
-   <span xid="span13"></span></a></div></div><div component="$UI/system/components/justep/row/row" xid="create_benefit" class="x-row normalRow create_benefit" style="height:50px;">
-   <div class="x-col x-col-20" xid="col28"><span xid="span9" class="leftspan"><![CDATA[]]></span></div>
-   <div class="x-col nopadding" xid="col30"><input component="$UI/system/components/justep/input/input" class="form-control inputAndSelect" xid="input4" onBlur="input4Blur"></input></div>
-  <div class="x-col x-col-20 nopadding " xid="col33"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="帮助" xid="button4" icon="icon-alert" onClick="button4Click" style="position:relative;left:45%;color:#A6A6A6;">
-   <i xid="i3" class="icon-alert"></i>
-   <span xid="span14">帮助</span></a></div>
-  </div><div component="$UI/system/components/justep/row/row" class="x-row community community_show" xid="community">
-   <div class="x-col x-col-33" xid="col22"><span xid="span7"><![CDATA[家族：]]></span></div>
-   <div class="x-col x-col-50" xid="col24"><span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio1" label="A区" name="community_radio" disabled="true"></span>
-  <span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio2" name="community_radio" label="B区" disabled="true"></span>
-  <span component="$UI/system/components/justep/button/radio" class="x-radio x-radio-sm" xid="radio3" name="community_radio" label="C区" disabled="true"></span></div>
-  <div class="x-col x-17" xid="col35"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm btn-only-icon" label="帮助" xid="button5" icon="icon-alert" onClick="button5Click">
-   <i xid="i4" class="icon-alert"></i>
-   <span xid="span15">帮助</span></a></div></div><div component="$UI/system/components/justep/row/row" class="x-row normalRow" xid="necessary_money">
+   <span xid="span13"></span></a></div></div><div component="$UI/system/components/justep/row/row" class="x-row normalRow" xid="necessary_money">
    <div class="x-col x-col-20" xid="col16"><h5 xid="h55" class="leftspan"><![CDATA[]]></h5></div>
    <div class="x-col " xid="col18"><h5 xid="need_money" class="leftspan"><![CDATA[]]></h5></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row normalRow my_money" xid="my_money">
