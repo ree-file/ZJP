@@ -43,7 +43,7 @@ define(function(require){
 				async:false,
 				dataType:"json",
 				data:{security_code:password},//需要传递的数据
-				type:'patch',//php获取类型
+				type:'post',//php获取类型
 				beforeSend:function(request){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},

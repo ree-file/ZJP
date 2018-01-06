@@ -222,7 +222,7 @@ define(function(require){
 			return;
 		}
 		action = this.params.action;
-		action = "create";
+//		action = "create";
 		this.actionOption(action);
 	};
 	//下拉框内容变动时做出的改变

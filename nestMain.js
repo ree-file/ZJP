@@ -442,7 +442,7 @@ define(function(require){
 	Model.prototype.button12Click = function(event){
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
-			this.close();
+		
 		}
 		else{
 			justep.Shell.closePage();
@@ -456,6 +456,7 @@ define(function(require){
 	
 	
 	Model.prototype.modelUnLoad = function(event){
+		
 	};
 	
 	
@@ -494,6 +495,10 @@ define(function(require){
 			}
 
 
+	};
+	
+	Model.prototype.modelInactive = function(event){
+		this.close();
 	};
 	
 	return Model;

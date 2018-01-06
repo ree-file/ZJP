@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:96px;left:107px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onActive="modelActive"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:96px;left:107px;" onLoad="modelLoad" onModelConstructDone="modelModelConstructDone" onActive="modelActive" onInactive="modelInactive"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="marketdata" idColumn="id" onCustomRefresh="marketdataCustomRefresh" confirmDelete="false" confirmRefresh="false"><column name="id" type="Integer" xid="xid1"></column>
   <column name="name" type="String" xid="xid2"></column>
   <column name="worth" type="Decimal" xid="xid5"></column>
@@ -79,11 +79,15 @@
   <span xid="span48"><![CDATA[]]></span></div><li xid="li1" bind-click="li1Click"><div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row1" style="margin-top:17px;border-width:thin thin thin thin;border-style:groove groove groove groove;position:relative;width:96%;left:2%;height:100px;">
    <div class="x-col" xid="col2" style="padding:0px 0px 0px 0px;margin-top:15px;" bind-click="col1Click">
   
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-width:thin;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4">
+   <div class="x-col" xid="col1"></div>
+   <div class="x-col" xid="col10"></div>
+   <div class="x-col" xid="col11"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-width:thin;">
    <div class="x-col x-col-25" xid="col30" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span23" class="pull-right moneycenterright" style="font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;"><![CDATA[卖家邮箱]]></span></div> 
+    <span xid="span23" class="pull-right moneycenterright" style="text-align:left;font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;"><![CDATA[卖家邮箱]]></span></div> 
    <div class="x-col" xid="col31" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("useremail")' style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;"></div></div> </div></div>
+    <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("useremail")' style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;"></div></div> </div>
+  </div>
    <div class="x-col x-col-33 center-block" xid="col16" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15" style="margin-top:15px;padding-top:0px;">
    <div class="x-col" xid="col35"><span xid="span20" style="width:5%;color:#FFFFFF;font-size:large;padding-top:0px;margin-top:-1px;font-family:Cambria Math;" class="pull-left"><![CDATA[$]]></span><span xid="moneySpan" style="color:#FFFFFF;font-size:large;font-family:Impact;position:relative;width:92%;" bind-text='val("worth")' class="pull-left center-block moneycenter"></span>

@@ -59,11 +59,11 @@ define(function(require) {
 			return;
 		}
 		var coins = incomeAnalyse.analyse_today.coins;
-		var money_active_sum = incomeAnalyse.analyse_today.money_active_sum;
-		var money_limit_sum = incomeAnalyse.analyse_today.money_limit_sum;
-		var all = coins+money_active_sum+money_limit_sum;
+		var money_active = incomeAnalyse.analyse_today.money_active;
+		var money_limit= incomeAnalyse.analyse_today.money_limit;
+		var all = coins+money_active+money_limit;
 		var rightRotate = 180-parseFloat(coins/all)*360;
-		var leftRotate = 180-parseFloat(money_limit_sum/all)*360;
+		var leftRotate = 180-parseFloat(money_limit/all)*360;
 		if (rightRotate<0) {
 			$(this.getElementByXid("span24")).html(lang.ZJP_main[16]);
 			$(this.getElementByXid("span25")).html(lang.ZJP_main[17]);
@@ -82,7 +82,7 @@ define(function(require) {
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
-		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit_sum+incomeAnalyse.analyse.money_active_sum).toFixed(2));
+		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit+incomeAnalyse.analyse.money_active).toFixed(2));
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){	
