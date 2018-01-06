@@ -2,6 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var personaljs = require("./js/personal");
+	var userid;
 	var base64 = require("$UI/system/lib/base/base64");
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -20,6 +21,7 @@ define(function(require){
 		this.comp("title").set({
 			title:lang.transferRecord[1]
 		});
+		$(this.getElementByXid("span1")).text(lang.transferRecord[15]);
 		var recordData = this.comp("recordData");
 		var record = personaljs.transRecord();
 		if (record == undefined) {
@@ -34,29 +36,23 @@ define(function(require){
 		if (record) {
 			for (var i = 0; i <= record.length-1; i++) {
 				var type;
-				var status;
-				if (record[i].type == "save") {
-					type = lang.transferRecord[7];
-				}
-				else if (record[i].type == "get") {
+				var another;
+				if (record[i].payer_id == userid) {
 					type = lang.transferRecord[8];
+					another = record[i].receiver_id;
 				}
-				if (record[i].status == "processing") {
-					status = lang.transferRecord[9];
-				}
-				else if (record[i].status == "accepted") {
-					status = lang.transferRecord[10];
-				}
-				else if (record[i].status == "rejected") {
-					status = lang.transferRecord[11];
+				else if (record[i].receiver_id == userid) {
+					type = lang.transferRecord[9];
+					another = record[i].payer_id;
 				}
 				recordData.add({
 					"id": record[i].id,
 					"type": type,
-					"card_number": record[i].card_number,
-					"bankname": record[i].message,
 					"money": record[i].money,
-					"status": status,
+					"money_active": record[i].money_active,
+					"money_limit": record[i].money_limit,
+					"coins": record[i].coins,
+					"another": record[i].another,
 					"updated_at": record[i].updated_at,
 				});
 			}
@@ -101,6 +97,10 @@ define(function(require){
 
 	Model.prototype.backBtnClick = function(event){
 		justep.Shell.closePage();
+	};
+
+	Model.prototype.modelParamsReceive = function(event){
+		userid = this.params.user_id;
 	};
 
 	return Model;

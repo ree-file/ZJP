@@ -49,113 +49,129 @@ define(function(require){
 			this.showprompt(lang.showprompt[63]);
 		}
 	};
+
 	function photoCompress(file,w,objDiv){
-            var ready=new FileReader();
-                /*开始读取指定的Blob对象或File对象中的内容. 当读取操作完成时,readyState属性的值会成为DONE,如果设置了onloadend事件处理程序,则调用之.同时,result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容.*/
-                ready.readAsDataURL(file);
-                ready.onload=function(){
-                    var re=this.result;
-                    canvasDataURL(re,w,objDiv);
+    		var ready=new FileReader();
+        /*开始读取指定的Blob对象或File对象中的内容. 当读取操作完成时,readyState属性的值会成为DONE,如果设置了onloadend事件处理程序,则调用之.同时,result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容.*/
+        ready.readAsDataURL(file);
+        ready.onload=function(){
+            var re=this.result;
+            canvasDataURL(re,w,objDiv);
+        }
+  }
 
-                }
+  function canvasDataURL(path, obj, callback){
+       var img = new Image();
+       img.src = path;
+       img.onload = function(){
+        var that = this;
+        // 默认按比例压缩
+        var w = that.width,
+         h = that.height,
+         scale = w / h;
+         w = obj.width || w;
+         h = obj.height || (w / scale);
+        var quality = 0.7;  // 默认图片质量为0.7
+        //生成canvas
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        // 创建属性节点
+        var anw = document.createAttribute("width");
+        anw.nodeValue = w;
+        var anh = document.createAttribute("height");
+        anh.nodeValue = h;
+        canvas.setAttributeNode(anw);
+        canvas.setAttributeNode(anh);
+        ctx.drawImage(that, 0, 0, w, h);
+        // 图像质量
+        if(obj.quality && obj.quality <= 1 && obj.quality > 0){
+         quality = obj.quality;
+        }
+        // quality值越小，所绘制出的图像越模糊
+        var base64 = canvas.toDataURL('image/jpeg', quality);
+        // 回调函数返回base64的值
+        callback(base64);
+      }
+  }
 
-        }
-        function canvasDataURL(path, obj, callback){
-             var img = new Image();
-             img.src = path;
-             img.onload = function(){
-              var that = this;
-              // 默认按比例压缩
-              var w = that.width,
-               h = that.height,
-               scale = w / h;
-               w = obj.width || w;
-               h = obj.height || (w / scale);
-              var quality = 0.7;  // 默认图片质量为0.7
-              //生成canvas
-              var canvas = document.createElement('canvas');
-              var ctx = canvas.getContext('2d');
-              // 创建属性节点
-              var anw = document.createAttribute("width");
-              anw.nodeValue = w;
-              var anh = document.createAttribute("height");
-              anh.nodeValue = h;
-              canvas.setAttributeNode(anw);
-              canvas.setAttributeNode(anh);
-              ctx.drawImage(that, 0, 0, w, h);
-              // 图像质量
-              if(obj.quality && obj.quality <= 1 && obj.quality > 0){
-               quality = obj.quality;
-              }
-              // quality值越小，所绘制出的图像越模糊
-              var base64 = canvas.toDataURL('image/jpeg', quality);
-              // 回调函数返回base64的值
-              callback(base64);
-            }
-        }
-        function convertBase64UrlToBlob(urlData){
-            var arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1],
-                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-            while(n--){
-                u8arr[n] = bstr.charCodeAt(n);
-            }
-            return new Blob([u8arr], {type:mime});
-        }
-    Model.prototype.uploadmessage=function(formdata){
-        var from = this.comp('fromSelect').val();
-			var cardnumber = this.getElementByXid("cardidInput").value;
-			var money = this.getElementByXid("moneyInput").value;
-			var security_code = $.trim(this.comp("securityInput").val());
-			if (from == lang.transfermoney[11]) {
-				formdata.append("money",money);
-				formdata.append("type","save");
-				formdata.append("card_number",cardnumber);
-				formdata.append("security_code",security_code);
-				var is_success5 = personaljs.supplies(formdata);
-				if (is_success5 == undefined) {
-					this.comp("windowDialog1").open();
-					this.showprompt(lang.showprompt[0]);
-					return;
-				}
-				else if (is_success5 == true) {
-					this.setupButtonClick(event);
-					return;
-				}
+  function convertBase64UrlToBlob(urlData){
+      var arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+      while(n--){
+          u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new Blob([u8arr], {type:mime});
+  }
+
+  Model.prototype.uploadmessage=function(formdata){
+    var from = this.comp('fromSelect').val();
+		var cardnumber = this.getElementByXid("cardidInput").value;
+		var otherbankname = this.getElementByXid("otherbankInput").value;
+		var money = this.getElementByXid("moneyInput").value;
+		var security_code = $.trim(this.comp("securityInput").val());
+		if (from == lang.transfermoney[11]) {
+			formdata.append("money",money);
+			formdata.append("card_number",cardnumber);
+			formdata.append("security_code",security_code);
+			formdata.append("message",otherbankname);
+			var is_success5 = personaljs.supplies(formdata);
+			if (is_success5 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
 			}
-			else {
-				formdata.append("money",money);
-				formdata.append("type","save");
-				formdata.append("card_number",cardnumber);
-				formdata.append("security_code",security_code);
-				var is_success6 = personaljs.supplies(formdata);
-				if (is_success6 == undefined) {
-					this.comp("windowDialog1").open();
-					this.showprompt(lang.showprompt[0]);
-					return;
-				}
-				else if (is_success6 == true) {
-					this.setupButtonClick(event);
-					return;
-				}
+			else if (is_success5 == true) {
+				this.setupButtonClick(event);
+				return;
 			}
-    };
+		}
+		else {
+			formdata.append("money",money);
+			formdata.append("card_number",cardnumber);
+			formdata.append("security_code",security_code);
+			formdata.append("message",from);
+			var is_success6 = personaljs.supplies(formdata);
+			if (is_success6 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
+			}
+			else if (is_success6 == true) {
+				this.setupButtonClick(event);
+				return;
+			}
+		}
+  };
+
 	Model.prototype.setupButtonClick = function(event){
+		var fromSelect = this.comp('fromSelect').val();
+		if (!fromSelect) {
+			this.showprompt(lang.showprompt[65]);
+			return;
+		}
+		var formdata = new FormData();
 		var fileObj = $(this.getElementByXid("file2")).prop("files")[0];
-		 var formdata = new FormData();
-		if(fileObj.size/1024 > 1025) { //大于1M，进行压缩上传
-                photoCompress(fileObj, {
-                    quality: 0.2
-                }, function(base64Codes){
-//                    console.log("压缩后：" + base.length / 1024 + " " + base);
-                 var bl = convertBase64UrlToBlob(base64Codes);
-                 formdata.append("image", bl,"file_"+Date.parse(new Date())+".jpg");
-                 me.uploadmessage(formdata);
-         });
-         }
-         else{
-        	 formdata.append("image", fileObj);
-        	 me.uploadmessage(formdata);
-         }
+		var size = 0;
+		if (fileObj) {
+			size = fileObj.size;
+			if(size/1024 > 1025) { //大于1M，进行压缩上传
+				photoCompress(fileObj, {
+					quality: 0.2
+				}, function(base64Codes){
+					//                    console.log("压缩后：" + base.length / 1024 + " " + base);
+					var bl = convertBase64UrlToBlob(base64Codes);
+					formdata.append("image", bl,"file_"+Date.parse(new Date())+".jpg");
+					me.uploadmessage(formdata);
+				});
+			}
+			else{
+				formdata.append("image", fileObj);
+				me.uploadmessage(formdata);
+			}
+		}
+		else {
+			me.uploadmessage(formdata);
+		}
 
 	};
 
@@ -219,7 +235,7 @@ define(function(require){
 		if ($.trim(this.comp("input1").val())) {
 			this.comp("moneyInput").val((parseFloat(this.comp("input1").val())/USDrate).toFixed(2));
 		}
-		
+
 	};
 
 	Model.prototype.moneyInputBlur = function(event){

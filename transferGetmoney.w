@@ -33,7 +33,7 @@
   <div class="x-col" xid="col2"></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col3"><span xid="span3" style="color:#C0C0C0;position:relative;top:5px;"></span></div>
-   <div class="x-col" xid="col7"><select component="$UI/system/components/justep/select/select" class="form-control" xid="toSelect" bind-options="bankfromData" bind-optionsValue="name" bind-optionsLabel="name" bind-optionsCaption="请选择..." onChange="toSelectChange"></select></div></div>
+   <div class="x-col" xid="col7"><select component="$UI/system/components/justep/select/select" class="form-control" xid="toSelect" bind-options="bankfromData" bind-optionsValue="name" bind-optionsLabel="name" onChange="toSelectChange"></select></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="otherbankrow" style="background-color:#252932;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:60px;">
    <div class="x-col x-col-25" xid="col11">
     <span xid="otherbankName" style="color:#C0C0C0;position:relative;"></span></div> 
@@ -74,7 +74,7 @@
    <div class="x-col x-col-10" xid="col33"></div><div class="x-col" xid="col26"><span xid="span1" class="popspan"><![CDATA[xcx]]></span></div><div class="x-col" xid="col27"><span xid="span6" class="popspanout"><![CDATA[]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12">
    <div class="x-col x-col-10" xid="col34"></div><div class="x-col" xid="col30">
-    <span xid="span14" class="popspan">xcx</span></div> 
+    <span xid="span14" class="popspan"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col29">
     <span xid="span8" class="popspanout"></span></div> 
   </div>
