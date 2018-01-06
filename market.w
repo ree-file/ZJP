@@ -84,7 +84,7 @@
    <div class="x-col" xid="col1"><span xid="span23" class="pull-right moneycenterright" style="text-align:left;font-size:medium;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;color:#C0C0C0;"><![CDATA[卖家邮箱]]></span></div>
    <div class="x-col" xid="col10"></div>
    <div class="x-col" xid="col11"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top-width:thin;">
-   <div class="x-col x-col-25" xid="col30" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
+   <div class="x-col x-col-10" xid="col30" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     </div> 
    <div class="x-col" xid="col31" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <div component="$UI/system/components/justep/output/output" class="x-output pull-right moneycenter" xid="output2" bind-ref='ref("useremail")' style="color:#FFFFFF;width:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;font-size:medium;"></div></div> </div>
