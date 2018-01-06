@@ -115,6 +115,7 @@ define(function(require){
 		$(this.getElementByXid("h53")).html(lang.nestMain[23]);
 		$(this.getElementByXid("span28")).html(lang.nestMain[24]);
 		$(this.getElementByXid("p1")).html(lang.nestMain[25]);
+		$(this.getElementByXid("content1")).css("display","block");
 		USDrate = bank.getCNYrate();
 	};
 	Model.prototype.modelParamsReceive = function(event){
@@ -220,14 +221,38 @@ define(function(require){
 		var account = nest.income(this.params.nest_id);
 		if (account.length!=0) {
 			for (var int = 0; int < account.length; int++) {
+			if (account[int].coins) {
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
-					money:account[int].money_active,
+					money:account[int].coins+"猫币",
+					message:account[int].type=="bonus"?"邀请":"日常",
+					status:2
+				}
+				get_money=account[int].coins;
+			}
+			if (account[int].money_active) {
+				accountData[accountData.length]={
+					id:	accountData.length,
+					date:account[int].created_at,
+					money:account[int].money_active+"可提",
 					message:account[int].type=="bonus"?"邀请":"日常",
 					status:2
 				}
 				get_money=account[int].money_active;
+			}
+			if (account[int].money_limit) {
+				accountData[accountData.length]={
+					id:	accountData.length,
+					date:account[int].created_at,
+					money:account[int].money_limit+"限制",
+					message:account[int].type=="bonus"?"邀请":"日常",
+					status:2
+				}
+				get_money=account[int].money_limit;
+			}
+				
+				
 			}					
 		}
 		if (accountData.length!=0) {

@@ -25,6 +25,15 @@
 	
 	transition: transform 2s
 }
+.load{
+	display:table;
+	height:auto;
+	/* background-color:#9D9996; */
+	width:100%;
+	text-align:center;
+	verticle:middle;
+	z-index:9999;
+}
 .circle-text{
 	width:180px;
 	height:180px;

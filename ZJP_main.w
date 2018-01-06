@@ -33,7 +33,7 @@
     <div class="x-panel-content" xid="content1" style="background:#1C1F26;height:100%;">
   
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" onActiveChange="contents1ActiveChange">
-   <div class="x-contents-content" xid="content2"><div xid="main1" style="position:absolute;width:100%;height:50%;">
+   <div class="x-contents-content" xid="content2" style="display:none;" bind-touchstart="content2Touchstart" bind-touchend="content2Touchend"><div xid="main1" style="position:absolute;width:100%;height:50%;">
     
    <div xid="div11" class="code" style="text-align:center"><span xid="span18"></span></div><div xid="circle" class="circle" style="top:30px;">
     <div xid="remark" class="remark">
@@ -95,8 +95,11 @@
    <div class="x-col" xid="col48" style="border-color:#282B32;">
   <span xid="span29" bind-text='val("id")'></span></div>
    <div class="x-col" xid="col49"><span xid="span19"><![CDATA[$]]></span><span xid="span28" bind-text='val("income")'></span></div>
-  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div><div class="x-col" xid="col47"><span xid="span27" bind-text='val("date")'></span></div></div></li></ul> </div>
-  <div xid="div10" style="height:100px;"></div></div></div></div>
+  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div><div class="x-col" xid="col47"><span xid="span27" bind-text='val("date")'></span></div></div></li>
+  </ul> </div>
+  <div xid="div12" class="load">
+   <span xid="span42" style="font-size:medium;"></span>
+   <span xid="span47"><![CDATA[加载完成]]></span></div><div xid="div10" style="height:100px;"></div></div></div></div>
   <div class="x-contents-content content-nest" xid="content3" style="background:#1C1F26"><div xid="div2">
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="NestsAccount">
    <ul class="x-list-template" xid="listTemplateUl1">

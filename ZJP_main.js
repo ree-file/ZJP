@@ -6,6 +6,8 @@ define(function(require) {
 	var config = require("./js/config");
 	var base64 = require("$UI/system/lib/base/base64");
 	var mainInfo;
+	var starty=0;
+	var endy=0;
 	var page = 1;
 	var personalInvite;
 	var lang;
@@ -85,6 +87,7 @@ define(function(require) {
 		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit+incomeAnalyse.analyse.money_active).toFixed(2));
 		$(this.getElementByXid("span18")).html("编号"+localStorage.getItem("thismyuserId"));
 		$(this.getElementByXid("span18")).css("color","white");
+		$(this.getElementByXid("content2")).css("display","block");
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){	
@@ -152,26 +155,26 @@ define(function(require) {
 						name:"",
 						date:income[int].created_at,
 						income:income[int].coins+"猫币",
-						type:income[int].type=="bonus"?"邀请":"转帐"
+						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
-				else if(income[int].money_limit)
+				 if(income[int].money_limit)
 				{
 					params[params.length]={
 						id:params.length+1,
 						name:"",
 						date:income[int].created_at,
 						income:income[int].money_limit+"限制币",
-						type:income[int].type=="bonus"?"邀请":"转帐"
+						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
-				else if (income[int].money_active) {
+				 if (income[int].money_active) {
 					params[params.length]={
 						id:params.length+1,
 						name:"",
 						date:income[int].created_at,
 						income:income[int].money_active+"可提",
-						type:income[int].type=="bonus"?"邀请":"转帐"
+						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
 				
@@ -232,6 +235,7 @@ define(function(require) {
 	Model.prototype.modelActive = function(event){
 		this.modelModelConstructDone(event);
 		this.modelLoad(event);
+		page=0;
 	};
 
 	Model.prototype.windowDialog1Receive = function(event){
@@ -279,6 +283,23 @@ define(function(require) {
 		if (event.to==2) {
 			this.comp("windowContainer1").load("$UI/ZJP/personal.w",{personal:personalInvite});
 		}
+	};
+
+	Model.prototype.content2Touchstart = function(event){
+		starty = event.originalEvent.changedTouches[0].pageY;
+	};
+
+	Model.prototype.content2Touchend = function(event){
+		endy = event.originalEvent.changedTouches[0].pageY;
+		var scrollTop = document.documentElement.scrollTop;
+		var height = document.documentElement.scrollHeight;
+		var screen = document.documentElement.clientHeight;
+		if (height<=screen+scrollTop&&starty-endy>100&&this.comp("incomeAccount").count()%10==0) {
+			page++;
+			this.comp("incomeAccount").refreshData();
+		}
+		endy=0;
+		starty=0;
 	};
 
 	return Model;
