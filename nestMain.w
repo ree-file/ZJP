@@ -124,7 +124,7 @@
    <div class="x-col col-paddind-right" xid="col76">
     <h5 xid="h534" class="text-right font-white"><![CDATA[￥]]></h5></div> 
    <div class="x-col col-padding-left" xid="col74">
-    <h5 xid="h533" class="font-white text-left" bind-text='$model.nest.val("currentWorth") * $model.nest.val("globalValue") * $model.nest.val("expectReturn")' style="text-align:left;"><![CDATA[]]></h5></div> </div></div></div>
+    <h5 xid="h533" class="font-white text-left" bind-text=' $model.fixtwo($model.nest.val("currentWorth") * $model.nest.val("globalValue") * $model.nest.val("expectReturn"))' style="text-align:left;"><![CDATA[]]></h5></div> </div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row3">
    <div class="x-col noMarginPadding" xid="col7"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group noMarginPadding" tabbed="true" xid="buttonGroup1" style="width:100%;" selected="button5">
    <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-sm background-color-black checkbtn" xid="button5" style="width:25%;height:100%;" target="content3">

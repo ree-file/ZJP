@@ -121,7 +121,7 @@ define(function(require){
 						allorders[i].nest_id = ordersData[i].nest_id,
 						allorders[i].worth = ordersData[i].price;
 						allorders[i].useremail = ordersData[i].seller.email;
-						
+						allorders[i].seller_id = ordersData[i].seller.id;
 					}
 					status =200;
 				},
@@ -191,7 +191,7 @@ define(function(require){
 						allorders[i].nest_id = ordersData[i].nest_id,
 						allorders[i].worth = ordersData[i].price;
 						allorders[i].useremail = ordersData[i].seller.email;
-						
+						allorders[i].seller_id = ordersData[i].seller.id;
 					}
 						
 					status =200;

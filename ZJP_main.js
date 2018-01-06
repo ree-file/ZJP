@@ -83,6 +83,8 @@ define(function(require) {
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
 		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit+incomeAnalyse.analyse.money_active).toFixed(2));
+		$(this.getElementByXid("span18")).html("编号"+localStorage.getItem("thismyuserId"));
+		$(this.getElementByXid("span18")).css("color","white");
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){	

@@ -209,7 +209,7 @@ define(function(require){
 			var nestdata={};
 			var status =400;
 			$.ajax({
-				url:config.site+"private/simple-nests",
+				url:config.site+"private/nests",
 				async:false,
 				dataType:"json",
 				type:"GET",
