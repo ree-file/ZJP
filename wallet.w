@@ -4,7 +4,7 @@
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="id" confirmRefresh="false"><column label="1" name="id" type="Integer" xid="xid1"></column>
   <data xid="default1">[{&quot;id&quot;:1}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+    class="x-panel x-full" xid="panel1" style="background-color:#282F37;"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" title="钱包"
           class="x-titlebar" style="background-color:#252932;" xid="title">
@@ -21,7 +21,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#282F37;height:100%;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
+    <div class="x-panel-content" xid="content1" style="display:none;background-color:#282F37;height:100%;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
    <div class="x-panel-content" xid="content2" style="margin-bottom:15%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;">
    <div class="x-col x-col-10" xid="col4" style="position:relative;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon btn-block" label="button" xid="button1" icon="glyphicon glyphicon-usd" style="color:#FFFFFF;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:100%;width:100%;font-size:xx-large;top:10px;">
    <i xid="i1" class="glyphicon-usd glyphicon" style="position:relative;left:15%;top:15%;"></i>

@@ -79,6 +79,7 @@ define(function(require){
 		$(this.getElementByXid("span19")).html(lang.personal[12]);
 		$(this.getElementByXid("span22")).html(lang.personal[13]);
 		$(this.getElementByXid("span21")).html(lang.personal[14]);
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 
 	Model.prototype.showhidBtnClick = function(event){

@@ -73,7 +73,7 @@ define(function(require){
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;
-		$(this.getElementByXid("content2")).css("display","block");
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 
 	Model.prototype.row14Click = function(event){

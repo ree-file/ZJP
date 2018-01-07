@@ -3,7 +3,7 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive"> 
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1"> 
+    class="x-panel x-full" xid="panel1" style="background-color:#1C1F26;"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" title="详情"
           class="x-titlebar" style="background-color:#252932;" xid="titile">
@@ -20,7 +20,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="position:relative;height:100%;background-color:#1C1F26;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="position:relative;top:3%;">
+    <div class="x-panel-content" xid="content1" style="display:none;position:relative;height:100%;background-color:#1C1F26;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="position:relative;top:3%;">
    <div class="x-col x-col-33" xid="col1" style="padding-right:5%;"><span xid="span1" class="pull-right" style="color:#C0C0C0;font-size:medium;"><![CDATA[]]></span></div>
    <div class="x-col" xid="col3" style="padding-top:6px;"><span xid="orderIDSpan" style="color:#FFFFFF;font-size:medium;"><![CDATA[]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row3" style="position:relative;top:6%;border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;height:120px;">
