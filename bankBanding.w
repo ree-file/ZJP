@@ -8,7 +8,7 @@
   <column name="image" type="String" xid="xid1"></column>
   <column name="lang" type="String" xid="xid2"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
-    class="x-panel x-full" xid="panel1" style="height:100%;width:100%;"> 
+    class="x-panel x-full" xid="panel1" style="height:100%;width:100%;background-color:#1C1F26;"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" style="background-color:#252932;" xid="title">
           <div class="x-titlebar-left"> 
@@ -24,7 +24,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#1C1F26;height:100%;width:100%;position:relative;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1D1D1D;padding:0px 0px 0px 0px;margin:15px 0px 15px 0px;height:40px;" bind-click="row2Click">
+    <div class="x-panel-content" xid="content1" style="display:none;background-color:#1C1F26;height:100%;width:100%;position:relative;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1D1D1D;padding:0px 0px 0px 0px;margin:15px 0px 15px 0px;height:40px;" bind-click="row2Click">
    <div class="x-col x-col-10" xid="col6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button4" icon="glyphicon glyphicon-plus" style="height:100%;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;color:#FFFFFF;left:50%;">
      <i xid="i3" class="glyphicon glyphicon-plus" style="position:relative;top:12px;"></i>

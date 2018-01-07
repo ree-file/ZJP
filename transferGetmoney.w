@@ -22,7 +22,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="height:100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:#1C1F26;">
+    <div class="x-panel-content" xid="content1" style="display:none;height:100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:#1C1F26;">
    <div class="x-col" xid="col1"><span xid="span2"></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#252932;padding:0px 0px 0px 0px;margin:15px 0px 0px 0px;height:60px;">

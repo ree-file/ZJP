@@ -44,6 +44,7 @@ define(function(require){
 				"lang" : lang.bankBanding[2]
 			});
 		}
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 	//添加银行卡按钮行
 	Model.prototype.row2Click = function(event){

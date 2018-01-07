@@ -87,7 +87,7 @@ define(function(require){
 		$(this.getElementByXid("span6")).html(lang.particulars[14]);
 		$(this.getElementByXid("span11")).html(lang.particulars[6]);
 		this.modelParamsReceive(event);
-
+		$(this.getElementByXid("content1")).css("display","block");
 	};
 
 	Model.prototype.backBtnClick = function(event){

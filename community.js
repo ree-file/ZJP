@@ -140,6 +140,7 @@ define(function(require) {
 		$(this.getElementByXid("span37")).html(lang.community[8]);
 		$(this.getElementByXid("span3")).html(lang.community[9]);
 		$(this.getElementByXid("span32")).html(lang.community[10]);
+		$(this.getElementByXid("content")).css("display","block");
 	};
 
 	return Model;
