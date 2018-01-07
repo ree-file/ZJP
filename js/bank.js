@@ -146,6 +146,13 @@ define(function(require){
 				},
 				error:function(ero){
 					
+				},
+				complete:function(XMLHttpRequest,status)
+				{ //请求完成后最终执行参数
+					if(status=='timeout')
+					{//超时,status还有success,error等值的情况
+						CNY=6.5;
+					}
 				}
 
 			});
