@@ -56,6 +56,7 @@ define(function(require){
 		var moneyspan2 = $(this.getElementByXid("allMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
 		var moneyall = personalMoney.money();
+		console.log(moneyall);
 		userid = moneyall.id;
 		if (moneyall == undefined) {
 			this.comp("windowDialog1").open();

@@ -144,9 +144,9 @@ define(function(require){
 					CNY=data.rates.CNY;
 				},
 				error:function(ero){
-					
+
 				}
-				
+
 			});
 			return CNY;
 		}

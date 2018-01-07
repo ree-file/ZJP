@@ -53,17 +53,54 @@ define(function(require){
 	};
 	//提交按钮
 	Model.prototype.setupButtonClick = function(event){
-		this.comp("popOver1").show(999);
-		$(this.getElementByXid("span5")).text(lang.transferGetmoney[14]);
-		$(this.getElementByXid("span1")).text(lang.transferGetmoney[15]);
-		$(this.getElementByXid("span14")).text(lang.transferGetmoney[16]);
-		$(this.getElementByXid("span16")).text(lang.transferGetmoney[17]);
-		$(this.getElementByXid("span17")).text(lang.transferGetmoney[18]);
-		$(this.getElementByXid("span19")).text(lang.transferGetmoney[19]);
+		var to = this.comp('toSelect').val();
+		var bankname = this.getElementByXid("otherbankInput").value;
+		var cardnumber = this.getElementByXid("cardidInput").value;
 		var money = this.getElementByXid("moneyInput").value;
-		$(this.getElementByXid("span6")).text("$"+(money*0.7).toFixed(2));
-		$(this.getElementByXid("span8")).text("$"+(money*0.2).toFixed(2));
-		$(this.getElementByXid("span15")).text("$"+(money*0.1).toFixed(2));
+		var security_code = $.trim(this.comp("securityInput").val());
+		if (to == lang.transferGetmoney[11]) {
+			var is_success3 = personaljs.suppliesget(money,cardnumber,security_code,to);
+			if (is_success3 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
+			}
+			else if (is_success3 == true) {
+				this.button2Click(event);
+				return;
+			}
+			else if (is_success3 == false) {
+				this.comp("popOver1").hide(999);
+				this.close();
+			}
+		}
+		else {
+			var is_success4 = personaljs.suppliesget(money,cardnumber,security_code,bankname);
+			if (is_success4 == undefined) {
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
+			}
+			else if (is_success4 == true) {
+				this.button2Click(event);
+				return;
+			}
+			else if (is_success4 == false) {
+				this.comp("popOver1").hide(999);
+				this.close();
+			}
+		}
+		// this.comp("popOver1").show(999);
+		// $(this.getElementByXid("span5")).text(lang.transferGetmoney[14]);
+		// $(this.getElementByXid("span1")).text(lang.transferGetmoney[15]);
+		// $(this.getElementByXid("span14")).text(lang.transferGetmoney[16]);
+		// $(this.getElementByXid("span16")).text(lang.transferGetmoney[17]);
+		// $(this.getElementByXid("span17")).text(lang.transferGetmoney[18]);
+		// $(this.getElementByXid("span19")).text(lang.transferGetmoney[19]);
+		// var money = this.getElementByXid("moneyInput").value;
+		// $(this.getElementByXid("span6")).text("$"+(money*0.7).toFixed(2));
+		// $(this.getElementByXid("span8")).text("$"+(money*0.2).toFixed(2));
+		// $(this.getElementByXid("span15")).text("$"+(money*0.1).toFixed(2));
 	};
 	//选择银行名称
 	Model.prototype.toSelectChange = function(event){
@@ -116,43 +153,6 @@ define(function(require){
 	};
 
 	Model.prototype.button2Click = function(event){
-		var to = this.comp('toSelect').val();
-		var bankname = this.getElementByXid("otherbankInput").value;
-		var cardnumber = this.getElementByXid("cardidInput").value;
-		var money = this.getElementByXid("moneyInput").value;
-		var security_code = $.trim(this.comp("securityInput").val());
-		if (to == lang.transferGetmoney[11]) {
-			var is_success3 = personaljs.suppliesget(money,cardnumber,security_code,to);
-			if (is_success3 == undefined) {
-				this.comp("windowDialog1").open();
-				this.showprompt(lang.showprompt[0]);
-				return;
-			}
-			else if (is_success3 == true) {
-				this.button2Click(event);
-				return;
-			}
-			else if (is_success3 == false) {
-				this.comp("popOver1").hide(999);
-				this.close();
-			}
-		}
-		else {
-			var is_success4 = personaljs.suppliesget(money,cardnumber,security_code,bankname);
-			if (is_success4 == undefined) {
-				this.comp("windowDialog1").open();
-				this.showprompt(lang.showprompt[0]);
-				return;
-			}
-			else if (is_success4 == true) {
-				this.button2Click(event);
-				return;
-			}
-			else if (is_success4 == false) {
-				this.comp("popOver1").hide(999);
-				this.close();
-			}
-		}
 	};
 
 	return Model;
