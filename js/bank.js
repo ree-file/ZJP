@@ -137,7 +137,7 @@ define(function(require){
 			$.ajax({
 				url:"https://api.fixer.io/latest?base=USD",
 				async:false,
-				timeout:3000,
+				timeout:1000,
 				dataType:"json",
 				type:"get",
 				data:{},

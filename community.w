@@ -27,7 +27,7 @@
     <span xid="span4" style="color:#FFFFFF;"></span></a> 
   <a component="$UI/system/components/justep/button/button" class="btn btn-default;rb;" xid="ThirdBtn" style="width:50%;color:#C0C0C0;margin:0px 0px 0px 0px;background-color:#282D40;" target="content3">
    <i xid="i3"></i>
-   <span xid="span5" style="color:#FFFFFF;"></span></a></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
+   <span xid="span5" style="color:#FFFFFF;"></span></a></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" wrap="false">
    <div class="x-contents-content" xid="content2" onActive="content2Active" onInactive="content2Inactive" style="color:#C0C0C0;"><div component="$UI/system/components/justep/row/row" class="x-row rowradius" xid="row10" style="border-style:groove groove groove groove;border-width:thin thin thin thin;margin-left:7%;width:86%;position:relative;top:135px;height:80px;">
    
    <div class="x-col" xid="col21">
