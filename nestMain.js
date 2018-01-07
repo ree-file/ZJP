@@ -94,9 +94,7 @@ define(function(require){
 	
 	
 	Model.prototype.modelLoad = function(event){
-		this.comp("titleBar1").set({
-			title:lang.nestMain[0]
-		});
+		
 		$(this.getElementByXid("h58")).html(lang.nestMain[1]);
 		$(this.getElementByXid("h57")).html(lang.nestMain[2]);
 		$(this.getElementByXid("h511")).html(lang.nestMain[3]);
@@ -109,7 +107,21 @@ define(function(require){
 		$(this.getElementByXid("span31")).html(lang.nestMain[17]);
 		$(this.getElementByXid("span17")).html(lang.nestMain[18]);
 		$(this.getElementByXid("span18")).html(lang.nestMain[19]);
-		$(this.getElementByXid("span26")).html(lang.nestMain[20]);
+		if (this.params.status==1) {
+			$(this.getElementByXid("span26")).html(lang.nestMain[25]);
+			$(this.getElementByXid("span37")).html(lang.nestMain[26]);
+			$(this.getElementByXid("span38")).html(lang.nestMain[27]);
+			$(this.getElementByXid("span39")).html(lang.nestMain[28]);
+			this.comp("titleBar1").set({
+			title:lang.nestMain[29]
+		});
+		}
+		else{
+			$(this.getElementByXid("span26")).html(lang.nestMain[20]);
+			this.comp("titleBar1").set({
+			title:lang.nestMain[0]
+		});
+		}
 		$(this.getElementByXid("span27")).html(lang.nestMain[21]);
 		$(this.getElementByXid("h51")).html(lang.nestMain[22]);
 		$(this.getElementByXid("h53")).html(lang.nestMain[23]);
@@ -421,7 +433,12 @@ define(function(require){
 	
 	//创建小窝
 	Model.prototype.button4Click = function(event){
-		this.comp("secondPassword").show();
+		if (this.params.status==0) {
+			this.comp("secondPassword").show();
+		}
+		else if(this.params.status==1){
+			this.comp("chooseSoleStatus").show();
+		}
 	};
 	
 	
@@ -524,6 +541,30 @@ define(function(require){
 	
 	Model.prototype.modelInactive = function(event){
 		this.close();
+	};
+	
+	Model.prototype.button14Click = function(event){
+		var id=this.comp("nest").val("id");
+		var is_success = market.notSold(id);
+		if (is_success) {
+			this.showprompt(lang.showprompt[70]);
+			this.comp("chooseSoleStatus").hide();
+		}
+		else if (is_success==undefined) {
+			this.comp("chooseSoleStatus").hide();
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+
+		}
+		else{
+			this.comp("chooseSoleStatus").hide();
+			this.showprompt(lang.showprompt[13]);
+
+		}
+	};
+	
+	Model.prototype.button15Click = function(event){
+		this.comp("chooseSoleStatus").hide();
 	};
 	
 	return Model;

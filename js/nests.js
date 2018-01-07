@@ -766,7 +766,68 @@ define(function(require){
 			else{
 				return status;
 			}
-		}
+		},
+		getNestsStatus:function(nest_id){
+			var Status;
+			do{
+				Status=0;
+				var result1 = this.getNestsStatusajax(nest_id);
+				if (result1!=404) {
+					Status=result1;
+				}
+				else{
+					Status=undefined;
+				}
+				
+			}while(result1==500);
+			
+			return Status;
+		},
+		getNestsStatusajax:function(nest_id){
+			var status = 400;
+			var is_selling=0;
+			$.ajax({
+				url:config.site+"nests/"+nest_id,
+				async:false,
+				dataType:"json",
+				type:"get",
+				beforeSend:function(request){
+					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
+				},
+				success:function(data){
+					is_selling=data.data.is_selling;
+					status = 200;
+				},
+				error:function(ero){
+					var responseText = JSON.parse(ero.responseText);
+					
+					if (responseText.message=="Token expired.") {
+						
+						if(jwt.authRefresh()){
+							status =500;
+						}
+						else
+						{
+							status =404;
+						}
+						
+					}
+					else if(responseText.message=="No token provided."){
+						status =404;
+					}
+					else{
+						
+					}
+				
+				}
+			});
+			if (status==200) {
+				return is_selling;
+			}
+			else{
+				return status;
+			}
+		},
 	};
 	
 });

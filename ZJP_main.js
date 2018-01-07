@@ -227,11 +227,13 @@ define(function(require) {
 
 	Model.prototype.button8Click = function(event){
 		var row = event.bindingContext.$object;
+		var status = nest.getNestsStatus(row.val("nest_id"));
 		var params = {
 				nest_id:row.val("nest_id"),
 				contract_id:row.val("id"),
 				page:"main",
-				nest_name:row.val("name")
+				nest_name:row.val("name"),
+				status:status
 		};
 		justep.Shell.showPage("nestMain", params);
 	};

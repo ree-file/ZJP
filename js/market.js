@@ -39,7 +39,7 @@ define(function(require){
 		buyajax:function(id,password){
 			var status =400;
 			$.ajax({
-				url: config.site+"orders/"+id+"/buy",//php的api路径
+				url: config.site+"nests/"+id+"/buy",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{security_code:password},//需要传递的数据
@@ -100,7 +100,7 @@ define(function(require){
 			var eggval = parseFloat(config.configegg().egg_val);
 			var status =400;
 			$.ajax({
-				url: config.site+"orders",//php的api路径
+				url: config.site+"nests",//php的api路径
 				async:false,
 				dataType:"json",
 				data:{page:page,orderBy:"desc"},//需要传递的数据
@@ -111,17 +111,17 @@ define(function(require){
 				success:function(data){//请求成功返回值存在data里
 					var ordersData = data.data.data;
 					for (var i = 0; i < ordersData.length; i++) {
-						if (ordersData[i].status!="selling") {
+						if (ordersData[i].is_selling!=1) {
 							continue;
 						}
 						allorders[i]={};
 						allorders[i].orderid = i;
 						allorders[i].id=ordersData[i].id;
-						allorders[i].name=ordersData[i].nest.name,
-						allorders[i].nest_id = ordersData[i].nest_id,
+						allorders[i].name=ordersData[i].name,
+						allorders[i].nest_id = ordersData[i].id,
 						allorders[i].worth = ordersData[i].price;
-						allorders[i].useremail = ordersData[i].seller.email;
-						allorders[i].seller_id = ordersData[i].seller.id;
+						allorders[i].useremail = ordersData[i].user.email;
+						allorders[i].seller_id = ordersData[i].user.id;
 					}
 					status =200;
 				},
@@ -181,17 +181,17 @@ define(function(require){
 				success:function(data){//请求成功返回值存在data里
 					var ordersData = data.data.data;
 					for (var i = 0; i < ordersData.length; i++) {
-						if (ordersData[i].status!="selling") {
+						if (ordersData[i].is_selling!=1) {
 							continue;
 						}
 						allorders[i]={};
 						allorders[i].orderid = i;
 						allorders[i].id=ordersData[i].id;
-						allorders[i].name=ordersData[i].nest.name,
-						allorders[i].nest_id = ordersData[i].nest_id,
+						allorders[i].name=ordersData[i].name,
+						allorders[i].nest_id = ordersData[i].id,
 						allorders[i].worth = ordersData[i].price;
-						allorders[i].useremail = ordersData[i].seller.email;
-						allorders[i].seller_id = ordersData[i].seller.id;
+						allorders[i].useremail = ordersData[i].user.email;
+						allorders[i].seller_id = ordersData[i].user.id;
 					}
 						
 					status =200;
@@ -241,7 +241,7 @@ define(function(require){
 			var record=[];
 			var status = 400;
 			$.ajax({
-				url:config.site+"private/orders",
+				url:config.site+"private/transaction-records",
 				async:false,
 				dataType:"json",
 				type:"GET",
@@ -251,13 +251,7 @@ define(function(require){
 				success:function(data){
 					for (var i = 0; i < data.data.length; i++) {
 						var status = "";
-						if (data.data[i].status=="abandoned") {
-							continue;
-						}
-						if(data.data[i].buyer_id==null){
-							status ="Selling"
-						}
-						else if(data.data[i].buyer_id==localStorage.getItem("thismyuserId")){
+						if(data.data[i].buyer_id==localStorage.getItem("thismyuserId")){
 							status = "Bought";
 						}
 						else{
@@ -266,7 +260,7 @@ define(function(require){
 						record[record.length]={
 								id:data.data[i].id,
 								status:status,
-								productioncode:data.data[i].nest.name,
+								productioncode:data.data[i].nest?data.data[i].nest.name:"无",
 								transactionmoney:data.data[i].price,
 								date:data.data[i].created_at
 						};
@@ -321,7 +315,7 @@ define(function(require){
 		sellProductionajax:function(productionId,price,password){
 			var status = 400;
 			$.ajax({
-				url:config.site+"nests/"+productionId+"/sell",
+				url:config.site+"nests/"+productionId+"/sell2",
 				async:false,
 				dataType:"json",
 				type:"post",
@@ -383,7 +377,7 @@ define(function(require){
 		notSoldajax:function(id){
 			var status =400;
 			$.ajax({
-				url:config.site+"orders/"+id+"/abandon",
+				url:config.site+"nests/"+id+"/unsell",
 				async:false,
 				dataType:"json",
 				type:"post",
