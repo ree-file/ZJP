@@ -86,6 +86,7 @@ define(function(require){
 					this.owner.send({data:true,email:this.comp("input5").val()});
 				}
 				else if(is_success==false){
+				debugger;
 					this.showprompt(lang.showprompt[3]);
 					loginable=false;
 					

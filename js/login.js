@@ -80,6 +80,10 @@ define(function(require){
 					 if(responseText.message=="Freezed."){
 						showprompt("账号已冻结（Freezed）");
 					}
+					 else if(responseText.message=="Unauthroized"){
+						 showprompt("账号或者密码错误");
+					 }
+					 
 					
 				}
 				
