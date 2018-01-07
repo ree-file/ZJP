@@ -123,10 +123,10 @@ define(function(require){
 					status = lang.transferRecord[14];
 				}
 				else if (record[i].status == "rejected") {
-					status = lang.transferRecord[15];
+					status = lang.transferRecord[16];
 				}
 				else if (record[i].status == "accepted") {
-					status = lang.transferRecord[16];
+					status = lang.transferRecord[15];
 				}
 				rechargeData.add({
 					"id": record[i].id,
@@ -161,10 +161,10 @@ define(function(require){
 					status = lang.transferRecord[14];
 				}
 				else if (record[i].status == "rejected") {
-					status = lang.transferRecord[15];
+					status = lang.transferRecord[16];
 				}
 				else if (record[i].status == "accepted") {
-					status = lang.transferRecord[16];
+					status = lang.transferRecord[15];
 				}
 				withdrawalData.add({
 					"id": record[i].id,
