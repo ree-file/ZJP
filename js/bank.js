@@ -137,6 +137,7 @@ define(function(require){
 			$.ajax({
 				url:"https://api.fixer.io/latest?base=USD",
 				async:false,
+				timeout:3000,
 				dataType:"json",
 				type:"get",
 				data:{},
@@ -145,6 +146,13 @@ define(function(require){
 				},
 				error:function(ero){
 					
+				},
+				complete:function(XMLHttpRequest,status)
+				{ //请求完成后最终执行参数
+					if(status=='timeout')
+					{//超时,status还有success,error等值的情况
+						CNY=6.5;
+					}
 				}
 				
 			});

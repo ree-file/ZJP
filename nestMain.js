@@ -221,7 +221,7 @@ define(function(require){
 		var account = nest.income(this.params.nest_id);
 		if (account.length!=0) {
 			for (var int = 0; int < account.length; int++) {
-			if (account[int].coins) {
+			if (account[int].coins!=0) {
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
@@ -231,7 +231,7 @@ define(function(require){
 				}
 				get_money=account[int].coins;
 			}
-			if (account[int].money_active) {
+			if (account[int].money_active!=0) {
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
@@ -241,7 +241,7 @@ define(function(require){
 				}
 				get_money=account[int].money_active;
 			}
-			if (account[int].money_limit) {
+			if (account[int].money_limit!=0) {
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,

@@ -33,7 +33,7 @@
     <div class="x-panel-content" xid="content1" style="background:#1C1F26;height:100%;">
   
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" onActiveChange="contents1ActiveChange">
-   <div class="x-contents-content" xid="content2" style="display:none;" bind-touchstart="content2Touchstart" bind-touchend="content2Touchend"><div xid="main1" style="position:absolute;width:100%;height:50%;">
+   <div class="x-contents-content" xid="content2" style="display:;" bind-touchstart="content2Touchstart" bind-touchend="content2Touchend"><div xid="main1" style="position:absolute;width:100%;height:50%;">
     
    <div xid="div11" class="code" style="text-align:center"><span xid="span18"></span></div><div xid="circle" class="circle" style="top:30px;">
     <div xid="remark" class="remark">

@@ -142,6 +142,7 @@ define(function(require) {
 	Model.prototype.incomeAccountCustomRefresh = function(event){
 		var income = user.getUserIncome(page);
 		var params = [];
+		
 		if (income==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
@@ -149,7 +150,7 @@ define(function(require) {
 		}
 		if (income.length!=0) {
 			for (var int = 0; int < income.length; int++) {
-				if (income[int].coins) {
+				if (income[int].coins!=0) {
 					params[params.length]={
 						id:params.length+1,
 						name:"",
@@ -158,7 +159,7 @@ define(function(require) {
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
-				 if(income[int].money_limit)
+				 if(income[int].money_limit!=0)
 				{
 					params[params.length]={
 						id:params.length+1,
@@ -168,7 +169,7 @@ define(function(require) {
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
-				 if (income[int].money_active) {
+				 if (income[int].money_active!=0) {
 					params[params.length]={
 						id:params.length+1,
 						name:"",
@@ -180,7 +181,14 @@ define(function(require) {
 				
 			}
 		}
-		event.source.loadData(params);
+		if (page>1) {
+			event.source.newData({"defaultValues":params});
+		}
+		else{
+			event.source.clear();
+			event.source.loadData(params);
+		}
+		
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
