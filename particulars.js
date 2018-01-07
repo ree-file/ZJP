@@ -31,7 +31,7 @@ define(function(require){
 		var nestGrandGrandchildrenLengthSpan = $(this.getElementByXid("nestGrandGrandchildrenLengthSpan"));
 		nest_id = this.params.nest_id;
 		seller_id = this.params.seller_id;
-		orderIDSpan.text(this.params.order_id);//订单id
+		// orderIDSpan.text(this.params.order_id);//订单id
 		sellerIDSpan.text(seller_id);//卖家id
 		sellerEmailSpan.text(this.params.email);//卖家邮箱
 		priceSpan.text(this.params.worth);//价格
