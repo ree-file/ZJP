@@ -3,7 +3,7 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onActive="modelActive" onLoad="modelLoad" onParamsReceive="modelParamsReceive"> 
   </div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1" style="background-color:#282F37;"> 
-      <div class="x-panel-content" xid="content1" style="display:none;background-color:#282F37;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
+      <div class="x-panel-content" xid="content1" style="background-color:#282F37;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
    <div class="x-panel-content" xid="content2" style="height:100%;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:30%;">
    <div class="x-col" xid="col4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:100%;width:100%;position:relative;"><img src="$UI/ZJP/images/timg.jpg" alt="" xid="image1" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;width:100%;" height="100%"></img>
@@ -36,14 +36,26 @@
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;">
      <div class="x-col" xid="col29" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
       <span xid="span15" style="font-size:x-small;color:#C3C3C3;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;"><![CDATA[]]></span></div> </div> </div> </div></div>
-   </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="margin-top:25px;background-color:#1C1F26;">
+   </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="background-color:#1C1F26;margin-top:25px;">
    <div class="x-col" xid="col27"><span xid="span18" style="color:#FFFFFF;width:100%;position:relative;font-size:large;" class="center-block spancenter"><![CDATA[所邀猫窝总价值已达]]></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row18" style="margin-top:0px;background-color:#1C1F26;height:55px;">
    <div class="x-col" xid="col38"></div>
    <div class="x-col x-col-50" xid="col39" style="border-radius:5px;text-align:center;background-color:#1C1F26;border-style:groove groove groove groove;border-width:thin thin thin thin;"><span xid="totalSpan" class="center-block" style="border-radius:5px;color:#FFFFFF;position:relative;font-size:x-large;height:100%;width:89%;"><![CDATA[]]></span>
   </div>
-   <div class="x-col" xid="col40"></div></div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="inviteRow" style="background-color:#1C1F26;" bind-click="inviteRowClick">
+   <div class="x-col" xid="col40"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="background-color:#1C1F26;padding-top:3px;padding-bottom:9px;">
+   <div class="x-col x-col-25 pull-right center-block" xid="col6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
+    <span xid="span10" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;top:5px;right:13px;" class="pull-right center-block"><![CDATA[]]></span></div> 
+   <div class="x-col" xid="col2" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding:3px 0px 0px 0px;">
+    <span xid="emailSpan" style="font-size:large;color:#FFFFFF;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;position:relative;top:1px;left:7px;"><![CDATA[]]></span></div> 
+   <div class="x-col x-col-20" xid="col5">
+    </div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row19" style="background-color:#1C1F26;padding-top:3px;padding-bottom:9px;">
+   <div class="x-col x-col-25 pull-right center-block" xid="col28" style="margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;">
+    <span xid="span27" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;text-transform:capitalize;font-style:normal;top:5px;right:13px;font-variant:small-caps;" class="pull-right center-block"><![CDATA[]]></span></div> 
+   <div class="x-col" xid="col41" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding:3px 0px 0px 0px;">
+    <span xid="IDspan" style="font-size:large;color:#FFFFFF;font-family:微软雅黑 Light;text-transform:lowercase;font-style:inherit;position:relative;top:1px;left:7px;"></span></div> 
+   <div class="x-col x-col-20" xid="col35"></div></div><div component="$UI/system/components/justep/row/row" class="x-row meddlerow" xid="inviteRow" style="background-color:#1C1F26;" bind-click="inviteRowClick">
    <div class="x-col" xid="col24">
     <span xid="span7" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:8px;top:2px;"><![CDATA[]]></span></div> 
    <div class="x-col x-col-10" xid="col25">
@@ -57,19 +69,8 @@
   <div component="$UI/system/components/justep/row/row" class="x-row " xid="hidRow" style="margin:2px 0px 0px 0px;padding:2px 0px 40px 30px;background-color:#1C1F26;">
    
    
-  <div class="x-col" xid="col12" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:30px;position:relative;top:5px;">
-   <div class="x-col x-col-20 center-block" xid="col6" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span10" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;top:5px;right:20px;" class="pull-right center-block"><![CDATA[]]></span></div> 
-   <div class="x-col" xid="col2" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding:3px 0px 0px 0px;">
-    <span xid="emailSpan" style="font-size:large;color:#FFFFFF;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;position:relative;top:1px;"><![CDATA[]]></span></div> 
-   <div class="x-col x-col-20" xid="col5">
-    </div> </div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row19" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:30px;position:relative;top:5px;">
-   <div class="x-col x-col-20 center-block" xid="col28" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
-    <span xid="span27" style="font-size:medium;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;text-transform:lowercase;font-style:inherit;top:5px;right:20px;font-variant:normal;" class="pull-right center-block"></span></div> 
-   <div class="x-col" xid="col41" style="margin-right:0px;margin-bottom:0px;margin-left:0px;padding:3px 0px 0px 0px;">
-    <span xid="IDspan" style="font-size:large;color:#FFFFFF;font-family:微软雅黑 Light;text-transform:lowercase;font-style:inherit;position:relative;top:1px;"></span></div> 
-   <div class="x-col x-col-20" xid="col35"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:6px 0px 0px 0px;height:30px;position:relative;top:5px;">
+  <div class="x-col" xid="col12" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="padding:0px 0px 0px 0px;margin:6px 0px 0px 0px;height:30px;position:relative;top:5px;">
    <div class="x-col x-col-20 center-block" xid="col9" style="margin:0px 0px 0px 0px;padding:12px 0px 0px 0px;">
     <span xid="span9" style="font-size:small;color:#FFFFFF;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;right:20px;" class="pull-right center-block"><![CDATA[]]></span></div> 
    <div class="x-col" xid="col11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">

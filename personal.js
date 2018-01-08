@@ -23,20 +23,6 @@ define(function(require){
 		if(ifhid == 0){
 			$(this.getElementByXid("hidRow")).show(199);
 			ifhid = 1;
-			var emailSpan = $(this.getElementByXid("emailSpan"));
-			var IDspan = $(this.getElementByXid("IDspan"));
-			var user = personaljs.getemail();
-			if (user == undefined) {
-				this.comp("windowDialog1").open();
-				this.showprompt(lang.showprompt[0]);
-				return;
-			}
-			else if (user == true) {
-				this.row1Click(event);
-				return;
-			}
-			emailSpan.text(user.email);
-			IDspan.text(user.id);
 		}
 		else {
 			$(this.getElementByXid("hidRow")).hide(199);
@@ -58,9 +44,20 @@ define(function(require){
   }
 
 	Model.prototype.modelLoad = function(event){
-		// var demo = new countUp.CountUp("totalSpan", 0, 94.62, 2, 2.5);
-		// demo.start();
-    // 调用计时函数
+		var emailSpan = $(this.getElementByXid("emailSpan"));
+		var IDspan = $(this.getElementByXid("IDspan"));
+		var user = personaljs.getemail();
+		if (user == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		else if (user == true) {
+			this.row1Click(event);
+			return;
+		}
+		emailSpan.text(user.email);
+		IDspan.text(user.id);
 
 		$(this.getElementByXid("hidRow")).hide();
 		$(this.getElementByXid("span2")).html(lang.personal[0]);

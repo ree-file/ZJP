@@ -45,7 +45,7 @@
     <span xid="span9"></span></a> 
   <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="transferButton" target="content2" style="width:33%;">
    <i xid="i4"></i>
-   <span xid="span10"></span></a></div></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="1" xid="contents1" style="top:40px;width:100%;">
+   <span xid="span10"></span></a></div></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" style="top:40px;width:100%;">
    <div class="x-contents-content" xid="content3" onActive="content3Active" onInactive="content3Inactive"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="rechargeData">
    <ul class="x-list-template" xid="listTemplateUl2">
     <li xid="li2"><div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row7" style="background-color:#252932;margin-top:15px;">
