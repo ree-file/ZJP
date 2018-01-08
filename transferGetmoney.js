@@ -4,8 +4,9 @@ define(function(require){
 	var personaljs = require("./js/personal");
 	var bank = require("./js/bank");
 	var base64 = require("$UI/system/lib/base/base64");
+	var config = require('./js/config');
+	var common = require('./js/mycommon');
 	var lang;
-	var USDrate;
 	var couldget;
 	if(localStorage.getItem("lang")=="en_us")
 	{
@@ -46,10 +47,6 @@ define(function(require){
 			});
 		}
 		$(this.getElementByXid("content1")).css("display","block");
-		USDrate = bank.getCNYrate();
-		if (USDrate==undefined) {
-			this.showprompt(lang.showprompt[63]);
-		}
 	};
 	//提交按钮
 	Model.prototype.setupButtonClick = function(event){
@@ -144,7 +141,15 @@ define(function(require){
 
 	Model.prototype.button3Click = function(event){
 		var moneyInput = this.getElementByXid("moneyInput").value;
-		var changemoney = USDrate; //主动变换值 后台获取美元汇率
+		var changemoney;
+		if (justep.Shell.rate) {
+			changemoney = justep.Shell.rate.latestValue; //主动变换值 后台获取美元汇率
+		}
+		else{
+			common.getCommon(config);
+			changemoney = justep.Shell.rate.latestValue;
+		}
+		
 		$(this.getElementByXid("daospan")).text("￥"+(moneyInput*changemoney).toFixed(2));
 	};
 

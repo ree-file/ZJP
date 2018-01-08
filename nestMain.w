@@ -252,4 +252,19 @@
       <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" xid="button1" style="color:#8E8E8E;height:100%;width:100%;" onClick="button1Click" label="取消">
        <i xid="i16"></i>
        <span xid="span41">取消</span></a> </div> </div> 
-  </div> </div></div>
+  </div> </div>
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="chooseSoleStatus" opacity="0" style="top:26px;left:80px;">
+   <div class="x-popOver-overlay" xid="div9"></div>
+   <div class="x-popOver-content chooseContent chooseSoleStatus" xid="div9" style="height:auto;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row34">
+     <div class="x-col" xid="col94" style="text-align:center;">
+      <span xid="span37" style="color:white;"></span></div> </div> 
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row35">
+     <div class="x-col" xid="col92" style="text-align:center;">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" xid="button14" onClick="button14Click">
+       <i xid="i13"></i>
+       <span xid="span38" style="color:white;"></span></a> </div> 
+     <div class="x-col" xid="col89" style="text-align:center;">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" xid="button15" onClick="button15Click">
+       <i xid="i1"></i>
+       <span xid="span39" style="color:white;"></span></a> </div> </div> </div> </div></div>

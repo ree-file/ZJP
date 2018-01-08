@@ -308,31 +308,31 @@ define(function(require){
 	};
 //点击后把销售中的商品下架--许鑫君
 	Model.prototype.button3Click = function(event){
-		var id=this.comp("transactionrecord").val("id");
-		var is_success = getorders.notSold(id);
-		if (is_success) {
-			this.showprompt("下架成功");
-			this.comp("chooseSoleStatus").hide();
-			$(this.getElementByXid("password1")).val("");
-			this.comp("price").setValue("price", 0);
-			this.comp("input1").val("");
-			this.comp("list2").refresh(true);
-			if (datastatus==0) {
-				complex_page=1;
-				this.comp("marketdata").refreshData();
-			}
-		}
-		else if (is_success==undefined) {
-			this.comp("chooseSoleStatus").hide();
-			this.comp("windowDialog1").open();
-			this.showprompt(lang.showprompt[0]);
-
-		}
-		else{
-			this.comp("chooseSoleStatus").hide();
-			this.showprompt(lang.showprompt[13]);
-
-		}
+//		var id=this.comp("transactionrecord").val("id");
+//		var is_success = getorders.notSold(id);
+//		if (is_success) {
+//			this.showprompt("下架成功");
+//			this.comp("chooseSoleStatus").hide();
+//			$(this.getElementByXid("password1")).val("");
+//			this.comp("price").setValue("price", 0);
+//			this.comp("input1").val("");
+//			this.comp("list2").refresh(true);
+//			if (datastatus==0) {
+//				complex_page=1;
+//				this.comp("marketdata").refreshData();
+//			}
+//		}
+//		else if (is_success==undefined) {
+//			this.comp("chooseSoleStatus").hide();
+//			this.comp("windowDialog1").open();
+//			this.showprompt(lang.showprompt[0]);
+//
+//		}
+//		else{
+//			this.comp("chooseSoleStatus").hide();
+//			this.showprompt(lang.showprompt[13]);
+//
+//		}
 	};
 //点击后hide提示窗口--许鑫君
 	Model.prototype.button6Click = function(event){
@@ -510,12 +510,11 @@ define(function(require){
 
 	Model.prototype.col1Click = function(event){
 		var row = event.bindingContext.$object;
-		var order_id = row.val("id");
 		var nest_id = row.val("nest_id");
 		var seller_id = row.val("seller_id");
 		var email = row.val("useremail");
 		var worth = row.val("worth");
-		justep.Shell.showPage("particulars",{order_id:order_id,nest_id:nest_id,seller_id:seller_id,email:email,worth:worth});
+		justep.Shell.showPage("particulars",{nest_id:nest_id,seller_id:seller_id,email:email,worth:worth});
 };
 
 //	Model.prototype.col2Click = function(event){
@@ -665,6 +664,22 @@ define(function(require){
 		this.close();
 	};
 
+
+	return Model;
+});
+
+define(function(require){
+	var $ = require("jquery");
+	var Model = function(){
+		this.callParent();
+	};
+	Model.prototype.button6Click = function(event){
+
+	};
+
+	Model.prototype.col1Click = function(event){
+
+	};
 
 	return Model;
 });

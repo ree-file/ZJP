@@ -4,8 +4,9 @@ define(function(require){
 	var personaljs = require("./js/personal");
 	var base64 = require("$UI/system/lib/base/base64");
 	var bank = require("./js/bank");
+	var config = require("./js/config");
+	var common = require("./js/mycommon");
 	var lang;
-	var USDrate;
 	if(localStorage.getItem("lang")=="en_us")
 	{
 		lang = require('./js/en_us');
@@ -44,10 +45,6 @@ define(function(require){
 			});
 		}
 		$(this.getElementByXid("content1")).css("display","block");
-		USDrate = bank.getCNYrate();
-		if (USDrate==undefined) {
-			this.showprompt(lang.showprompt[63]);
-		}
 	};
 
 	function photoCompress(file,w,objDiv){
@@ -232,15 +229,31 @@ define(function(require){
 	};
 
 	Model.prototype.input1Blur = function(event){
+		var changemoney;
+		if (justep.Shell.rate) {
+			changemoney = justep.Shell.rate.latestValue; //主动变换值 后台获取美元汇率
+		}
+		else{
+			common.getCommon(config);
+			changemoney = justep.Shell.rate.latestValue;
+		}
 		if ($.trim(this.comp("input1").val())) {
-			this.comp("moneyInput").val((parseFloat(this.comp("input1").val())/USDrate).toFixed(2));
+			this.comp("moneyInput").val((parseFloat(this.comp("input1").val())/changemoney).toFixed(2));
 		}
 
 	};
 
 	Model.prototype.moneyInputBlur = function(event){
+		var changemoney;
+		if (justep.Shell.rate) {
+			changemoney = justep.Shell.rate.latestValue; //主动变换值 后台获取美元汇率
+		}
+		else{
+			common.getCommon(config);
+			changemoney = justep.Shell.rate.latestValue;
+		}
 	if ($.trim(this.comp("moneyInput").val())) {
-		this.comp("input1").val((parseFloat(this.comp("moneyInput").val())*USDrate).toFixed(2));
+		this.comp("input1").val((parseFloat(this.comp("moneyInput").val())*changemoney).toFixed(2));
 	}
 	};
 

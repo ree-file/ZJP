@@ -76,6 +76,17 @@
 	border-style:solid;
 	border-color:#3BBFFF;
 }
-
+.chooseSoleStatus .btn{
+	width:100%;
+	border-radius:5px;
+	border-width:2px;
+	border-style:solid;
+	border-color:#3BBFFF;;
+	color:white;
+}
+.chooseSoleStatus{
+	display:table;
+	
+}
 
 

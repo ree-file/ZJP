@@ -1,7 +1,6 @@
 define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var $ = require('jquery');
-
 	var config = require('./config');
 	var jwt = require("./jwt");
 	function showprompt(text){
@@ -192,7 +191,6 @@ define(function(require){
 						worthInfo['limit'] = parseFloat(data.data.money_limit);
 						worthInfo['active'] =  parseFloat(data.data.money_active);
 						worthInfo['all'] = worthInfo['market']+worthInfo['limit']+parseFloat(data.data.money_active);
-						localStorage.setItem("thismyuserId", data.data.id);
 					}
 					status =200;
 				},

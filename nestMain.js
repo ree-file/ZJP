@@ -6,10 +6,9 @@ define(function(require){
 	var nest = require("./js/nests");
 	var market = require("./js/market");
 	var contract = require("./js/contract");
+	var common = require("./js/mycommon");
 	var nestInfo;
-	var eggval;
 	var bank = require("./js/bank");
-	var USDrate;
 	var withdrawData=[];
 	var historyData=[];
 	var lang;
@@ -94,9 +93,7 @@ define(function(require){
 	
 	
 	Model.prototype.modelLoad = function(event){
-		this.comp("titleBar1").set({
-			title:lang.nestMain[0]
-		});
+		
 		$(this.getElementByXid("h58")).html(lang.nestMain[1]);
 		$(this.getElementByXid("h57")).html(lang.nestMain[2]);
 		$(this.getElementByXid("h511")).html(lang.nestMain[3]);
@@ -109,14 +106,27 @@ define(function(require){
 		$(this.getElementByXid("span31")).html(lang.nestMain[17]);
 		$(this.getElementByXid("span17")).html(lang.nestMain[18]);
 		$(this.getElementByXid("span18")).html(lang.nestMain[19]);
-		$(this.getElementByXid("span26")).html(lang.nestMain[20]);
+		if (this.params.status==1) {
+			$(this.getElementByXid("span26")).html(lang.nestMain[25]);
+			$(this.getElementByXid("span37")).html(lang.nestMain[26]);
+			$(this.getElementByXid("span38")).html(lang.nestMain[27]);
+			$(this.getElementByXid("span39")).html(lang.nestMain[28]);
+			this.comp("titleBar1").set({
+			title:lang.nestMain[29]
+		});
+		}
+		else{
+			$(this.getElementByXid("span26")).html(lang.nestMain[20]);
+			this.comp("titleBar1").set({
+			title:lang.nestMain[0]
+		});
+		}
 		$(this.getElementByXid("span27")).html(lang.nestMain[21]);
 		$(this.getElementByXid("h51")).html(lang.nestMain[22]);
 		$(this.getElementByXid("h53")).html(lang.nestMain[23]);
 		$(this.getElementByXid("span28")).html(lang.nestMain[24]);
 		$(this.getElementByXid("p1")).html(lang.nestMain[25]);
 		$(this.getElementByXid("content1")).css("display","block");
-		USDrate = bank.getCNYrate();
 	};
 	Model.prototype.modelParamsReceive = function(event){
 		var nest_id = this.params.nest_id;
@@ -127,7 +137,7 @@ define(function(require){
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
-		eggval = config.configegg().egg_val;
+		
 		this.comp("nest").refreshData();
 		this.comp("historyData").refreshData();
 		this.comp("accountData").refreshData();
@@ -142,14 +152,23 @@ define(function(require){
 			return;
 		}
 		event.source.clear();
+		
+		
 		var released =0;
 		var withdraw = 0;
 		var investment = 0;
 		var allmoney = 0;
+		var eggval;
 		historyData =[];
 		withdrawData=[];
 		var available =0;
-		
+		if (justep.Shell.eggval) {
+			eggval = justep.Shell.eggval.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			eggval = justep.Shell.eggval.latestValue;
+		}
 		for (var i = 0; i < nestInfo.length; i++) {
 			released+=nestInfo[i].hatches*eggval;
 			investment+=parseFloat(nestInfo[i].val);
@@ -169,7 +188,14 @@ define(function(require){
 			}
 		}
 		$(this.getElementByXid("span10")).html("TAC:$"+allmoney);
-		
+		var USDrate;
+		if (justep.Shell.rate) {
+			USDrate = justep.Shell.rate.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			USDrate = justep.Shell.rate.latestValue;
+		}
 		var nestvalues = [{
 			id:this.params.nest_id,
 			name:this.params.nest_name,
@@ -421,7 +447,12 @@ define(function(require){
 	
 	//创建小窝
 	Model.prototype.button4Click = function(event){
-		this.comp("secondPassword").show();
+		if (this.params.status==0) {
+			this.comp("secondPassword").show();
+		}
+		else if(this.params.status==1){
+			this.comp("chooseSoleStatus").show();
+		}
 	};
 	
 	
@@ -524,6 +555,30 @@ define(function(require){
 	
 	Model.prototype.modelInactive = function(event){
 		this.close();
+	};
+	
+	Model.prototype.button14Click = function(event){
+		var id=this.comp("nest").val("id");
+		var is_success = market.notSold(id);
+		if (is_success) {
+			this.showprompt(lang.showprompt[71]);
+			this.comp("chooseSoleStatus").hide();
+		}
+		else if (is_success==undefined) {
+			this.comp("chooseSoleStatus").hide();
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+
+		}
+		else{
+			this.comp("chooseSoleStatus").hide();
+			this.showprompt(lang.showprompt[13]);
+
+		}
+	};
+	
+	Model.prototype.button15Click = function(event){
+		this.comp("chooseSoleStatus").hide();
 	};
 	
 	return Model;

@@ -134,10 +134,10 @@ define(function(require){
 		},
 		getCNYrate:function(){
 			var CNY;
-			$.ajax({
+			var xhr=$.ajax({
 				url:"https://api.fixer.io/latest?base=USD",
 				async:false,
-				timeout:1000,
+				timeout:3000,
 				dataType:"json",
 				type:"get",
 				data:{},
@@ -145,17 +145,23 @@ define(function(require){
 					CNY=data.rates.CNY;
 				},
 				error:function(ero){
-					
 				},
 				complete:function(XMLHttpRequest,status)
 				{ //请求完成后最终执行参数
 					if(status=='timeout')
 					{//超时,status还有success,error等值的情况
+						 xhr.abort();
 						CNY=6.5;
 					}
 				}
 
 			});
+			setTimeout(function(){
+				if (xhr) {
+					xhr.abort();
+					CNY=6.5;
+				}
+			}, 3000)
 			return CNY;
 		}
 

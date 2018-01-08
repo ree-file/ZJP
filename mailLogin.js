@@ -86,7 +86,6 @@ define(function(require){
 					this.owner.send({data:true,email:this.comp("input5").val()});
 				}
 				else if(is_success==false){
-				debugger;
 					this.showprompt(lang.showprompt[3]);
 					loginable=false;
 					
@@ -119,8 +118,8 @@ define(function(require){
 		this.comp("input5").set({
 			placeHolder:lang.mailLogin[3]
 		});
-		if (localStorage.getItem("email")) {
-			this.comp("input5").val(localStorage.getItem("email"));
+		if (justep.Shell.email.latestValue) {
+			this.comp("input5").val(justep.Shell.email.latestValue);
 		}
 	};
 	return Model;
