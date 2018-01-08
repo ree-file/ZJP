@@ -11,7 +11,7 @@ define(function(require){
 	var nest_id;//后期通过页面数据传递获得用于产品升级和复投的传参数
 	var contract_id;//后期通过页面数据传递获得用于产品复投的传参数
 	var current_rank =-1 ;//通过页面传参数获得用于产品升级时做比较，另外一律为-1；
-	var config_egg ;//通过向服务端请求获得产品的配置信息
+	var common = require('./js/mycommon');
 	var me;
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -134,7 +134,6 @@ define(function(require){
 	};
 	Model.prototype.actionOption = function(action){
 		//必要的信息获取和填充
-		config_egg = config.configegg();
 		this.comp("typedata").refreshData();
 		var my_money = users.getUserMessage();
 		$(this.getElementByXid("money")).html(my_money['active'].toFixed(2));
@@ -227,7 +226,23 @@ define(function(require){
 	};
 	//下拉框内容变动时做出的改变
 	Model.prototype.check_money=function(production,object){
-		var current_worth = current_rank==-1?0:Math.floor(config_egg.level_worth[current_rank]*config_egg.egg_val);
+		var level;
+		var eggval;
+		if (justep.Shell.level) {
+			level = justep.Shell.level.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			level = justep.Shell.level.latestValue;
+		}
+		if (justep.Shell.eggval) {
+			eggval = justep.Shell.eggval.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			eggval = justep.Shell.eggval.latestValue;
+		}
+		var current_worth = current_rank==-1?0:Math.floor(level[current_rank]*eggval);
 		if (current_worth>=production) {
 				this.showprompt(lang.showprompt[44]);
 				object.val("");
@@ -248,9 +263,25 @@ define(function(require){
 	}
 	Model.prototype.select1Change = function(event){
 		var id = event.source.val();
+		var level;
+		var eggval;
+		if (justep.Shell.level) {
+			level = justep.Shell.level.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			level = justep.Shell.level.latestValue;
+		}
+		if (justep.Shell.eggval) {
+			eggval = justep.Shell.eggval.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			eggval = justep.Shell.eggval.latestValue;
+		}
 		this.comp("typedata").each(function(obj){
 			if (obj.row.val("id")==id) {
-				me.check_money(Math.floor(config_egg.egg_val*config_egg.level_worth[id-1]),event.source);
+				me.check_money(Math.floor(eggval*level[id-1]),event.source);
 			}
 
 		});
@@ -285,15 +316,22 @@ define(function(require){
 		return money;
 	};
 	Model.prototype.createParams=function(){
+		var level;
+		if (justep.Shell.level) {
+			level = justep.Shell.level.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			level = justep.Shell.level.latestValue;
+		}
 		var paymoney = this.paymoney();
 		var choose_rank = parseInt(this.comp("select1").val())-1;
-		var current_worth = current_rank==-1?0:config_egg.level_worth[current_rank];
-		var eggs = config_egg.level_worth[choose_rank]-current_worth;
+		var current_worth = current_rank==-1?0:level[current_rank];
+		var eggs = level[choose_rank]-current_worth;
 		var email = $.trim(this.comp("input1").val());
 		var invite_name = $.trim(this.comp("input2").val());
 		var secondPassword = $.trim($(this.getElementByXid("password1")).val());
 		var params ={nest_id:nest_id,email:email,contract_id:contract_id,inviter_name:invite_name,parent_name:invite_name,security_code:secondPassword,pay_active:paymoney.activepay,pay_limit:paymoney.limitpay,eggs:eggs};
-		debugger;
 		return params;
 	};
 	Model.prototype.success=function(params){
@@ -432,11 +470,27 @@ define(function(require){
 	};
 
 	Model.prototype.typedataCustomRefresh = function(event){
-		for (var i = 0; i < config_egg.level_worth.length; i++) {
+		var level;
+		var eggval;
+		if (justep.Shell.level) {
+			level = justep.Shell.level.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			level = justep.Shell.level.latestValue;
+		}
+		if (justep.Shell.eggval) {
+			eggval = justep.Shell.eggval.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			eggval = justep.Shell.eggval.latestValue;
+		}
+		for (var i = 0; i < level.length; i++) {
 			event.source.newData({"defaultValues":
 				[{
 					id:i+1,
-					type:i+1+"级产品（$"+Math.floor(config_egg.level_worth[i]*config_egg.egg_val)+")",
+					type:i+1+"级产品（$"+Math.floor(level[i]*eggval)+")",
 					is_show:0
 				}]
 			});
@@ -449,7 +503,6 @@ define(function(require){
 		nest_id;//后期通过页面数据传递获得用于产品升级和复投的传参数
 		contract_id;//后期通过页面数据传递获得用于产品复投的传参数
 		current_rank =-1 ;//通过页面传参数获得用于产品升级时做比较，另外一律为-1；
-		config_egg ;//通过向服务端请求获得产品的配置信息
 		if (this.params.page=="main") {
 			justep.Shell.showPage("main");
 			this.close();

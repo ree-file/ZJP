@@ -4,6 +4,7 @@ define(function(require) {
 	var user = require("./js/users");
 	var nest = require("./js/nests");
 	var config = require("./js/config");
+	var common = require("./js/mycommon");
 	var base64 = require("$UI/system/lib/base/base64");
 	var mainInfo;
 	var starty=0;
@@ -85,9 +86,21 @@ define(function(require) {
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
 		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit+incomeAnalyse.analyse.money_active).toFixed(2));
-		$(this.getElementByXid("span18")).html("编号"+localStorage.getItem("thismyuserId"));
+		
 		$(this.getElementByXid("span18")).css("color","white");
 		$(this.getElementByXid("content2")).css("display","block");
+		common.getCommon(config);
+		if (!justep.Shell.userId) {
+			if (localStorage.getItem("thismyuserId")) {
+				common.setCommon({userId:localStorage.getItem("thismyuserId")});
+			}
+			else{
+				this.comp("windowDialog1").open();
+				this.showprompt(lang.showprompt[0]);
+				return;
+			}
+		}
+		$(this.getElementByXid("span18")).html("AngleCatID："+justep.Shell.userId.latestValue);
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){	
@@ -153,9 +166,9 @@ define(function(require) {
 				if (income[int].coins!=0) {
 					params[params.length]={
 						id:params.length+1,
-						name:"",
+						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:income[int].coins+"猫币",
+						income:"$"+income[int].coins+"备用金",
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
@@ -163,8 +176,8 @@ define(function(require) {
 				{
 					params[params.length]={
 						id:params.length+1,
-						name:"",
-						date:income[int].created_at,
+						name:income[int].nest.name,
+						date:"$"+income[int].created_at,
 						income:income[int].money_limit+"限制币",
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
@@ -172,9 +185,9 @@ define(function(require) {
 				 if (income[int].money_active!=0) {
 					params[params.length]={
 						id:params.length+1,
-						name:"",
+						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:income[int].money_active+"可提",
+						income:"$"+income[int].money_active+"可提",
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
@@ -256,6 +269,7 @@ define(function(require) {
 			if (id&&event.data.email) {
 				localStorage.setItem("thismyuserId", id.sub);
 				localStorage.setItem("email", event.data.email);
+				common.setCommon({userId:id.sub,email:event.data.email});
 			}
 			this.comp("windowDialog1").close();
 			this.comp("contents1").next();

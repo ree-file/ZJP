@@ -39,18 +39,18 @@
     <div xid="remark" class="remark">
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
     <div class="x-col x-col-33" xid="col11">
-     <div xid="div4" class="sign"></div></div> 
-    <div class="x-col" xid="col16" style="text-align:left;">
+     <div xid="div4" class="sign" style="width:40%;float:right;"></div></div> 
+    <div class="x-col" xid="col16" style="text-align:center;">
      <span xid="span24" style="font-size:medium;margin-top:-4px;"><![CDATA[]]></span></div> </div> 
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
     <div class="x-col x-col-33" xid="col17">
-     <div xid="div5" class="sign" style="background-color:#EA2229;"></div></div> 
-    <div class="x-col" xid="col25" style="text-align:left;">
+     <div xid="div5" class="sign" style="width:40%;float:right;background-color:#EA2229;"></div></div> 
+    <div class="x-col" xid="col25" style="text-align:center;">
      <span xid="span25" style="font-size:medium;margin-top:-4px;"><![CDATA[]]></span></div> </div> 
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row16">
     <div class="x-col x-col-33" xid="col26">
-     <div xid="div6" class="sign" style="background-color:#EFA433;"></div></div> 
-    <div class="x-col" xid="col28" style="text-align:left;">
+     <div xid="div6" class="sign" style="width:40%;float:right;background-color:#EFA433;"></div></div> 
+    <div class="x-col" xid="col28" style="text-align:center;">
      <span xid="span26" style="font-size:medium;margin-top:-4px;"><![CDATA[]]></span></div> </div> </div><div xid="circle-box" class="circle-box">
      <div xid="circle-left" class="circle-left">
       <div xid="left" class="left"></div></div> 
@@ -93,9 +93,9 @@
     <li xid="li2"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row21" style="padding-left:0px;margin-left:0px;text-align:center;">
    
    <div class="x-col" xid="col48" style="border-color:#282B32;">
-  <span xid="span29" bind-text='val("id")'></span></div>
-   <div class="x-col" xid="col49"><span xid="span19"><![CDATA[$]]></span><span xid="span28" bind-text='val("income")'></span></div>
-  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("type")'></span></div><div class="x-col" xid="col47"><span xid="span27" bind-text='val("date")'></span></div></div></li>
+  <span xid="span29" bind-text='val("date")' style="font-size:70%;"></span></div>
+   <div class="x-col" xid="col49"><span xid="span28" bind-text='val("income")' style="font-size:70%;"></span></div>
+  <div class="x-col" xid="col50"><span xid="span30" bind-text='val("name")' style="font-size:70%;"></span></div><div class="x-col" xid="col47"><span xid="span27" bind-text='val("type")' style="font-size:70%;"></span></div></div></li>
   </ul> </div>
   <div xid="div12" class="load">
    <span xid="span42" style="font-size:medium;"></span>
@@ -107,7 +107,7 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
    <div class="x-col" xid="col1" style="text-align:center;"><span xid="span2" style="font-weight:600;font-size:medium;" bind-text='val("title")'><![CDATA[]]></span></div>
    <div class="x-col" xid="col2" style="text-align:center;"><span xid="span9" bind-text='val("name")' class="copy" bind-css='{"is_finished": val("finished")=="1"}'><![CDATA[]]></span></div>
-   <div class="x-col" xid="col7" style="text-align:center;"><span xid="span23" bind-text='val("time")'><![CDATA[]]></span></div>
+   <div class="x-col" xid="col7" style="text-align:center;"><span xid="span23" bind-text='val("time")' style="font-size:50%;"><![CDATA[]]></span></div>
   <div class="x-col" xid="col32"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm nestInfo" xid="button8" style="background-color:#454C5E;width:100%;border-width:0px 0px 0px 0px;color:#FFFFFF;" onClick="button8Click">
    <i xid="i8"></i>
    <span xid="span36" bind-text='val("info")'></span></a></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">

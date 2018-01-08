@@ -2,6 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var config = require("$UI/ZJP/js/config");
+	var common = require('./mycommon');
 	var jwt = require("./jwt");
 	function showprompt(text){
 		justep.Util.hint(text,{
@@ -97,7 +98,14 @@ define(function(require){
 		},
 		getordersajax : function(page){
 			var allorders=[];
-			var eggval = parseFloat(config.configegg().egg_val);
+			var eggval;
+			if (justep.Shell.eggval) {
+				eggval = justep.Shell.eggval.latestValue;
+			}
+			else{
+				common.getCommon(config);
+				eggval = justep.Shell.eggval.latestValue;
+			}
 			var status =400;
 			$.ajax({
 				url: config.site+"nests",//php的api路径
@@ -167,7 +175,14 @@ define(function(require){
 		},
 		filterOrdersajax:function(page,min,max){
 			var allorders=[];
-			var eggval = parseFloat(config.configegg().egg_val);
+			var eggval;
+			if (justep.Shell.eggval) {
+				eggval = justep.Shell.eggval.latestValue;
+			}
+			else{
+				common.getCommon(config);
+				eggval = justep.Shell.eggval.latestValue;
+			}
 			var status=400;
 			$.ajax({
 				url: config.site+"orders",//php的api路径
@@ -249,9 +264,18 @@ define(function(require){
 					request.setRequestHeader("Authorization", "Bearer " + jwt.getToken());
 				},
 				success:function(data){
+					if (!justep.Shell.userId) {
+						if (localStorage.getItem("thismyuserId")) {
+							common.setCommon({userId:localStorage.getItem("thismyuserId")});
+						}
+						else{
+							showprompt(lang.showprompt[0]);
+							return;
+						}
+					}
 					for (var i = 0; i < data.data.length; i++) {
 						var status = "";
-						if(data.data[i].buyer_id==localStorage.getItem("thismyuserId")){
+						if(data.data[i].buyer_id==justep.Shell.userId.latestValue){
 							status = "Bought";
 						}
 						else{

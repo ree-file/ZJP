@@ -6,10 +6,9 @@ define(function(require){
 	var nest = require("./js/nests");
 	var market = require("./js/market");
 	var contract = require("./js/contract");
+	var common = require("./js/mycommon");
 	var nestInfo;
-	var eggval;
 	var bank = require("./js/bank");
-	var USDrate;
 	var withdrawData=[];
 	var historyData=[];
 	var lang;
@@ -128,7 +127,6 @@ define(function(require){
 		$(this.getElementByXid("span28")).html(lang.nestMain[24]);
 		$(this.getElementByXid("p1")).html(lang.nestMain[25]);
 		$(this.getElementByXid("content1")).css("display","block");
-		USDrate = bank.getCNYrate();
 	};
 	Model.prototype.modelParamsReceive = function(event){
 		var nest_id = this.params.nest_id;
@@ -139,7 +137,7 @@ define(function(require){
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
-		eggval = config.configegg().egg_val;
+		
 		this.comp("nest").refreshData();
 		this.comp("historyData").refreshData();
 		this.comp("accountData").refreshData();
@@ -154,14 +152,23 @@ define(function(require){
 			return;
 		}
 		event.source.clear();
+		
+		
 		var released =0;
 		var withdraw = 0;
 		var investment = 0;
 		var allmoney = 0;
+		var eggval;
 		historyData =[];
 		withdrawData=[];
 		var available =0;
-		
+		if (justep.Shell.eggval) {
+			eggval = justep.Shell.eggval.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			eggval = justep.Shell.eggval.latestValue;
+		}
 		for (var i = 0; i < nestInfo.length; i++) {
 			released+=nestInfo[i].hatches*eggval;
 			investment+=parseFloat(nestInfo[i].val);
@@ -181,7 +188,14 @@ define(function(require){
 			}
 		}
 		$(this.getElementByXid("span10")).html("TAC:$"+allmoney);
-		
+		var USDrate;
+		if (justep.Shell.rate) {
+			USDrate = justep.Shell.rate.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			USDrate = justep.Shell.rate.latestValue;
+		}
 		var nestvalues = [{
 			id:this.params.nest_id,
 			name:this.params.nest_name,
