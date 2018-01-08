@@ -107,6 +107,7 @@ define(function(require){
         },
 				success:function(data){//请求成功返回值存在data里
 					moneyall = data.data;
+					console.log(moneyall);
 				},
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
@@ -207,6 +208,10 @@ define(function(require){
 					else if(responseText.message=="Wrong security code.")
 					{
 						showprompt(lang.showprompt[59]);
+					}
+					else if(responseText.message=="Reach the user ceiling.")
+					{
+						showprompt(lang.showprompt[70]);
 					}
 					else{
 						showprompt(lang.showprompt[67]);

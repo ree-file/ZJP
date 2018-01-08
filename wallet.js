@@ -7,6 +7,7 @@ define(function(require){
 	var moneyactive;
 	var moneylimit;
 	var userid;
+	var today_has_withdrawn;
 	var base64 = require("$UI/system/lib/base/base64");
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -24,15 +25,18 @@ define(function(require){
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
 		var moneyspan2 = $(this.getElementByXid("allMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
+		var moneyspan4 = $(this.getElementByXid("cangetSpan"));
 		if (!pwState) {
 			moneyspan1.text("******");
 			moneyspan2.text("******");
 			moneyspan3.text("******");
+			moneyspan4.text("******");
       pwState = true;
     } else {
       moneyspan1.text(moneyactive);//moneyactive
       moneyspan2.text(catcoins);//catcoins
       moneyspan3.text(moneylimit);//money_limit
+      moneyspan4.text(today_has_withdrawn);//money_limit
       pwState = false;
     }
 	};
@@ -44,6 +48,7 @@ define(function(require){
 		$(this.getElementByXid("span3")).html(lang.wallet[1]);
 		$(this.getElementByXid("span7")).html(lang.wallet[2]);
 		$(this.getElementByXid("span8")).html(lang.wallet[4]);
+		$(this.getElementByXid("span6")).html(lang.wallet[14]);
 		$(this.getElementByXid("span10")).html(lang.wallet[5]);
 		$(this.getElementByXid("span13")).html(lang.wallet[6]);
 		$(this.getElementByXid("span16")).html(lang.wallet[8]);
@@ -55,6 +60,7 @@ define(function(require){
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
 		var moneyspan2 = $(this.getElementByXid("allMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
+		var moneyspan4 = $(this.getElementByXid("cangetSpan"));
 		var moneyall = personalMoney.money();
 		userid = moneyall.id;
 		if (moneyall == undefined) {
@@ -66,9 +72,17 @@ define(function(require){
 			this.modelLoad(event);
 			return;
 		}
+		today_has_withdrawn = moneyall.today_withdrawal.today_has_withdrawn;
+		if (today_has_withdrawn == false) {
+			today_has_withdrawn = (moneyall.money_active*0.06).toFixed(4);
+		}
+		else if (today_has_withdrawn == true) {
+			today_has_withdrawn = moneyall.today_withdrawal.withdrawal_ceiling-moneyall.today_withdrawal.withdrawal_already;
+		}
 		moneyspan1.text(moneyall.money_active);
 		moneyspan2.text(moneyall.coins);
 		moneyspan3.text(moneyall.money_limit);
+		moneyspan4.text(today_has_withdrawn);
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;
