@@ -145,9 +145,6 @@ define(function(require){
 					CNY=data.rates.CNY;
 				},
 				error:function(ero){
-					debugger;
-					var responseText = JSON.parse(ero.responseText);
-				
 				},
 				complete:function(XMLHttpRequest,status)
 				{ //请求完成后最终执行参数
