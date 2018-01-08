@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad" onParamsReceive="modelParamsReceive"> 
   </div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1" style="background-color:#252932;"> 
@@ -20,7 +20,7 @@
         </div> 
       </div>  
     
-  <div class="x-panel-content" xid="content1" style="display:none;height:100%;">
+  <div class="x-panel-content" xid="content1" style="height:100%;">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;margin-bottom:8px;position:relative;padding:0px 0px 0px 0px;">
    <div class="x-col" xid="col2" style="padding-left:12px;">
@@ -60,13 +60,13 @@
      <div class="x-col" xid="col30">
       <span xid="span14" class="popspan">xcx</span></div> 
      <div class="x-col" xid="col29">
-      <span xid="limitspan" class="popspanout"></span></div> </div> 
+      <span xid="moneyactive" class="popspanout"></span></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13">
      <div class="x-col x-col-10" xid="col35"></div>
      <div class="x-col" xid="col32">
       <span xid="span16" class="popspan">xcx</span></div> 
      <div class="x-col" xid="col31">
-      <span xid="coinspan" class="popspanout"></span></div> </div> 
+      <span xid="money_withdrawal" class="popspanout"></span></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
      <div class="x-col" xid="col36" style="padding-right:12px;padding-left:25px;">
       <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" xid="button2" onClick="button2Click">

@@ -7,7 +7,7 @@ define(function(require){
 	var config = require('./js/config');
 	var common = require('./js/mycommon');
 	var lang;
-	var couldget;
+	var money_withdrawal;
 	if(localStorage.getItem("lang")=="en_us")
 	{
 		lang = require('./js/en_us');
@@ -21,8 +21,8 @@ define(function(require){
 	};
 	//可提现金额参数接收并录入
 	Model.prototype.modelParamsReceive = function(event){
-		couldget = this.params.walletMoney;
-		// this.getElementByXid("moneyInput").setAttribute("placeHolder",lang.transferGetmoney[13]+(couldget*0.06).toFixed(2));//以当前钱包金额计算6%输出提醒用户当前可提金额
+		money_withdrawal = this.params.money_withdrawal;
+		this.getElementByXid("moneyInput").setAttribute("placeHolder",lang.transferGetmoney[13]+money_withdrawal);//以当前钱包金额计算6%输出提醒用户当前可提金额
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -149,7 +149,7 @@ define(function(require){
 			common.getCommon(config);
 			changemoney = justep.Shell.rate.latestValue;
 		}
-		
+
 		$(this.getElementByXid("daospan")).text("￥"+(moneyInput*changemoney).toFixed(2));
 	};
 

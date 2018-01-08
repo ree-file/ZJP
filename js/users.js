@@ -10,7 +10,7 @@ define(function(require){
 		$(".x-hint").find("button[class='close']").hide();
 	}
 	return{
-		
+
 		resetsecondPassword:function(password,code){
 			var is_success = false;
 			var status = 0;
@@ -48,7 +48,7 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							status = 500;
 						}
@@ -56,7 +56,7 @@ define(function(require){
 						{
 							status = 404;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						status = 404;
@@ -102,7 +102,7 @@ define(function(require){
 				error:function(ero){
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							status = 500;
 						}
@@ -110,7 +110,7 @@ define(function(require){
 						{
 							status = 404;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						status = 404;
@@ -153,7 +153,7 @@ define(function(require){
 			});
 			return is_success;
 		},
-		
+
 		//获取用户信息（各个钱包金额）--许鑫君
 		getUserMessage:function(){
 			var worthInfo;
@@ -161,16 +161,16 @@ define(function(require){
 				worthInfo=[];
 				var result1 = this.getUserMessageajax();
 				if (typeof(result1)!="number") {
-					
+
 						worthInfo=result1;
-					
+
 				}
 				else{
 					worthInfo=undefined;
 				}
 
 			}while(result1==500);
-				
+
 			return worthInfo;
 		},
 		getUserMessageajax:function(){
@@ -195,7 +195,7 @@ define(function(require){
 					status =200;
 				},
 				error:function(ero){
-					
+
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 
@@ -211,7 +211,7 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status =404;
 					}
-					
+
 				}
 			});
 			if (status ==200) {
@@ -228,12 +228,12 @@ define(function(require){
 				var aaa = this.checksecondPasswordajax(password);
 				if(typeof(aaa)=="boolean"){
 					status = 0;
-					
+
 				}
 				else{
 					status=aaa;
 				}
-				
+
 				switch (status) {
 				case 200:
 					is_success = true;
@@ -272,7 +272,7 @@ define(function(require){
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							status = 500;
 						}
@@ -280,7 +280,7 @@ define(function(require){
 						{
 							status = 404;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						status = 404;
@@ -332,7 +332,7 @@ define(function(require){
 				error:function(ero){
 					var responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
-						
+
 						if(jwt.authRefresh()){
 							status = 500;
 						}
@@ -340,7 +340,7 @@ define(function(require){
 						{
 							status = 404;
 						}
-						
+
 					}
 					else if(responseText.message=="No token provided."){
 						status = 404;
@@ -356,16 +356,16 @@ define(function(require){
 				incomeAnalyse={};
 				var result1 = this.getUserIncomeAnalyseajax();
 				if (typeof(result1)!="number") {
-					
+
 					incomeAnalyse=result1;
-					
+
 				}
 				else{
 					incomeAnalyse=undefined;
 				}
 
 			}while(result1==500);
-				
+
 			return incomeAnalyse;
 		},
 		getUserIncomeAnalyseajax:function(){
@@ -384,7 +384,7 @@ define(function(require){
 					status =200;
 				},
 				error:function(ero){
-					
+
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 
@@ -400,7 +400,7 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status =404;
 					}
-					
+
 				}
 			});
 			if (status ==200) {
@@ -417,23 +417,23 @@ define(function(require){
 				income=[];
 				var result1 = this.getUserIncomeajax(page);
 				if (typeof(result1)!="number") {
-					
+
 					income=result1;
-					
+
 				}
 				else{
 					income=undefined;
 				}
 
 			}while(result1==500);
-				
+
 			return income;
 		},
 		getUserIncomeajax:function(page){
 			var income=[];
 			var status =400;
 			$.ajax({
-				url:config.site+"private/income",
+				url:config.site+"private/income-records",
 				async:false,
 				dataType:"json",
 				type:"GET",
@@ -442,12 +442,12 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-					
+
 					income = data.data.data;
 					status =200;
 				},
 				error:function(ero){
-					
+
 					responseText = JSON.parse(ero.responseText);
 					if (responseText.message=="Token expired.") {
 
@@ -463,7 +463,7 @@ define(function(require){
 					else if(responseText.message=="No token provided."){
 						status =404;
 					}
-					
+
 				}
 			});
 			if (status ==200) {

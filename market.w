@@ -105,7 +105,7 @@
   <span xid="span47"><![CDATA[]]></span></div>
   <div xid="div15" style="height:100px;"></div>
   </div>
-  <div class="x-contents-content" xid="recordcontent"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
+  <div class="x-contents-content" xid="recordcontent" onActive="recordcontentActive"><div component="$UI/system/components/justep/row/row" class="x-row transactiontitle" xid="row18">
    <div class="x-col x-col-33" xid="col39"><span xid="span21"><![CDATA[]]></span></div>
    <div class="x-col" xid="col43"><span xid="span22"><![CDATA[]]></span></div>
    <div class="x-col" xid="col44"><span xid="span30"><![CDATA[]]></span></div>

@@ -7,7 +7,7 @@ define(function(require){
 	var moneyactive;
 	var moneylimit;
 	var userid;
-	var today_has_withdrawn;
+	var money_withdrawal;
 	var base64 = require("$UI/system/lib/base/base64");
 	var lang;
 	if(localStorage.getItem("lang")=="en_us")
@@ -36,7 +36,7 @@ define(function(require){
       moneyspan1.text(moneyactive);//moneyactive
       moneyspan2.text(catcoins);//catcoins
       moneyspan3.text(moneylimit);//money_limit
-      moneyspan4.text(today_has_withdrawn);//money_limit
+      moneyspan4.text(money_withdrawal);//money_limit
       pwState = false;
     }
 	};
@@ -52,6 +52,7 @@ define(function(require){
 		$(this.getElementByXid("span10")).html(lang.wallet[5]);
 		$(this.getElementByXid("span13")).html(lang.wallet[6]);
 		$(this.getElementByXid("span16")).html(lang.wallet[8]);
+		$(this.getElementByXid("span18")).html(lang.wallet[15]);
 		$(this.getElementByXid("span17")).html(lang.wallet[9]);
 		$(this.getElementByXid("span19")).html(lang.wallet[10]);
 		$(this.getElementByXid("span1")).html(lang.wallet[11]);
@@ -72,17 +73,11 @@ define(function(require){
 			this.modelLoad(event);
 			return;
 		}
-		today_has_withdrawn = moneyall.today_withdrawal.today_has_withdrawn;
-		if (today_has_withdrawn == false) {
-			today_has_withdrawn = (moneyall.money_active*0.06).toFixed(4);
-		}
-		else if (today_has_withdrawn == true) {
-			today_has_withdrawn = moneyall.today_withdrawal.withdrawal_ceiling-moneyall.today_withdrawal.withdrawal_already;
-		}
+		money_withdrawal = moneyall.money_withdrawal;
 		moneyspan1.text(moneyall.money_active);
 		moneyspan2.text(moneyall.coins);
 		moneyspan3.text(moneyall.money_limit);
-		moneyspan4.text(today_has_withdrawn);
+		moneyspan4.text(money_withdrawal);
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;
@@ -130,11 +125,11 @@ define(function(require){
 	};
 
 	Model.prototype.row15Click = function(event){
-		justep.Shell.showPage("transferMymoney");
+		justep.Shell.showPage("transferMymoney", {moneyactive:moneyactive,money_withdrawal:money_withdrawal});
 	};
 
 	Model.prototype.row1Click = function(event){
-		justep.Shell.showPage("transferGetmoney", {walletMoney:$(this.getElementByXid("activeMSpan")).html()});
+		justep.Shell.showPage("transferGetmoney", {money_withdrawal:money_withdrawal});
 	};
 
 	Model.prototype.row16Click = function(event){
