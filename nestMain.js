@@ -547,7 +547,7 @@ define(function(require){
 		var id=this.comp("nest").val("id");
 		var is_success = market.notSold(id);
 		if (is_success) {
-			this.showprompt(lang.showprompt[70]);
+			this.showprompt(lang.showprompt[71]);
 			this.comp("chooseSoleStatus").hide();
 		}
 		else if (is_success==undefined) {
