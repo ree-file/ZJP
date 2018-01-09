@@ -118,8 +118,8 @@ define(function(require){
 		this.comp("input5").set({
 			placeHolder:lang.mailLogin[3]
 		});
-		if (justep.Shell.email.latestValue) {
-			this.comp("input5").val(justep.Shell.email.latestValue);
+		if (localStorage.getItem("email")) {
+			this.comp("input5").val(localStorage.getItem("email"));
 		}
 	};
 	return Model;

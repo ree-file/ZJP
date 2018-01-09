@@ -85,13 +85,14 @@ define(function(require) {
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
-		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.income_coins_today+incomeAnalyse.analyse.income_money_limit_today+incomeAnalyse.analyse.income_money_active_today).toFixed(2));
+		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.income_money_active).toFixed(2));
 
 		$(this.getElementByXid("span18")).css("color","white");
 		$(this.getElementByXid("content2")).css("display","block");
 		common.getCommon(config);
 		if (!justep.Shell.userId) {
 			if (localStorage.getItem("thismyuserId")) {
+				
 				common.setCommon({userId:localStorage.getItem("thismyuserId")});
 			}
 			else{
@@ -155,7 +156,7 @@ define(function(require) {
 	Model.prototype.incomeAccountCustomRefresh = function(event){
 		var income = user.getUserIncome(page);
 		var params = [];
-
+		
 		if (income==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
@@ -177,8 +178,8 @@ define(function(require) {
 					params[params.length]={
 						id:params.length+1,
 						name:income[int].nest.name,
-						date:"$"+income[int].created_at,
-						income:income[int].money_limit+"限制币",
+						date:income[int].created_at,
+						income:"$"+income[int].money_limit+"限制币",
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
@@ -324,6 +325,119 @@ define(function(require) {
 		}
 		endy=0;
 		starty=0;
+	};
+	//向上选择筛选内容
+	Model.prototype.div13Click = function(event){
+		var toTypeRow = this.comp("incometype");
+		var list = this.comp("list2");
+		if (toTypeRow.getCurrentRowID()==1) {
+			toTypeRow.last();
+		}
+		else{
+			toTypeRow.pre();
+		}
+		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
+		
+		if (toTypeRow.val("name")=="类型") {
+			list.set({
+			filter:''
+			});
+		}
+		else{
+			list.set({
+			filter:' $row.val("type")=="'+toTypeRow.val("name")+'"'
+			});
+		}
+		list.refresh(false);
+	};
+	//向下选择筛选内容
+	Model.prototype.div14Click = function(event){
+		var toTypeRow = this.comp("incometype");
+		var list = this.comp("list2");
+		if (toTypeRow.getCurrentRowID()==3) {
+			toTypeRow.first();
+		}
+		else{
+			toTypeRow.next();
+		}
+		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
+		if (toTypeRow.val("name")=="类型") {
+			list.set({
+			filter:''
+			});
+		}
+		else{
+			list.set({
+			filter:' $row.val("type")=="'+toTypeRow.val("name")+'"'
+			});
+		}
+		
+		list.refresh(false);
+	};
+	Model.prototype.regtestMoneyType=function(data,value){
+		var reg = new RegExp("/"+value+"/u");
+		debugger;
+		if (reg.test(data)) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	};
+	Model.prototype.tranfer=function(name){
+		var code="";
+		for (var i =0;i<name.length;i++){
+			code = code+"\\x{"+name.charCodeAt(i).toString(16)+"}"; 
+		}
+		return code;
+	}
+	//金额向上筛选
+	Model.prototype.div17Click = function(event){
+		var toTypeRow = this.comp("moneytype");
+		var list = this.comp("list2");
+		if (toTypeRow.getCurrentRowID()==1) {
+			toTypeRow.last();
+		}
+		else{
+			toTypeRow.pre();
+		}
+		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
+		debugger;
+		if (toTypeRow.val("name")=="金额") {
+			list.set({
+			filter:''
+			});
+		}
+		else{
+			list.set({
+				filter:'$model.regtestMoneyType($row.val("income"),"'+this.tranfer(toTypeRow.val("name"))+'")'
+			});
+		}
+		list.refresh(false);
+	};
+
+	Model.prototype.div19Click = function(event){
+		var toTypeRow = this.comp("moneytype");
+		var list = this.comp("list2");
+		if (toTypeRow.getCurrentRowID()==4) {
+			toTypeRow.first();
+		}
+		else{
+			toTypeRow.next();
+		}
+		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
+		if (toTypeRow.val("name")=="金额") {
+			list.set({
+			filter:''
+			});
+		}
+		else{
+			list.set({
+				filter:' $model.regtestMoneyType($row.val("income"),"'+this.tranfer(toTypeRow.val("name"))+'")'
+			});
+		}
+		
+		list.refresh(false);
 	};
 
 	return Model;

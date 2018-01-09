@@ -46,7 +46,7 @@
    <span xid="span29"></span></a></div>
    <div class="x-titlebar-title" xid="title1"><![CDATA[]]></div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div></div>
-   <div class="x-panel-content background-color-black" xid="content1" style="height:100%;display:none;"><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="height:10px;padding:0px 0px 0px 0px;">
+   <div class="x-panel-content background-color-black" xid="content1" style="height:100%;display:;"><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="height:10px;padding:0px 0px 0px 0px;">
    <div class="x-col" xid="col1">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row13">
    <div class="x-col" xid="col38" style="padding:0px 0px 0px 0px;"><h5 xid="h52" class="gary-font-small" bind-text=' $model.nest.val("name")'><![CDATA[]]></h5></div>

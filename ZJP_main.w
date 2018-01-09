@@ -22,7 +22,12 @@
   <column name="date" type="Date" xid="xid9"></column>
   <column name="income" type="String" xid="xid11"></column>
   <column name="type" type="String" xid="xid15"></column></div>
-  </div>  
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="incometype" idColumn="id"><column name="id" type="Integer" xid="xid22"></column>
+  <column name="name" type="String" xid="xid23"></column>
+  <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;类型&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;邀请&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;日常&quot;}]</data></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="moneytype" idColumn="id"><column name="id" type="Integer" xid="xid24"></column>
+  <column name="name" type="String" xid="xid25"></column>
+  <data xid="default2">[{&quot;id&quot;:1,&quot;name&quot;:&quot;金额&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;可提&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;备用金&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;限制&quot;}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -83,10 +88,21 @@
    </div></div></div>
   <div xid="div1" style="position:relative;top:70px;"><div xid="div9"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row11" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
    <div class="x-col text-center" xid="col35" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><span xid="span12" style="color:#8D8E8F;"><![CDATA[]]></span></div>
-   <div class="x-col text-center" xid="col37" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><span xid="span13" style="color:#8D8E8F;"><![CDATA[]]></span></div>
+   <div class="x-col text-center" xid="col37" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;">
+  <div xid="div18" style="text-align:right;height:100%;float:left;width:60%;">
+   <span xid="span13" style="color:#8D8E8F;"><![CDATA[]]></span></div>
+  <div xid="div20" style="text-align:left;margin-top:-5px;float:right;height:32px;width:40%;">
+   <div xid="div17" style="width:100%;height:12px;clear:both;" bind-click="div17Click">
+    <span xid="span44" class="glyphicon glyphicon-triangle-top" style="font-size:x-small;"></span></div> 
+   <div xid="div19" style="margin-top:-3px;height:12px;clear:both;" bind-click="div19Click">
+    <span xid="span43" class="glyphicon glyphicon-triangle-bottom" style="font-size:x-small;"></span></div> </div></div>
    <div class="x-col text-center" xid="col39" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><span xid="span14" style="color:#8D8E8F;"><![CDATA[]]></span></div>
-  <div class="x-col text-center" xid="col40" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><![CDATA[]]>
-  <span xid="span1" style="color:#8D8E8F;"><![CDATA[]]></span></div></div></div>
+  <div class="x-col " xid="col40" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;height:32px;overflow:inherit;"><![CDATA[]]>
+  
+  
+  
+  <div xid="div16" style="text-align:right;height:100%;float:left;width:60%;"><span xid="span1" style="color:#8D8E8F;"><![CDATA[]]></span></div><div xid="div15" style="text-align:left;margin-top:-5px;float:right;height:32px;width:40%;"><div xid="div13" style="width:100%;height:12px;clear:both;" bind-click="div13Click"><span xid="span40" class="glyphicon glyphicon-triangle-top" style="font-size:x-small;"></span></div><div xid="div14" style="margin-top:-3px;height:12px;clear:both;" bind-click="div14Click"><span xid="span41" class="glyphicon glyphicon-triangle-bottom" style="font-size:x-small;"></span></div></div>
+  </div></div></div>
   
   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="incomeAccount">
    <ul class="x-list-template" xid="listTemplateUl2">

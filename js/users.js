@@ -433,7 +433,7 @@ define(function(require){
 			var income=[];
 			var status =400;
 			$.ajax({
-				url:config.site+"private/user?tab=detail",
+				url:config.site+"private/income",
 				async:false,
 				dataType:"json",
 				type:"GET",
@@ -442,7 +442,6 @@ define(function(require){
 					request.setRequestHeader("Authorization","Bearer " + jwt.getToken());
 				},
 				success:function(data){
-
 					income = data.data.data;
 					status =200;
 				},
