@@ -35,8 +35,8 @@
       <div class="x-col" xid="col3">
        </div> </div> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
-   <div class="x-col" xid="col4" style="text-align:right;"><span component="$UI/system/components/justep/button/checkbox" class="x-checkbox x-checkbox-sm" xid="checkbox1"></span></div>
-   <div class="x-col" xid="col5"><span xid="span4"><![CDATA[天使猫使用合约]]></span></div>
+   <div class="x-col" xid="col4" style="text-align:right;"><span component="$UI/system/components/justep/button/checkbox" class="x-checkbox x-checkbox-sm" xid="checkbox1" style="line-height:20px;"></span></div>
+   <div class="x-col" xid="col5"><span xid="span4" style="line-height:26px;color:#5D92E2;" bind-click="span4Click"><![CDATA[天使猫使用合约]]></span></div>
    <div class="x-col" xid="col6"></div></div></div> 
   </div> </div>
   </div>

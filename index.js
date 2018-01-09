@@ -73,6 +73,9 @@ define(function(require) {
 				"transferRecord" : {
 					url : require.toUrl('./transferRecord.w')
 				},
+				"tsm_contract" : {
+					url : require.toUrl('./tsm_contract.w')
+				},
 			}
 		})
 

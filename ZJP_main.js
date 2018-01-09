@@ -337,7 +337,7 @@ define(function(require) {
 			toTypeRow.pre();
 		}
 		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
-		
+		$(this.getElementByXid("span13")).html("金额");
 		if (toTypeRow.val("name")=="类型") {
 			list.set({
 			filter:''
@@ -361,6 +361,7 @@ define(function(require) {
 			toTypeRow.next();
 		}
 		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
+		$(this.getElementByXid("span13")).html("金额");
 		if (toTypeRow.val("name")=="类型") {
 			list.set({
 			filter:''
@@ -375,22 +376,21 @@ define(function(require) {
 		list.refresh(false);
 	};
 	Model.prototype.regtestMoneyType=function(data,value){
-		var reg = new RegExp("/"+value+"/u");
-		debugger;
-		if (reg.test(data)) {
+//		var reg = new RegExp("/"+value+"/u");
+		if (data.indexOf(value)>=0) {
 			return true;
 		}
 		else{
 			return false;
 		}
 	};
-	Model.prototype.tranfer=function(name){
-		var code="";
-		for (var i =0;i<name.length;i++){
-			code = code+"\\x{"+name.charCodeAt(i).toString(16)+"}"; 
-		}
-		return code;
-	}
+//	Model.prototype.tranfer=function(name){
+//		var code="";
+//		for (var i =0;i<name.length;i++){
+//			code = code+"\\u{"+name.charCodeAt(i).toString(16)+"}"; 
+//		}
+//		return code;
+//	}
 	//金额向上筛选
 	Model.prototype.div17Click = function(event){
 		var toTypeRow = this.comp("moneytype");
@@ -402,15 +402,15 @@ define(function(require) {
 			toTypeRow.pre();
 		}
 		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
-		debugger;
+		$(this.getElementByXid("span1")).html("类型");
 		if (toTypeRow.val("name")=="金额") {
 			list.set({
-			filter:''
+				filter:''
 			});
 		}
 		else{
 			list.set({
-				filter:'$model.regtestMoneyType($row.val("income"),"'+this.tranfer(toTypeRow.val("name"))+'")'
+				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("name")+'")'
 			});
 		}
 		list.refresh(false);
@@ -426,6 +426,7 @@ define(function(require) {
 			toTypeRow.next();
 		}
 		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
+		$(this.getElementByXid("span1")).html("类型");
 		if (toTypeRow.val("name")=="金额") {
 			list.set({
 			filter:''
@@ -433,7 +434,7 @@ define(function(require) {
 		}
 		else{
 			list.set({
-				filter:' $model.regtestMoneyType($row.val("income"),"'+this.tranfer(toTypeRow.val("name"))+'")'
+				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("name")+'")'
 			});
 		}
 		

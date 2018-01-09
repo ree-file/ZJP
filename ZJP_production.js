@@ -419,6 +419,10 @@ define(function(require){
 	};
 	//提交数据
 	Model.prototype.button6Click = function(event){
+		if(!this.comp("checkbox1").get("checked")){
+			this.showprompt("请勾选协议");
+			return;
+		}
 		if (!$.trim(this.comp("input2").val())&&(action=="create"||action=="invite")) {
 			this.showprompt(lang.showprompt[35]);
 		}
@@ -544,6 +548,10 @@ define(function(require){
 		$(this.getElementByXid("h56")).html(lang.ZJP_production[7]);
 		$(this.getElementByXid("h57")).html(lang.ZJP_production[8]);
 		$(this.getElementByXid("span19")).html(lang.ZJP_production[9]);
+	};
+
+	Model.prototype.span6Click = function(event){
+		justep.Shell.showPage("tsm_contract");
 	};
 
 	return Model;

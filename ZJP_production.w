@@ -66,7 +66,12 @@
      <i xid="i10"></i>
      <span xid="span18">重置</span></a></div> 
    </div>
-  </div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
+   <div class="x-col" xid="col4" style="text-align:right;">
+    <span component="$UI/system/components/justep/button/checkbox" class="x-checkbox x-checkbox-sm" xid="checkbox1" style="line-height:20px;"></span></div> 
+   <div class="x-col" xid="col24">
+    <span xid="span6" style="line-height:26px;color:#5D92E2;" bind-click="span6Click">天使猫使用合约</span></div> 
+   <div class="x-col" xid="col22"></div></div></div>
   </div>
   </div>
    </div>
