@@ -20,7 +20,7 @@
         </div> 
       </div>  
     
-  <div class="x-panel-content" xid="content1" style="height:100%;">
+  <div class="x-panel-content" xid="content1" style="display:none;height:100%;">
   
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="background-color:#1C1F26;margin-bottom:8px;position:relative;padding:0px 0px 0px 0px;">
    <div class="x-col" xid="col2" style="padding-left:12px;">

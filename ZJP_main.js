@@ -33,7 +33,7 @@ define(function(require) {
 	Model.prototype.modelModelConstructDone = function(event){
 		this.comp("incomeAccount").refreshData();
 		this.comp("NestsAccount").refreshData();
-	
+
 	};
 
 	Model.prototype.modelLoad = function(event){
@@ -61,9 +61,9 @@ define(function(require) {
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
-		var coins = incomeAnalyse.analyse_today.coins;
-		var money_active = incomeAnalyse.analyse_today.money_active;
-		var money_limit= incomeAnalyse.analyse_today.money_limit;
+		var coins = incomeAnalyse.analyse.income_coins_today;
+		var money_active = incomeAnalyse.analyse.income_money_active_today;
+		var money_limit= incomeAnalyse.analyse.income_money_limit_today;
 		var all = coins+money_active+money_limit;
 		var rightRotate = 180-parseFloat(coins/all)*360;
 		var leftRotate = 180-parseFloat(money_limit/all)*360;
@@ -81,12 +81,12 @@ define(function(require) {
 			$(this.getElementByXid("span25")).html(lang.ZJP_main[17]);
 			$(this.getElementByXid("span26")).html(lang.ZJP_main[16]);
 		}
-		
+
 		$(this.getElementByXid("right")).css("transform","rotate("+rightRotate+"deg)");
 		$(this.getElementByXid("left")).css("transform","rotate(-"+leftRotate+"deg)");
 		$(this.getElementByXid("span4")).html("$"+parseFloat(all).toFixed(2));
-		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.coins+incomeAnalyse.analyse.money_limit+incomeAnalyse.analyse.money_active).toFixed(2));
-		
+		$(this.getElementByXid("span7")).html("$"+parseFloat(incomeAnalyse.analyse.income_coins_today+incomeAnalyse.analyse.income_money_limit_today+incomeAnalyse.analyse.income_money_active_today).toFixed(2));
+
 		$(this.getElementByXid("span18")).css("color","white");
 		$(this.getElementByXid("content2")).css("display","block");
 		common.getCommon(config);
@@ -103,7 +103,7 @@ define(function(require) {
 		$(this.getElementByXid("span18")).html("AngleCatID："+justep.Shell.userId.latestValue);
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
-	Model.prototype.modelParamsReceive = function(event){	
+	Model.prototype.modelParamsReceive = function(event){
 			//检查用户是否有二级密码--许鑫君
 			var is_live = user.checksecondPassword();
 			if (is_live ==undefined) {
@@ -155,7 +155,7 @@ define(function(require) {
 	Model.prototype.incomeAccountCustomRefresh = function(event){
 		var income = user.getUserIncome(page);
 		var params = [];
-		
+
 		if (income==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
@@ -191,7 +191,7 @@ define(function(require) {
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
-				
+
 			}
 		}
 		if (page>1) {
@@ -201,7 +201,7 @@ define(function(require) {
 			event.source.clear();
 			event.source.loadData(params);
 		}
-		
+
 	};
 
 	Model.prototype.NestsAccountCustomRefresh = function(event){
@@ -252,7 +252,7 @@ define(function(require) {
 	};
 
 	Model.prototype.button4Click = function(event){
-		
+
 	};
 
 	Model.prototype.modelActive = function(event){
@@ -284,13 +284,13 @@ define(function(require) {
 
 	Model.prototype.windowContainer1Receive = function(event){
 		if (event.data.data) {
-			
+
 			this.comp("windowDialog1").open();
 		}
 	};
 
 	Model.prototype.windowDialog1Received = function(event){
-		
+
 	};
 
 	Model.prototype.button5Click = function(event){
@@ -300,7 +300,7 @@ define(function(require) {
 	};
 
 	Model.prototype.windowContainer1Load = function(event){
-		
+
 	};
 
 	Model.prototype.contents1ActiveChange = function(event){

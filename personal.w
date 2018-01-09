@@ -38,7 +38,7 @@
       <span xid="span15" style="font-size:x-small;color:#C3C3C3;position:relative;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:7%;"><![CDATA[]]></span></div> </div> </div> </div></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="background-color:#1C1F26;margin-top:25px;">
-   <div class="x-col" xid="col27"><span xid="span18" style="color:#FFFFFF;width:100%;position:relative;font-size:large;" class="center-block spancenter"><![CDATA[所邀猫窝总价值已达]]></span></div>
+   <div class="x-col" xid="col27"><span xid="span18" style="display:none;color:#FFFFFF;width:100%;position:relative;font-size:large;" class="center-block spancenter"><![CDATA[]]></span></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row18" style="margin-top:0px;background-color:#1C1F26;height:55px;">
    <div class="x-col" xid="col38"></div>

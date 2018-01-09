@@ -372,7 +372,7 @@ define(function(require){
 			var incomeAnalyse={};
 			var status =400;
 			$.ajax({
-				url:config.site+"private/income-analyse",
+				url:config.site+"private/user?tab=detail",
 				async:false,
 				dataType:"json",
 				type:"GET",
@@ -433,7 +433,7 @@ define(function(require){
 			var income=[];
 			var status =400;
 			$.ajax({
-				url:config.site+"private/income-records",
+				url:config.site+"private/user?tab=detail",
 				async:false,
 				dataType:"json",
 				type:"GET",
