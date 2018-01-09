@@ -97,7 +97,7 @@
    <div xid="div19" style="margin-top:-3px;height:12px;clear:both;" bind-click="div19Click">
     <span xid="span43" class="glyphicon glyphicon-triangle-bottom" style="font-size:x-small;"></span></div> </div></div>
    <div class="x-col text-center" xid="col39" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;"><span xid="span14" style="color:#8D8E8F;"><![CDATA[]]></span></div>
-  <div class="x-col " xid="col40" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;height:32px;overflow:inherit;"><![CDATA[]]>
+  <div class="x-col " xid="col40" style="border-color:#282B32;border-style:solid solid solid solid;border-width:1px 1px 1px 1px;overflow:inherit;"><![CDATA[]]>
   
   
   

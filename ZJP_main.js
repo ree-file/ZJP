@@ -401,7 +401,7 @@ define(function(require) {
 		else{
 			toTypeRow.pre();
 		}
-		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
+		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
 		debugger;
 		if (toTypeRow.val("name")=="金额") {
 			list.set({
@@ -425,7 +425,7 @@ define(function(require) {
 		else{
 			toTypeRow.next();
 		}
-		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
+		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
 		if (toTypeRow.val("name")=="金额") {
 			list.set({
 			filter:''
