@@ -34,7 +34,7 @@ define(function(){
 		},
 		getCommon:function(config){
 			var common = config.configegg();
-			this.setCommon({eggval:common.egg_val,rate:common.USD_TO_CNY,level:common.level_worth});
+			this.setCommon({eggval:common.egg_val,rate:common.rate,level:common.level_worth});
 		},
 		refreshCommon:function(){
 			

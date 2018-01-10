@@ -419,6 +419,10 @@ define(function(require){
 	};
 	//提交数据
 	Model.prototype.button6Click = function(event){
+		if(!this.comp("checkbox1").get("checked")){
+			this.showprompt("请勾选协议");
+			return;
+		}
 		if (!$.trim(this.comp("input2").val())&&(action=="create"||action=="invite")) {
 			this.showprompt(lang.showprompt[35]);
 		}
@@ -518,11 +522,11 @@ define(function(require){
 
 	Model.prototype.windowDialog1Received = function(event){
 		if (event.data.data) {
-			var token=localStorage.getItem("jwt_token");
-			var ids = token.split(".");
-			var id = JSON.parse(base64.decode(ids[1]));
-			if (id&&event.data.email) {
-				localStorage.setItem("thismyuserId", id.sub);
+//			var token=localStorage.getItem("jwt_token");
+//			var ids = token.split(".");
+//			var id = JSON.parse(base64.decode(ids[1]));
+			if (event.data.email) {
+//				localStorage.setItem("thismyuserId", id.sub);
 				localStorage.setItem("email", event.data.email);
 			}
 			this.comp("windowDialog1").close();
@@ -544,6 +548,11 @@ define(function(require){
 		$(this.getElementByXid("h56")).html(lang.ZJP_production[7]);
 		$(this.getElementByXid("h57")).html(lang.ZJP_production[8]);
 		$(this.getElementByXid("span19")).html(lang.ZJP_production[9]);
+		$(this.getElementByXid("div1")).css("display","block");
+	};
+
+	Model.prototype.span6Click = function(event){
+		justep.Shell.showPage("tsm_contract");
 	};
 
 	return Model;

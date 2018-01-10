@@ -73,6 +73,9 @@ define(function(require) {
 				"transferRecord" : {
 					url : require.toUrl('./transferRecord.w')
 				},
+				"tsm_contract" : {
+					url : require.toUrl('./tsm_contract.w')
+				},
 			}
 		})
 
@@ -86,12 +89,11 @@ define(function(require) {
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
-			var token=localStorage.getItem("jwt_token");
-			var ids = token.split(".");
-
-			var id = JSON.parse(base64.decode(ids[1]));
-			if (id&&event.data.email) {
-				localStorage.setItem("thismyuserId", id.sub);
+//			var token=localStorage.getItem("jwt_token");
+//			var ids = token.split(".");
+//
+//			var id = JSON.parse(base64.decode(ids[1]));
+			if (event.data.email) {
 				localStorage.setItem("email", event.data.email);
 			}
 			this.comp("mainContainer").refresh();

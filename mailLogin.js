@@ -76,6 +76,10 @@ define(function(require){
 	};
 	//邮箱登录--许鑫君
 	Model.prototype.button1Click = function(event){
+		if (!this.comp("checkbox1").get("checked")) {
+			this.showprompt("请勾选协议");
+			return;
+		}
 		if (loginable) {
 			var password = $.trim($(this.getElementByXid("password1")).val());
 			var email = $.trim($(this.getElementByXid("input5")).val());
@@ -121,6 +125,9 @@ define(function(require){
 		if (localStorage.getItem("email")) {
 			this.comp("input5").val(localStorage.getItem("email"));
 		}
+	};
+	Model.prototype.span4Click = function(event){
+		justep.Shell.showPage('tsm_contract.w');
 	};
 	return Model;
 });

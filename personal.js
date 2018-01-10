@@ -77,7 +77,7 @@ define(function(require){
 		$(this.getElementByXid("span22")).html(lang.personal[13]);
 		$(this.getElementByXid("span21")).html(lang.personal[14]);
 		$(this.getElementByXid("span18")).html(lang.personal[17]);
-		$(this.getElementByXid("content1")).css("display","block");
+		$(this.getElementByXid("content2")).css("display","block");
 	};
 
 	Model.prototype.showhidBtnClick = function(event){
@@ -155,11 +155,11 @@ define(function(require){
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
-			var token=localStorage.getItem("jwt_token");
-			var ids = token.split(".");
-			var id = JSON.parse(base64.decode(ids[1]));
-			if (id&&event.data.email) {
-				localStorage.setItem("thismyuserId", id.sub);
+//			var token=localStorage.getItem("jwt_token");
+//			var ids = token.split(".");
+//			var id = JSON.parse(base64.decode(ids[1]));
+			if (event.data.email) {
+//				localStorage.setItem("thismyuserId", id.sub);
 				localStorage.setItem("email", event.data.email);
 			}
 			this.comp("windowDialog1").close();

@@ -249,6 +249,25 @@ define(function(require){
 	}
 //交易记录加载/刷新--许鑫君
 	Model.prototype.transactionrecordCustomRefresh = function(event){
+		if (this.params.name) {
+			this.comp("input1").set({
+				placeHolder:this.params.name
+			});
+		}
+//		var transactionrecord = this.comp("transactionrecord");
+//		transactionrecord.clear();
+		event.source.clear();
+		var record = getorders.getTransactionRecord();
+		 if (record==undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		if (record.length==0) {
+//			this.showprompt(lang.showprompt[9]);
+		}else{
+			event.source.loadData(record);
+		}
 	};
 //校验产品id是否属于当前用户--许鑫君
 	Model.prototype.input1Blur = function(event){
@@ -584,11 +603,11 @@ define(function(require){
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
-			var token=localStorage.getItem("jwt_token");
-			var ids = token.split(".");
-			var id = JSON.parse(base64.decode(ids[1]));
-			if (id&&event.data.email) {
-				localStorage.setItem("thismyuserId", id.sub);
+//			var token=localStorage.getItem("jwt_token");
+//			var ids = token.split(".");
+//			var id = JSON.parse(base64.decode(ids[1]));
+			if (event.data.email) {
+//				localStorage.setItem("thismyuserId", id.sub);
 				localStorage.setItem("email", event.data.email);
 			}
 			 complex_page=1;
@@ -649,25 +668,25 @@ define(function(require){
 
 
 	Model.prototype.recordcontentActive = function(event){
-		if (this.params.name) {
-			this.comp("input1").set({
-				placeHolder:this.params.name
-			});
-		}
-		var transactionrecord = this.comp("transactionrecord");
-		transactionrecord.clear();
-//		event.source.clear();
-		var record = getorders.getTransactionRecord();
-		 if (record==undefined) {
-			this.comp("windowDialog1").open();
-			this.showprompt(lang.showprompt[0]);
-			return;
-		}
-		if (record.length==0) {
-			this.showprompt(lang.showprompt[9]);
-		}else{
-			event.source.loadData(record);
-		}
+//		if (this.params.name) {
+//			this.comp("input1").set({
+//				placeHolder:this.params.name
+//			});
+//		}
+//		var transactionrecord = this.comp("transactionrecord");
+//		transactionrecord.clear();
+////		event.source.clear();
+//		var record = getorders.getTransactionRecord();
+//		 if (record==undefined) {
+//			this.comp("windowDialog1").open();
+//			this.showprompt(lang.showprompt[0]);
+//			return;
+//		}
+//		if (record.length==0) {
+//			this.showprompt(lang.showprompt[9]);
+//		}else{
+//			event.source.loadData(record);
+//		}
 	};
 
 

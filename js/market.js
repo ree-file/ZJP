@@ -339,7 +339,7 @@ define(function(require){
 		sellProductionajax:function(productionId,price,password){
 			var status = 400;
 			$.ajax({
-				url:config.site+"nests/"+productionId+"/sell2",
+				url:config.site+"nests/"+productionId+"/sell",
 				async:false,
 				dataType:"json",
 				type:"post",

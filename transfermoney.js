@@ -238,7 +238,7 @@ define(function(require){
 			changemoney = justep.Shell.rate.latestValue;
 		}
 		if ($.trim(this.comp("input1").val())) {
-			this.comp("moneyInput").val((parseFloat(this.comp("input1").val())/changemoney).toFixed(2));
+			this.comp("moneyInput").val((parseFloat(this.comp("input1").val())/parseFloat(changemoney)).toFixed(2));
 		}
 
 	};
@@ -253,7 +253,7 @@ define(function(require){
 			changemoney = justep.Shell.rate.latestValue;
 		}
 	if ($.trim(this.comp("moneyInput").val())) {
-		this.comp("input1").val((parseFloat(this.comp("moneyInput").val())*changemoney).toFixed(2));
+		this.comp("input1").val((parseFloat(this.comp("moneyInput").val())*parseFloat(changemoney)).toFixed(2));
 	}
 	};
 
