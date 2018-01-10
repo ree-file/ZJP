@@ -264,13 +264,12 @@ define(function(require) {
 
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
-			var token=localStorage.getItem("jwt_token");
-			var ids = token.split(".");
-			var id = JSON.parse(base64.decode(ids[1]));
-			if (id&&event.data.email) {
-				localStorage.setItem("thismyuserId", id.sub);
+//			var token=localStorage.getItem("jwt_token");
+//			var ids = token.split(".");
+//			var id = JSON.parse(base64.decode(ids[1]));
+			if (event.data.email) {
+//				localStorage.setItem("thismyuserId", id.sub);
 				localStorage.setItem("email", event.data.email);
-				common.setCommon({userId:id.sub,email:event.data.email});
 			}
 			this.comp("windowDialog1").close();
 			this.comp("contents1").next();

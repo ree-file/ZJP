@@ -433,7 +433,7 @@ define(function(require){
 			var income=[];
 			var status =400;
 			$.ajax({
-				url:config.site+"private/income",
+				url:config.site+"private/income-records",
 				async:false,
 				dataType:"json",
 				type:"GET",

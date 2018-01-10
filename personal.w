@@ -4,7 +4,7 @@
   </div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1" style="background-color:#282F37;"> 
       <div class="x-panel-content" xid="content1" style="background-color:#282F37;"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
-   <div class="x-panel-content" xid="content2" style="height:100%;">
+   <div class="x-panel-content" xid="content2" style="display:none;height:100%;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;position:relative;height:30%;">
    <div class="x-col" xid="col4" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;height:100%;width:100%;position:relative;"><img src="$UI/ZJP/images/timg.jpg" alt="" xid="image1" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;width:100%;" height="100%"></img>
   <span xid="span1" style="font-size:xx-large;color:#FFFFFF;position:absolute;font-family:微软雅黑 Light;font-variant:small-caps;text-transform:lowercase;font-style:inherit;left:60%;top:70px;"><![CDATA[]]></span>

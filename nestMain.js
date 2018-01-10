@@ -106,21 +106,8 @@ define(function(require){
 		$(this.getElementByXid("span31")).html(lang.nestMain[17]);
 		$(this.getElementByXid("span17")).html(lang.nestMain[18]);
 		$(this.getElementByXid("span18")).html(lang.nestMain[19]);
-		if (this.params.status==1) {
-			$(this.getElementByXid("span26")).html(lang.nestMain[25]);
-			$(this.getElementByXid("span37")).html(lang.nestMain[26]);
-			$(this.getElementByXid("span38")).html(lang.nestMain[27]);
-			$(this.getElementByXid("span39")).html(lang.nestMain[28]);
-			this.comp("titleBar1").set({
-			title:lang.nestMain[29]
-		});
-		}
-		else{
-			$(this.getElementByXid("span26")).html(lang.nestMain[20]);
-			this.comp("titleBar1").set({
-			title:lang.nestMain[0]
-		});
-		}
+		
+		
 		$(this.getElementByXid("span27")).html(lang.nestMain[21]);
 		$(this.getElementByXid("h51")).html(lang.nestMain[22]);
 		$(this.getElementByXid("h53")).html(lang.nestMain[23]);
@@ -129,6 +116,21 @@ define(function(require){
 		$(this.getElementByXid("content1")).css("display","block");
 	};
 	Model.prototype.modelParamsReceive = function(event){
+		if (this.params.status==1) {
+			$(this.getElementByXid("span26")).html(lang.nestMain[25]);
+			$(this.getElementByXid("span37")).html(lang.nestMain[26]);
+			$(this.getElementByXid("span38")).html(lang.nestMain[27]);
+			$(this.getElementByXid("span39")).html(lang.nestMain[28]);
+			this.comp("titleBar1").set({
+			title:lang.nestMain[29]
+			});
+		}
+		else{
+			$(this.getElementByXid("span26")).html(lang.nestMain[20]);
+			this.comp("titleBar1").set({
+			title:lang.nestMain[0]
+			});
+		}
 		var nest_id = this.params.nest_id;
 		var contract_id = this.params.contract_id;
 		nestInfo = contract.contractInfo(nest_id);
@@ -477,11 +479,11 @@ define(function(require){
 	
 	Model.prototype.windowDialog1Receive = function(event){
 		if (event.data.data) {
-			var token=localStorage.getItem("jwt_token");
-			var ids = token.split(".");
-			var id = JSON.parse(base64.decode(ids[1]));
-			if (id&&event.data.email) {
-				localStorage.setItem("thismyuserId", id.sub);
+//			var token=localStorage.getItem("jwt_token");
+//			var ids = token.split(".");
+//			var id = JSON.parse(base64.decode(ids[1]));
+			if (event.data.email) {
+//				localStorage.setItem("thismyuserId", id.sub);
 				localStorage.setItem("email", event.data.email);
 			}
 			this.comp("windowDialog1").close();

@@ -71,6 +71,7 @@ define(function(require){
 				type:"POST",
 				success:function(data){
 					is_success=true;
+					localStorage.setItem("thismyuserId", data.data.id);
 					jwt.setToken(data.data.jwt_token);
 				},
 				error:function(ero){
