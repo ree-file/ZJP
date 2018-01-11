@@ -23,6 +23,9 @@ define(function(require){
 						if (attr == "USD_TO_CNY") {
 							config_egg.rate = data.data[attr];
 						}
+						if (attr == "NOTICE") {
+							config_egg.notice = data.data[attr];
+						}
 					}
 				},
 				error:function(ero){

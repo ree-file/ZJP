@@ -184,7 +184,7 @@ define(function(require){
 			withdrawData[i]={
 					id:i+1,
 					date:new Date(),
-					money:nestInfo[i].hatches*eggval,
+					money:nestInfo[i].hatches+"只",
 					contract_id:nestInfo[i].id,
 					message:lang.nestMain[16],
 			}
@@ -203,11 +203,11 @@ define(function(require){
 			name:this.params.nest_name,
 			date:nestInfo[0].created_at,
 			released:released.toFixed(2),
-			investment:investment.toFixed(2),
+			investment:parseFloat(nestInfo[0].val),
 			contract_id:this.params.id,
 			speed:0.01,
 			globalValue:USDrate==undefined?6.5:USDrate,
-			currentWorth:parseFloat(nestInfo[0].val),
+			currentWorth:parseFloat(nestInfo[0].eggs),
 			expectReturn:3.00,
 			is_finished:nestInfo[0].is_finished,
 			type:nestInfo[0].eggs,
@@ -215,14 +215,6 @@ define(function(require){
 		event.source.loadData(nestvalues);
 	};
 
-	
-	
-	
-	
-
-	
-	
-	
 	Model.prototype.historyDataCustomRefresh = function(event){
 		if (nestInfo==undefined) {
 			return;
@@ -243,6 +235,10 @@ define(function(require){
 		var accountData=[];
 		var extracted_money=0;
 		var get_money = 0;
+		if (!justep.Shell.eggval) {
+			common.getCommon(config);
+		}
+		 eggval= justep.Shell.eggval.latestValue;
 		if (!this.params.nest_id) {
 			return;
 		}
@@ -253,7 +249,7 @@ define(function(require){
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
-					money:account[int].coins+"猫币",
+					money:(parseFloat(account[int].coins)/parseFloat(eggval)).toFixed(2)+"备用",
 					message:account[int].type=="bonus"?"邀请":"日常",
 					status:2
 				}
@@ -263,7 +259,7 @@ define(function(require){
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
-					money:account[int].money_active+"可提",
+					money:(parseFloat(account[int].money_active)/parseFloat(eggval)).toFixed(2)+"可提",
 					message:account[int].type=="bonus"?"邀请":"日常",
 					status:2
 				}
@@ -273,7 +269,7 @@ define(function(require){
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
-					money:account[int].money_limit+"限制",
+					money:(parseFloat(account[int].money_limit)/parseFloat(eggval)).toFixed(2)+"限制",
 					message:account[int].type=="bonus"?"邀请":"日常",
 					status:2
 				}

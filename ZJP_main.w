@@ -27,14 +27,18 @@
   <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;类型&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;邀请&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;日常&quot;}]</data></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="moneytype" idColumn="id"><column name="id" type="Integer" xid="xid24"></column>
   <column name="name" type="String" xid="xid25"></column>
-  <data xid="default2">[{&quot;id&quot;:1,&quot;name&quot;:&quot;金额&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;可提&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;备用金&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;限制&quot;}]</data></div></div>  
+  <column name="type" type="String" xid="xid26"></column>
+  <data xid="default2">[{&quot;id&quot;:1,&quot;name&quot;:&quot;小猫&quot;,&quot;type&quot;:&quot;金额&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;可提猫&quot;,&quot;type&quot;:&quot;可提&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;备用猫&quot;,&quot;type&quot;:&quot;备用&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;限制猫&quot;,&quot;type&quot;:&quot;限制&quot;}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
         <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar titlebar" xid="titleBar1">
    <div class="x-titlebar-left" xid="left1"></div>
    <div class="x-titlebar-title" xid="title1"><![CDATA[]]></div>
-   <div class="x-titlebar-right reverse" xid="right1"></div></div></div>  
+   <div class="x-titlebar-right reverse" xid="right1" style="text-align:center"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button4" icon="e-commerce e-commerce-xiaoxi" style="margin:0 auto;height:100%;" onClick="button4Click">
+   <i xid="i4" class="e-commerce e-commerce-xiaoxi" style="z-index:99;font-size:30px;"></i>
+   <div xid="div21" style="display:none;float:right;z-index:99999;color:white;line-height:11px;font-size:xx-small;border-radius:50%;background-color:red;height:12px;width:12px;" draggable="true"><span xid="span19"><![CDATA[1]]></span></div></a>
+  </div></div></div>  
     <div class="x-panel-content" xid="content1" style="background:#1C1F26;height:100%;">
   
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" onActiveChange="contents1ActiveChange">

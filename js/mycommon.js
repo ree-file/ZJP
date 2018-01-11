@@ -27,6 +27,10 @@ define(function(){
 					justep.Shell.level = justep.Bind.observable();
 					justep.Shell.level.set(params[items]);
 					break;
+				case "notice":
+					justep.Shell.notice = justep.Bind.observable();
+					justep.Shell.notice.set(params[items]);
+					break;
 				default:
 					break;
 				}
@@ -34,7 +38,7 @@ define(function(){
 		},
 		getCommon:function(config){
 			var common = config.configegg();
-			this.setCommon({eggval:common.egg_val,rate:common.rate,level:common.level_worth});
+			this.setCommon({eggval:common.egg_val,rate:common.rate,level:common.level_worth,notice:common.notice});
 		},
 		refreshCommon:function(){
 			

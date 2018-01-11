@@ -5,4 +5,4 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;left:390px;top:161px;" onLoad="modelLoad"/>  
   <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full"
     active="0" xid="pages" swipe="false"><div class="x-contents-content" xid="main"><div component="$UI/system/components/justep/windowContainer/windowContainer" class="x-window-container" xid="mainContainer" src="$UI/ZJP/ZJP_main.w"></div></div></div>
-<span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive" onClose="windowDialog1Close"></span></div>
+<span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceive="windowDialog1Receive" onClose="windowDialog1Close" style="top:119px;left:56px;"></span></div>

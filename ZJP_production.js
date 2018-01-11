@@ -136,7 +136,7 @@ define(function(require){
 		//必要的信息获取和填充
 		this.comp("typedata").refreshData();
 		var my_money = users.getUserMessage();
-		$(this.getElementByXid("money")).html(my_money['active'].toFixed(2));
+		$(this.getElementByXid("money")).html(my_money['investment'].toFixed(2));
 		$(this.getElementByXid("investment")).html(my_money['limit'].toFixed(2));
 		if (this.params.name) {
 			this.comp("input2").val(this.params.name);

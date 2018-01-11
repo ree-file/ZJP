@@ -76,6 +76,9 @@ define(function(require) {
 				"tsm_contract" : {
 					url : require.toUrl('./tsm_contract.w')
 				},
+				"tsm_news" : {
+					url : require.toUrl('./tsm_news.w')
+				},
 			}
 		})
 

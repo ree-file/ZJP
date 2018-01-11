@@ -102,6 +102,9 @@ define(function(require) {
 			}
 		}
 		$(this.getElementByXid("span18")).html("AngleCatID："+justep.Shell.userId.latestValue);
+		if (justep.Shell.notice.latestValue.length>10) {
+			$(this.getElementByXid("div21")).show();
+		}
 	};
 //若用户输入账号密码登录则要检查一下用户是否有二级密码--许鑫君
 	Model.prototype.modelParamsReceive = function(event){
@@ -156,12 +159,16 @@ define(function(require) {
 	Model.prototype.incomeAccountCustomRefresh = function(event){
 		var income = user.getUserIncome(page);
 		var params = [];
-		
+		var eggval;
 		if (income==undefined) {
 			this.comp("windowDialog1").open();
 			this.showprompt(lang.showprompt[0]);
 			return;
 		}
+		if (!justep.Shell.eggval) {
+			common.getCommon(config);
+		}
+		 eggval= justep.Shell.eggval.latestValue;
 		if (income.length!=0) {
 			for (var int = 0; int < income.length; int++) {
 				if (income[int].coins!=0) {
@@ -169,7 +176,7 @@ define(function(require) {
 						id:params.length+1,
 						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:"$"+income[int].coins+"备用金",
+						income:(parseFloat(income[int].coins)/parseFloat(eggval)).toFixed(2)+"备用",
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
@@ -179,7 +186,7 @@ define(function(require) {
 						id:params.length+1,
 						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:"$"+income[int].money_limit+"限制币",
+						income:(parseFloat(income[int].money_limit)/parseFloat(eggval)).toFixed(2)+"限制",
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
@@ -188,7 +195,7 @@ define(function(require) {
 						id:params.length+1,
 						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:"$"+income[int].money_active+"可提",
+						income:(parseFloat(income[int].money_active)/parseFloat(eggval)).toFixed(2)+"可提",
 						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
 					}
 				}
@@ -253,7 +260,7 @@ define(function(require) {
 	};
 
 	Model.prototype.button4Click = function(event){
-
+		justep.Shell.showPage("tsm_news");
 	};
 
 	Model.prototype.modelActive = function(event){
@@ -336,7 +343,7 @@ define(function(require) {
 			toTypeRow.pre();
 		}
 		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
-		$(this.getElementByXid("span13")).html("金额");
+		$(this.getElementByXid("span13")).html("小猫");
 		if (toTypeRow.val("name")=="类型") {
 			list.set({
 			filter:''
@@ -360,7 +367,7 @@ define(function(require) {
 			toTypeRow.next();
 		}
 		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
-		$(this.getElementByXid("span13")).html("金额");
+		$(this.getElementByXid("span13")).html("小猫");
 		if (toTypeRow.val("name")=="类型") {
 			list.set({
 			filter:''
@@ -402,14 +409,14 @@ define(function(require) {
 		}
 		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
 		$(this.getElementByXid("span1")).html("类型");
-		if (toTypeRow.val("name")=="金额") {
+		if (toTypeRow.val("type")=="金额") {
 			list.set({
 				filter:''
 			});
 		}
 		else{
 			list.set({
-				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("name")+'")'
+				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("type")+'")'
 			});
 		}
 		list.refresh(false);
@@ -426,14 +433,14 @@ define(function(require) {
 		}
 		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
 		$(this.getElementByXid("span1")).html("类型");
-		if (toTypeRow.val("name")=="金额") {
+		if (toTypeRow.val("type")=="金额") {
 			list.set({
 			filter:''
 			});
 		}
 		else{
 			list.set({
-				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("name")+'")'
+				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("type")+'")'
 			});
 		}
 		
