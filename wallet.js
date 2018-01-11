@@ -2,7 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var personalMoney = require('./js/personal');
-	var pwState = true;
+	var pwState = false;
 	var catcoins;
 	var moneyactive;
 	var moneylimit;
@@ -35,11 +35,11 @@ define(function(require){
 			moneyspan4.text("******");
      		 pwState = true;
    		 } else {
-			moneyspan0.text(Number(moneyactive) + Number(catcoins) + Number(moneylimit) + Number(money_withdrawal));//all
-			moneyspan1.text(moneyactive);//moneyactive
-			moneyspan2.text(catcoins);//catcoins
-			moneyspan3.text(moneylimit);//money_limit
-			moneyspan4.text(money_withdrawal);//money_limit
+			moneyspan0.text((Number(moneyactive) + Number(catcoins) + Number(moneylimit) + Number(money_withdrawal)).toFixed(2));//all
+			moneyspan1.text(moneyactive+lang.wallet[17]);//moneyactive
+			moneyspan2.text(catcoins+lang.wallet[17]);//catcoins
+			moneyspan3.text(moneylimit+lang.wallet[17]);//money_limit
+			moneyspan4.text(money_withdrawal+lang.wallet[17]);//money_limit
 			pwState = false;
     	}
 	};
@@ -79,11 +79,11 @@ define(function(require){
 			return;
 		}
 		money_withdrawal = moneyall.money_withdrawal;
-		moneyspan0.text(Number(moneyall.money_active) + Number(moneyall.coins) + Number(moneyall.money_limit) + Number(money_withdrawal));
-		moneyspan1.text(moneyall.money_active);
-		moneyspan2.text(moneyall.coins);
-		moneyspan3.text(moneyall.money_limit);
-		moneyspan4.text(money_withdrawal);
+		moneyspan0.text((Number(moneyall.money_active) + Number(moneyall.coins) + Number(moneyall.money_limit) + Number(money_withdrawal)).toFixed(2));
+		moneyspan1.text(moneyall.money_active+lang.wallet[17]);
+		moneyspan2.text(moneyall.coins+lang.wallet[17]);
+		moneyspan3.text(moneyall.money_limit+lang.wallet[17]);
+		moneyspan4.text(money_withdrawal+lang.wallet[17]);
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;

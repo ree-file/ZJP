@@ -127,7 +127,7 @@ define(function(require){
 		}
 	};
 	Model.prototype.span4Click = function(event){
-		justep.Shell.showPage('tsm_contract.w');
+		justep.Shell.showPage("tsm_contract");
 	};
 	return Model;
 });
