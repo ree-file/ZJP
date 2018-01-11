@@ -23,20 +23,20 @@
       <div class="x-col" xid="col15" style="padding-bottom:0px;">
        <input component="$UI/system/components/justep/input/password" class="input-group-addon" xid="password1" bind-focus="password1Focus" bind-blur="password1Blur"></input></div> </div> </div> 
     <div xid="div1" style="padding:10px 10px 10px 10px;">
-     <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" xid="button1" style="background-color:#5D92E2;height:38px;" onClick="button1Click">
+     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
+   <div class="x-col x-col-20" xid="col4" style="text-align:right;"><span component="$UI/system/components/justep/button/checkbox" class="x-checkbox x-checkbox-sm" xid="checkbox1" style="line-height:20px;"></span></div>
+   <div class="x-col" xid="col5"><span xid="span4" style="line-height:26px;color:#5D92E2;" bind-click="span4Click"><![CDATA[天使猫使用合约]]></span></div>
+   <div class="x-col" xid="col6"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button2" onClick="button2Click" style="padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;">
+   <i xid="i2"></i>
+   <span xid="span3" style="line-height:22px;color:#5D92E2;"></span></a></div></div><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" xid="button1" style="background-color:#5D92E2;height:38px;" onClick="button1Click">
       <i xid="i1"></i>
       <span xid="span2"></span></a> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
       <div class="x-col" xid="col1">
        </div> 
-      <div class="x-col center-block text-center" xid="col2"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button2" style="font-size:medium;font-family:华文细黑;font-weight:500;color:#567DC7;width:100%;" onClick="button2Click">
-   <i xid="i2"></i>
-   <span xid="span3"></span></a></div>
+      <div class="x-col center-block text-center" xid="col2"></div>
       <div class="x-col" xid="col3">
        </div> </div> 
-     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
-   <div class="x-col" xid="col4" style="text-align:right;"><span component="$UI/system/components/justep/button/checkbox" class="x-checkbox x-checkbox-sm" xid="checkbox1" style="line-height:20px;"></span></div>
-   <div class="x-col" xid="col5"><span xid="span4" style="line-height:26px;color:#5D92E2;" bind-click="span4Click"><![CDATA[天使猫使用合约]]></span></div>
-   <div class="x-col" xid="col6"></div></div></div> 
+     </div> 
   </div> </div>
   </div>

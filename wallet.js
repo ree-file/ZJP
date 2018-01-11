@@ -2,7 +2,7 @@ define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var personalMoney = require('./js/personal');
-	var pwState = true;
+	var pwState = false;
 	var catcoins;
 	var moneyactive;
 	var moneylimit;
@@ -22,34 +22,37 @@ define(function(require){
 	};
 
 	Model.prototype.showhidBtnClick = function(event){
+		var moneyspan0 = $(this.getElementByXid("allMSpan"));
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
-		var moneyspan2 = $(this.getElementByXid("allMSpan"));
+		var moneyspan2 = $(this.getElementByXid("coinsMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
 		var moneyspan4 = $(this.getElementByXid("cangetSpan"));
 		if (!pwState) {
 			moneyspan1.text("******");
+			moneyspan0.text("******");
 			moneyspan2.text("******");
 			moneyspan3.text("******");
 			moneyspan4.text("******");
-      pwState = true;
-    } else {
-      moneyspan1.text(moneyactive);//moneyactive
-      moneyspan2.text(catcoins);//catcoins
-      moneyspan3.text(moneylimit);//money_limit
-      moneyspan4.text(money_withdrawal);//money_limit
-      pwState = false;
-    }
+     		 pwState = true;
+   		 } else {
+			moneyspan0.text((Number(moneyactive) + Number(catcoins) + Number(moneylimit) + Number(money_withdrawal)).toFixed(2));//all
+			moneyspan1.text(moneyactive+lang.wallet[17]);//moneyactive
+			moneyspan2.text(catcoins+lang.wallet[17]);//catcoins
+			moneyspan3.text(moneylimit+lang.wallet[17]);//money_limit
+			moneyspan4.text(money_withdrawal+lang.wallet[17]);//money_limit
+			pwState = false;
+    	}
 	};
 
 	Model.prototype.modelLoad = function(event){
 		this.comp("title").set({
 			title:lang.wallet[0]
 		});
-		$(this.getElementByXid("span3")).html(lang.wallet[1]);
+		$(this.getElementByXid("span10")).html(lang.wallet[1]);
 		$(this.getElementByXid("span7")).html(lang.wallet[2]);
 		$(this.getElementByXid("span8")).html(lang.wallet[4]);
 		$(this.getElementByXid("span6")).html(lang.wallet[14]);
-		$(this.getElementByXid("span10")).html(lang.wallet[5]);
+		$(this.getElementByXid("span22")).html(lang.wallet[5]);
 		$(this.getElementByXid("span13")).html(lang.wallet[6]);
 		$(this.getElementByXid("span16")).html(lang.wallet[8]);
 		$(this.getElementByXid("span18")).html(lang.wallet[15]);
@@ -58,8 +61,10 @@ define(function(require){
 		$(this.getElementByXid("span1")).html(lang.wallet[11]);
 		$(this.getElementByXid("span9")).html(lang.wallet[12]);
 		$(this.getElementByXid("span12")).html(lang.wallet[13]);
+		$(this.getElementByXid("span3")).html(lang.wallet[16]);
+		var moneyspan0 = $(this.getElementByXid("allMSpan"));
 		var moneyspan1 = $(this.getElementByXid("activeMSpan"));
-		var moneyspan2 = $(this.getElementByXid("allMSpan"));
+		var moneyspan2 = $(this.getElementByXid("coinsMSpan"));
 		var moneyspan3 = $(this.getElementByXid("limitMSpan"));
 		var moneyspan4 = $(this.getElementByXid("cangetSpan"));
 		var moneyall = personalMoney.money();
@@ -74,10 +79,11 @@ define(function(require){
 			return;
 		}
 		money_withdrawal = moneyall.money_withdrawal;
-		moneyspan1.text(moneyall.money_active);
-		moneyspan2.text(moneyall.coins);
-		moneyspan3.text(moneyall.money_limit);
-		moneyspan4.text(money_withdrawal);
+		moneyspan0.text((Number(moneyall.money_active) + Number(moneyall.coins) + Number(moneyall.money_limit) + Number(money_withdrawal)).toFixed(2));
+		moneyspan1.text(moneyall.money_active+lang.wallet[17]);
+		moneyspan2.text(moneyall.coins+lang.wallet[17]);
+		moneyspan3.text(moneyall.money_limit+lang.wallet[17]);
+		moneyspan4.text(money_withdrawal+lang.wallet[17]);
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;
