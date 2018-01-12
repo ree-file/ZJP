@@ -78,15 +78,15 @@ define(function(require){
 			this.modelLoad(event);
 			return;
 		}
-		money_withdrawal = moneyall.money_withdrawal;
 		moneyspan0.text((Number(moneyall.money_active) + Number(moneyall.coins) + Number(moneyall.money_limit) + Number(money_withdrawal)).toFixed(2));
 		moneyspan1.text(moneyall.money_active+lang.wallet[17]);
 		moneyspan2.text(moneyall.coins+lang.wallet[17]);
 		moneyspan3.text(moneyall.money_limit+lang.wallet[17]);
-		moneyspan4.text(money_withdrawal+lang.wallet[17]);
+		moneyspan4.text(moneyall.money_withdrawal+lang.wallet[17]);
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;
+		money_withdrawal = moneyall.money_withdrawal;
 		$(this.getElementByXid("content2")).css("display","block");
 	};
 
