@@ -90,4 +90,5 @@
    <div class="x-col" xid="col6"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm" label="设置密码" xid="button9" style="color:#8E8E8E;" onClick="button9Click">
    <i xid="i9"></i>
    <span xid="span5">设置密码</span></a></div></div></div></div>
-  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceived="windowDialog1Received" style="top:94px;left:104px;"></span></div>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" src="$UI/ZJP/mailLogin.w" onReceived="windowDialog1Received" style="top:94px;left:104px;"></span>
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog2" src="$UI/ZJP/tsm_contract.w" onReceive="windowDialog2Receive"></span></div>

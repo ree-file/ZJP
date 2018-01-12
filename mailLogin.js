@@ -127,7 +127,20 @@ define(function(require){
 		}
 	};
 	Model.prototype.span4Click = function(event){
-		justep.Shell.showPage("tsm_contract");
+		this.comp("windowDialog1").open();
+	};
+	Model.prototype.windowDialog1Receive = function(event){
+		if (event.data.check) {
+			this.comp("checkbox1").set({
+				checked:true
+			});
+		}
+		else{
+			this.comp("checkbox1").set({
+				checked:false
+			});
+		}
+		this.comp("windowDialog1").close();
 	};
 	return Model;
 });

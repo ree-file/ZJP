@@ -164,12 +164,28 @@ define(function(require){
 		historyData =[];
 		withdrawData=[];
 		var available =0;
+		var speed = 0.01;
+		var profite = 3;
 		if (justep.Shell.eggval) {
 			eggval = justep.Shell.eggval.latestValue;
 		}
 		else{
 			common.getCommon(config);
 			eggval = justep.Shell.eggval.latestValue;
+		}
+		if (justep.Shell.hatch) {
+			speed = justep.Shell.hatch.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			speed = justep.Shell.hatch.latestValue;
+		}
+		if (justep.Shell.profite) {
+			profite = justep.Shell.profite.latestValue;
+		}
+		else{
+			common.getCommon(config);
+			profite = justep.Shell.profite.latestValue;
 		}
 		for (var i = 0; i < nestInfo.length; i++) {
 			released+=nestInfo[i].hatches*eggval;
@@ -184,7 +200,7 @@ define(function(require){
 			withdrawData[i]={
 					id:i+1,
 					date:new Date(),
-					money:nestInfo[i].hatches+"只",
+					money:nestInfo[i].hatches+lang.nestMain[30],
 					contract_id:nestInfo[i].id,
 					message:lang.nestMain[16],
 			}
@@ -205,10 +221,10 @@ define(function(require){
 			released:released.toFixed(2),
 			investment:parseFloat(nestInfo[0].val),
 			contract_id:this.params.id,
-			speed:0.01,
+			speed:speed,
 			globalValue:USDrate==undefined?6.5:USDrate,
 			currentWorth:parseFloat(nestInfo[0].eggs),
-			expectReturn:3.00,
+			expectReturn:profite,
 			is_finished:nestInfo[0].is_finished,
 			type:nestInfo[0].eggs,
 		}];
@@ -249,8 +265,8 @@ define(function(require){
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
-					money:(parseFloat(account[int].coins)/parseFloat(eggval)).toFixed(2)+"备用",
-					message:account[int].type=="bonus"?"邀请":"日常",
+					money:(parseFloat(account[int].coins)/parseFloat(eggval)).toFixed(2)+lang.nestMain[30],
+					message:(account[int].type=="bonus"?lang.nestMain[34]:lang.nestMain[35])+"("+lang.nestMain[33]+")",
 					status:2
 				}
 				get_money=account[int].coins;
@@ -259,8 +275,8 @@ define(function(require){
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
-					money:(parseFloat(account[int].money_active)/parseFloat(eggval)).toFixed(2)+"可提",
-					message:account[int].type=="bonus"?"邀请":"日常",
+					money:(parseFloat(account[int].money_active)/parseFloat(eggval)).toFixed(2)+lang.nestMain[30],
+					message:(account[int].type=="bonus"?lang.nestMain[34]:lang.nestMain[35])+"("+lang.nestMain[31]+")",
 					status:2
 				}
 				get_money=account[int].money_active;
@@ -269,8 +285,8 @@ define(function(require){
 				accountData[accountData.length]={
 					id:	accountData.length,
 					date:account[int].created_at,
-					money:(parseFloat(account[int].money_limit)/parseFloat(eggval)).toFixed(2)+"限制",
-					message:account[int].type=="bonus"?"邀请":"日常",
+					money:(parseFloat(account[int].money_limit)/parseFloat(eggval)).toFixed(2)+lang.nestMain[30],
+					message:(account[int].type=="bonus"?lang.nestMain[34]:lang.nestMain[35])+"("+lang.nestMain[32]+")",
 					status:2
 				}
 				get_money=account[int].money_limit;

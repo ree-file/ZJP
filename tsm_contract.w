@@ -20,7 +20,8 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="background-color:#252932;"><p xid="p1" style="color:white"><![CDATA[  
+    <div class="x-panel-content" xid="content1" style="background-color:#252932;"></div>
+  <p xid="p1" style="color:white"><![CDATA[
 甲方： 
 乙方：  
 经甲乙双方充分协商，在平等自愿、协商一致的情况下，就乙方在甲方工作时间内及从事垃圾清运过程中的相关事宜，达成如下免责协议：  
@@ -30,6 +31,11 @@
 四、 乙方因自身原因常年患病，且血压较高和心脏疾病。如突发疾病造成任何意外和事故，甲方不承担任何法律责任。所产生的一切后果由乙方全部承担。  
 五、 本协议书双方签字后产生法律效力，未尽事宜，双方协商解决。协议一式两份，甲乙双方各执一份，以做法律之依据。  
 甲方：   年     月     日   乙方：   年     月     日
-]]></p></div>
-  </div> 
+]]></p><div class="x-panel-bottom" xid="bottom1" style="background-color:#1C1F26;"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;height:100%;">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="同意" xid="button1" style="color:white;" onClick="button1Click">
+    <i xid="i1"></i>
+    <span xid="span1">同意</span></a> 
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="拒绝" xid="button2" style="color:white" onClick="button2Click">
+    <i xid="i2"></i>
+    <span xid="span2">拒绝</span></a> </div></div></div> 
 </div>

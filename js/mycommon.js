@@ -31,6 +31,14 @@ define(function(){
 					justep.Shell.notice = justep.Bind.observable();
 					justep.Shell.notice.set(params[items]);
 					break;
+				case "hatch":
+					justep.Shell.hatch = justep.Bind.observable();
+					justep.Shell.hatch.set(params[items]);
+					break;
+				case "profite":
+					justep.Shell.profite = justep.Bind.observable();
+					justep.Shell.profite.set(params[items]);
+					break;
 				default:
 					break;
 				}
@@ -38,7 +46,7 @@ define(function(){
 		},
 		getCommon:function(config){
 			var common = config.configegg();
-			this.setCommon({eggval:common.egg_val,rate:common.rate,level:common.level_worth,notice:common.notice});
+			this.setCommon({eggval:common.egg_val,rate:common.rate,level:common.level_worth,notice:common.notice,hatch:common.hatch,profite:common.profite});
 		},
 		refreshCommon:function(){
 			

@@ -552,7 +552,21 @@ define(function(require){
 	};
 
 	Model.prototype.span6Click = function(event){
-		justep.Shell.showPage("tsm_contract");
+		this.comp("windowDialog2").open();
+	};
+
+	Model.prototype.windowDialog2Receive = function(event){
+		if (event.data.check) {
+			this.comp("checkbox1").set({
+				checked:true
+			});
+		}
+		else{
+			this.comp("checkbox1").set({
+				checked:false
+			});
+		}
+		this.comp("windowDialog2").close();
 	};
 
 	return Model;

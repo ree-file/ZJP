@@ -176,8 +176,8 @@ define(function(require) {
 						id:params.length+1,
 						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:(parseFloat(income[int].coins)/parseFloat(eggval)).toFixed(2)+"备用",
-						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
+						income:(parseFloat(income[int].coins)/parseFloat(eggval)).toFixed(2)+"只",
+						type:(income[int].type=="bonus"?lang.ZJP_main[18]:income[int].type=="daily"?lang.ZJP_main[19]:"转账")+"("+lang.ZJP_main[16]+")"
 					}
 				}
 				 if(income[int].money_limit!=0)
@@ -186,8 +186,8 @@ define(function(require) {
 						id:params.length+1,
 						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:(parseFloat(income[int].money_limit)/parseFloat(eggval)).toFixed(2)+"限制",
-						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
+						income:(parseFloat(income[int].money_limit)/parseFloat(eggval)).toFixed(2)+"只",
+						type:(income[int].type=="bonus"?lang.ZJP_main[18]:income[int].type=="daily"?lang.ZJP_main[19]:"转账")+"("+lang.ZJP_main[17]+")"
 					}
 				}
 				 if (income[int].money_active!=0) {
@@ -195,8 +195,8 @@ define(function(require) {
 						id:params.length+1,
 						name:income[int].nest.name,
 						date:income[int].created_at,
-						income:(parseFloat(income[int].money_active)/parseFloat(eggval)).toFixed(2)+"可提",
-						type:income[int].type=="bonus"?"邀请":income[int].type=="daily"?"日常":"转账"
+						income:(parseFloat(income[int].money_active)/parseFloat(eggval)).toFixed(2)+"只",
+						type:(income[int].type=="bonus"?lang.ZJP_main[18]:income[int].type=="daily"?lang.ZJP_main[19]:"转账")+"("+lang.ZJP_main[15]+")"
 					}
 				}
 
@@ -343,15 +343,15 @@ define(function(require) {
 			toTypeRow.pre();
 		}
 		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
-		$(this.getElementByXid("span13")).html("小猫");
-		if (toTypeRow.val("name")=="类型") {
+		$(this.getElementByXid("span13")).html(lang.ZJP_main[5]);
+		if (toTypeRow.val("name")==lang.ZJP_main[7]) {
 			list.set({
 			filter:''
 			});
 		}
 		else{
 			list.set({
-			filter:' $row.val("type")=="'+toTypeRow.val("name")+'"'
+			filter:' $model.regtestMoneyType($row.val("type"),"'+toTypeRow.val("name")+'")'
 			});
 		}
 		list.refresh(false);
@@ -367,15 +367,15 @@ define(function(require) {
 			toTypeRow.next();
 		}
 		$(this.getElementByXid("span1")).html(toTypeRow.val("name"));
-		$(this.getElementByXid("span13")).html("小猫");
-		if (toTypeRow.val("name")=="类型") {
+		$(this.getElementByXid("span13")).html(lang.ZJP_main[5]);
+		if (toTypeRow.val("name")==lang.ZJP_main[7]) {
 			list.set({
 			filter:''
 			});
 		}
 		else{
 			list.set({
-			filter:' $row.val("type")=="'+toTypeRow.val("name")+'"'
+			filter:' $model.regtestMoneyType($row.val("type"),"'+toTypeRow.val("name")+'")'
 			});
 		}
 		
@@ -408,15 +408,15 @@ define(function(require) {
 			toTypeRow.pre();
 		}
 		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
-		$(this.getElementByXid("span1")).html("类型");
-		if (toTypeRow.val("type")=="金额") {
+		$(this.getElementByXid("span1")).html(lang.ZJP_main[7]);
+		if (toTypeRow.val("type")==lang.ZJP_main[24]) {
 			list.set({
 				filter:''
 			});
 		}
 		else{
 			list.set({
-				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("type")+'")'
+				filter:' $model.regtestMoneyType($row.val("type"),"'+toTypeRow.val("type")+'")'
 			});
 		}
 		list.refresh(false);
@@ -432,19 +432,61 @@ define(function(require) {
 			toTypeRow.next();
 		}
 		$(this.getElementByXid("span13")).html(toTypeRow.val("name"));
-		$(this.getElementByXid("span1")).html("类型");
-		if (toTypeRow.val("type")=="金额") {
+		$(this.getElementByXid("span1")).html(lang.ZJP_main[7]);
+		if (toTypeRow.val("type")==lang.ZJP_main[24]) {
 			list.set({
 			filter:''
 			});
 		}
 		else{
 			list.set({
-				filter:' $model.regtestMoneyType($row.val("income"),"'+toTypeRow.val("type")+'")'
+				filter:' $model.regtestMoneyType($row.val("type"),"'+toTypeRow.val("type")+'")'
 			});
 		}
 		
 		list.refresh(false);
+	};
+
+	Model.prototype.incometypeCustomRefresh = function(event){
+		var params = [{
+			id:1,
+			name:lang.ZJP_main[7],
+			},
+			{
+			id:2,
+			name:lang.ZJP_main[18],
+			},
+			{
+			id:3,
+			name:lang.ZJP_main[19],
+			}
+		];
+		event.source.loadData(params);
+	};
+
+	Model.prototype.moneytypeCustomRefresh = function(event){
+		var params = [{
+			id:1,
+			name:lang.ZJP_main[5],
+			type:lang.ZJP_main[24],
+			},
+			{
+			id:2,
+			name:lang.ZJP_main[21],
+			type:lang.ZJP_main[15],
+			},
+			{
+			id:3,
+			name:lang.ZJP_main[23],
+			type:lang.ZJP_main[16],
+			},
+			{
+			id:4,
+			name:lang.ZJP_main[22],
+			type:lang.ZJP_main[17],
+			}
+		];
+		event.source.loadData(params);
 	};
 
 	return Model;

@@ -26,6 +26,12 @@ define(function(require){
 						if (attr == "NOTICE") {
 							config_egg.notice = data.data[attr];
 						}
+						if (attr == "CONTRACT_DAILY_HATCH_RATE") {
+							config_egg.hatch = data.data[attr];
+						}
+						if (attr == "CONTRACT_PROFITE_RATE") {
+							config_egg.profite = data.data[attr];
+						}
 					}
 				},
 				error:function(ero){

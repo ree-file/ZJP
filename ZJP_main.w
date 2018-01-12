@@ -22,13 +22,13 @@
   <column name="date" type="Date" xid="xid9"></column>
   <column name="income" type="String" xid="xid11"></column>
   <column name="type" type="String" xid="xid15"></column></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="incometype" idColumn="id"><column name="id" type="Integer" xid="xid22"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="incometype" idColumn="id" onCustomRefresh="incometypeCustomRefresh"><column name="id" type="Integer" xid="xid22"></column>
   <column name="name" type="String" xid="xid23"></column>
   <data xid="default1">[{&quot;id&quot;:1,&quot;name&quot;:&quot;类型&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;邀请&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;日常&quot;}]</data></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="moneytype" idColumn="id"><column name="id" type="Integer" xid="xid24"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="moneytype" idColumn="id" onCustomRefresh="moneytypeCustomRefresh"><column name="id" type="Integer" xid="xid24"></column>
   <column name="name" type="String" xid="xid25"></column>
   <column name="type" type="String" xid="xid26"></column>
-  <data xid="default2">[{&quot;id&quot;:1,&quot;name&quot;:&quot;小猫&quot;,&quot;type&quot;:&quot;金额&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;可提猫&quot;,&quot;type&quot;:&quot;可提&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;备用猫&quot;,&quot;type&quot;:&quot;备用&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;限制猫&quot;,&quot;type&quot;:&quot;限制&quot;}]</data></div></div>  
+  <data xid="default2">[{&quot;id&quot;:1,&quot;name&quot;:&quot;小猫&quot;,&quot;type&quot;:&quot;金额&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;钱包猫&quot;,&quot;type&quot;:&quot;钱包&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;备用猫&quot;,&quot;type&quot;:&quot;备用&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;限制猫&quot;,&quot;type&quot;:&quot;限制&quot;}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 

@@ -84,31 +84,30 @@
    <div class="x-col col-padding-left" xid="col68"><h5 xid="h529" class="font-white text-left"><![CDATA[]]></h5></div></div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-height" xid="row15">
    <div class="x-col x-col-33" xid="col44"><h5 xid="h511" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
-   <div class="x-col x-col-50 noMarginPadding" xid="col45">
+   <div class="x-col noMarginPadding" xid="col45">
   <div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row26">
    <div class="x-col x-col-offset-10 col-paddind-right" xid="col78"><h5 xid="h536" class="text-right font-white"><![CDATA[]]></h5></div>
    <div class="x-col col-padding-left" xid="col79">
-    <h5 xid="h535" class="font-white text-left" bind-text='$model.nest.val("speed") * $model.nest.val("currentWorth")+"只"'><![CDATA[]]></h5></div> 
-   <div class="x-col " xid="col77">
-    </div> </div></div>
+    <h5 xid="h535" class="font-white text-left" bind-text='$model.nest.val("speed") * $model.nest.val("currentWorth")+"只"' style="text-align:right;"><![CDATA[]]></h5></div> 
+   </div></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row row-height" xid="row16">
    <div class="x-col x-col-33" xid="col47"><h5 xid="h512" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
-   <div class="x-col x-col-50 noMarginPadding" xid="col48"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row21">
+   <div class="x-col noMarginPadding" xid="col48"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row21">
    <div class="x-col x-col-offset-10 col-paddind-right" xid="col64">
     <h5 xid="h526" class="text-right font-white"><![CDATA[]]></h5></div> 
    <div class="x-col col-padding-left" xid="col63">
-    <h5 xid="h525" class="font-white text-left" bind-text="'$'+$model.nest.val(&quot;investment&quot;)"><![CDATA[]]></h5></div> 
-   <div class="x-col" xid="col62"></div></div></div>
+    <h5 xid="h525" class="font-white text-left" bind-text="'$'+$model.nest.val(&quot;investment&quot;)" style="text-align:right;"><![CDATA[]]></h5></div> 
+   </div></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row " xid="row17" style="height:40px;">
    <div class="x-col x-col-33" xid="col50"><h5 xid="h513" style="font-size:x-small;font-weight:300;" class="gary-font-xsmall"><![CDATA[]]></h5></div>
-   <div class="x-col x-col-50 noMarginPadding" xid="col51"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row22">
+   <div class="x-col noMarginPadding" xid="col51"><div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row22">
    <div class="x-col x-col-offset-10 col-paddind-right" xid="col67">
     <h5 xid="h528" class="text-right font-white"><![CDATA[]]></h5></div> 
    <div class="x-col col-padding-left" xid="col66">
-    <h5 xid="h527" class="font-white text-left" bind-text='$model.nest.val("currentWorth") * $model.nest.val("expectReturn")+"只"' style="white-space:nowrap;"><![CDATA[]]></h5></div> 
-   <div class="x-col" xid="col65"></div></div></div>
+    <h5 xid="h527" class="font-white text-left" bind-text='$model.nest.val("currentWorth") * $model.nest.val("expectReturn")+"只"' style="text-align:right;white-space:nowrap;"><![CDATA[]]></h5></div> 
+   </div></div>
    </div>
   <div component="$UI/system/components/justep/row/row" class="x-row noMarginPadding" xid="row3">
    <div class="x-col noMarginPadding" xid="col7"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group noMarginPadding" tabbed="true" xid="buttonGroup1" style="width:100%;" selected="button5">

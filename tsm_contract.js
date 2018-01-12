@@ -6,5 +6,13 @@ define(function(require){
 		this.callParent();
 	};
 
+	Model.prototype.button1Click = function(event){
+		this.owner.send({check:true});
+	};
+
+	Model.prototype.button2Click = function(event){
+		this.owner.send({check:false});
+	};
+
 	return Model;
 });

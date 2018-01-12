@@ -36,10 +36,10 @@ define(function(require){
      		 pwState = true;
    		 } else {
 			moneyspan0.text((Number(moneyactive) + Number(catcoins) + Number(moneylimit) + Number(money_withdrawal)).toFixed(2));//all
-			moneyspan1.text(moneyactive+lang.wallet[17]);//moneyactive
-			moneyspan2.text(catcoins+lang.wallet[17]);//catcoins
-			moneyspan3.text(moneylimit+lang.wallet[17]);//money_limit
-			moneyspan4.text(money_withdrawal+lang.wallet[17]);//money_limit
+			moneyspan1.text(lang.wallet[17]+moneyactive);//moneyactive
+			moneyspan2.text(lang.wallet[17]+catcoins);//catcoins
+			moneyspan3.text(lang.wallet[17]+moneylimit);//money_limit
+			moneyspan4.text(lang.wallet[17]+money_withdrawal);//money_limit
 			pwState = false;
     	}
 	};
@@ -80,10 +80,10 @@ define(function(require){
 		}
 		money_withdrawal = moneyall.money_withdrawal;
 		moneyspan0.text((Number(moneyall.money_active) + Number(moneyall.coins) + Number(moneyall.money_limit) + Number(money_withdrawal)).toFixed(2));
-		moneyspan1.text(moneyall.money_active+lang.wallet[17]);
-		moneyspan2.text(moneyall.coins+lang.wallet[17]);
-		moneyspan3.text(moneyall.money_limit+lang.wallet[17]);
-		moneyspan4.text(money_withdrawal+lang.wallet[17]);
+		moneyspan1.text(lang.wallet[17]+moneyall.money_active);
+		moneyspan2.text(lang.wallet[17]+moneyall.coins);
+		moneyspan3.text(lang.wallet[17]+moneyall.money_limit);
+		moneyspan4.text(lang.wallet[17]+money_withdrawal);
 		moneyactive = moneyall.money_active;
 		catcoins = moneyall.coins;
 		moneylimit = moneyall.money_limit;
