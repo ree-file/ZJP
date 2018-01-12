@@ -25,6 +25,7 @@ define(function(require){
 		$(this.getElementByXid("span1")).text(lang.transferRecord[11]);
 		$(this.getElementByXid("span9")).text(lang.transferRecord[12]);
 		$(this.getElementByXid("span10")).text(lang.transferRecord[13]);
+		$(this.getElementByXid("span31")).text(lang.transferRecord[18]);
 		$(this.getElementByXid("content1")).css("display","block");
 	};
 		//封装提示框--许鑫君
