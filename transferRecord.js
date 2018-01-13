@@ -96,7 +96,7 @@ define(function(require){
 					// "money_limit": record[i].money_limit,
 					// "coins": record[i].coins,
 					"another": another,
-					"updated_at": record[i].updated_at,
+					"created_at": record[i].created_at,
 				});
 			}
 		}
@@ -134,7 +134,7 @@ define(function(require){
 					"money": record[i].money,
 					"card_number": record[i].card_number,
 					"status": status,
-					"updated_at": record[i].updated_at,
+					"created_at": record[i].created_at,
 				});
 			}
 		}
@@ -172,12 +172,51 @@ define(function(require){
 					"money": record[i].money,
 					"card_number": record[i].card_number,
 					"status": status,
-					"updated_at": record[i].updated_at,
+					"created_at": record[i].created_at,
 				});
 			}
 		}
 		else {
 		this.showprompt(lang.transferRecord[0]);
+		}
+	};
+
+	Model.prototype.content5Active = function (event) {
+		var inviteData = this.comp("inviteData");
+		var record = personaljs.investRecord();
+		if (record == undefined) {
+			this.comp("windowDialog1").open();
+			this.showprompt(lang.showprompt[0]);
+			return;
+		}
+		else if (record == true) {
+			this.modelLoad(event);
+			return;
+		}				//静态数据库录入，数据获取，列设置
+		if (record) {
+			for (var i = 0; i <= record.length - 1; i++) {
+				var type;
+				if (record[i].type == "store") {//创建
+					type = lang.transferRecord[19];
+				}
+				else if (record[i].type == "upgrade") {//升单
+					type = lang.transferRecord[20];
+				}
+				else if (record[i].type == "reinvest") {//复投
+					type = lang.transferRecord[21];
+				}
+				inviteData.add({
+					"id": record[i].id,
+					"nest_id": record[i].nest_id,
+					"nest_name": record[i].nest.name,
+					"money": record[i].money,
+					"type": type,
+					"created_at": record[i].created_at,
+				});
+			}
+		}
+		else {
+			this.showprompt(lang.transferRecord[0]);
 		}
 	};
 
@@ -195,6 +234,13 @@ define(function(require){
 		var withdrawalData = this.comp("withdrawalData");
 		withdrawalData.clear();
 	};
+	
+	Model.prototype.content5Inactive = function(event){
+		var inviteData = this.comp("inviteData");
+		inviteData.clear();
+
+	};
+
 
 	return Model;
 });
