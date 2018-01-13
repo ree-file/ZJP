@@ -40,7 +40,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="height:100%;width:100%;position:relative;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#1C1F26;margin-bottom:8px;position:relative;width:100%;height:40px;padding-right:0px;padding-left:0px;">
+    <div class="x-panel-content" xid="content1" style="display:none;height:100%;width:100%;position:relative;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#1C1F26;margin-bottom:8px;position:relative;width:100%;height:40px;padding-right:0px;padding-left:0px;">
    <div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="inviteButton" target="content5">
    <i xid="i7"></i>
