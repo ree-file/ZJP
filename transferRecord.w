@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad" onActive="modelActive"> 
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="withdrawalData" confirmRefresh="false" idColumn="id"><column name="id" type="String" xid="xid15"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="inviteData" idColumn="id"><column name="id" type="String" xid="xid20"></column>
+  <column name="nest_id" type="String" xid="xid21"></column>
+  <column name="nest_name" type="String" xid="xid25"></column>
+  <column name="money" type="String" xid="xid22"></column>
+  <column name="type" type="String" xid="xid23"></column>
+  <column name="created_at" type="String" xid="xid24"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="withdrawalData" confirmRefresh="false" idColumn="id"><column name="id" type="String" xid="xid15"></column>
   <column name="money" type="String" xid="xid16"></column>
   <column name="card_number" type="String" xid="xid17"></column>
   <column name="status" type="String" xid="xid18"></column>
-  <column name="updated_at" type="String" xid="xid19"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="rechargeData" idColumn="id" confirmRefresh="false"><column name="id" type="String" xid="xid10"></column>
+  <column name="created_at" type="String" xid="xid19"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="rechargeData" idColumn="id" confirmRefresh="false"><column name="id" type="String" xid="xid10"></column>
   <column name="money" type="String" xid="xid11"></column>
   <column name="card_number" type="String" xid="xid12"></column>
   <column name="status" type="String" xid="xid13"></column>
-  <column name="updated_at" type="String" xid="xid14"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="recordData" confirmRefresh="false" idColumn="id"><column label="编号" name="id" type="Integer" xid="xid1"></column>
+  <column name="created_at" type="String" xid="xid14"></column></div><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="recordData" confirmRefresh="false" idColumn="id"><column label="编号" name="id" type="Integer" xid="xid1"></column>
   <column label="" name="type" type="String" xid="xid2"></column>
   <column name="money" type="String" xid="xid5"></column>
   <column name="money_active" type="String" xid="xid3"></column>
@@ -17,7 +22,7 @@
   <column name="coins" type="String" xid="xid6"></column>
   <column name="another" type="String" xid="xid8"></column>
   <column name="another" type="String" xid="xid7"></column>
-  <column name="updated_at" type="String" xid="xid9"></column></div></div>  
+  <column name="created_at" type="String" xid="xid9"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1" style="background-color:#1C1F26;"> 
       <div class="x-panel-top" xid="top1"> 
@@ -36,17 +41,56 @@
         </div> 
       </div>  
     <div class="x-panel-content" xid="content1" style="display:none;height:100%;width:100%;position:relative;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#1C1F26;margin-bottom:8px;position:relative;width:100%;height:40px;padding-right:0px;padding-left:0px;">
-   <div component="$UI/system/components/justep/button/buttonGroup" class="btn-group" tabbed="true" xid="buttonGroup1" style="width:100%;">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="rechargeButton" target="content3" style="width:33%;">
+   <div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="inviteButton" target="content5">
+   <i xid="i7"></i>
+   <span xid="span31"></span></a><a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="rechargeButton" target="content3">
     <i xid="i1"></i>
     <span xid="span1"></span></a> 
-   <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="withdrawalButton" target="content4" style="width:34%;">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="withdrawalButton" target="content4">
     <i xid="i3"></i>
     <span xid="span9"></span></a> 
-  <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="transferButton" target="content2" style="width:33%;">
+  <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="transferButton" target="content2">
    <i xid="i4"></i>
-   <span xid="span10"></span></a></div></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" style="top:40px;width:100%;">
-   <div class="x-contents-content" xid="content3" onActive="content3Active" onInactive="content3Inactive"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="rechargeData">
+   <span xid="span10"></span></a>
+  </div></div><div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1" style="top:40px;width:100%;">
+   <div class="x-contents-content" xid="content5" onInactive="content5Inactive" onActive="content5Active"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list4" data="inviteData">
+   <ul class="x-list-template" xid="listTemplateUl4">
+    <li xid="li4">
+     <div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row20" style="background-color:#252932;margin-top:15px;">
+      <div class="x-col" xid="col43">
+       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
+        <div class="x-col x-col-25" xid="col44">
+         <span xid="span34" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(2)"></span></div> 
+        <div class="x-col" xid="col34">
+         <span xid="span33" style="color:#FFFFFF;font-size:medium;" bind-text='val("id")'></span></div> </div> 
+       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row21">
+        <div class="x-col x-col-25" xid="col38">
+         <span xid="span37" style="color:#C0C0C0;font-size:small;" bind-text="$model.showtransferRecord(22)"></span></div> 
+        <div class="x-col" xid="col35">
+         <span xid="span38" style="color:#FFFFFF;font-size:small;" bind-text='val("nest_id")'></span></div> </div> 
+       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row26">
+   <div class="x-col x-col-25" xid="col45">
+    <span xid="span42" style="color:#C0C0C0;font-size:small;" bind-text="$model.showtransferRecord(24)"></span></div> 
+   <div class="x-col" xid="col46">
+    <span xid="span41" style="color:#FFFFFF;font-size:small;" bind-text='val("nest_name")'></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row24">
+        <div class="x-col x-col-25" xid="col41">
+         <span xid="span35" style="color:#C0C0C0;font-size:small;color:#C0C0C0;font-size:small;" bind-text="$model.showtransferRecord(23)"></span></div> 
+        <div class="x-col" xid="col37">
+         <span xid="span36" style="color:#FFFFFF;font-size:small;" bind-text='val("money")'></span></div> </div> 
+       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
+        <div class="x-col x-col-25" xid="col39">
+         <span xid="span39" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(7)"></span></div> 
+        <div class="x-col" xid="col36">
+         <span xid="span40" style="color:#FFFFFF;font-size:x-small;" bind-text='val("created_at")'></span></div> </div> 
+  </div> 
+      <div class="x-col x-col-25" xid="col42" style="padding-top:58px;padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
+       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row23">
+        <div class="x-col" xid="col40">
+         <a component="$UI/system/components/justep/button/button" class="btn btn-warning btn-block" xid="button4">
+          <i xid="i8"></i>
+          <span xid="span32" bind-text='val("type")'></span></a> </div> </div> </div> </div> </li> </ul> </div>
+  <div xid="div3" style="height:100px;"></div></div><div class="x-contents-content" xid="content3" onActive="content3Active" onInactive="content3Inactive"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="rechargeData">
    <ul class="x-list-template" xid="listTemplateUl2">
     <li xid="li2"><div component="$UI/system/components/justep/row/row" class="x-row bigrow" xid="row7" style="background-color:#252932;margin-top:15px;">
    <div class="x-col" xid="col21">
@@ -69,7 +113,7 @@
      <div class="x-col x-col-25" xid="col14">
       <span xid="span20" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(7)"></span></div> 
      <div class="x-col" xid="col11">
-      <span xid="span21" style="color:#FFFFFF;font-size:x-small;" bind-text='val("updated_at")'></span></div> </div> </div> 
+      <span xid="span21" style="color:#FFFFFF;font-size:x-small;" bind-text='val("created_at")'></span></div> </div> </div> 
    <div class="x-col x-col-25" xid="col18" style="padding-top:38px;padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11">
      <div class="x-col" xid="col15">
@@ -100,7 +144,7 @@
         <div class="x-col x-col-25" xid="col26">
          <span xid="span23" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(7)"></span></div> 
         <div class="x-col" xid="col29">
-         <span xid="span22" style="color:#FFFFFF;font-size:x-small;" bind-text='val("updated_at")'></span></div> </div> </div> 
+         <span xid="span22" style="color:#FFFFFF;font-size:x-small;" bind-text='val("created_at")'></span></div> </div> </div> 
       <div class="x-col x-col-25" xid="col23" style="padding-top:38px;padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14">
         <div class="x-col" xid="col25">
@@ -127,7 +171,7 @@
    <div class="x-col x-col-25" xid="col7">
     <span xid="span14" style="color:#C0C0C0;" bind-text="$model.showtransferRecord(7)"></span></div> 
    <div class="x-col" xid="col8">
-    <span xid="span13" style="color:#FFFFFF;font-size:x-small;" bind-text='val("updated_at")'></span></div> </div>
+    <span xid="span13" style="color:#FFFFFF;font-size:x-small;" bind-text='val("created_at")'></span></div> </div>
   </div>
    <div class="x-col x-col-25" xid="col3" style="padding-top:38px;padding-right:0px;padding-left:0px;margin-right:0px;margin-left:0px;">
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
