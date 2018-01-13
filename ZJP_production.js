@@ -248,7 +248,7 @@ define(function(require){
 				object.val("");
 			}
 			else{
-				if ((parseFloat(production)-parseFloat(current_worth))<(parseFloat($(this.getElementByXid("money")).html())+parseFloat($(this.getElementByXid("investment")).html())))
+				if ((parseFloat(production)-parseFloat(current_worth))<=(parseFloat($(this.getElementByXid("money")).html())+parseFloat($(this.getElementByXid("investment")).html())))
 				 {
 					
 					$(this.getElementByXid("need_money")).html((parseFloat(production)-parseFloat(current_worth)).toFixed(2));

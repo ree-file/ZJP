@@ -7,6 +7,7 @@ define(function(require) {
 	var common = require("./js/mycommon");
 	var base64 = require("$UI/system/lib/base/base64");
 	var mainInfo;
+	var is_first=0;
 	var starty=0;
 	var endy=0;
 	var page = 1;
@@ -266,7 +267,10 @@ define(function(require) {
 	Model.prototype.modelActive = function(event){
 		this.modelModelConstructDone(event);
 		this.modelLoad(event);
+		this.modelParamsReceive(event);
 		page=0;
+		is_first=0;
+		this.comp("windowContainer1").refresh();
 	};
 
 	Model.prototype.windowDialog1Receive = function(event){
@@ -282,6 +286,8 @@ define(function(require) {
 			this.comp("contents1").next();
 			this.modelModelConstructDone(event);
 			this.modelLoad(event);
+			this.modelParamsReceive(event);
+			this.comp("windowContainer1").refresh();
 		}
 		else if(event.data.reset){
 			this.comp("windowDialog1").close();
@@ -311,8 +317,15 @@ define(function(require) {
 	};
 
 	Model.prototype.contents1ActiveChange = function(event){
-		if (event.to==2) {
-			this.comp("windowContainer1").load("$UI/ZJP/personal.w",{personal:personalInvite});
+		if (event.to==2&&is_first==0) {
+			this.comp("windowContainer1").refresh();
+			is_first=1;
+		}
+		else if(event.to==2&&is_first==1){
+			this.comp("windowContainer1").load();
+		}
+		else{
+			this.comp("windowContainer1").load();
 		}
 	};
 

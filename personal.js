@@ -31,6 +31,7 @@ define(function(require){
 	};
 
 	Model.prototype.modelActive = function(event){
+		this.modelLoad(event);
 	};
 
 	// function timedCount(num,total){
@@ -171,12 +172,12 @@ define(function(require){
 	};
 
 	Model.prototype.modelParamsReceive = function(event){
-		if (this.params.personal) {
-				$(this.getElementsByXid("totalSpan")).html("$"+this.params.personal);
-		}
-		else{
-			$(this.getElementsByXid("totalSpan")).html("$"+0);
-		}
+//		if (this.params.personal) {
+//				$(this.getElementsByXid("totalSpan")).html("$"+this.params.personal);
+//		}
+//		else{
+//			$(this.getElementsByXid("totalSpan")).html("$"+0);
+//		}
 	};
 
 	return Model;
