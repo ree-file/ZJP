@@ -40,7 +40,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1" style="display:none;height:100%;width:100%;position:relative;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#1C1F26;margin-bottom:8px;position:relative;width:100%;height:40px;padding-right:0px;padding-left:0px;">
+    <div class="x-panel-content" xid="content1" style="height:100%;width:100%;position:relative;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="background-color:#1C1F26;margin-bottom:8px;position:relative;width:100%;height:40px;padding-right:0px;padding-left:0px;">
    <div component="$UI/system/components/justep/button/buttonGroup" class="btn-group btn-group-justified" tabbed="true" xid="buttonGroup1" style="width:100%;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-default" xid="inviteButton" target="content5">
    <i xid="i7"></i>
@@ -65,17 +65,17 @@
         <div class="x-col" xid="col34">
          <span xid="span33" style="color:#FFFFFF;font-size:medium;" bind-text='val("id")'></span></div> </div> 
        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row21">
-        <div class="x-col x-col-25" xid="col38">
-         <span xid="span37" style="color:#C0C0C0;font-size:small;" bind-text="$model.showtransferRecord(22)"></span></div> 
+        <div class="x-col x-col-25" xid="col38" style="margin-right:0px;padding-right:0px;">
+         <span xid="span37" bind-text="$model.showtransferRecord(22)" class="remspan"></span></div> 
         <div class="x-col" xid="col35">
          <span xid="span38" style="color:#FFFFFF;font-size:small;" bind-text='val("nest_id")'></span></div> </div> 
        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row26">
-   <div class="x-col x-col-25" xid="col45">
-    <span xid="span42" style="color:#C0C0C0;font-size:small;" bind-text="$model.showtransferRecord(24)"></span></div> 
+   <div class="x-col x-col-25" xid="col45" style="margin-right:0px;padding-right:0px;">
+    <span xid="span42" bind-text="$model.showtransferRecord(24)" class="remspan"></span></div> 
    <div class="x-col" xid="col46">
     <span xid="span41" style="color:#FFFFFF;font-size:small;" bind-text='val("nest_name")'></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row24">
-        <div class="x-col x-col-25" xid="col41">
-         <span xid="span35" style="color:#C0C0C0;font-size:small;color:#C0C0C0;font-size:small;" bind-text="$model.showtransferRecord(23)"></span></div> 
+        <div class="x-col x-col-25" xid="col41" style="margin-right:0px;padding-right:0px;">
+         <span xid="span35" bind-text="$model.showtransferRecord(23)" class="remspan"></span></div> 
         <div class="x-col" xid="col37">
          <span xid="span36" style="color:#FFFFFF;font-size:small;" bind-text='val("money")'></span></div> </div> 
        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
