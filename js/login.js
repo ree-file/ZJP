@@ -3,6 +3,7 @@ define(function(require){
 	var justep = require("$UI/system/lib/justep");
 	var config = require("./config");
 	var jwt = require("./jwt");
+	var common = require("./mycommon");
 	function showprompt(text){
 		justep.Util.hint(text,{
 			"style":"color:white;font-size:15px;background:rgba(28,31,38,1);text-align:center;padding:9px 0px;top:4px;"
@@ -72,6 +73,7 @@ define(function(require){
 				success:function(data){
 					is_success=true;
 					localStorage.setItem("thismyuserId", data.data.id);
+					common.setCommon({userId:localStorage.getItem("thismyuserId")});
 					jwt.setToken(data.data.jwt_token);
 				},
 				error:function(ero){
